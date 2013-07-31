@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="jdom/jdom-2.0.3-junit.jar"/>
 	<classpathentry kind="lib" path="jdom/jdom-2.0.3-sources.jar"/>
 	<classpathentry kind="lib" path="jdom/jdom-2.0.3.jar"/>
-	<classpathentry kind="lib" path="/Users/gauss/Downloads/jmockit/jmockit.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
