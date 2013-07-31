@@ -45,8 +45,6 @@ public class BoundaryTest {
     
     @Test
     public void testPianificatore() {
-	//TODO resolve opening problem
 	(new Pianificatore(null, false)).setVisible(true);
-	fail("Can't open correctly");
     }
 }

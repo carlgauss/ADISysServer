@@ -13,6 +13,8 @@ import java.awt.Toolkit;
  * @author Francesco
  */
 public class Pianificatore extends javax.swing.JDialog {
+	
+	private static Pianificatore window;
 
 	/**
 	 * Creates new form ADISysGUI
@@ -59,6 +61,7 @@ public class Pianificatore extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADISys - Pianificazione giornaliera");
+        setModal(true);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -305,7 +308,7 @@ public class Pianificatore extends javax.swing.JDialog {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				Pianificatore window = new Pianificatore(new javax.swing.JFrame(), true);
+				window = new Pianificatore(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 				window.setVisible(true);
