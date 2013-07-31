@@ -8,7 +8,6 @@ public class ApplicationServiceFactory {
 	
     }
 
-    // Delete this comment
     private static final String PACKAGE_PATH_NAME = "business.controller.";
     
     public static ApplicationService buildIstance(String serviceName) {
