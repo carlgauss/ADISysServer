@@ -31,6 +31,7 @@ public class ApplicationControllerTest {
 	public void testHandleRequest() {
 		new ApplicationServicePazienteStub();
 		ac.handleRequest("InserisciPaziente", null);
-	}
+		assertTrue(true);
+		}
 
 }
