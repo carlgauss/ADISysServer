@@ -2,11 +2,11 @@ package presentation.controller;
 
 public class FrontControllerFactory {
 
-    private FrontControllerFactory() {
-	
-    }
+	private FrontControllerFactory() {
 
-    public static FrontController buildIstance() {
-	return new ADISysFrontController();
-    }
+	}
+
+	public static FrontController buildIstance() {
+		return new ADISysFrontController();
+	}
 }

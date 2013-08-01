@@ -4,7 +4,10 @@ import util.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
 
-    public Object handleRequest(String request, Parameter parameter){
-	return null;
-    }
+	public Object handleRequest(String serviceName, Parameter parameter) {
+		//TODO Riempire il metodo
+		return null;
+	}
+
+
 }
