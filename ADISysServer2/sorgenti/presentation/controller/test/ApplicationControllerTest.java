@@ -19,8 +19,6 @@ public class ApplicationControllerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		//non riesco ad impostare il mock in modo corretto ma il funcion selector funziona.
-		//Mockit.setUpMock(ApplicationServicePaziente.class, ApplicationServicePazienteStub.class);
 		ac = ApplicationControllerFactory.buildInstance();
 	}
 
@@ -31,6 +29,7 @@ public class ApplicationControllerTest {
 
 	@Test
 	public void testHandleRequest() {
+		new ApplicationServicePazienteStub();
 		ac.handleRequest("InserisciPaziente", null);
 	}
 

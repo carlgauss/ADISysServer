@@ -2,11 +2,12 @@ package presentation.controller.test;
 
 import presentation.controller.ApplicationService;
 import util.Parameter;
+import business.controller.ApplicationServicePaziente;
 import business.controller.CRUG;
 import mockit.Mock;
-import mockit.Mockit;
+import mockit.MockUp;
 
-class ApplicationServicePazienteStub implements CRUG, ApplicationService {
+public class ApplicationServicePazienteStub extends MockUp<ApplicationServicePaziente> implements CRUG, ApplicationService {
 
 	@Mock
 	public void create(Parameter parameter) {
