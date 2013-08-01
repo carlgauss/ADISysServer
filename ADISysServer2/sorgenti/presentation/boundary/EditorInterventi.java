@@ -10,10 +10,6 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Francesco Colella
- */
 public class EditorInterventi extends javax.swing.JDialog {
 
 	/**

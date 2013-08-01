@@ -8,10 +8,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-/**
- *
- * @author Francesco
- */
 public class DialogoVerifica extends javax.swing.JDialog {
 
 	private static DialogoVerifica window;

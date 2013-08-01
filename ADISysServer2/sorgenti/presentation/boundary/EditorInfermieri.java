@@ -9,10 +9,6 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Francesco
- */
 public class EditorInfermieri extends javax.swing.JDialog {
 
 	/**

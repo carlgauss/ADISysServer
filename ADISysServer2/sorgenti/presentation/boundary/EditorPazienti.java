@@ -11,10 +11,6 @@ import javax.sound.midi.ControllerEventListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Francesco
- */
 public class EditorPazienti extends javax.swing.JDialog {
 	/**
 	 * Creates new form dialogoPazienti

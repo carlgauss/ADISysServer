@@ -7,11 +7,8 @@ package presentation.boundary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 
-/**
- *
- * @author Francesco
- */
 public class Pianificatore extends javax.swing.JDialog {
 	
 	private static Pianificatore window;
@@ -272,37 +269,34 @@ public class Pianificatore extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	private void menuAggiungiInterventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAggiungiInterventoActionPerformed
+	private void menuAggiungiInterventoActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_menuAggiungiInterventoActionPerformed
+	}
 
-	private void menuAggiungiPazienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAggiungiPazienteActionPerformed
+	private void menuAggiungiPazienteActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_menuAggiungiPazienteActionPerformed
+	}
 
-	private void menuAggiungiInfermiereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAggiungiInfermiereActionPerformed
+	private void menuAggiungiInfermiereActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_menuAggiungiInfermiereActionPerformed
+	}
 
-	private void menuVerificaDatiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerificaDatiActionPerformed
+	private void menuVerificaDatiActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_menuVerificaDatiActionPerformed
+	}
 
-	private void menuAggiornaTabelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAggiornaTabelleActionPerformed
+	private void menuAggiornaTabelleActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_menuAggiornaTabelleActionPerformed
+	}
 
-	private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+	private void formWindowActivated(java.awt.event.WindowEvent evt) {
 
-	}//GEN-LAST:event_formWindowActivated
+	}
 
-    private void menuEsportazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEsportazioneActionPerformed
+    private void menuEsportazioneActionPerformed(java.awt.event.ActionEvent evt) {
 
-    }//GEN-LAST:event_menuEsportazioneActionPerformed
+    }
 
-	/**
-	 *
-	 */
 	public static void start() {
 
 		/* Create and display the form */

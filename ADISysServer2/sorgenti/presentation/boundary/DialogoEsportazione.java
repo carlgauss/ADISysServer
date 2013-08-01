@@ -8,9 +8,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-/**
- * @author Francesco
- */
 public class DialogoEsportazione extends javax.swing.JDialog {
 
     private static DialogoEsportazione window;
