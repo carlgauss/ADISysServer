@@ -1,6 +1,7 @@
 package business.controller;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import util.Parameter;
 
@@ -18,7 +19,10 @@ class ADISysServiceFunctionSelector implements ServiceFunctionSelector {
 		Object result = null;
 		try {
 			//TODO codice temporaneo. necessario restyling
-			result = as.getClass().getMethod(ApplicationServiceSelector.getServiceFuncion(serviceName), Object.class).invoke(as, parameter);
+			Class<?> asClass = as.getClass();
+			String asFunctionInString = ApplicationServiceSelector.getServiceFuncion(serviceName);
+			Method asFunction = asClass.getMethod(asFunctionInString, Parameter.class);
+			result = asFunction.invoke(as, parameter);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
