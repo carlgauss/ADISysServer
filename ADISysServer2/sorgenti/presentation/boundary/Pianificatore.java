@@ -312,7 +312,7 @@ public class Pianificatore extends javax.swing.JDialog {
 
 	}
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JMenuBar barraDeiMenu;
     private javax.swing.JLabel etichettaLogo;
     private javax.swing.JLabel intestazione;
@@ -340,7 +340,7 @@ public class Pianificatore extends javax.swing.JDialog {
     private javax.swing.JTable tabellaInfermieri;
     private javax.swing.JTable tabellaInterventi;
     private javax.swing.JTable tabellaPazienti;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 
 
 }

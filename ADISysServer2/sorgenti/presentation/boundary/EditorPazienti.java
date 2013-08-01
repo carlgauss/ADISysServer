@@ -254,42 +254,39 @@ public class EditorPazienti extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
+
 	private static EditorPazienti window;
 
-	private void pulsanteOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteOkActionPerformed
+	private void pulsanteOkActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteOkActionPerformed
+    }
 
-	private void pulsanteModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteModificaActionPerformed
+	private void pulsanteModificaActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteModificaActionPerformed
+	}
 
-	private void pulsanteAggiungiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteAggiungiActionPerformed
+	private void pulsanteAggiungiActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteAggiungiActionPerformed
+	}
 
-	private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+	private void formWindowActivated(java.awt.event.WindowEvent evt) {
 
-	}//GEN-LAST:event_formWindowActivated
+	}
 
-	private void pAddCellulareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pAddCellulareActionPerformed
+	private void pAddCellulareActionPerformed(java.awt.event.ActionEvent evt) {
 
                 
-	}//GEN-LAST:event_pAddCellulareActionPerformed
+	}
 
-	private void pRemCellulareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pRemCellulareActionPerformed
+	private void pRemCellulareActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pRemCellulareActionPerformed
+	}
 
-    private void tabellaPazientiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabellaPazientiKeyPressed
+    private void tabellaPazientiKeyPressed(java.awt.event.KeyEvent evt) {
 
-    }//GEN-LAST:event_tabellaPazientiKeyPressed
+    }
 
-
-	/**
-	 * @param args the command line arguments
-	 */
 	public static void start() {
 
 		/* Create and display the dialog */
@@ -304,7 +301,7 @@ public class EditorPazienti extends javax.swing.JDialog {
 	}
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JLabel immagineTestataPazienti;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -329,7 +326,7 @@ public class EditorPazienti extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txDataNascita;
     private javax.swing.JLabel txErrore;
     private javax.swing.JTextField txNomePaziente;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 	
     //Dichiarazione modello lista cellulari pazienti
     private DefaultListModel<String> modelloListaCellulari;

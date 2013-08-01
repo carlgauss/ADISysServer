@@ -139,31 +139,31 @@ public class DialogoVerifica extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void pulsanteAggiornaListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteAggiornaListaActionPerformed
+    private void pulsanteAggiornaListaActionPerformed(java.awt.event.ActionEvent evt) {
 
 
-    }//GEN-LAST:event_pulsanteAggiornaListaActionPerformed
+    }
 
-    private void pulsanteCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteCaricaActionPerformed
-
-        
-    }//GEN-LAST:event_pulsanteCaricaActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
-    }//GEN-LAST:event_formWindowActivated
-
-    private void tabellaAttivitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabellaAttivitaMouseClicked
+    private void pulsanteCaricaActionPerformed(java.awt.event.ActionEvent evt) {
 
         
-    }//GEN-LAST:event_tabellaAttivitaMouseClicked
+    }
 
-    private void tabellaAttivitaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabellaAttivitaKeyPressed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {
+
+    }
+
+    private void tabellaAttivitaMouseClicked(java.awt.event.MouseEvent evt) {
 
         
-    }//GEN-LAST:event_tabellaAttivitaKeyPressed
+    }
+
+    private void tabellaAttivitaKeyPressed(java.awt.event.KeyEvent evt) {
+
+        
+    }
 
 	/**
 	 * @param args the command line arguments
@@ -186,7 +186,7 @@ public class DialogoVerifica extends javax.swing.JDialog {
 	{
 		if (window!=null) window.dispose();
 	}
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JComboBox cbFileJournaling;
     private javax.swing.JLabel immagineTestataVerifica;
     private javax.swing.JLabel jLabel1;
@@ -199,6 +199,5 @@ public class DialogoVerifica extends javax.swing.JDialog {
     private javax.swing.JTable tabellaLog;
     private javax.swing.JLabel txInfermiere;
     private javax.swing.JLabel txInfermiere1;
-    // End of variables declaration//GEN-END:variables
-
+    // End of variables declaration
 }

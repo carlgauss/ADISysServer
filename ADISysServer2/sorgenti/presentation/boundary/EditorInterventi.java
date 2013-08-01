@@ -510,27 +510,27 @@ public class EditorInterventi extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>
 
-	private void pulsanteEditorInfermieriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteEditorInfermieriActionPerformed
+	private void pulsanteEditorInfermieriActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteEditorInfermieriActionPerformed
+	}
 
-	private void pulsanteEditorPazientiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteEditorPazientiActionPerformed
+	private void pulsanteEditorPazientiActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteEditorPazientiActionPerformed
+	}
 
-	private void pulsanteAggiungiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteAggiungiActionPerformed
+	private void pulsanteAggiungiActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteAggiungiActionPerformed
+	}
 
-	private void pulsanteModificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteModificaActionPerformed
+	private void pulsanteModificaActionPerformed(java.awt.event.ActionEvent evt) {
 
-	}//GEN-LAST:event_pulsanteModificaActionPerformed
+	}
 
-	private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+	private void formWindowActivated(java.awt.event.WindowEvent evt) {
 		// Aggiornamento tabelle al ritorno dai popup
-	}//GEN-LAST:event_formWindowActivated
+	}
 
 	private void pulsanteImpostaPazienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsanteImpostaPazienteActionPerformed
 		

@@ -80,16 +80,16 @@ public class DialogoEsportazione extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void formWindowActivated() {//GEN-FIRST:event_formWindowActivated
+    private void formWindowActivated() {
         aggiornaTabella();
-    }//GEN-LAST:event_formWindowActivated
+    }
 
-    private void pulsanteEsportaActionPerformed() {//GEN-FIRST:event_pulsanteEsportaActionPerformed
+    private void pulsanteEsportaActionPerformed() {
 
 
-    }//GEN-LAST:event_pulsanteEsportaActionPerformed
+    }
 
 
     public static void start() {
@@ -104,14 +104,14 @@ public class DialogoEsportazione extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton pulsanteEsporta;
     private javax.swing.JTable tabellaInfermieri;
 
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
     private void aggiornaTabella() {
 
     }
