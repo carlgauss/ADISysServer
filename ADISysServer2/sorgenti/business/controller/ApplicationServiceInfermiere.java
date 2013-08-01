@@ -6,9 +6,11 @@ import util.Parameter;
 public class ApplicationServiceInfermiere implements ApplicationService, CRUG {
 
     public void create(Parameter parameter) {
+    	//return null;
     }
 
     public void update(Parameter parameter) {	
+    	//return null;
     }
 
     public Object read(Parameter parameter) {
