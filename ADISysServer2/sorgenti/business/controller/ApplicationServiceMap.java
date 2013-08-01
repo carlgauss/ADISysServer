@@ -6,7 +6,7 @@ import java.util.Map;
 import util.Couple;
 
 class ApplicationServiceMap {
-	private static Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
+	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
 
 	public void put(String serviceName, String applicationService,
 			String serviceFunction) {
@@ -18,13 +18,13 @@ class ApplicationServiceMap {
 		asMapDictionary.put(serviceName, coupleTemp);
 	}
 
-	private static void checkService(String serviceName) {
+	private void checkService(String serviceName) {
 		if (!asMapDictionary.containsKey(serviceName)) {
 			throw new UnavaliableApplicationServiceException(serviceName);
 		}
 	}
 
-	private static Couple<String, String> mapCouple(String serviceName) {
+	private Couple<String, String> mapCouple(String serviceName) {
 		checkService(serviceName);
 		return asMapDictionary.get(serviceName);
 	}
