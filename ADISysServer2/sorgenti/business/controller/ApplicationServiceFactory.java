@@ -8,7 +8,7 @@ public class ApplicationServiceFactory {
 	
     }
     
-    public static ApplicationService buildIstance(String serviceName) {
+    public static ApplicationService buildInstance(String serviceName) {
 	ApplicationService as = null;
 	
 	try {

@@ -6,7 +6,7 @@ public class ApplicationControllerFactory {
 
 	}
 
-	public static ApplicationController buildIstance() {
+	public static ApplicationController buildInstance() {
 		return new ADISysApplicationController();
 	}
 }
