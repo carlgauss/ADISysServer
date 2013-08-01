@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="jdom/jdom-2.0.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="jmockit.jar"/>
+	<classpathentry kind="lib" path="jmockit-coverage.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
