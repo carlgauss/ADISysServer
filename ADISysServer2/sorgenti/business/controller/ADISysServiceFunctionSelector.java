@@ -18,11 +18,13 @@ class ADISysServiceFunctionSelector implements ServiceFunctionSelector {
 	public Object invokeServiceFunction(String serviceName, Parameter parameter) {
 		Object result = null;
 		try {
+			
 			//TODO codice temporaneo. necessario restyling
 			Class<?> asClass = as.getClass();
 			String asFunctionInString = ApplicationServiceSelector.getServiceFuncion(serviceName);
 			Method asFunction = asClass.getMethod(asFunctionInString, Parameter.class);
 			result = asFunction.invoke(as, parameter);
+			
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
