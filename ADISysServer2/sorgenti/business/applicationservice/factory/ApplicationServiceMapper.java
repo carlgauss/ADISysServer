@@ -10,7 +10,6 @@ import util.Couple;
 
 class ApplicationServiceMapper {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
-
 	private String currentServiceName = null;
 	
 	public void selectApplicationServiceBy(String serviceName) {

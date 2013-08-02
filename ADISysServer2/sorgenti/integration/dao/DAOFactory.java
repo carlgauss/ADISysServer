@@ -5,7 +5,6 @@ public class DAOFactory {
 	private static final String DAO_PATH = "integration.dao.";
 
 	private DAOFactory() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static DAO buildInstance(String daoName) {
@@ -24,7 +23,6 @@ public class DAOFactory {
 		try {
 			daoClass = Class.forName(daoCanonicalName);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -37,10 +35,8 @@ public class DAOFactory {
 		try {
 			daoInstance = (DAO) daoClass.newInstance();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
