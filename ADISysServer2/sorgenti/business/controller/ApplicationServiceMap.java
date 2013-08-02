@@ -8,14 +8,26 @@ import util.Couple;
 class ApplicationServiceMap {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
 
-	public void put(String serviceName, String applicationService,
-			String serviceFunction) {
-		Couple<String, String> coupleTemp;
-
-		coupleTemp = new Couple<String, String>(applicationService,
-				serviceFunction);
-
-		asMapDictionary.put(serviceName, coupleTemp);
+	private String currentServiceName = null;
+	
+	public void selectApplicationServiceBy(String serviceName) {
+		currentServiceName = serviceName;
+	}
+	
+	public void setApplicationServiceValues(String applicationService, String serviceFunction) {
+		if (isServiceNameSelected()) {
+			Couple<String, String> newValues = 
+					new Couple<String, String>(applicationService, serviceFunction);
+			
+			asMapDictionary.put(currentServiceName, newValues);
+			
+		} else {
+			throw new UnselectedServiceNameException();
+		}
+	}
+	
+	private boolean isServiceNameSelected() {
+		return currentServiceName != null;
 	}
 
 	public String getApplicationService(String serviceName) {

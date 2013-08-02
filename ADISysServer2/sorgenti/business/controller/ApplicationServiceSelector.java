@@ -11,8 +11,11 @@ class ApplicationServiceSelector {
 		 * Inserimento delle corrispondenze tra le richieste effettuate tramite
 		 * le classi boundary e gli ApplicationServices
 		 */
-		asList.put("InserisciPaziente", "ApplicationServicePaziente", "create");
-		asList.put("ModificaPaziente", "ApplicationServicePaziente", "update");
+		asList.selectApplicationServiceBy("InserisciPaziente");
+		asList.setApplicationServiceValues("ApplicationServicePaziente", "create");
+		
+		asList.selectApplicationServiceBy("ModificaPaziente");
+		asList.setApplicationServiceValues("ApplicationServicePaziente", "update");
 	}
 
 	private ApplicationServiceSelector() {
