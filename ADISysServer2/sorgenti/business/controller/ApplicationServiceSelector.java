@@ -4,7 +4,7 @@ class ApplicationServiceSelector {
 
 	private static final String PACKAGE_PATH_NAME = "business.controller.";
 
-	static ApplicationServiceMap asList = new ApplicationServiceMap();
+	static ApplicationServiceMapper asList = new ApplicationServiceMapper();
 
 	static {
 		/*

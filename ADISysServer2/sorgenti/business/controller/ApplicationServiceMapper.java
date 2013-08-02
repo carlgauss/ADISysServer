@@ -5,7 +5,7 @@ import java.util.Map;
 
 import util.Couple;
 
-class ApplicationServiceMap {
+class ApplicationServiceMapper {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
 
 	private String currentServiceName = null;
