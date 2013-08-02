@@ -26,7 +26,7 @@ class ApplicationServiceSelector {
 		return applicationServiceCanonicalName;
 	}
 
-	public static String getServiceFuncion(String serviceName) {
+	public static String getServiceFunction(String serviceName) {
 		return asList.getServiceFunction(serviceName);
 	}
 }
