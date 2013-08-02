@@ -20,6 +20,7 @@ public class ApplicationControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		ac = ApplicationControllerFactory.buildInstance();
+		Mockit.setUpMock(ApplicationServicePaziente.class, ApplicationServicePazienteStub.class);
 	}
 
 	@After
@@ -29,8 +30,8 @@ public class ApplicationControllerTest {
 
 	@Test
 	public void testHandleRequest() {
-		Mockit.setUpMock(ApplicationServicePaziente.class, ApplicationServicePazienteStub.class);
 		ac.handleRequest("InserisciPaziente", null);
+		ac.handleRequest("ModificaPaziente", null);
 		assertTrue(true);
 		}
 
