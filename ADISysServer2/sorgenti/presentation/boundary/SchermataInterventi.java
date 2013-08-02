@@ -11,9 +11,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class SchermataInterventi extends javax.swing.JDialog {
 
-	/**
-	 * Creates new form SchermataInterventi
-	 */
 	public SchermataInterventi(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
