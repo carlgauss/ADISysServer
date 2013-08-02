@@ -2,8 +2,8 @@ package presentation.controller.test;
 
 import presentation.controller.ApplicationService;
 import util.Parameter;
-import business.controller.ApplicationServicePaziente;
-import business.controller.CRUG;
+import business.applicationservice.ApplicationServicePaziente;
+import business.applicationservice.CRUG;
 import mockit.Mock;
 import mockit.MockUp;
 

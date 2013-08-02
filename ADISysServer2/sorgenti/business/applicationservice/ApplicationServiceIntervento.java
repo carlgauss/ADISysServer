@@ -1,9 +1,9 @@
-package business.controller;
+package business.applicationservice;
 
 import presentation.controller.ApplicationService;
 import util.Parameter;
 //TODO tutti i metodi
-public class ApplicationServiceInfermiere implements ApplicationService, CRUG {
+public class ApplicationServiceIntervento implements ApplicationService, CRUG {
 
     public void create(Parameter parameter) {
     	//return null;

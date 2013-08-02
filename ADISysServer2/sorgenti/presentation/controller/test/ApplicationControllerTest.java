@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import business.controller.ApplicationServicePaziente;
+import business.applicationservice.ApplicationServicePaziente;
 
 import presentation.controller.ApplicationController;
 import presentation.controller.ApplicationControllerFactory;

@@ -1,4 +1,4 @@
-package business.controller;
+package business.applicationservice;
 
 public class UnselectedServiceNameException extends RuntimeException {
 
