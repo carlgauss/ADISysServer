@@ -29,7 +29,7 @@ public class ApplicationControllerTest {
 
 	@Test
 	public void testHandleRequest() {
-		new ApplicationServicePazienteStub();
+		Mockit.setUpMock(ApplicationServicePaziente.class, ApplicationServicePazienteStub.class);
 		ac.handleRequest("InserisciPaziente", null);
 		assertTrue(true);
 		}

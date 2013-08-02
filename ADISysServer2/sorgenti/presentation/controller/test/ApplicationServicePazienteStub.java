@@ -7,7 +7,7 @@ import business.controller.CRUG;
 import mockit.Mock;
 import mockit.MockUp;
 
-public class ApplicationServicePazienteStub extends MockUp<ApplicationServicePaziente> implements CRUG, ApplicationService {
+public class ApplicationServicePazienteStub implements CRUG, ApplicationService {
 
 	@Mock
 	public void create(Parameter parameter) {
