@@ -32,7 +32,12 @@ public class ApplicationControllerTest {
 	public void testHandleRequest() {
 		ac.handleRequest("InserisciPaziente", null);
 		ac.handleRequest("ModificaPaziente", null);
-		assertTrue(true);
 		}
+
+    @Test
+    public void testMostra() {
+        ac.handleRequest("Mostra", null);
+        ac.handleRequest("Mostra schermata", null);  //con spazio tra due parole
+    }
 
 }

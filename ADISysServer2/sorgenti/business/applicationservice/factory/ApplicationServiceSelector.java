@@ -4,7 +4,7 @@ package business.applicationservice.factory;
 
 class ApplicationServiceSelector {
 
-	private static final String PACKAGE_PATH_NAME = "business.controller.";
+	private static final String PACKAGE_PATH_NAME = "business.applicationservice.";
 
 	private static ApplicationServiceMapper asMap = new ApplicationServiceMapper();
 

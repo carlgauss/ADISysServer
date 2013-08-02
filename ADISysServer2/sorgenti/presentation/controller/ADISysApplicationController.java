@@ -13,7 +13,7 @@ class ADISysApplicationController implements ApplicationController {
 		Object result = null;
 		
 		if (serviceName.matches(SHOW_SYNTAX)) {
-			
+            controlFlowIsHere();
 		} else {
 			result = execute(serviceName, parameter);
 		}
@@ -26,4 +26,15 @@ class ADISysApplicationController implements ApplicationController {
 		ServiceFunctionSelector serviceFunctionSelector = ServiceFunctionSelectorFactory.buildInstance(as);
 		return serviceFunctionSelector.invokeServiceFunction(serviceName, parameter);
 	}
+
+    /* Metodo creato appositamente per il test.
+    *  Verrà eliminato non appena si implementerà
+     *  un metodo per la gestione del passaggio
+      *  tra le schermate grafiche.
+    * */
+    private static void controlFlowIsHere() {
+        System.out.println("Control flow has passed from here");
+    }
+
+
 }
