@@ -18,17 +18,6 @@ class ApplicationServiceMap {
 		asMapDictionary.put(serviceName, coupleTemp);
 	}
 
-	private void checkService(String serviceName) {
-		if (!asMapDictionary.containsKey(serviceName)) {
-			throw new UnavaliableApplicationServiceException(serviceName);
-		}
-	}
-
-	private Couple<String, String> mapCouple(String serviceName) {
-		checkService(serviceName);
-		return asMapDictionary.get(serviceName);
-	}
-
 	public String getApplicationService(String serviceName) {
 		Couple<String, String> mappedCouple = mapCouple(serviceName);
 		return mappedCouple.getFirstValue();
@@ -38,4 +27,15 @@ class ApplicationServiceMap {
 		Couple<String, String> mappedCouple = mapCouple(serviceName);
 		return mappedCouple.getSecondValue();
 	}
+
+    private Couple<String, String> mapCouple(String serviceName) {
+        checkService(serviceName);
+        return asMapDictionary.get(serviceName);
+    }
+
+    private void checkService(String serviceName) {
+        if (!asMapDictionary.containsKey(serviceName)) {
+            throw new UnavaliableApplicationServiceException(serviceName);
+        }
+    }
 }
