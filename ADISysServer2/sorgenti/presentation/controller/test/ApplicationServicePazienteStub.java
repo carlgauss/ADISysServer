@@ -11,13 +11,13 @@ public class ApplicationServicePazienteStub implements CRUG, ApplicationService 
 
 	@Mock
 	public void create(Parameter parameter) {
-		System.out.println("OK");
+		System.out.println("OK Inserisci paziente");
 
 	}
 
 	@Mock
 	public void update(Parameter parameter) {
-		System.out.println("OK");
+		System.out.println("OK Modifica paziente");
 
 	}
 
