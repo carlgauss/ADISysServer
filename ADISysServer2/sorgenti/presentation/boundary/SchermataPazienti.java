@@ -7,15 +7,13 @@ package presentation.boundary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
-public class EditorPazienti extends javax.swing.JDialog {
+public class SchermataPazienti extends javax.swing.JDialog {
 	/**
 	 * Creates new form dialogoPazienti
 	 */
-	public EditorPazienti(java.awt.Frame parent, boolean modal) {
+	public SchermataPazienti(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 		modelloListaCellulari = new DefaultListModel<>();
@@ -256,7 +254,7 @@ public class EditorPazienti extends javax.swing.JDialog {
         pack();
     }
 
-	private static EditorPazienti window;
+	private static SchermataPazienti window;
 
 	private void pulsanteOkActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -292,7 +290,7 @@ public class EditorPazienti extends javax.swing.JDialog {
 		/* Create and display the dialog */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				window = new EditorPazienti(new javax.swing.JFrame(), true);
+				window = new SchermataPazienti(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 				window.setVisible(true);

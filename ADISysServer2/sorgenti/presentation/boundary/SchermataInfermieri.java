@@ -7,14 +7,13 @@ package presentation.boundary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
 
-public class EditorInfermieri extends javax.swing.JDialog {
+public class SchermataInfermieri extends javax.swing.JDialog {
 
 	/**
 	 * Creates new form dialogoInfermieri
 	 */
-	public EditorInfermieri(java.awt.Frame parent, boolean modal) {
+	public SchermataInfermieri(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 	}
@@ -236,7 +235,7 @@ public class EditorInfermieri extends javax.swing.JDialog {
 		/* Create and display the dialog */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				EditorInfermieri window = new EditorInfermieri(new javax.swing.JFrame(), true);
+				SchermataInfermieri window = new SchermataInfermieri(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 

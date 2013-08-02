@@ -8,13 +8,13 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-public class DialogoVerifica extends javax.swing.JDialog {
+public class SchermataVerifica extends javax.swing.JDialog {
 
-	private static DialogoVerifica window;
+	private static SchermataVerifica window;
 	/**
-	 * Creates new form DialogoVerifica
+	 * Creates new form SchermataVerifica
 	 */
-	public DialogoVerifica(java.awt.Frame parent, boolean modal) {
+	public SchermataVerifica(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 	}
@@ -173,7 +173,7 @@ public class DialogoVerifica extends javax.swing.JDialog {
 		/* Create and display the dialog */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				window = new DialogoVerifica(new javax.swing.JFrame(), true);
+				window = new SchermataVerifica(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 				window.setVisible(true);

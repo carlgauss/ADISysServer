@@ -8,14 +8,14 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-public class DialogoEsportazione extends javax.swing.JDialog {
+public class SchermataEsportazione extends javax.swing.JDialog {
 
-    private static DialogoEsportazione window;
+    private static SchermataEsportazione window;
 
     /**
-     * Creates new form DialogoEsportazione
+     * Creates new form SchermataEsportazione
      */
-    public DialogoEsportazione(java.awt.Frame parent, boolean modal) {
+    public SchermataEsportazione(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -96,7 +96,7 @@ public class DialogoEsportazione extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                window = new DialogoEsportazione(new javax.swing.JFrame(), true);
+                window = new SchermataEsportazione(new javax.swing.JFrame(), true);
                 Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
                 window.setLocation(new Point((risoluzioneSchermo.width - window.getWidth()) / 2, (risoluzioneSchermo.height - window.getHeight()) / 2));
                 window.setVisible(true);

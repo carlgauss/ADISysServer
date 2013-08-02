@@ -7,15 +7,14 @@ package presentation.boundary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class EditorInterventi extends javax.swing.JDialog {
+public class SchermataInterventi extends javax.swing.JDialog {
 
 	/**
-	 * Creates new form EditorInterventi
+	 * Creates new form SchermataInterventi
 	 */
-	public EditorInterventi(java.awt.Frame parent, boolean modal) {
+	public SchermataInterventi(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 	}
@@ -563,7 +562,7 @@ public class EditorInterventi extends javax.swing.JDialog {
 		/* Create and display the dialog */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				EditorInterventi window = new EditorInterventi(new javax.swing.JFrame(), true);
+				SchermataInterventi window = new SchermataInterventi(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 				window.setVisible(true);

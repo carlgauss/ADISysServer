@@ -7,16 +7,15 @@ package presentation.boundary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 
-public class Pianificatore extends javax.swing.JDialog {
+public class SchermataPrincipale extends javax.swing.JDialog {
 	
-	private static Pianificatore window;
+	private static SchermataPrincipale window;
 
 	/**
 	 * Creates new form ADISysGUI
 	 */
-	public Pianificatore(java.awt.Frame parent, boolean modal) {
+	public SchermataPrincipale(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 	}
@@ -302,7 +301,7 @@ public class Pianificatore extends javax.swing.JDialog {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				window = new Pianificatore(new javax.swing.JFrame(), true);
+				window = new SchermataPrincipale(new javax.swing.JFrame(), true);
 				Dimension risoluzioneSchermo = Toolkit.getDefaultToolkit().getScreenSize();
 				window.setLocation(new Point( (risoluzioneSchermo.width - window.getWidth()) /2, (risoluzioneSchermo.height - window.getHeight()) /2)  );
 				window.setVisible(true);

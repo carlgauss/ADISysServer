@@ -1,7 +1,5 @@
 package presentation.boundary.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,31 +18,31 @@ public class BoundaryTest {
 
     @Test
     public void testDialogoEsportazione() {
-	(new DialogoEsportazione(null, false)).setVisible(true);
+	(new SchermataEsportazione(null, false)).setVisible(true);
     }
 
     @Test
     public void testDialogoVerifica() {
-	(new DialogoVerifica(null, false)).setVisible(true);
+	(new SchermataVerifica(null, false)).setVisible(true);
     }
     
     @Test
     public void testEditorInfermieri() {
-	(new EditorInfermieri(null, false)).setVisible(true);
+	(new SchermataInfermieri(null, false)).setVisible(true);
     }
     
     @Test
     public void testEditorInterventi() {
-	(new EditorInterventi(null, false)).setVisible(true);
+	(new SchermataInterventi(null, false)).setVisible(true);
     }
     
     @Test
     public void testEditorPazienti() {
-	(new EditorPazienti(null, false)).setVisible(true);
+	(new SchermataPazienti(null, false)).setVisible(true);
     }
     
     @Test
     public void testPianificatore() {
-	(new Pianificatore(null, false)).setVisible(true);
+	(new SchermataPrincipale(null, false)).setVisible(true);
     }
 }
