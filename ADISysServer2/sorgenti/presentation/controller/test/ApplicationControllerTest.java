@@ -37,7 +37,10 @@ public class ApplicationControllerTest {
     @Test
     public void testMostra() {
         ac.handleRequest("Mostra", null);
-        ac.handleRequest("Mostra schermata", null);  //con spazio tra due parole
+        ac.handleRequest("MostraSchermata", null);
+        ac.handleRequest("Mostra schermata", null);
+        ac.handleRequest("Mostra schermata pazienti", null);
+        ac.handleRequest("Mostra  scherma ta pazienti ", null);
     }
 
 }
