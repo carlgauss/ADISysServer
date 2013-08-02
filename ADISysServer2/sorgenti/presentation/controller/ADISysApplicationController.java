@@ -7,6 +7,7 @@ import util.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
 	
+	//TODO decidere quali comandi utilizzare
 	private static String SHOW_SYNTAX = "Mostra[ a-zA-Z]*";
 
 	public Object handleRequest(String serviceName, Parameter parameter) {
