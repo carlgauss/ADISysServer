@@ -1,4 +1,4 @@
-package business.applicationservice;
+package business.applicationservice.exception;
 
 public class UnselectedServiceNameException extends RuntimeException {
 
