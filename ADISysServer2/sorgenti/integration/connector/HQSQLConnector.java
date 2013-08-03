@@ -67,6 +67,12 @@ public class HQSQLConnector {
 		return statement;
 	}
 
+	protected void finalize () throws Throwable {
+		connection.close();
+		connection = null;
+	}
+
+	
 	private HQSQLConnector() {
 
 	}
