@@ -17,17 +17,6 @@ public class HQSQLConnector {
 		connect();
 	}
 	
-	private static void connect()
-	{
-		try {
-			connection = DriverManager.getConnection(DATABASE_URI, DATABASE_USER, DATABASE_PASSWORD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-            System.exit(0);
-		}
-
-	}
-	
 	public static ResultSet executeReadQuery(String query) {
 		Statement statement = createDefaultStatement();
 		ResultSet queryResult = null;
@@ -52,6 +41,17 @@ public class HQSQLConnector {
 		}
 		
 		return numberOfModifiedRow;
+	}
+	
+	private static void connect()
+	{
+		try {
+			connection = DriverManager.getConnection(DATABASE_URI, DATABASE_USER, DATABASE_PASSWORD);
+		} catch (SQLException e) {
+			e.printStackTrace();
+            System.exit(0);
+		}
+
 	}
 	
 	private static Statement createDefaultStatement() {
