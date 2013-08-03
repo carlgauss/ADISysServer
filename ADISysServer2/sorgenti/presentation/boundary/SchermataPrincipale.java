@@ -10,6 +10,15 @@ import java.awt.Toolkit;
 
 public class SchermataPrincipale extends javax.swing.JDialog implements Boundary {
 	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
+	
+    public SchermataPrincipale() {
+    	this(new javax.swing.JFrame(), true);
+    }
+	
 	private static SchermataPrincipale window;
 
 	/**

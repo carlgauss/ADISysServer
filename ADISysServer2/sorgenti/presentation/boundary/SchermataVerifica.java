@@ -9,6 +9,15 @@ import java.awt.Point;
 import java.awt.Toolkit;
 
 public class SchermataVerifica extends javax.swing.JDialog implements Boundary {
+	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
+	
+    public SchermataVerifica() {
+    	this(new javax.swing.JFrame(), true);
+    }
 
 	private static SchermataVerifica window;
 	/**

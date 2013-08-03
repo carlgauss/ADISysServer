@@ -11,8 +11,8 @@
   <table id='packages'>
     <caption>All Packages and Files<div style='font-size: smaller'></div></caption>
     <tr>
-      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 6</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 17</th>
+      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 8</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 21</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -50,8 +50,8 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
         <table width='100%'>
           <tr>
             <td class='file'>UnavaliableApplicationServiceException.java</td>
-            <td style='background-color:#ff0000' title='Line segments: 0/10'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/5'>0%</td>
+            <td style='background-color:#cc3300' title='Line segments: 2/10'>20%</td>
+            <td style='background-color:#cc3300' title='Paths: 1/5'>20%</td>
             <td class='nocode'>N/A</td>
           </tr>
           <tr>
@@ -62,8 +62,8 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/20'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Paths: 0/10'>0%</td>
+      <td class='pt' style='background-color:#e51a00' title='Line segments: 2/20'>10%</td>
+      <td class='pt' style='background-color:#e51a00' title='Paths: 1/10'>10%</td>
       <td class='nocode'>N/A</td>
     </tr>
     <tr>
@@ -84,8 +84,8 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
           <tr>
             <td class='file'>ApplicationServiceMapper.java              </td>
-            <td style='background-color:#20df00' title='Line segments: 21/24'>88%</td>
-            <td style='background-color:#46b900' title='Paths: 8/11'>73%</td>
+            <td style='background-color:#0bf400' title='Line segments: 23/24'>96%</td>
+            <td style='background-color:#2ed100' title='Paths: 9/11'>82%</td>
             <td style='background-color:#00ff00' title='Fields: 2/2'>100%</td>
           </tr>
           <tr>
@@ -108,9 +108,47 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#59a600' title='Line segments: 47/72'>65%</td>
-      <td class='pt' style='background-color:#4cb300' title='Paths: 14/20'>70%</td>
+      <td class='pt' style='background-color:#51ae00' title='Line segments: 49/72'>68%</td>
+      <td class='pt' style='background-color:#40bf00' title='Paths: 15/20'>75%</td>
       <td class='pt' style='background-color:#00ff00' title='Fields: 3/3'>100%</td>
+    </tr>
+    <tr>
+      <td class='file click' onclick='showHideFiles(this)'>presentation.boundary</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'>Boundary.java                              </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file'>SchermataPazienti.java                     </td>
+            <td style='background-color:#1ee100' title='Line segments: 179/203'>88%</td>
+            <td style='background-color:#cc3300' title='Paths: 4/20'>20%</td>
+            <td style='background-color:#14eb00' title='Fields: 24/26'>92%</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#1ee100' title='Line segments: 179/203'>88%</td>
+      <td class='pt' style='background-color:#cc3300' title='Paths: 4/20'>20%</td>
+      <td class='pt' style='background-color:#14eb00' title='Fields: 24/26'>92%</td>
+    </tr>
+    <tr>
+      <td class='file'>presentation.boundary.factory</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'>BoundaryFactory.java                       </td>
+            <td style='background-color:#5da200' title='Line segments: 14/22'>64%</td>
+            <td style='background-color:#2ad500' title='Paths: 5/6'>83%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#5da200' title='Line segments: 14/22'>64%</td>
+      <td class='pt' style='background-color:#2ad500' title='Paths: 5/6'>83%</td>
+      <td class='nocode'>N/A</td>
     </tr>
     <tr>
       <td class='file click' onclick='showHideFiles(this)'>presentation.controller</td>
@@ -118,7 +156,7 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
         <table width='100%'>
           <tr>
             <td class='file'>ADISysApplicationController.java           </td>
-            <td style='background-color:#14eb00' title='Line segments: 12/13'>92%</td>
+            <td style='background-color:#12ed00' title='Line segments: 13/14'>93%</td>
             <td style='background-color:#00ff00' title='Paths: 5/5'>100%</td>
             <td style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
           </tr>
@@ -142,12 +180,12 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#30cf00' title='Line segments: 13/16'>81%</td>
+      <td class='pt' style='background-color:#2dd200' title='Line segments: 14/17'>82%</td>
       <td class='pt' style='background-color:#24db00' title='Paths: 6/7'>86%</td>
       <td class='pt' style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
     </tr>
     <tr>
-      <td class='file'>presentation.controller.test</td>
+      <td class='file click' onclick='showHideFiles(this)'>presentation.controller.test</td>
       <td>
         <table width='100%'>
           <tr>
@@ -156,10 +194,16 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
             <td style='background-color:#669900' title='Paths: 3/5'>60%</td>
             <td class='nocode'>N/A</td>
           </tr>
+          <tr>
+            <td class='file'>SchermataPazientiStub.java                 </td>
+            <td style='background-color:#00ff00' title='Line segments: 5/5'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 2/2'>100%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#718e00' title='Line segments: 5/9'>56%</td>
-      <td class='pt' style='background-color:#669900' title='Paths: 3/5'>60%</td>
+      <td class='pt' style='background-color:#49b600' title='Line segments: 10/14'>71%</td>
+      <td class='pt' style='background-color:#49b600' title='Paths: 5/7'>71%</td>
       <td class='nocode'>N/A</td>
     </tr>
     <tr>
@@ -186,14 +230,14 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
     </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#7c8300' title='Line segments: 71/138'>51%</td>
-      <td class='pt' style='background-color:#847b00' title='Paths: 26/54'>48%</td>
-      <td class='pt' style='background-color:#33cc00' title='Fields: 4/5'>80%</td>
+      <td class='pt' style='background-color:#42bd00' title='Line segments: 274/369'>74%</td>
+      <td class='pt' style='background-color:#867900' title='Paths: 39/82'>48%</td>
+      <td class='pt' style='background-color:#19e600' title='Fields: 28/31'>90%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Fri Aug 02 21:01:49 CEST 2013
+    Generated on Sat Aug 03 16:37:16 CEST 2013
   </p>
 </body>
 </html>

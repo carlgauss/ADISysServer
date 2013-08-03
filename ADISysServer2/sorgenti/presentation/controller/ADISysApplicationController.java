@@ -1,5 +1,7 @@
 package presentation.controller;
 
+import presentation.boundary.Boundary;
+import presentation.boundary.factory.BoundaryFactory;
 import business.applicationservice.factory.ApplicationServiceFactory;
 import business.applicationservice.factory.ServiceFunctionSelector;
 import business.applicationservice.factory.ServiceFunctionSelectorFactory;
@@ -8,14 +10,13 @@ import util.Parameter;
 class ADISysApplicationController implements ApplicationController {
 	
 	//TODO decidere quali comandi utilizzare
-	private static String SHOW_SYNTAX = "Mostra[ a-zA-Z]*";
+	private static String SHOW_SYNTAX = "Mostra[a-zA-Z]+";
 
 	public Object handleRequest(String serviceName, Parameter parameter) {
 		Object result = null;
 		
 		if (serviceName.matches(SHOW_SYNTAX)) {
-			//TODO da aggiustare
-            controlFlowIsHere();
+            dispatchGUI(serviceName);
 		} else {
 			result = execute(serviceName, parameter);
 		}
@@ -29,13 +30,9 @@ class ADISysApplicationController implements ApplicationController {
 		return serviceFunctionSelector.invokeServiceFunction(serviceName, parameter);
 	}
 
-    /* Metodo creato appositamente per il test.
-    *  Verrà eliminato non appena si implementerà
-     *  un metodo per la gestione del passaggio
-      *  tra le schermate grafiche.
-    * */
-    private static void controlFlowIsHere() {
-        System.out.println("Control flow has passed from here");
+    private static void dispatchGUI(String serviceName) {
+        Boundary boundary = BoundaryFactory.buildIstance(serviceName);
+        boundary.showWindow();
     }
 
 

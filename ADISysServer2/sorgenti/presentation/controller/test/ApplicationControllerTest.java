@@ -9,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import business.applicationservice.ApplicationServicePaziente;
+import business.applicationservice.exception.UnavaliableApplicationServiceException;
 
+import presentation.boundary.SchermataPazienti;
 import presentation.controller.ApplicationController;
 import presentation.controller.ApplicationControllerFactory;
 
@@ -21,6 +23,7 @@ public class ApplicationControllerTest {
 	public void setUp() throws Exception {
 		ac = ApplicationControllerFactory.buildInstance();
 		Mockit.setUpMock(ApplicationServicePaziente.class, ApplicationServicePazienteStub.class);
+		Mockit.setUpMock(SchermataPazienti.class, SchermataPazientiStub.class);
 	}
 
 	@After
@@ -30,17 +33,21 @@ public class ApplicationControllerTest {
 
 	@Test
 	public void testHandleRequest() {
+		System.out.println("---Execute Report---");
 		ac.handleRequest("InserisciPaziente", null);
 		ac.handleRequest("ModificaPaziente", null);
 		}
 
     @Test
     public void testMostra() {
-        ac.handleRequest("Mostra", null);
-        ac.handleRequest("MostraSchermata", null);
-        ac.handleRequest("Mostra schermata", null);
-        ac.handleRequest("Mostra schermata pazienti", null);
-        ac.handleRequest("Mostra  scherma ta pazienti ", null);
+    	System.out.println("---DispatchGUI Report---");
+        ac.handleRequest("MostraSchermataPazienti", null);
+        try {
+        	ac.handleRequest("Mostra", null);
+        	fail("FAIL \"Mostra\" service name not refused by regex");
+        } catch(UnavaliableApplicationServiceException e) {
+        	System.out.println("OK \"Mostra\" service name refused by regex");
+        }
     }
 
 }

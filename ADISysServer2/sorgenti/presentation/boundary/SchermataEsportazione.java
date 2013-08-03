@@ -9,12 +9,21 @@ import java.awt.Point;
 import java.awt.Toolkit;
 
 public class SchermataEsportazione extends javax.swing.JDialog implements Boundary {
+	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
 
     private static SchermataEsportazione window;
 
     /**
      * Creates new form SchermataEsportazione
      */
+    public SchermataEsportazione() {
+    	this(new javax.swing.JFrame(), true);
+    }
+    
     public SchermataEsportazione(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

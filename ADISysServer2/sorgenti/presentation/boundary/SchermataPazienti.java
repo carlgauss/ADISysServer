@@ -10,6 +10,16 @@ import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
 
 public class SchermataPazienti extends javax.swing.JDialog implements Boundary {
+	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
+	
+    public SchermataPazienti() {
+    	this(new javax.swing.JFrame(), true);
+    }
+	
 	/**
 	 * Creates new form dialogoPazienti
 	 */

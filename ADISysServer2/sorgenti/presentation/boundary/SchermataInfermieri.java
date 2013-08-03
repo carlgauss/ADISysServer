@@ -9,7 +9,15 @@ import java.awt.Point;
 import java.awt.Toolkit;
 
 public class SchermataInfermieri extends javax.swing.JDialog implements Boundary {
+	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
 
+    public SchermataInfermieri() {
+    	this(new javax.swing.JFrame(), true);
+    }
 	/**
 	 * Creates new form dialogoInfermieri
 	 */

@@ -10,7 +10,16 @@ import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
 public class SchermataInterventi extends javax.swing.JDialog implements Boundary {
+	
+	public void showWindow() {
+		// TODO Da riempire
+		
+	}
 
+    public SchermataInterventi() {
+    	this(new javax.swing.JFrame(), true);
+    }
+	
 	public SchermataInterventi(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
