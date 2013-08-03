@@ -60,7 +60,6 @@ public class HQSQLConnector {
 		try {
 			statement = connection.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
