@@ -14,6 +14,7 @@ class ADISysApplicationController implements ApplicationController {
 		Object result = null;
 		
 		if (serviceName.matches(SHOW_SYNTAX)) {
+			//TODO da aggiustare
             controlFlowIsHere();
 		} else {
 			result = execute(serviceName, parameter);

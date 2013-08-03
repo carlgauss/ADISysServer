@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-public class SchermataEsportazione extends javax.swing.JDialog {
+public class SchermataEsportazione extends javax.swing.JDialog implements Boundary {
 
     private static SchermataEsportazione window;
 

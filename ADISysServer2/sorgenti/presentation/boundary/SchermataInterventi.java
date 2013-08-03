@@ -9,7 +9,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 
-public class SchermataInterventi extends javax.swing.JDialog {
+public class SchermataInterventi extends javax.swing.JDialog implements Boundary {
 
 	public SchermataInterventi(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);

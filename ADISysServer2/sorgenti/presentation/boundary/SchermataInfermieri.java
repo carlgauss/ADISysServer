@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-public class SchermataInfermieri extends javax.swing.JDialog {
+public class SchermataInfermieri extends javax.swing.JDialog implements Boundary {
 
 	/**
 	 * Creates new form dialogoInfermieri

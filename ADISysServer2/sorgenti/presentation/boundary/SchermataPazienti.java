@@ -9,7 +9,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
 
-public class SchermataPazienti extends javax.swing.JDialog {
+public class SchermataPazienti extends javax.swing.JDialog implements Boundary {
 	/**
 	 * Creates new form dialogoPazienti
 	 */
