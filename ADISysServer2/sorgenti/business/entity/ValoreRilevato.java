@@ -18,4 +18,9 @@ public class ValoreRilevato {
 	public void setTempoOperazione(String tempoOperazione) {
 		this.tempoOperazione = tempoOperazione;
 	}
+	
+	//ESEMPIO
+	private ValoreRilevato cloneObj() {
+		return SerialClone.clone(this);
+	}
 }
