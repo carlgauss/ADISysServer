@@ -8,15 +8,15 @@ import util.Parameter;
 
 import presentation.controller.ApplicationService;
 
-class ADISysServiceMethodSelector implements ServiceMethodSelector {
+class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 
 	private final ApplicationService as;
 	
-	public ADISysServiceMethodSelector(ApplicationService as) {
+	public ADISysApplicationServiceMethod(ApplicationService as) {
 		this.as = as;
 	}
 
-	public Object invokeServiceMethod(String serviceName, Parameter parameter) {
+	public Object invoke(String serviceName, Parameter parameter) {
 		Object result = null;
 		try {
 			

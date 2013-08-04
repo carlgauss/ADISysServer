@@ -1,10 +1,10 @@
 package presentation.controller;
 
-import business.applicationservice.factory.ServiceMethodSelector;
+import business.applicationservice.factory.ApplicationServiceMethod;
+import business.applicationservice.factory.ApplicationServiceMethodFactory;
 import presentation.boundary.Boundary;
 import presentation.boundary.factory.BoundaryFactory;
 import business.applicationservice.factory.ApplicationServiceFactory;
-import business.applicationservice.factory.ServiceFunctionSelectorFactory;
 import util.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
@@ -25,9 +25,9 @@ class ADISysApplicationController implements ApplicationController {
 	}
 
 	private Object execute(String serviceName, Parameter parameter) {
-		ApplicationService as = ApplicationServiceFactory.buildInstance(serviceName);
-		ServiceMethodSelector serviceMethodSelector = ServiceFunctionSelectorFactory.buildInstance(as);
-		return serviceMethodSelector.invokeServiceMethod(serviceName, parameter);
+		ApplicationService asClass = ApplicationServiceFactory.buildInstance(serviceName);
+		ApplicationServiceMethod asMethod = ApplicationServiceMethodFactory.buildInstance(asClass);
+		return asMethod.invoke(serviceName, parameter);
 	}
 
     private static void dispatchGUI(String serviceName) {

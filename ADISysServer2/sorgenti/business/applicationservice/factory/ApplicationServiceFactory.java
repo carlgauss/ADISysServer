@@ -12,12 +12,9 @@ public class ApplicationServiceFactory {
 	ApplicationService as = null;
 	
 	try {
-	    String canonicalClassName = 
-		    ApplicationServiceSelector.getApplicationService(serviceName);
-	    
+	    String canonicalClassName = ApplicationServiceSelector.getApplicationService(serviceName);
 	    Class<?> asClass = Class.forName(canonicalClassName);
 	    as = (ApplicationService) asClass.newInstance();
-	    
 	} catch (ClassNotFoundException e) {
 	    e.printStackTrace();
 	} catch (InstantiationException e) {

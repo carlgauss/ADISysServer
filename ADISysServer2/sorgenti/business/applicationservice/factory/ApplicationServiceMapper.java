@@ -28,7 +28,7 @@ class ApplicationServiceMapper {
 		if (isServiceNameSelected()) {
 			Couple<String, String> newValues = new Couple<>(applicationService, serviceFunction);
 			asMapDictionary.put(currentServiceName, newValues);
-			
+
 		} else {
 			throw new UnselectedServiceNameException();
 		}
