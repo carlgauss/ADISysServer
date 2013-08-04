@@ -14,5 +14,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="jmockit.jar"/>
 	<classpathentry kind="lib" path="jmockit-coverage.jar"/>
+	<classpathentry kind="lib" path="joda-time-2.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="joda-time-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
