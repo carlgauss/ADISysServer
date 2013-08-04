@@ -8,6 +8,13 @@ import business.applicationservice.exception.UnselectedServiceNameException;
 
 import util.Couple;
 
+/*
+   This class maps the service names (aka use case names) invoked in any boundary class
+   with the corresponding method of an application service.
+    This class is used to invoke the right method at run time, as well as the right
+    application controller at run time.
+
+ */
 class ApplicationServiceMapper {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
 	private String currentServiceName = null;
@@ -18,9 +25,7 @@ class ApplicationServiceMapper {
 	
 	public void setApplicationServiceValues(String applicationService, String serviceFunction) {
 		if (isServiceNameSelected()) {
-			Couple<String, String> newValues = 
-					new Couple<String, String>(applicationService, serviceFunction);
-			
+			Couple<String, String> newValues = new Couple<String, String>(applicationService, serviceFunction);
 			asMapDictionary.put(currentServiceName, newValues);
 			
 		} else {

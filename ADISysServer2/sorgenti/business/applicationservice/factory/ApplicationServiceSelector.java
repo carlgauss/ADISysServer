@@ -25,8 +25,7 @@ class ApplicationServiceSelector {
 	}
 
 	public static String getApplicationService(String serviceName) {
-        return PACKAGE_PATH_NAME
-                + asMap.getApplicationService(serviceName);
+        return PACKAGE_PATH_NAME + asMap.getApplicationService(serviceName);
 	}
 
 	public static String getServiceMethod(String serviceName) {
