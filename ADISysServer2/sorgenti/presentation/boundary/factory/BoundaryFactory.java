@@ -11,7 +11,7 @@ public class BoundaryFactory {
 		
 	}
 	
-	public static Boundary buildIstance(String serviceName) {
+	public static Boundary buildInstance(String serviceName) {
 		Class<?> boundaryClass = getBoundaryClass(serviceName);
 		return newBoundaryInstance(boundaryClass);
 	}
