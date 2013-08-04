@@ -11,9 +11,10 @@ import util.Couple;
 /*
    This class maps the service names (aka use case names) invoked in any boundary class
    with the corresponding method of an application service.
-    This class is used to invoke the right method at run time, as well as the right
-    application controller at run time.
-
+    This class is used to instantiate, at run time, the right application service
+     responsible for the execution of the service.
+     Then, within it, is invoked at run time the right method
+     that will take care of the service demanded.
  */
 class ApplicationServiceMapper {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
