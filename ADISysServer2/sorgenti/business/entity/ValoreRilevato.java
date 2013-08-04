@@ -2,8 +2,6 @@ package business.entity;
 
 import org.joda.time.LocalTime;
 
-import util.SerialClone;
-
 public class ValoreRilevato {
 	private String misura;
 	private LocalTime tempoOperazione;
