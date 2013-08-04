@@ -1,0 +1,12 @@
+<applicationServiceMap>
+	<element>
+		<serviceName>InserisciPaziente</serviceName>
+		<class>ApplicationServicePaziente</class>
+		<method>create</method>
+	</element>
+	<element>
+		<serviceName>ModificaPaziente</serviceName>
+		<class>ApplicationServicePaziente</class>
+		<method>update</method>
+	</element>
+</applicationServiceMap>

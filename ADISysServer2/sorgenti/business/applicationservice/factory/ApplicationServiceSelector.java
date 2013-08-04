@@ -1,23 +1,17 @@
 package business.applicationservice.factory;
 
+import business.applicationservice.factory.xml.XMLApplicationServiceMapper;
+
 
 
 class ApplicationServiceSelector {
 
 	private static final String PACKAGE_PATH_NAME = "business.applicationservice.";
 
-	private static ApplicationServiceMapper asMap = new ApplicationServiceMapper();
+	private static ApplicationServiceMap asMap = new ApplicationServiceHashMap();
 
 	static {
-		/*
-		 * Inserimento delle corrispondenze tra le richieste effettuate tramite
-		 * le classi boundary e gli ApplicationServices
-		 */
-		asMap.selectApplicationServiceBy("InserisciPaziente");
-		asMap.setApplicationServiceValues("ApplicationServicePaziente", "create");
-		
-		asMap.selectApplicationServiceBy("ModificaPaziente");
-		asMap.setApplicationServiceValues("ApplicationServicePaziente", "update");
+		XMLApplicationServiceMapper.map(asMap);
 	}
 
 	private ApplicationServiceSelector() {

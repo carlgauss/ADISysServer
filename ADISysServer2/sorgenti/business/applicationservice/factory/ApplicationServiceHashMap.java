@@ -8,22 +8,16 @@ import business.applicationservice.exception.UnselectedServiceNameException;
 
 import util.Couple;
 
-/*
-   This class maps the service names (aka use case names) invoked in any boundary class
-   with the corresponding method of an application service.
-    This class is used to instantiate, at run time, the right application service
-     responsible for the execution of the service.
-     Then, within it, is invoked at run time the right method
-     that will take care of the service demanded.
- */
-class ApplicationServiceMapper {
+class ApplicationServiceHashMap implements ApplicationServiceMap {
 	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<>();
 	private String currentServiceName = null;
 	
+	@Override
 	public void selectApplicationServiceBy(String serviceName) {
 		currentServiceName = serviceName;
 	}
 	
+	@Override
 	public void setApplicationServiceValues(String applicationService, String serviceFunction) {
 		if (isServiceNameSelected()) {
 			Couple<String, String> newValues = new Couple<>(applicationService, serviceFunction);
@@ -38,11 +32,13 @@ class ApplicationServiceMapper {
 		return currentServiceName != null;
 	}
 
+	@Override
 	public String getApplicationService(String serviceName) {
 		Couple<String, String> mappedCouple = mapCouple(serviceName);
 		return mappedCouple.getFirstValue();
 	}
 
+	@Override
 	public String getServiceMethod(String serviceName) {
 		Couple<String, String> mappedCouple = mapCouple(serviceName);
 		return mappedCouple.getSecondValue();
