@@ -12,6 +12,7 @@ public class TimeTest {
 	 */
 	
 	public static void main(String... args) {
-		LocalTime tempo;
+		LocalTime tempo = new LocalTime(12, 24, 45);
+		System.out.println(tempo);
 	}
 }
