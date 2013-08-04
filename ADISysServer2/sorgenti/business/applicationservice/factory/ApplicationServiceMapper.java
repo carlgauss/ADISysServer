@@ -26,7 +26,7 @@ class ApplicationServiceMapper {
 	
 	public void setApplicationServiceValues(String applicationService, String serviceFunction) {
 		if (isServiceNameSelected()) {
-			Couple<String, String> newValues = new Couple<String, String>(applicationService, serviceFunction);
+			Couple<String, String> newValues = new Couple<>(applicationService, serviceFunction);
 			asMapDictionary.put(currentServiceName, newValues);
 			
 		} else {
