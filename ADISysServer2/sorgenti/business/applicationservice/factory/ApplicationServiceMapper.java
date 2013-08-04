@@ -17,7 +17,7 @@ import util.Couple;
      that will take care of the service demanded.
  */
 class ApplicationServiceMapper {
-	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<String, Couple<String, String>>();
+	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<>();
 	private String currentServiceName = null;
 	
 	public void selectApplicationServiceBy(String serviceName) {
