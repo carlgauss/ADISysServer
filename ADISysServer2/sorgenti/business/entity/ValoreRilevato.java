@@ -19,8 +19,4 @@ public class ValoreRilevato {
 		this.tempoOperazione = tempoOperazione;
 	}
 	
-	//ESEMPIO
-	private ValoreRilevato cloneObj() {
-		return SerialClone.clone(this);
-	}
 }
