@@ -1,10 +1,12 @@
 package business.entity;
 
+import org.joda.time.LocalTime;
+
 import util.SerialClone;
 
 public class ValoreRilevato {
 	private String misura;
-	private String tempoOperazione;
+	private LocalTime tempoOperazione;
 	
 	public String getMisura() {
 		return misura;
@@ -12,10 +14,10 @@ public class ValoreRilevato {
 	public void setMisura(String misura) {
 		this.misura = misura;
 	}
-	public String getTempoOperazione() {
+	public LocalTime getTempoOperazione() {
 		return tempoOperazione;
 	}
-	public void setTempoOperazione(String tempoOperazione) {
+	public void setTempoOperazione(LocalTime tempoOperazione) {
 		this.tempoOperazione = tempoOperazione;
 	}
 	
