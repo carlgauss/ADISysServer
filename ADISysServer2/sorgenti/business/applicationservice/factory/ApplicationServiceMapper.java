@@ -37,7 +37,7 @@ class ApplicationServiceMapper {
 		return mappedCouple.getFirstValue();
 	}
 
-	public String getServiceFunction(String serviceName) {
+	public String getServiceMethod(String serviceName) {
 		Couple<String, String> mappedCouple = mapCouple(serviceName);
 		return mappedCouple.getSecondValue();
 	}

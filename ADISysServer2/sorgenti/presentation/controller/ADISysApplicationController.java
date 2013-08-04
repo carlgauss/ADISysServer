@@ -1,9 +1,9 @@
 package presentation.controller;
 
+import business.applicationservice.factory.ServiceMethodSelector;
 import presentation.boundary.Boundary;
 import presentation.boundary.factory.BoundaryFactory;
 import business.applicationservice.factory.ApplicationServiceFactory;
-import business.applicationservice.factory.ServiceFunctionSelector;
 import business.applicationservice.factory.ServiceFunctionSelectorFactory;
 import util.Parameter;
 
@@ -26,8 +26,8 @@ class ADISysApplicationController implements ApplicationController {
 
 	private Object execute(String serviceName, Parameter parameter) {
 		ApplicationService as = ApplicationServiceFactory.buildInstance(serviceName);
-		ServiceFunctionSelector serviceFunctionSelector = ServiceFunctionSelectorFactory.buildInstance(as);
-		return serviceFunctionSelector.invokeServiceFunction(serviceName, parameter);
+		ServiceMethodSelector serviceMethodSelector = ServiceFunctionSelectorFactory.buildInstance(as);
+		return serviceMethodSelector.invokeServiceMethod(serviceName, parameter);
 	}
 
     private static void dispatchGUI(String serviceName) {

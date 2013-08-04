@@ -31,7 +31,7 @@ class ApplicationServiceSelector {
 		return applicationServiceCanonicalName;
 	}
 
-	public static String getServiceFunction(String serviceName) {
-		return asMap.getServiceFunction(serviceName);
+	public static String getServiceMethod(String serviceName) {
+		return asMap.getServiceMethod(serviceName);
 	}
 }

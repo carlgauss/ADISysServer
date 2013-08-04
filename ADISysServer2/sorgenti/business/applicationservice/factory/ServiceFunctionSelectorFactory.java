@@ -8,8 +8,8 @@ public class ServiceFunctionSelectorFactory {
 	
     }
     
-    public static ServiceFunctionSelector buildInstance(ApplicationService as) {
-    	return new ADISysServiceFunctionSelector(as);
+    public static ServiceMethodSelector buildInstance(ApplicationService as) {
+    	return new ADISysServiceMethodSelector(as);
     }
     
 }
