@@ -41,7 +41,7 @@ public class HQSQLConnector {
 			e.printStackTrace();
 		}
 
-		 //restituisce le tuple inserite
+		 //restituisce le tuple inserite/modificate
 		return queryUpdateResult;
 	}
 
