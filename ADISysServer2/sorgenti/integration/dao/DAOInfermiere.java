@@ -6,7 +6,8 @@ public class DAOInfermiere implements DAO<Infermiere> {
 
 	@Override
 	public Object create(Infermiere entity) {
-
+		
+		
 		return null;
 	}
 

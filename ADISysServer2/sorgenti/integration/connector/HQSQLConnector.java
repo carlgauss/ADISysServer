@@ -30,17 +30,19 @@ public class HQSQLConnector {
 		return queryResult;
 	}
 
-	public static int executeUpdateQuery(String query) {
+	public static ResultSet executeUpdateQuery(String query) {
 		Statement statement = createDefaultStatement();
-		int numberOfModifiedRow = 0;
+		ResultSet queryUpdateResult = null;
 
 		try {
-			numberOfModifiedRow = statement.executeUpdate(query);
+			statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+			queryUpdateResult = statement.getGeneratedKeys();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return numberOfModifiedRow;
+		 //restituisce le tuple inserite
+		return queryUpdateResult;
 	}
 
 	private static void connect() {
