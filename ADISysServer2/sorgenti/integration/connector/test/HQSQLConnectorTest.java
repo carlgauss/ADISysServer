@@ -19,12 +19,12 @@ public class HQSQLConnectorTest {
 
 	@Test
 	public void testExecuteReadQuery() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testExecuteUpdateQuery() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }

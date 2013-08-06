@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HQSQLConnector {
-	private static final String DATABASE_URI = "jdbc:hsqldb:file:database/ADISysData";
-	private static final String DATABASE_USER = "asl";
+	private static final String DATABASE_URI = "jdbc:hsqldb:file:database/ADISysDB";
+	private static final String DATABASE_USER = "sa";
 	private static final String DATABASE_PASSWORD = "";
 
 	private static Connection connection = null;
