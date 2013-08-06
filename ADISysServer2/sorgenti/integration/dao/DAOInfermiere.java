@@ -11,8 +11,8 @@ import static util.QueryStringReplacer.*;
 
 public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 	
-	private static final String INSERT_QUERY = "INSERT INTO Infermiere(Nome, Cognome) VALUES (?, ?)";
-	private static final String UPDATE_QUERY = "UPDATE Infermiere SET Nome = ?, Cognome = ? WHERE ID = ?";
+	private static final String INSERT_QUERY = "INSERT INTO Infermiere(Nome, Cognome) VALUES ('?', '?')";
+	private static final String UPDATE_QUERY = "UPDATE Infermiere SET Nome = '?', Cognome = '?' WHERE ID = ?";
 	//DELETE_QUERY not implemented
 	private static final String READ_QUERY = "SELECT ID, Nome, Cognome FROM Infermiere where ID = ?";
 	private static final String GET_ALL_QUERY = "SELECT ID, Nome, Cognome FROM Infermieri";
@@ -28,7 +28,7 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 		String nomeInfermiere = entity.getNome();
 		insertQuery = queryReplaceFirst(insertQuery, nomeInfermiere);
 		
-		String cognomeInfermiere = entity.getNome();
+		String cognomeInfermiere = entity.getCognome();
 		insertQuery = queryReplaceFirst(insertQuery, cognomeInfermiere);
 		
 		connector.executeUpdateQuery(insertQuery);
