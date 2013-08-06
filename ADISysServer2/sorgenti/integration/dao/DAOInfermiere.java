@@ -20,8 +20,6 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 	private static final String ID_INFERMIERE_ATTRIBUTE_NAME = "ID";
 	private static final String NOME_INFERMIERE_ATTRIBUTE_NAME = "Nome";
 	private static final String COGNOME_INFERMIERE_ATTRIBUTE_NAME = "Cognome";
-	
-	private static final int FIRST = 0;
 
 	@Override
 	public void create(Infermiere entity) {

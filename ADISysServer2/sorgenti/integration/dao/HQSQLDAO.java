@@ -8,6 +8,8 @@ import integration.connector.ConnectorFactory;
 public abstract class HQSQLDAO<Entity> implements DAO<Entity> {
 	
 	protected Connector connector = ConnectorFactory.buildIstance();
+	
+	protected static final int FIRST = 0;
 
 	@Override
 	public abstract void create(Entity entity);
