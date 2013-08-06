@@ -6,7 +6,7 @@ import business.entity.Infermiere;
 
 import static util.QueryStringReplacer.*;
 
-public class HQSQLDAOInfermiere extends HQSQLDAO<Infermiere> {
+public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 	
 	private static final String INSERT_QUERY = "INSERT INTO Infermiere(Nome, Cognome) VALUES (?, ?)";
 	private static final String UPDATE_QUERY = "UPDATE Infermiere SET Nome = ?, Cognome = ? WHERE ID = ?";
