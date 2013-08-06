@@ -1,8 +1,18 @@
 package integration.dao;
 
+import static util.QueryStringReplacer.queryReplaceFirst;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+
+import business.entity.Infermiere;
 import business.entity.Intervento;
+import business.entity.Paziente;
 
 public class DAOIntervento extends HQSQLDAO<Intervento> {
 	
@@ -21,16 +31,74 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 	private static final String ID_INFERMIERE_ATTRIBUTE_NAME = "InfermiereID";
 	private static final String ID_PAZIENTE_ATTRIBUTE_NAME = "PazienteID";
 	
+	private static final String DAO_PAZIENTE = "DAOPaziente";
+	private static final String DAO_INFERMIERE = "DAOInfermiere";
 
 	@Override
 	public void create(Intervento entity) {
-
+		String insertQuery = INSERT_QUERY;
 		
+		String cittaIntervento = entity.getCitta();
+		insertQuery = queryReplaceFirst(insertQuery, cittaIntervento);
+		
+		String capIntervento = entity.getCap();
+		insertQuery = queryReplaceFirst(insertQuery, capIntervento);
+		
+		String indirizzoIntervento = entity.getIndirizzo();
+		insertQuery = queryReplaceFirst(insertQuery, indirizzoIntervento);
+		
+		LocalDate dataIntervento = entity.getData();
+		String dataInterventoString = dataIntervento.toString();
+		insertQuery = queryReplaceFirst(insertQuery, dataInterventoString);
+		
+		LocalTime oraIntervento = entity.getOra();
+		String oraInterventoString = oraIntervento.toString();
+		insertQuery = queryReplaceFirst(insertQuery, oraInterventoString);
+		
+		Paziente pazienteIntervento = entity.getPaziente();
+		String idPaziente = pazienteIntervento.getId();
+		insertQuery = queryReplaceFirst(insertQuery, idPaziente);
+		
+		Infermiere infermiereIntervento = entity.getInfermiere();
+		String idInfermiere = infermiereIntervento.getId();
+		insertQuery = queryReplaceFirst(insertQuery, idInfermiere);
+		
+		connector.executeUpdateQuery(insertQuery);	
 	}
 
 	@Override
 	public void update(Intervento entity) {
-
+		String updateQuery = UPDATE_QUERY;
+		
+		String cittaIntervento = entity.getCitta();
+		updateQuery = queryReplaceFirst(updateQuery, cittaIntervento);
+		
+		String capIntervento = entity.getCap();
+		updateQuery = queryReplaceFirst(updateQuery, capIntervento);
+		
+		String indirizzoIntervento = entity.getIndirizzo();
+		updateQuery = queryReplaceFirst(updateQuery, indirizzoIntervento);
+		
+		LocalDate dataIntervento = entity.getData();
+		String dataInterventoString = dataIntervento.toString();
+		updateQuery = queryReplaceFirst(updateQuery, dataInterventoString);
+		
+		LocalTime oraIntervento = entity.getOra();
+		String oraInterventoString = oraIntervento.toString();
+		updateQuery = queryReplaceFirst(updateQuery, oraInterventoString);
+		
+		Paziente pazienteIntervento = entity.getPaziente();
+		String idPaziente = pazienteIntervento.getId();
+		updateQuery = queryReplaceFirst(updateQuery, idPaziente);
+		
+		Infermiere infermiereIntervento = entity.getInfermiere();
+		String idInfermiere = infermiereIntervento.getId();
+		updateQuery = queryReplaceFirst(updateQuery, idInfermiere);
+		
+		String idIntervento = entity.getId();
+		updateQuery = queryReplaceFirst(updateQuery, idIntervento);
+		
+		connector.executeUpdateQuery(updateQuery);	
 	}
 
 	@Override
@@ -40,14 +108,72 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 
 	@Override
 	public Intervento read(String ID) {
-
-		return null;
+		String readQuery = READ_QUERY;
+		
+		readQuery = queryReplaceFirst(readQuery, ID);
+		
+		ResultSet readQueryResultSet = connector.executeReadQuery(readQuery);
+		
+		List<Intervento> elencoInterventi = createElencoInterventiBy(readQueryResultSet);
+		
+		return elencoInterventi.get(FIRST);
 	}
 
 	@Override
 	public List<Intervento> getAll() {
-
-		return null;
+		String readQuery = GET_ALL_QUERY;
+		
+		ResultSet readQueryResultSet = connector.executeReadQuery(readQuery);
+		
+		List<Intervento> elencoInterventi = createElencoInterventiBy(readQueryResultSet);
+		
+		return elencoInterventi;
 	}
 
+	private List<Intervento> createElencoInterventiBy(ResultSet resultSet) {
+		List<Intervento> result = new LinkedList<Intervento>();
+		
+		DAO<Paziente> daoPaziente = DAOFactory.buildInstance(DAO_PAZIENTE);
+		DAO<Infermiere> daoInfermiere = DAOFactory.buildInstance(DAO_INFERMIERE);
+		
+		try {
+			while (resultSet.next()) {
+				Intervento element = new Intervento();
+				
+				String id = resultSet.getString(ID_INTERVENTO_ATTRIBUTE_NAME);
+				element.setId(id);
+				
+				String citta = resultSet.getString(CITTA_INTERVENTO_ATTRIBUTE_NAME);
+				element.setCitta(citta);
+				
+				String cap = resultSet.getString(CAP_INTERVENTO_ATTRIBUTE_NAME);
+				element.setCap(cap);
+				
+				String indirizzo = resultSet.getString(INDIRIZZO_INTERVENTO_ATTRIBUTE_NAME);
+				element.setIndirizzo(indirizzo);
+				
+				String dataString = resultSet.getString(DATA_INTERVENTO_ATTRIBUTE_NAME);
+				LocalDate data = LocalDate.parse(dataString);
+				element.setData(data);
+				
+				String oraString = resultSet.getString(ORA_INTERVENTO_ATTRIBUTE_NAME);
+				LocalTime ora = LocalTime.parse(oraString);
+				element.setOra(ora);
+				
+				String idPaziente = resultSet.getString(ID_PAZIENTE_ATTRIBUTE_NAME);
+				Paziente paziente = daoPaziente.read(idPaziente);
+				element.setPaziente(paziente);
+				
+				String idInfermiere = resultSet.getString(ID_INFERMIERE_ATTRIBUTE_NAME);
+				Infermiere infermiere = daoInfermiere.read(idInfermiere);
+				element.setInfermiere(infermiere);
+				
+				result.add(element);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

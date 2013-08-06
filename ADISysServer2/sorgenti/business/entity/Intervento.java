@@ -6,6 +6,7 @@ import org.joda.time.LocalTime;
 import util.SerialClone;
 
 public class Intervento {
+	private String id;
 	private Paziente paziente;
 	private Infermiere infermiere;
 	private String citta;
@@ -55,5 +56,11 @@ public class Intervento {
 	}
 	public void setOra(LocalTime ora) {
 		this.ora = ora;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 }
