@@ -1,13 +1,17 @@
 package business.entity;
 
+import java.util.List;
+
 import org.joda.time.LocalDate;
+
+import util.SerialClone;
 
 public class Paziente {
 	private String id;
 	private String nome;
 	private String cognome;
 	private LocalDate date;
-	private String[] numeroCellulare;
+	private List<String> numeroCellulare;
 	public String getId() {
 		return id;
 	}
@@ -32,10 +36,10 @@ public class Paziente {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	public String[] getNumeroCellulare() {
-		return numeroCellulare;
+	public List<String> getNumeroCellulare() {
+		return SerialClone.clone(numeroCellulare);
 	}
-	public void setNumeroCellulare(String[] numeroCellulare) {
+	public void setNumeroCellulare(List<String> numeroCellulare) {
 		this.numeroCellulare = numeroCellulare;
 	}
 }
