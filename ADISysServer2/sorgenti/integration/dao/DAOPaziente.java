@@ -1,35 +1,35 @@
 package integration.dao;
 
+import java.util.List;
+
 import business.entity.Paziente;
 
-public class DAOPaziente implements DAO<Paziente> {
+public class DAOPaziente extends HQSQLDAO<Paziente> {
 
 	@Override
-	public Object create(Paziente entity) {
+	public void create(Paziente entity) {
+
+		
+	}
+
+	@Override
+	public void update(Paziente entity) {
+
+	}
+
+	@Override
+	public void delete(Paziente entity) {
+		//not implemented yet
+	}
+
+	@Override
+	public Paziente read(String ID) {
 
 		return null;
 	}
 
 	@Override
-	public Object update(Paziente entity) {
-
-		return null;
-	}
-
-	@Override
-	public Object delete(Paziente entity) {
-
-		return null;
-	}
-
-	@Override
-	public Object read(String ID) {
-
-		return null;
-	}
-
-	@Override
-	public Object getAll() {
+	public List<Paziente> getAll() {
 
 		return null;
 	}

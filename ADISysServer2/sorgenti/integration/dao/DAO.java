@@ -1,15 +1,17 @@
 package integration.dao;
 
+import java.util.List;
+
 import util.Parameter;
 
 public interface DAO<Entity> {
-    public Object create(Entity entity);
+	public void create(Entity entity);
     
-    public Object update(Entity entity);
+    public void update(Entity entity);
     
-    public Object delete(Entity entity);
+    public void delete(Entity entity);
     
-    public Object read(String ID);
+    public Entity read(String ID);
     
-    public Object getAll();
+    public List<Entity> getAll();
 }

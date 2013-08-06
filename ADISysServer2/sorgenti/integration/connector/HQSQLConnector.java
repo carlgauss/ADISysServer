@@ -6,18 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class HQSQLConnector {
+public class HQSQLConnector implements Connector {
 	private static final String DATABASE_URI = "jdbc:hsqldb:file:database/ADISysDB";
 	private static final String DATABASE_USER = "sa";
 	private static final String DATABASE_PASSWORD = "";
 
-	private static Connection connection = null;
+	private Connection connection = null;
 
-	static {
-		connect();
-	}
-
-	public static ResultSet executeReadQuery(String query) {
+	@Override
+	public ResultSet executeReadQuery(String query) {
 		Statement statement = createDefaultStatement();
 		ResultSet queryResult = null;
 
@@ -30,7 +27,8 @@ public class HQSQLConnector {
 		return queryResult;
 	}
 
-	public static ResultSet executeUpdateQuery(String query) {
+	@Override
+	public ResultSet executeUpdateQuery(String query) {
 		Statement statement = createDefaultStatement();
 		ResultSet queryUpdateResult = null;
 
@@ -45,7 +43,7 @@ public class HQSQLConnector {
 		return queryUpdateResult;
 	}
 
-	private static void connect() {
+	private void connect() {
 		try {
 			connection = DriverManager.getConnection(
 					DATABASE_URI, 
@@ -59,7 +57,7 @@ public class HQSQLConnector {
 
 	}
 
-	private static Statement createDefaultStatement() {
+	private Statement createDefaultStatement() {
 		Statement statement = null;
 
 		try {
@@ -76,7 +74,7 @@ public class HQSQLConnector {
 		connection = null;
 	}
 
-	private HQSQLConnector() {
-
+	HQSQLConnector() {
+		connect();
 	}
 }
