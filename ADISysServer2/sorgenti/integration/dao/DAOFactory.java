@@ -7,7 +7,7 @@ public class DAOFactory {
 	private DAOFactory() {
 	}
 
-	public static DAO buildInstance(String daoName) {
+	public static <Entity> DAO<Entity> buildInstance(String daoName) {
 		String daoCanonicalName = getDAOCanonicalName(daoName);
 		Class<?> daoClass = getDAOClass(daoCanonicalName);
 		return getDAOInstance(daoClass);
@@ -29,11 +29,12 @@ public class DAOFactory {
 		return daoClass;
 	}
 	
-	private static DAO getDAOInstance(Class<?> daoClass) {
-		DAO daoInstance = null;
+	@SuppressWarnings("unchecked")
+	private static <Entity> DAO<Entity> getDAOInstance(Class<?> daoClass) {
+		DAO<Entity> daoInstance = null;
 		
 		try {
-			daoInstance = (DAO) daoClass.newInstance();
+			daoInstance = (DAO<Entity>) daoClass.newInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
