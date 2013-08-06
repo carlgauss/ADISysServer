@@ -10,9 +10,6 @@ import java.util.List;
 
 import org.joda.time.LocalDate;
 
-import util.DateConverter;
-
-import business.entity.Infermiere;
 import business.entity.Paziente;
 
 public class DAOPaziente extends HQSQLDAO<Paziente> {

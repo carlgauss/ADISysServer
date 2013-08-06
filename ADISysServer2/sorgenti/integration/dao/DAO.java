@@ -2,8 +2,6 @@ package integration.dao;
 
 import java.util.List;
 
-import util.Parameter;
-
 public interface DAO<Entity> {
 	public void create(Entity entity);
     
