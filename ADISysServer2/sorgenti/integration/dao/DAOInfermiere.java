@@ -15,7 +15,7 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 	private static final String UPDATE_QUERY = "UPDATE Infermiere SET Nome = '?', Cognome = '?' WHERE ID = ?";
 	//DELETE_QUERY not implemented
 	private static final String READ_QUERY = "SELECT ID, Nome, Cognome FROM Infermiere where ID = ?";
-	private static final String GET_ALL_QUERY = "SELECT ID, Nome, Cognome FROM Infermieri";
+	private static final String GET_ALL_QUERY = "SELECT ID, Nome, Cognome FROM Infermiere";
 	
 	private static final String ID_INFERMIERE_ATTRIBUTE_NAME = "ID";
 	private static final String NOME_INFERMIERE_ATTRIBUTE_NAME = "Nome";
@@ -41,7 +41,7 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 		String nomeInfermiere = entity.getNome();
 		updateQuery = queryReplaceFirst(updateQuery, nomeInfermiere);
 		
-		String cognomeInfermiere = entity.getNome();
+		String cognomeInfermiere = entity.getCognome();
 		updateQuery = queryReplaceFirst(updateQuery, cognomeInfermiere);
 		
 		String idInfermiere = entity.getId();
@@ -89,10 +89,10 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 				element.setId(id);
 				
 				String nome = resultSet.getString(NOME_INFERMIERE_ATTRIBUTE_NAME);
-				element.setNome(nome);
+				element.setNome(nome.trim());
 				
 				String cognome = resultSet.getString(COGNOME_INFERMIERE_ATTRIBUTE_NAME);
-				element.setCognome(cognome);
+				element.setCognome(cognome.trim());
 				
 				result.add(element);
 			}

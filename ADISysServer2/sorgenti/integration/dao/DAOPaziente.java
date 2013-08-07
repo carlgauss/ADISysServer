@@ -23,9 +23,9 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 	//DELETE_QUERY not implemented
 	
 	private static final String READ_QUERY = "SELECT ID, Nome, Cognome, Data FROM Paziente where ID = ?";
-	private static final String GET_ALL_QUERY = "SELECT ID, Nome, Cognome FROM Infermieri";
+	private static final String GET_ALL_QUERY = "SELECT ID, Nome, Cognome, Data FROM Paziente";
 	
-	private static final String GET_NUM_CELL_QUERY = "SELECT Numero, PazienteID FROM Cellulare WHERE ID = ?";
+	private static final String GET_NUM_CELL_QUERY = "SELECT Numero, PazienteID FROM Cellulare WHERE PazienteID = ?";
 	
 	private static final String ID_PAZIENTE_ATTRIBUTE_NAME = "ID";
 	private static final String NOME_PAZIENTE_ATTRIBUTE_NAME = "Nome";
@@ -49,13 +49,10 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 		insertQuery = queryReplaceFirst(insertQuery, dataPazienteString);
 		
 		ResultSet insertedRow = connector.executeUpdateQuery(insertQuery);
-		List<Paziente> listOfInsertedPazienti = createElencoPazientiBy(insertedRow);
 
 		List<String> numCellList = entity.getNumeroCellulare();
-		
-		Paziente insertedPaziente = listOfInsertedPazienti.get(FIRST);
-		String insertedPazienteID = insertedPaziente.getId();
-		
+
+		String insertedPazienteID = getIDPazienteBy(insertedRow);
 		insertNumCell(insertedPazienteID, numCellList);
 	}
 
@@ -121,13 +118,13 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 				Paziente element = new Paziente();
 				
 				String id = resultSet.getString(ID_PAZIENTE_ATTRIBUTE_NAME);
-				element.setId(id);
+				element.setId(id.trim());
 				
 				String nome = resultSet.getString(NOME_PAZIENTE_ATTRIBUTE_NAME);
-				element.setNome(nome);
+				element.setNome(nome.trim());
 				
 				String cognome = resultSet.getString(COGNOME_PAZIENTE_ATTRIBUTE_NAME);
-				element.setCognome(cognome);
+				element.setCognome(cognome.trim());
 				
 				String dataString = resultSet.getString(DATA_PAZIENTE_ATTRIBUTE_NAME);
 				LocalDate data = LocalDate.parse(dataString);
@@ -156,7 +153,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 		
 		while (numCellResultSet.next()) {
 			String numCell = numCellResultSet.getNString(NUM_CELL_ATTRIBUTE_NAME);
-			numCellList.add(numCell);
+			numCellList.add(numCell.trim());
 		}
 		
 		return numCellList;
@@ -180,5 +177,16 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 		deleteNumCellQuery = queryReplaceFirst(deleteNumCellQuery, id);
 		
 		connector.executeUpdateQuery(deleteNumCellQuery);
+	}
+	
+	private String getIDPazienteBy(ResultSet resultSet) {
+		String id = null;
+		try {
+			resultSet.next();
+			id = resultSet.getString(ID_PAZIENTE_ATTRIBUTE_NAME);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 }

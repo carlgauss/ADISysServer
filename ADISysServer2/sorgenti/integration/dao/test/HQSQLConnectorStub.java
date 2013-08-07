@@ -47,7 +47,6 @@ public class HQSQLConnectorStub implements Connector {
 		return queryUpdateResult;
 	}
 
-	@Mock
 	private void connect() {
 		try {
 			connection = DriverManager.getConnection(
@@ -62,7 +61,6 @@ public class HQSQLConnectorStub implements Connector {
 
 	}
 
-	@Mock
 	private Statement createDefaultStatement() {
 		Statement statement = null;
 
@@ -75,13 +73,38 @@ public class HQSQLConnectorStub implements Connector {
 		return statement;
 	}
 
-	@Mock
 	protected void finalize() throws Throwable {
 		connection.close();
 		connection = null;
 	}
+	
+	void close() throws Throwable {
+		finalize();
+	}
 
-	HQSQLConnectorStub() {
+	public HQSQLConnectorStub() {
 		connect();
+	}
+	
+	
+	private static final String[] DELETE_QUERIES = new String[] {
+		"DELETE FROM Paziente",
+		"DELETE FROM Intervento",
+		"DELETE FROM Cellulare",
+		"DELETE FROM Infermiere",
+		"DELETE FROM Operazione",
+	};
+	
+	
+	public void deleteAll() {
+		Statement statement = createDefaultStatement();
+		for(String e : DELETE_QUERIES) {
+			try {
+				statement.execute(e);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 }
