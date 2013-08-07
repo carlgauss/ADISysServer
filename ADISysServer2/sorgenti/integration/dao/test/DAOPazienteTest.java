@@ -106,7 +106,7 @@ public class DAOPazienteTest {
 			System.out.println(msg);
 		}
 		
-		System.out.println("---updating all queries (adding k to the names)---");
+		System.out.println("---updating all queries (adding k to the names and adding a cell phone number)---");
 		for (Paziente e : list) {
 			e.setNome(e.getNome() + "k");
 			e.setCognome(e.getCognome() + "k");
