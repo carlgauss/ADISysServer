@@ -13,6 +13,7 @@ import org.joda.time.LocalTime;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Paziente;
+import business.entity.Operazione;
 
 public class DAOIntervento extends HQSQLDAO<Intervento> {
 	
@@ -30,9 +31,11 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 	private static final String ORA_INTERVENTO_ATTRIBUTE_NAME = "Ora";
 	private static final String ID_INFERMIERE_ATTRIBUTE_NAME = "InfermiereID";
 	private static final String ID_PAZIENTE_ATTRIBUTE_NAME = "PazienteID";
-	
+		
 	private static final String DAO_PAZIENTE = "DAOPaziente";
 	private static final String DAO_INFERMIERE = "DAOInfermiere";
+	
+	private DAOOperazione daoOperazione = new DAOOperazione();
 
 	@Override
 	public void create(Intervento entity) {
@@ -63,7 +66,12 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 		String idInfermiere = infermiereIntervento.getId();
 		insertQuery = queryReplaceFirst(insertQuery, idInfermiere);
 		
-		connector.executeUpdateQuery(insertQuery);	
+		ResultSet insertedOperazioniResultSet = connector.executeUpdateQuery(insertQuery);
+		String idIntervento = getIDInterventoBy(insertedOperazioniResultSet);
+		
+		List<Operazione> operazioneList = entity.getOperazione();
+		
+		daoOperazione.insertListaOperazioneByIntervento(operazioneList, idIntervento);
 	}
 
 	@Override
@@ -99,6 +107,11 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 		updateQuery = queryReplaceFirst(updateQuery, idIntervento);
 		
 		connector.executeUpdateQuery(updateQuery);	
+		
+		daoOperazione.deleteByIdIntervento(idIntervento);
+		List<Operazione> operazioneList = entity.getOperazione();
+		
+		daoOperazione.insertListaOperazioneByIntervento(operazioneList, idIntervento);
 	}
 
 	@Override
@@ -168,6 +181,9 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 				Infermiere infermiere = daoInfermiere.read(idInfermiere);
 				element.setInfermiere(infermiere);
 				
+				List<Operazione> operazioneList = daoOperazione.getByIdIntervento(id);
+				element.setOperazione(operazioneList);
+				
 				result.add(element);
 			}
 		} catch (SQLException e) {
@@ -176,4 +192,16 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 		
 		return result;
 	}
+	
+	private String getIDInterventoBy(ResultSet resultSet) {
+		String id = null;
+		try {
+			resultSet.next();
+			id = resultSet.getString(ID_INTERVENTO_ATTRIBUTE_NAME);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
 }
+
