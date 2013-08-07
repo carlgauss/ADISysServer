@@ -204,4 +204,3 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 		return id;
 	}
 }
-
