@@ -35,7 +35,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 	private static final String DAO_PAZIENTE = "DAOPaziente";
 	private static final String DAO_INFERMIERE = "DAOInfermiere";
 	
-	private DAOOperazione daoOperazione = new DAOOperazione();
+	private DAOOperazione daoOperazione = DAOFactory.buildInstance();
 
 	@Override
 	public void create(Intervento entity) {

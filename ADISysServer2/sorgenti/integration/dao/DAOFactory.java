@@ -13,6 +13,10 @@ public class DAOFactory {
 		return getDAOInstance(daoClass);
 	}
 	
+	static DAOOperazione buildInstance() {
+		return new DAOOperazione();
+	}
+	
 	private static String getDAOCanonicalName(String daoName) {
 		return DAO_PATH + daoName;
 	}
