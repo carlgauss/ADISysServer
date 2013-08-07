@@ -10,7 +10,7 @@ import java.util.List;
 import business.entity.Operazione;
 import business.transfer.OperazioneTO;
 
-public class DAOOperazione extends HQSQLDAO<OperazioneTO> {
+public class DAOOperazione extends HQSQLDAO<Operazione> {
 	
 	private static final String INSERT_QUERY = "INSERT INTO Operazione(Nome, Nota, InterventoID) VALUES ('?', '?', ?)";
 	//UPDATE_QUERY not implemented
@@ -25,19 +25,21 @@ public class DAOOperazione extends HQSQLDAO<OperazioneTO> {
 	private static final String NOTA_OPERAZIONE_ATTRIBUTE_NAME = "Nota";
 
 	@Override
-	public void create(OperazioneTO entity) {
+	public void create(Operazione entity) {
 		String insertQuery = INSERT_QUERY;
 		
-		String nomeOperazione = entity.getNome();
+		OperazioneTO operazioneTO = (OperazioneTO) entity;
+		
+		String nomeOperazione = operazioneTO.getNome();
 		insertQuery = queryReplaceFirst(insertQuery, nomeOperazione);
 		
-		String notaOperazione = entity.getNota();
+		String notaOperazione = operazioneTO.getNota();
 		if(notaOperazione == null) {
 			notaOperazione = "";
 		}
 		insertQuery = queryReplaceFirst(insertQuery, notaOperazione);
 		
-		String idIntervento = entity.getIdIntervento();
+		String idIntervento = operazioneTO.getIdIntervento();
 		insertQuery = queryReplaceFirst(insertQuery, idIntervento);
 		
 		connector.executeUpdateQuery(insertQuery);
@@ -45,24 +47,24 @@ public class DAOOperazione extends HQSQLDAO<OperazioneTO> {
 	}
 
 	@Override
-	public void update(OperazioneTO entity) {
+	public void update(Operazione entity) {
 		// Not implemented yet
 		
 	}
 
 	@Override
-	public void delete(OperazioneTO entity) {
+	public void delete(Operazione entity) {
 		// Not implemented yet		
 	}
 
 	@Override
-	public OperazioneTO read(String ID) {
+	public Operazione read(String ID) {
 		// Not implemented yet
 		return null;
 	}
 
 	@Override
-	public List<OperazioneTO> getAll() {
+	public List<Operazione> getAll() {
 		// Not implemented yet
 		return null;
 	}
