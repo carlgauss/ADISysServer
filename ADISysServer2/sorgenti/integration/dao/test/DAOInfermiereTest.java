@@ -30,7 +30,16 @@ public class DAOInfermiereTest {
 		{"l LL", "KKk"}
 	};
 	
-	private static Infermiere[] infermieri;
+	public static Infermiere[] infermieri;
+	
+	public static void fillInfermieri() {
+		infermieri = new Infermiere[INFERMIERI_STRING.length];
+		for (int i = 0; i < infermieri.length; i++) {
+			infermieri[i] = new Infermiere();
+			infermieri[i].setNome(INFERMIERI_STRING[i][0]);
+			infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
+		}
+	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -43,12 +52,7 @@ public class DAOInfermiereTest {
 		}
 		conn = null;
 		
-		infermieri = new Infermiere[INFERMIERI_STRING.length];
-		for (int i = 0; i < infermieri.length; i++) {
-			infermieri[i] = new Infermiere();
-			infermieri[i].setNome(INFERMIERI_STRING[i][0]);
-			infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
-		}
+		fillInfermieri();
 		
 		Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 		dao = DAOFactory.buildInstance("DAOInfermiere");

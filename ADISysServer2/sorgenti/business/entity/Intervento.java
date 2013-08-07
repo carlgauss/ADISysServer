@@ -1,5 +1,7 @@
 package business.entity;
 
+import java.util.List;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
@@ -14,6 +16,7 @@ public class Intervento {
 	private String indirizzo;
 	private LocalDate data;
 	private LocalTime ora;
+	private List<Operazione> operazione;
 	
 	public Paziente getPaziente() {
 		return SerialClone.clone(paziente);
@@ -62,5 +65,11 @@ public class Intervento {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public List<Operazione> getOperazione() {
+		return SerialClone.clone(operazione);
+	}
+	public void setOperazione(List<Operazione> operazione) {
+		this.operazione = operazione;
 	}
 }

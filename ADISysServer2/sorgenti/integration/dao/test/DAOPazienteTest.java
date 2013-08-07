@@ -33,7 +33,23 @@ public class DAOPazienteTest {
 		{"l LL", "KKk", new LocalDate(2002,12,12), new String[]{"124", "1412", "1214", "32424"}}
 	};
 	
-	private static Paziente[] pazienti;
+	public static Paziente[] pazienti;
+	
+	public static void fillPazienti() {
+		pazienti = new Paziente[ARRAY_PAZIENTI.length];
+		for (int i = 0; i < pazienti.length; i++) {
+			pazienti[i] = new Paziente();
+			pazienti[i].setNome(ARRAY_PAZIENTI[i][0].toString());
+			pazienti[i].setCognome(ARRAY_PAZIENTI[i][1].toString());
+			pazienti[i].setDate((LocalDate) ARRAY_PAZIENTI[i][2]);
+			String[] cell = (String[]) ARRAY_PAZIENTI[i][3];
+			List<String> cellList = new LinkedList<>();
+			for(String e : cell) {
+				cellList.add(e);
+			}
+			pazienti[i].setNumeroCellulare(cellList);
+		}
+	}
 
 	@Before
 	public void setUp() throws Exception {
