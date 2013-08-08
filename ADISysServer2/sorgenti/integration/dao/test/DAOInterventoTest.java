@@ -44,7 +44,7 @@ public class DAOInterventoTest {
 		},
 		{
 			{"Defribrillazione", ""},
-			{"Eutanasia","Uso di morfina"},
+			{"Eutanasia","Uso di morfina (pericoloso)"},
 		},
 		{
 			{"Tracheotomia",null},
@@ -186,7 +186,7 @@ public class DAOInterventoTest {
 			System.out.print(msg);
 		}
 		
-		System.out.println("---updating all queries (adding k to the cities and operation note exchanging both paziente and infermiere)---");
+		System.out.println("---updating all queries (adding k to the cities and operation note, and mixing both paziente and infermiere)---");
 		int i = 0;
 		for (Intervento e : list) {
 			e.setCitta(e.getCitta() + "k");
