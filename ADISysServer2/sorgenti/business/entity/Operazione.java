@@ -2,8 +2,11 @@ package business.entity;
 
 import util.SerialClone;
 
-public class Operazione {
-	
+public class Operazione implements Entity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3829368754663286748L;
 	private String id;
 	private String nome; 
 	private String nota;

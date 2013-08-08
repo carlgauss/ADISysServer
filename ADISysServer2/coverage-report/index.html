@@ -11,8 +11,8 @@
   <table id='packages'>
     <caption>All Packages and Files<div style='font-size: smaller'></div></caption>
     <tr>
-      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 5</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 10</th>
+      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 6</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 20</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -23,20 +23,66 @@ To be fully exercised, a field must have the last value assigned to it read by a
 The percentages are calculated as 100*NFE/NF, where NF is the number of non-final fields and NFE the number of fully exercised fields.'>Data</th>
     </tr>
     <tr>
-      <td class='file'>business.entity</td>
+      <td class='file click' onclick='showHideFiles(this)'>business.entity</td>
       <td>
         <table width='100%'>
+          <tr>
+            <td class='file'>Entity.java             </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
           <tr>
             <td class='file'>Infermiere.java         </td>
             <td style='background-color:#00ff00' title='Line segments: 10/10'>100%</td>
             <td style='background-color:#00ff00' title='Paths: 7/7'>100%</td>
-            <td style='background-color:#00ff00' title='Fields: 3/3'>100%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/3'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'>Intervento.java         </td>
+            <td style='background-color:#00ff00' title='Line segments: 28/28'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 19/19'>100%</td>
+            <td style='background-color:#00ff00' title='Fields: 9/9'>100%</td>
+          </tr>
+          <tr>
+            <td class='file'>Operazione.java         </td>
+            <td style='background-color:#00ff00' title='Line segments: 13/13'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 9/9'>100%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/4'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'>Paziente.java           </td>
+            <td style='background-color:#00ff00' title='Line segments: 16/16'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 11/11'>100%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/5'>0%</td>
+          </tr>
+          <tr>
+            <td class='file'>ValoreRilevato.java     </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/7'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/5'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#00ff00' title='Line segments: 10/10'>100%</td>
-      <td class='pt' style='background-color:#00ff00' title='Paths: 7/7'>100%</td>
-      <td class='pt' style='background-color:#00ff00' title='Fields: 3/3'>100%</td>
+      <td class='pt' style='background-color:#18e700' title='Line segments: 67/74'>91%</td>
+      <td class='pt' style='background-color:#19e600' title='Paths: 46/51'>90%</td>
+      <td class='pt' style='background-color:#9b6400' title='Fields: 9/23'>39%</td>
+    </tr>
+    <tr>
+      <td class='file'>business.transfer</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'>OperazioneTO.java       </td>
+            <td style='background-color:#22dd00' title='Line segments: 13/15'>87%</td>
+            <td style='background-color:#40bf00' title='Paths: 3/4'>75%</td>
+            <td style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#22dd00' title='Line segments: 13/15'>87%</td>
+      <td class='pt' style='background-color:#40bf00' title='Paths: 3/4'>75%</td>
+      <td class='pt' style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
     </tr>
     <tr>
       <td class='file click' onclick='showHideFiles(this)'>integration.connector</td>
@@ -78,14 +124,32 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
           <tr>
             <td class='file'>DAOFactory.java         </td>
-            <td style='background-color:#798600' title='Line segments: 10/19'>53%</td>
-            <td style='background-color:#55aa00' title='Paths: 4/6'>67%</td>
+            <td style='background-color:#6b9400' title='Line segments: 11/19'>58%</td>
+            <td style='background-color:#2ad500' title='Paths: 5/6'>83%</td>
             <td class='nocode'>N/A</td>
           </tr>
           <tr>
             <td class='file'>DAOInfermiere.java      </td>
-            <td style='background-color:#13ec00' title='Line segments: 37/40'>93%</td>
-            <td style='background-color:#24db00' title='Paths: 6/7'>86%</td>
+            <td style='background-color:#4cb300' title='Line segments: 28/40'>70%</td>
+            <td style='background-color:#49b600' title='Paths: 5/7'>71%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file'>DAOIntervento.java      </td>
+            <td style='background-color:#0df200' title='Line segments: 94/99'>95%</td>
+            <td style='background-color:#20df00' title='Paths: 7/8'>88%</td>
+            <td style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
+          </tr>
+          <tr>
+            <td class='file'>DAOOperazione.java      </td>
+            <td style='background-color:#23dc00' title='Line segments: 38/44'>86%</td>
+            <td style='background-color:#5da200' title='Paths: 7/11'>64%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file'>DAOPaziente.java        </td>
+            <td style='background-color:#4cb300' title='Line segments: 57/81'>70%</td>
+            <td style='background-color:#46b900' title='Paths: 8/11'>73%</td>
             <td class='nocode'>N/A</td>
           </tr>
           <tr>
@@ -96,9 +160,9 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#32cd00' title='Line segments: 49/61'>80%</td>
-      <td class='pt' style='background-color:#37c800' title='Paths: 11/14'>79%</td>
-      <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+      <td class='pt' style='background-color:#31ce00' title='Line segments: 230/285'>81%</td>
+      <td class='pt' style='background-color:#40bf00' title='Paths: 33/44'>75%</td>
+      <td class='pt' style='background-color:#7f8000' title='Fields: 1/2'>50%</td>
     </tr>
     <tr>
       <td class='file'>integration.dao.test</td>
@@ -117,31 +181,37 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
       <td class='pt' style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
     </tr>
     <tr>
-      <td class='file'>util</td>
+      <td class='file click' onclick='showHideFiles(this)'>util</td>
       <td>
         <table width='100%'>
           <tr>
             <td class='file'>QueryStringReplacer.java</td>
-            <td style='background-color:#aa5500' title='Line segments: 1/3'>33%</td>
+            <td style='background-color:#7f8000' title='Line segments: 2/4'>50%</td>
             <td style='background-color:#7f8000' title='Paths: 1/2'>50%</td>
             <td class='nocode'>N/A</td>
           </tr>
+          <tr>
+            <td class='file'>SerialClone.java        </td>
+            <td style='background-color:#57a800' title='Line segments: 23/35'>66%</td>
+            <td style='background-color:#7f8000' title='Paths: 6/12'>50%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+          </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#aa5500' title='Line segments: 1/3'>33%</td>
-      <td class='pt' style='background-color:#7f8000' title='Paths: 1/2'>50%</td>
-      <td class='nocode'>N/A</td>
+      <td class='pt' style='background-color:#5ca300' title='Line segments: 25/39'>64%</td>
+      <td class='pt' style='background-color:#7f8000' title='Paths: 7/14'>50%</td>
+      <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
     </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#798600' title='Line segments: 83/158'>53%</td>
-      <td class='pt' style='background-color:#5ca300' title='Paths: 25/39'>64%</td>
-      <td class='pt' style='background-color:#55aa00' title='Fields: 4/6'>67%</td>
+      <td class='pt' style='background-color:#47b800' title='Line segments: 358/497'>72%</td>
+      <td class='pt' style='background-color:#43bc00' title='Paths: 95/129'>74%</td>
+      <td class='pt' style='background-color:#956a00' title='Fields: 12/29'>41%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Thu Aug 08 12:28:11 CEST 2013
+    Generated on Thu Aug 08 17:24:26 CEST 2013
   </p>
 </body>
 </html>

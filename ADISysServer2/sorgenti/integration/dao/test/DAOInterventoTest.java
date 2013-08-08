@@ -20,6 +20,7 @@ import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Operazione;
 import business.entity.Paziente;
+import business.transfer.OperazioneTO;
 
 import static integration.dao.test.DAOInfermiereTest.*;
 import static integration.dao.test.DAOPazienteTest.*;
@@ -57,7 +58,7 @@ public class DAOInterventoTest {
 		{"Bari","12481","via aaa 123",new LocalDate(2015,12,11),new LocalTime(0,00,00),1,3,1},
 		{"Bari","12481","via aaa 123",new LocalDate(2015,12,11),new LocalTime(23,59,59),2,2,2},
 		{"Bari","12481","via aaa 123",new LocalDate(2015,12,11),new LocalTime(00,00,01),3,3,1},
-		{"Bari","12481","via aaa 123",new LocalDate(2015,12,11),new LocalTime(12,00,00),0,4,0},
+		{"Bari","12481","via aaa 123",new LocalDate(2015,12,11),new LocalTime(12,00,00),0,4,4},
 	};
 	
 	private static final int SIZE = ARRAY_INTERVENTI.length;
@@ -69,7 +70,7 @@ public class DAOInterventoTest {
 		for (Operazione e : op) {
 			msg2 += "\t";
 			msg2 += e.getId() + " ";
-			msg2 += e.getNome() + " ";
+			msg2 += e.getNome() + ", ";
 			msg2 += e.getNota() + "\n";
 		}
 		return msg2;
@@ -147,10 +148,11 @@ public class DAOInterventoTest {
 		for(int i = 0; i < SIZE; i++) {
 			Intervento intrv = new Intervento();
 			
-			intrv.setCap((String) ARRAY_INTERVENTI[i][0]);
-			intrv.setCitta((String) ARRAY_INTERVENTI[i][1]);
-			intrv.setData((LocalDate) ARRAY_INTERVENTI[i][2]);
-			intrv.setOra((LocalTime) ARRAY_INTERVENTI[i][3]);
+			intrv.setCitta((String) ARRAY_INTERVENTI[i][0]);
+			intrv.setCap((String) ARRAY_INTERVENTI[i][1]);
+			intrv.setIndirizzo((String) ARRAY_INTERVENTI[i][2]);
+			intrv.setData((LocalDate) ARRAY_INTERVENTI[i][3]);
+			intrv.setOra((LocalTime) ARRAY_INTERVENTI[i][4]);
 			intrv.setOperazione(listOpList.get((int) ARRAY_INTERVENTI[i][5]));
 			intrv.setPaziente(listP.get((int) ARRAY_INTERVENTI[i][6]));
 			intrv.setInfermiere(listI.get((int) ARRAY_INTERVENTI[i][7]));
@@ -178,7 +180,7 @@ public class DAOInterventoTest {
 		System.out.println("---printing using get all---");
 		List<Intervento> list = dao.getAll();
 		for (Intervento e : list) {
-			msg = e.getId() + " " + e.getCap() + " " + e.getCitta() + " " + e.getIndirizzo() + " " + e.getData() + " " + e.getOra()
+			msg = e.getId() + " " + e.getCitta() + " " + e.getCap() + " " + e.getIndirizzo() + " " + e.getData() + " " + e.getOra()
 					+ " Paziente " + e.getPaziente().getId() + " Infermiere " + e.getInfermiere().getId() + "\n";
 			msg += printOperazioni(e.getOperazione());		
 			System.out.print(msg);
@@ -190,7 +192,7 @@ public class DAOInterventoTest {
 			e.setCitta(e.getCitta() + "k");
 			List<Operazione> temp = e.getOperazione();
 			for (Operazione f : temp) {
-				f.setNota(f.getNota() + "f");
+				f.setNota(f.getNota() + "k");
 			}
 			e.setOperazione(temp);
 			
@@ -206,7 +208,7 @@ public class DAOInterventoTest {
 		System.out.println("---printing using read---");
 		for (Intervento e : list) {
 			Intervento gotInt = dao.read(e.getId());
-			msg = gotInt.getId() + " " + gotInt.getCap() + " " + gotInt.getCitta() + " " + gotInt.getIndirizzo() + " " + gotInt.getData() + " " + gotInt.getOra()
+			msg = gotInt.getId() + " " + gotInt.getCitta() + " " + gotInt.getCap() + " " + gotInt.getIndirizzo() + " " + gotInt.getData() + " " + gotInt.getOra()
 					+ " Paziente " + gotInt.getPaziente().getId() + " Infermiere " + gotInt.getInfermiere().getId() + "\n";
 			msg += printOperazioni(gotInt.getOperazione());		
 			System.out.print(msg);

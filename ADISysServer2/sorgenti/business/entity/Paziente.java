@@ -6,7 +6,11 @@ import org.joda.time.LocalDate;
 
 import util.SerialClone;
 
-public class Paziente {
+public class Paziente implements Entity{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5047761740352062543L;
 	private String id;
 	private String nome;
 	private String cognome;

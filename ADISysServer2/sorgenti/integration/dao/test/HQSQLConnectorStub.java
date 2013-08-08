@@ -88,11 +88,11 @@ public class HQSQLConnectorStub implements Connector {
 	
 	
 	private static final String[] DELETE_QUERIES = new String[] {
-		"DELETE FROM Cellulare",
-		"DELETE FROM Infermiere",
-		"DELETE FROM Operazione",
-		"DELETE FROM Paziente CASCADE",
+		"DELETE FROM Cellulare CASCADE",
+		"DELETE FROM Operazione CASCADE",
 		"DELETE FROM Intervento CASCADE",
+		"DELETE FROM Infermiere CASCADE",
+		"DELETE FROM Paziente CASCADE",
 	};
 	
 	

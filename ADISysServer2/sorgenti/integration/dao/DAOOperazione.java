@@ -71,7 +71,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
 	
 	public void insertListaOperazioneByIntervento(List<Operazione> operazioneList, String idIntervento) {
 		for (Operazione operazione : operazioneList) {
-			OperazioneTO operazioneTO = (OperazioneTO) operazione;
+			OperazioneTO operazioneTO = new OperazioneTO(operazione);
 			operazioneTO.setIdIntervento(idIntervento);
 			create(operazioneTO);
 		}

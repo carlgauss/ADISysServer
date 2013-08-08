@@ -7,7 +7,11 @@ import org.joda.time.LocalTime;
 
 import util.SerialClone;
 
-public class Intervento {
+public class Intervento implements Entity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3822067935716362954L;
 	private String id;
 	private Paziente paziente;
 	private Infermiere infermiere;

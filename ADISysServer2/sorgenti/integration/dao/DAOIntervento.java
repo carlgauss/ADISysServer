@@ -157,13 +157,13 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 				element.setId(id);
 				
 				String citta = resultSet.getString(CITTA_INTERVENTO_ATTRIBUTE_NAME);
-				element.setCitta(citta);
+				element.setCitta(citta.trim());
 				
 				String cap = resultSet.getString(CAP_INTERVENTO_ATTRIBUTE_NAME);
-				element.setCap(cap);
+				element.setCap(cap.trim());
 				
 				String indirizzo = resultSet.getString(INDIRIZZO_INTERVENTO_ATTRIBUTE_NAME);
-				element.setIndirizzo(indirizzo);
+				element.setIndirizzo(indirizzo.trim());
 				
 				String dataString = resultSet.getString(DATA_INTERVENTO_ATTRIBUTE_NAME);
 				LocalDate data = LocalDate.parse(dataString);

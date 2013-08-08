@@ -1,7 +1,145 @@
 /*C3*/SET SCHEMA PUBLIC
-DELETE FROM PAZIENTE WHERE ID=7
-DELETE FROM PAZIENTE WHERE ID=8
-DELETE FROM PAZIENTE WHERE ID=9
-DELETE FROM PAZIENTE WHERE ID=10
-COMMIT
 DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(31,'aaa                           ','bbb                           ','1991-12-12')
+COMMIT
+/*C5*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',31)
+COMMIT
+/*C6*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',31)
+COMMIT
+/*C7*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(32,'Bbb                           ','Ccc                           ','1995-02-12')
+COMMIT
+/*C8*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(33,'bbb                           ','Zzz                           ','1991-12-02')
+COMMIT
+/*C9*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',33)
+COMMIT
+/*C10*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(34,'OoO                           ','q Qq                          ','1991-12-22')
+COMMIT
+/*C11*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124546745           ',34)
+COMMIT
+/*C12*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',34)
+COMMIT
+/*C13*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('3134                ',34)
+COMMIT
+/*C14*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(35,'l LL                          ','KKk                           ','2002-12-12')
+COMMIT
+/*C15*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',35)
+COMMIT
+/*C16*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',35)
+COMMIT
+/*C17*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1214                ',35)
+COMMIT
+/*C18*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('32424               ',35)
+COMMIT
+/*C19*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(31,'aaa                           ','bbb                           ')
+COMMIT
+/*C20*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(32,'Bbb                           ','Ccc                           ')
+COMMIT
+/*C21*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(33,'bbb                           ','Zzz                           ')
+COMMIT
+/*C22*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(34,'OoO                           ','q Qq                          ')
+COMMIT
+/*C23*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(35,'l LL                          ','KKk                           ')
+COMMIT
+/*C38*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(26,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',35,31)
+COMMIT
+/*C39*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(27,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:00',34,32)
+COMMIT
+/*C40*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(54,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',27)
+COMMIT
+/*C41*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(28,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','23:59:59',33,33)
+COMMIT
+/*C42*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(55,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',28)
+COMMIT
+/*C43*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(56,'Eutanasia                     ','Uso di morfina                                                                                                                                                                                                                                            ',28)
+COMMIT
+/*C44*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(29,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:01',34,32)
+COMMIT
+/*C45*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(57,'Tracheotomia                  ','                                                                                                                                                                                                                                                          ',29)
+COMMIT
+/*C46*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(58,'Rimozione dell''appendice      ','                                                                                                                                                                                                                                                          ',29)
+COMMIT
+/*C47*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(59,'Anestesia                     ','Totale                                                                                                                                                                                                                                                    ',29)
+COMMIT
+/*C48*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(30,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',35,35)
+COMMIT
+/*C70*/SET SCHEMA PUBLIC
+DELETE FROM INTERVENTO WHERE ID=26
+INSERT INTO INTERVENTO VALUES(26,'Barik                         ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',31,32)
+COMMIT
+/*C72*/SET SCHEMA PUBLIC
+DELETE FROM INTERVENTO WHERE ID=27
+INSERT INTO INTERVENTO VALUES(27,'Barik                         ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:00',35,33)
+COMMIT
+/*C73*/SET SCHEMA PUBLIC
+DELETE FROM OPERAZIONE WHERE ID=54
+COMMIT
+/*C74*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(60,'Defribrillazione              ','k                                                                                                                                                                                                                                                         ',27)
+COMMIT
+/*C75*/SET SCHEMA PUBLIC
+DELETE FROM INTERVENTO WHERE ID=28
+INSERT INTO INTERVENTO VALUES(28,'Barik                         ','12481                         ','via aaa 123                                       ','2015-12-11','23:59:59',34,34)
+COMMIT
+/*C76*/SET SCHEMA PUBLIC
+DELETE FROM OPERAZIONE WHERE ID=55
+DELETE FROM OPERAZIONE WHERE ID=56
+COMMIT
+/*C77*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(61,'Defribrillazione              ','k                                                                                                                                                                                                                                                         ',28)
+COMMIT
+/*C78*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(62,'Eutanasia                     ','Uso di morfinak                                                                                                                                                                                                                                           ',28)
+COMMIT
+/*C79*/SET SCHEMA PUBLIC
+DELETE FROM INTERVENTO WHERE ID=29
+INSERT INTO INTERVENTO VALUES(29,'Barik                         ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:01',35,33)
+COMMIT
+/*C80*/SET SCHEMA PUBLIC
+DELETE FROM OPERAZIONE WHERE ID=57
+DELETE FROM OPERAZIONE WHERE ID=58
+DELETE FROM OPERAZIONE WHERE ID=59
+COMMIT
+/*C81*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(63,'Tracheotomia                  ','k                                                                                                                                                                                                                                                         ',29)
+COMMIT
+/*C82*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(64,'Rimozione dell''appendice      ','k                                                                                                                                                                                                                                                         ',29)
+COMMIT
+/*C83*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(65,'Anestesia                     ','Totalek                                                                                                                                                                                                                                                   ',29)
+COMMIT
+/*C84*/SET SCHEMA PUBLIC
+DELETE FROM INTERVENTO WHERE ID=30
+INSERT INTO INTERVENTO VALUES(30,'Barik                         ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',31,31)
+COMMIT
