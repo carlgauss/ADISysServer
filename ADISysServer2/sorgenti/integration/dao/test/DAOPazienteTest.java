@@ -62,19 +62,7 @@ public class DAOPazienteTest {
 		}
 		conn = null;
 		
-		pazienti = new Paziente[ARRAY_PAZIENTI.length];
-		for (int i = 0; i < pazienti.length; i++) {
-			pazienti[i] = new Paziente();
-			pazienti[i].setNome(ARRAY_PAZIENTI[i][0].toString());
-			pazienti[i].setCognome(ARRAY_PAZIENTI[i][1].toString());
-			pazienti[i].setDate((LocalDate) ARRAY_PAZIENTI[i][2]);
-			String[] cell = (String[]) ARRAY_PAZIENTI[i][3];
-			List<String> cellList = new LinkedList<>();
-			for(String e : cell) {
-				cellList.add(e);
-			}
-			pazienti[i].setNumeroCellulare(cellList);
-		}
+		fillPazienti();
 		
 		Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 		dao = DAOFactory.buildInstance("DAOPaziente");
