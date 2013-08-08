@@ -32,6 +32,10 @@ public class DAOInterventoTest {
 	
 	private static String msg;
 	
+	private static List<List<Operazione>> listOpList;
+	private static List<Paziente> listP;
+	private static List<Infermiere> listI;
+	
 	private static final String[][][] ARRAY_OPERAZIONI = new String[][][] {
 		{},
 		{
@@ -118,9 +122,9 @@ public class DAOInterventoTest {
 			daoI.create(e);
 		}
 		
-		List<List<Operazione>> listOpList = fillOperazioni();	
-		List<Paziente> listP = daoP.getAll();
-		List<Infermiere> listI = daoI.getAll();
+		listOpList = fillOperazioni();	
+		listP = daoP.getAll();
+		listI = daoI.getAll();
 		
 		System.out.println("---printing pazienti using get all---");
 		List<Paziente> listP2 = daoP.getAll();
@@ -166,14 +170,47 @@ public class DAOInterventoTest {
 	@Test
 	public void testUnique() {		
 		System.out.println("---create test---");
+		for (Intervento e : interventi) {
+			dao.create(e);
+			System.out.println("intervento created");
+		}
 		
 		System.out.println("---printing using get all---");
+		List<Intervento> list = dao.getAll();
+		for (Intervento e : list) {
+			msg = e.getId() + " " + e.getCap() + " " + e.getCitta() + " " + e.getIndirizzo() + " " + e.getData() + " " + e.getOra()
+					+ " Paziente " + e.getPaziente().getId() + " Infermiere " + e.getInfermiere().getId() + "\n";
+			msg += printOperazioni(e.getOperazione());		
+			System.out.print(msg);
+		}
 		
-		
-		System.out.println("---updating all queries (adding k to the cities, exchanging operations, patients and nurses)---");
+		System.out.println("---updating all queries (adding k to the cities and operation note exchanging both paziente and infermiere)---");
+		int i = 0;
+		for (Intervento e : list) {
+			e.setCitta(e.getCitta() + "k");
+			List<Operazione> temp = e.getOperazione();
+			for (Operazione f : temp) {
+				f.setNota(f.getNota() + "f");
+			}
+			e.setOperazione(temp);
+			
+			e.setPaziente(listP.get((((int) ARRAY_INTERVENTI[i][6]) + 1) % 5));
+			e.setInfermiere(listI.get((((int) ARRAY_INTERVENTI[i][7]) + 1) % 5));
+			
+			i++;
+
+			dao.update(e);
+			System.out.println("intervento updated");
+		}
 		
 		System.out.println("---printing using read---");
-		
+		for (Intervento e : list) {
+			Intervento gotInt = dao.read(e.getId());
+			msg = gotInt.getId() + " " + gotInt.getCap() + " " + gotInt.getCitta() + " " + gotInt.getIndirizzo() + " " + gotInt.getData() + " " + gotInt.getOra()
+					+ " Paziente " + gotInt.getPaziente().getId() + " Infermiere " + gotInt.getInfermiere().getId() + "\n";
+			msg += printOperazioni(gotInt.getOperazione());		
+			System.out.print(msg);
+		}
 	}
 
 
