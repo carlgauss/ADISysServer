@@ -17,7 +17,7 @@
 			<xs:element type="xs:string" name="indirizzo" />
 			<xs:element type="Date" name="data" />
 			<xs:element type="Time" name="ora" />
-			
+
 			<xs:element name="listaOperazioni">
 				<xs:complexType>
 					<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -25,12 +25,12 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			
+
 			<xs:element type="Paziente" name="paziente" />
 			<xs:element type="Infermiere" name="infermiere" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Operazione">
 		<xs:sequence>
 			<xs:element type="xs:string" name="id" />
@@ -38,14 +38,14 @@
 			<xs:element type="xs:string" name="nota" />
 		</xs:sequence>
 	</xs:complexType>
-	
-		<xs:complexType name="Paziente">
+
+	<xs:complexType name="Paziente">
 		<xs:sequence>
 			<xs:element type="xs:string" name="id" />
 			<xs:element type="xs:string" name="nome" />
 			<xs:element type="xs:string" name="cognome" />
 			<xs:element type="Date" name="data" />
-			
+
 			<xs:element name="rubrica">
 				<xs:complexType>
 					<xs:sequence minOccurs="0" maxOccurs="unbounded">
@@ -55,8 +55,8 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	
-		<xs:complexType name="Infermiere">
+
+	<xs:complexType name="Infermiere">
 		<xs:sequence>
 			<xs:element type="xs:string" name="id" />
 			<xs:element type="xs:string" name="nome" />
