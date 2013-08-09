@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import business.entity.Intervento;
 import business.entity.Operazione;
+import business.entity.ValoreRilevato;
 
 public class InterventoTest {
 
@@ -33,12 +34,21 @@ public class InterventoTest {
 		Operazione op = new Operazione();
 		list.add(op);
 		
+		ValoreRilevato val = new ValoreRilevato();
+		op.setValoreRilevato(val);
+		
 		intrv.setOperazione(list);
+		
+		val.setMisura("test");
 		
 		List<Operazione> anotherList = intrv.getOperazione();
 		Operazione anotherOp = anotherList.get(FIRST);
 		
-		assertTrue("Not a valid composition relation", op != anotherOp);
+		assertTrue("Not a valid composition relation between Intervento and Operazione", op != anotherOp);
+		
+		ValoreRilevato anotherVal = anotherOp.getValoreRilevato();
+		
+		assertTrue("Not a valid composition relation between Intervento, Operazione and ValoreRilevato", anotherVal.getMisura() == null);
 	}
 
 }
