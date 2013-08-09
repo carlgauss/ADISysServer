@@ -26,13 +26,13 @@ public class Intervento implements Entity {
 		return SerialClone.clone(paziente);
 	}
 	public void setPaziente(Paziente paziente) {
-		this.paziente = paziente;
+		this.paziente = SerialClone.clone(paziente);
 	}
 	public Infermiere getInfermiere() {
 		return SerialClone.clone(infermiere);
 	}
 	public void setInfermiere(Infermiere infermiere) {
-		this.infermiere = infermiere;
+		this.infermiere = SerialClone.clone(infermiere);
 	}
 	public String getCitta() {
 		return citta;
@@ -74,6 +74,6 @@ public class Intervento implements Entity {
 		return SerialClone.clone(operazione);
 	}
 	public void setOperazione(List<Operazione> operazione) {
-		this.operazione = operazione;
+		this.operazione = SerialClone.clone(operazione);
 	}
 }

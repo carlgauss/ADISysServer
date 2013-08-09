@@ -28,7 +28,7 @@ public class Operazione implements Entity {
 		return SerialClone.clone(valoreRilevato);
 	}
 	public void setValoreRilevato(ValoreRilevato valoreRilevato) {
-		this.valoreRilevato = valoreRilevato;
+		this.valoreRilevato = SerialClone.clone(valoreRilevato);
 	}
 	public String getId() {
 		return id;

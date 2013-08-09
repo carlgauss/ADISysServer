@@ -44,6 +44,6 @@ public class Paziente implements Entity{
 		return SerialClone.clone(numeroCellulare);
 	}
 	public void setNumeroCellulare(List<String> numeroCellulare) {
-		this.numeroCellulare = numeroCellulare;
+		this.numeroCellulare = SerialClone.clone(numeroCellulare);
 	}
 }
