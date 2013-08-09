@@ -50,6 +50,7 @@ public class DAOInterventoTest {
 			{"Tracheotomia",null},
 			{"Rimozione dell'appendice",""},
 			{"Anestesia","Totale"},
+			{"Fai SQL Injection","' SELECT FROM"},
 		},
 	};
 	
