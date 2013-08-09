@@ -13,7 +13,7 @@ import business.entity.Intervento;
 import business.entity.Operazione;
 
 public class InterventoTest {
-	
+
 	private static final int FIRST = 0;
 
 	@Before
@@ -26,15 +26,19 @@ public class InterventoTest {
 
 	@Test
 	public void testGetOperazione() {
-		//This test verifies if the composition relation is correct
+		// This test verifies if the composition relation is correct
 		Intervento intrv = new Intervento();
+		
 		List<Operazione> list = new LinkedList<>();
 		Operazione op = new Operazione();
 		list.add(op);
+		
 		intrv.setOperazione(list);
+		
 		List<Operazione> anotherList = intrv.getOperazione();
 		Operazione anotherOp = anotherList.get(FIRST);
+		
 		assertTrue("Not a valid composition relation", op != anotherOp);
-		}
+	}
 
 }
