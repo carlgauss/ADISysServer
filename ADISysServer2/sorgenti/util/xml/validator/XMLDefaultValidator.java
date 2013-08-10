@@ -1,4 +1,4 @@
-package business.applicationservice.factory.xml;
+package util.xml.validator;
 
 import java.io.IOException;
 
@@ -9,29 +9,25 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
-class XMLApplicationServiceMapValidator {
+class XMLDefaultValidator implements XMLValidator {
 	private static final SchemaFactory factory = 
             SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 	
-	private static final String SRC_PATH = "sorgenti/business/applicationservice/factory/xml/";
-	private static final String SCHEMA_FILE_NAME = "XMLApplicationServiceMapSchema.xsd";
+	private Schema schema;
 	
-	private static final String CANONICAL_SCHEMA_FILE_NAME = SRC_PATH + SCHEMA_FILE_NAME;
-	
-	private static Schema schema;
-	
-	static {
+	public XMLDefaultValidator(String canonicalSchemaFileName) {
 		try {
-			schema = factory.newSchema(new StreamSource(CANONICAL_SCHEMA_FILE_NAME));
+			schema = factory.newSchema(new StreamSource(canonicalSchemaFileName));
 		} catch (SAXException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
 	}
 	
-	private static Validator validator = schema.newValidator();
+	private Validator validator = schema.newValidator();
 	
-	static void validate(String fileName) {
+	@Override
+	public void validate(String fileName) {
 		try {
 			validator.validate(new StreamSource(fileName));
 		} catch (SAXException e) {

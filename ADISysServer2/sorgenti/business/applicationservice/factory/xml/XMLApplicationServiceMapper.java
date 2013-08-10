@@ -9,14 +9,19 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import util.xml.validator.XMLValidator;
+import util.xml.validator.XMLValidatorFactory;
+
 import business.applicationservice.factory.ApplicationServiceMap;
 
 public class XMLApplicationServiceMapper {
 	
 	private static final String SRC_PATH = "sorgenti/business/applicationservice/factory/xml/";
 	private static final String XML_FILE_NAME = "XMLApplicationServiceMap.xml";
+	private static final String SCHEMA_FILE_NAME = "XMLApplicationServiceMapSchema.xsd";
 	
 	private static final String CANONICAL_XML_FILE_NAME = SRC_PATH + XML_FILE_NAME;
+	private static final String CANONICAL_SCHEMA_FILE_NAME = SRC_PATH + SCHEMA_FILE_NAME;
 	
     private static final SAXBuilder builder = new SAXBuilder();
     
@@ -26,7 +31,8 @@ public class XMLApplicationServiceMapper {
 
 	public static void map(ApplicationServiceMap map) {
 		Document document = buildDocument();
-		XMLApplicationServiceMapValidator.validate(CANONICAL_XML_FILE_NAME);
+		XMLValidator validator = XMLValidatorFactory.buildInstance(CANONICAL_SCHEMA_FILE_NAME);
+		validator.validate(CANONICAL_XML_FILE_NAME);
 		
 		Element root = document.getRootElement();
 		List<Element> elements = root.getChildren();
