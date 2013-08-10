@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import integration.connector.HQSQLConnector;
 import integration.dao.test.DAOInterventoTest;
 import integration.dao.test.HQSQLConnectorStub;
+import integration.xml.DAOPianificazione;
 import integration.xml.XMLDAOPianificazione;
 
 import mockit.Mockit;
@@ -15,7 +16,7 @@ import org.xml.sax.SAXException;
 
 public class XMLDAOPianificazioneTest {
 
-	XMLDAOPianificazione pianif = new XMLDAOPianificazione();
+	DAOPianificazione pianif = new XMLDAOPianificazione();
 	
 	@Before
 	public void setUp() throws Exception {

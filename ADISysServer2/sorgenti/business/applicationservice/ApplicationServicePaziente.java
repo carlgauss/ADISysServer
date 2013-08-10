@@ -11,22 +11,28 @@ import util.Parameter;
 
 public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
 	
-	private DAO<Paziente> daoInfermiere = DAOFactory.buildInstance("DAOPaziente");
+	private DAO<Paziente> daoPaziente = DAOFactory.buildInstance("DAOPaziente");
 
     public void create(Parameter parameter) {
-    	//return null;
+    	Paziente paziente = (Paziente) parameter.getValue("paziente");
+    	
+    	daoPaziente.create(paziente);
     }
 
     public void update(Parameter parameter) {	
-    	//return null;
+    	Paziente paziente = (Paziente) parameter.getValue("paziente");
+    	
+    	daoPaziente.update(paziente);
     }
 
     public Paziente read(Parameter parameter) {
-	return null;
+    	String id = (String) parameter.getValue("id");
+    	
+    	return daoPaziente.read(id);
     }
 
     public List<Paziente> getAll(Parameter parameter) {
-	return null;
+    	return daoPaziente.getAll();
     }
 
 }

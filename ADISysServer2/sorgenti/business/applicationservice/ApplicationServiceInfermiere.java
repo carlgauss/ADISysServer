@@ -13,28 +13,13 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
 	private DAO<Infermiere> daoInfermiere = DAOFactory.buildInstance("DAOInfermiere");
 	
     public void create(Parameter parameter) {
-    	Infermiere infermiere = new Infermiere();
-    	
-    	String nome = (String) parameter.getValue("nome");
-    	infermiere.setNome(nome);
-    	
-    	String cognome = (String) parameter.getValue("cognome");
-    	infermiere.setCognome(cognome);
+    	Infermiere infermiere = (Infermiere) parameter.getValue("infermiere");
     	
     	daoInfermiere.create(infermiere);
     }
 
     public void update(Parameter parameter) {	
-    	Infermiere infermiere = new Infermiere();
-    	
-    	String id = (String) parameter.getValue("id");
-    	infermiere.setId(id);
-    	
-    	String nome = (String) parameter.getValue("nome");
-    	infermiere.setNome(nome);
-    	
-    	String cognome = (String) parameter.getValue("cognome");
-    	infermiere.setCognome(cognome);
+    	Infermiere infermiere = (Infermiere) parameter.getValue("infermiere");
     	
     	daoInfermiere.update(infermiere);
     }

@@ -13,7 +13,7 @@ import util.xml.validator.XMLValidatorFactory;
 
 import business.entity.*;
 
-public class XMLDAOPianificazione {
+public class XMLDAOPianificazione implements DAOPianificazione {
 	private static final String PACKAGE_PATH = "sorgenti/integration/xml/";
 	private static final String XML_SCHEMA_FILE_NAME = "XMLPianificazioneSchema.xsd";
 	private static final String CANONICAL_XML_SCHEMA_FILE_NAME = PACKAGE_PATH + XML_SCHEMA_FILE_NAME;
@@ -35,6 +35,7 @@ public class XMLDAOPianificazione {
 		nowString = nowString.replace(OLD_HOUR_SEPARATOR, HOUR_SEPARATOR);
 	}
 	
+	@Override
 	public void export (List<Intervento> listaInterventi) throws SAXException {
 		FolderManager.insertFolderIfNotExists(PIANIFICAZIONE_FOLDER);
 		
