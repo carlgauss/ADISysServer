@@ -8,6 +8,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.xml.sax.SAXException;
 
 import util.xml.validator.XMLValidator;
 import util.xml.validator.XMLValidatorFactory;
@@ -32,7 +33,12 @@ public class XMLApplicationServiceMapper {
 	public static void map(ApplicationServiceMap map) {
 		Document document = buildDocument();
 		XMLValidator validator = XMLValidatorFactory.buildInstance(CANONICAL_SCHEMA_FILE_NAME);
-		validator.validate(CANONICAL_XML_FILE_NAME);
+		
+		try {
+			validator.validate(CANONICAL_XML_FILE_NAME);
+		} catch (SAXException e1) {
+			e1.printStackTrace();
+		}
 		
 		Element root = document.getRootElement();
 		List<Element> elements = root.getChildren();
