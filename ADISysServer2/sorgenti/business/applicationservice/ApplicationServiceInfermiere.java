@@ -36,7 +36,7 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
     	String cognome = (String) parameter.getValue("cognome");
     	infermiere.setCognome(cognome);
     	
-    	daoInfermiere.create(infermiere);
+    	daoInfermiere.update(infermiere);
     }
 
     public Infermiere read(Parameter parameter) {
