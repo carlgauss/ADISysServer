@@ -25,7 +25,7 @@ public class JAXBExample {
 
 		try {
 
-			File file = new File("testfiles\filePianif.xml");
+			File file = new File("testfiles/filePianif.xml");
 			JAXBContext jaxbContext = JAXBContext
 					.newInstance(Pianificazione.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
