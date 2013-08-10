@@ -3,11 +3,13 @@ package business.entity;
 import java.util.List;
 
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import util.SerialClone;
+import util.xml.*;
 
 @XmlRootElement
 @XmlType (propOrder={"id", "citta", "cap", "indirizzo", "data", "ora", "operazione", "paziente", "infermiere"})
@@ -58,6 +60,7 @@ public class Intervento implements Entity {
 		this.indirizzo = indirizzo;
 	}
 	
+	@XmlJavaTypeAdapter(XMLDateAdapter.class)
 	@XmlElement(type = String.class)
 	public LocalDate getData() {
 		return data;
@@ -66,6 +69,7 @@ public class Intervento implements Entity {
 		this.data = data;
 	}
 	
+	@XmlJavaTypeAdapter(XMLTimeAdapter.class)
 	@XmlElement(type = String.class)
 	public LocalTime getOra() {
 		return ora;

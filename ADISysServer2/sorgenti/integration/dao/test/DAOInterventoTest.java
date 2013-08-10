@@ -239,19 +239,9 @@ public class DAOInterventoTest {
 		listP = daoP.getAll();
 		listI = daoI.getAll();
 		
-		System.out.println("---printing pazienti using get all---");
 		List<Paziente> listP2 = daoP.getAll();
-		for (Paziente e : listP2) {
-			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getData();
-			System.out.println(msg);
-		}
-		
-		System.out.println("---printing infermieri using get all---");
+
 		List<Infermiere> listI2 = daoI.getAll();
-		for (Infermiere e : listI2) {
-			msg = e.getId() + " " + e.getNome() + " " + e.getCognome();
-			System.out.println(msg);
-		}
 		
 		//Filling interventi
 		

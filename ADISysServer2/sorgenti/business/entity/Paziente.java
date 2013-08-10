@@ -5,8 +5,10 @@ import java.util.List;
 import org.joda.time.LocalDate;
 
 import util.SerialClone;
+import util.xml.*;
 
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement
 @XmlType (propOrder={"id", "nome", "cognome", "data", "numeroCellulare"})
@@ -47,6 +49,8 @@ public class Paziente implements Entity{
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
+	@XmlJavaTypeAdapter(XMLDateAdapter.class)
 	@XmlElement(type = String.class)
 	public LocalDate getData() {
 		return data;

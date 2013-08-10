@@ -34,7 +34,6 @@ public class JAXBExample {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 			jaxbMarshaller.marshal(pianificazione, file);
-			jaxbMarshaller.marshal(pianificazione, System.out);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();

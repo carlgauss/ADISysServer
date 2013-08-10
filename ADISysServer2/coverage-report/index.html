@@ -11,8 +11,8 @@
   <table id='packages'>
     <caption>All Packages and Files<div style='font-size: smaller'></div></caption>
     <tr>
-      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 7</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 22</th>
+      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 8</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 24</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -224,16 +224,38 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
       <td class='pt' style='background-color:#7f8000' title='Paths: 7/14'>50%</td>
       <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
     </tr>
+    <tr>
+      <td class='file click' onclick='showHideFiles(this)'>util.xml</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file'>XMLDateAdapter.java     </td>
+            <td style='background-color:#55aa00' title='Line segments: 2/3'>67%</td>
+            <td style='background-color:#55aa00' title='Paths: 2/3'>67%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file'>XMLTimeAdapter.java     </td>
+            <td style='background-color:#55aa00' title='Line segments: 2/3'>67%</td>
+            <td style='background-color:#55aa00' title='Paths: 2/3'>67%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#55aa00' title='Line segments: 4/6'>67%</td>
+      <td class='pt' style='background-color:#55aa00' title='Paths: 4/6'>67%</td>
+      <td class='nocode'>N/A</td>
+    </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#5aa500' title='Line segments: 334/517'>65%</td>
-      <td class='pt' style='background-color:#4ab500' title='Paths: 95/134'>71%</td>
+      <td class='pt' style='background-color:#5aa500' title='Line segments: 338/523'>65%</td>
+      <td class='pt' style='background-color:#4bb400' title='Paths: 99/140'>71%</td>
       <td class='pt' style='background-color:#dd2200' title='Fields: 4/30'>13%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Sat Aug 10 12:54:51 CEST 2013
+    Generated on Sat Aug 10 13:49:10 CEST 2013
   </p>
 </body>
 </html>
