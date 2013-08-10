@@ -41,7 +41,7 @@ public class DAOPazienteTest {
 			pazienti[i] = new Paziente();
 			pazienti[i].setNome(ARRAY_PAZIENTI[i][0].toString());
 			pazienti[i].setCognome(ARRAY_PAZIENTI[i][1].toString());
-			pazienti[i].setDate((LocalDate) ARRAY_PAZIENTI[i][2]);
+			pazienti[i].setData((LocalDate) ARRAY_PAZIENTI[i][2]);
 			String[] cell = (String[]) ARRAY_PAZIENTI[i][3];
 			List<String> cellList = new LinkedList<>();
 			for(String e : cell) {
@@ -87,7 +87,7 @@ public class DAOPazienteTest {
 		System.out.println("---printing using get all---");
 		List<Paziente> list = dao.getAll();
 		for (Paziente e : list) {
-			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getDate() + "\n -> Cell numbers:";
+			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getData() + "\n -> Cell numbers:";
 			for (String f : e.getNumeroCellulare()) {
 				msg += " " + f;
 			}
@@ -108,7 +108,7 @@ public class DAOPazienteTest {
 		System.out.println("---printing using read---");
 		for (Paziente e : list) {
 			Paziente gotPaz = dao.read(e.getId());
-			msg = gotPaz.getId() + " " + gotPaz.getNome() + " " + gotPaz.getCognome() + " " + gotPaz.getDate() + "\n -> Cell numbers:";
+			msg = gotPaz.getId() + " " + gotPaz.getNome() + " " + gotPaz.getCognome() + " " + gotPaz.getData() + "\n -> Cell numbers:";
 			for (String f : gotPaz.getNumeroCellulare()) {
 				msg += " " + f;
 			}

@@ -95,6 +95,8 @@ public class DAOInterventoTest {
 		return operazioni;
 	}
 	
+	
+	
 	@Before
 	public void setUp() throws Exception {
 		HQSQLConnectorStub conn = new HQSQLConnectorStub();
@@ -131,7 +133,7 @@ public class DAOInterventoTest {
 		System.out.println("---printing pazienti using get all---");
 		List<Paziente> listP2 = daoP.getAll();
 		for (Paziente e : listP2) {
-			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getDate();
+			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getData();
 			System.out.println(msg);
 		}
 		
@@ -216,5 +218,62 @@ public class DAOInterventoTest {
 		}
 	}
 
-
+	public static void fillAll() {
+		fillInfermieri();
+		fillPazienti();
+				
+		dao = DAOFactory.buildInstance("DAOIntervento");
+		daoP = DAOFactory.buildInstance("DAOPaziente");
+		daoI = DAOFactory.buildInstance("DAOInfermiere");
+		
+		//Filling pazienti, infermieri and operazioni
+		for (Paziente e : pazienti) {
+			daoP.create(e);
+		}
+		
+		for (Infermiere e : infermieri) {
+			daoI.create(e);
+		}
+		
+		listOpList = fillOperazioni();	
+		listP = daoP.getAll();
+		listI = daoI.getAll();
+		
+		System.out.println("---printing pazienti using get all---");
+		List<Paziente> listP2 = daoP.getAll();
+		for (Paziente e : listP2) {
+			msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getData();
+			System.out.println(msg);
+		}
+		
+		System.out.println("---printing infermieri using get all---");
+		List<Infermiere> listI2 = daoI.getAll();
+		for (Infermiere e : listI2) {
+			msg = e.getId() + " " + e.getNome() + " " + e.getCognome();
+			System.out.println(msg);
+		}
+		
+		//Filling interventi
+		
+		interventi = new LinkedList<>();
+		
+		for(int i = 0; i < SIZE; i++) {
+			Intervento intrv = new Intervento();
+			
+			intrv.setCitta((String) ARRAY_INTERVENTI[i][0]);
+			intrv.setCap((String) ARRAY_INTERVENTI[i][1]);
+			intrv.setIndirizzo((String) ARRAY_INTERVENTI[i][2]);
+			intrv.setData((LocalDate) ARRAY_INTERVENTI[i][3]);
+			intrv.setOra((LocalTime) ARRAY_INTERVENTI[i][4]);
+			intrv.setOperazione(listOpList.get((int) ARRAY_INTERVENTI[i][5]));
+			intrv.setPaziente(listP.get((int) ARRAY_INTERVENTI[i][6]));
+			intrv.setInfermiere(listI.get((int) ARRAY_INTERVENTI[i][7]));
+			
+			interventi.add(intrv);
+		}
+		
+		for (Intervento e : interventi) {
+			dao.create(e);
+		}
+	}
 }

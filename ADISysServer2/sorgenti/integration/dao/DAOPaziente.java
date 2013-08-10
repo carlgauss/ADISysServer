@@ -44,7 +44,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 		String cognomePaziente = entity.getCognome();
 		insertQuery = queryReplaceFirst(insertQuery, cognomePaziente);
 		
-		LocalDate dataPaziente = entity.getDate();
+		LocalDate dataPaziente = entity.getData();
 		String dataPazienteString = dataPaziente.toString();
 		insertQuery = queryReplaceFirst(insertQuery, dataPazienteString);
 		
@@ -66,7 +66,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 		String cognomePaziente = entity.getCognome();
 		updateQuery = queryReplaceFirst(updateQuery, cognomePaziente);
 		
-		LocalDate dataPaziente = entity.getDate();
+		LocalDate dataPaziente = entity.getData();
 		String dataPazienteString = dataPaziente.toString();
 		updateQuery = queryReplaceFirst(updateQuery, dataPazienteString);
 		
@@ -128,7 +128,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 				
 				String dataString = resultSet.getString(DATA_PAZIENTE_ATTRIBUTE_NAME);
 				LocalDate data = LocalDate.parse(dataString);
-				element.setDate(data);
+				element.setData(data);
 				
 				List<String> numCellList = getNumCell(id);
 				element.setNumeroCellulare(numCellList);

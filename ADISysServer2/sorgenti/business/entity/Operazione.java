@@ -5,39 +5,43 @@ import util.SerialClone;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement
+@XmlType (propOrder={"id", "nome", "nota", "valoreRilevato"})
 public class Operazione implements Entity {
 	/**
 	 * 
 	 */
 	@XmlTransient
 	private static final long serialVersionUID = 3829368754663286748L;
-	@XmlElement
+	
 	private String id;
-	@XmlElement
+	
 	private String nome;
-	@XmlElement(nillable = true)
+	
 	private String nota;
-	@XmlElement(required = false)
 	private ValoreRilevato valoreRilevato;
 	
+	@XmlElement
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	@XmlElement(nillable = true)
 	public String getNota() {
 		return nota;
 	}
 	public void setNota(String nota) {
 		this.nota = nota;
 	}
+	@XmlElement(required = false)
 	public ValoreRilevato getValoreRilevato() {
 		return SerialClone.clone(valoreRilevato);
 	}
 	public void setValoreRilevato(ValoreRilevato valoreRilevato) {
 		this.valoreRilevato = SerialClone.clone(valoreRilevato);
 	}
+	@XmlElement
 	public String getId() {
 		return id;
 	}
