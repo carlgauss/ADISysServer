@@ -1,13 +1,16 @@
 package presentation.controller.test;
 
+import java.util.List;
+
 import presentation.controller.ApplicationService;
 import util.Parameter;
 import business.applicationservice.ApplicationServicePaziente;
 import business.applicationservice.CRUG;
+import business.entity.Paziente;
 import mockit.Mock;
 import mockit.MockUp;
 
-public class ApplicationServicePazienteStub implements CRUG, ApplicationService {
+public class ApplicationServicePazienteStub implements CRUG<Paziente>, ApplicationService {
 
 	@Mock
 	public void create(Parameter parameter) {
@@ -22,13 +25,13 @@ public class ApplicationServicePazienteStub implements CRUG, ApplicationService 
 	}
 
 	@Mock
-	public Object read(Parameter parameter) {
+	public Paziente read(Parameter parameter) {
 		System.out.println("OK");
 		return null;
 	}
 
 	@Mock
-	public Object[] getAll(Parameter parameter) {
+	public List<Paziente> getAll(Parameter parameter) {
 		System.out.println("OK");
 		return null;
 	}

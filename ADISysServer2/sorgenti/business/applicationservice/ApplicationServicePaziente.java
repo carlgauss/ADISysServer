@@ -1,9 +1,12 @@
 package business.applicationservice;
 
+import java.util.List;
+
+import business.entity.Paziente;
 import presentation.controller.ApplicationService;
 import util.Parameter;
 //TODO tutti i metodi
-public class ApplicationServicePaziente implements ApplicationService, CRUG {
+public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
 
     public void create(Parameter parameter) {
     	//return null;
@@ -13,11 +16,11 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG {
     	//return null;
     }
 
-    public Object read(Parameter parameter) {
+    public Paziente read(Parameter parameter) {
 	return null;
     }
 
-    public Object[] getAll(Parameter parameter) {
+    public List<Paziente> getAll(Parameter parameter) {
 	return null;
     }
 
