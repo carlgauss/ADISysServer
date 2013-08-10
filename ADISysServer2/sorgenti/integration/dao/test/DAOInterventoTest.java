@@ -219,6 +219,7 @@ public class DAOInterventoTest {
 	}
 
 	public static void fillAll() {
+		
 		fillInfermieri();
 		fillPazienti();
 				
@@ -265,5 +266,7 @@ public class DAOInterventoTest {
 		for (Intervento e : interventi) {
 			dao.create(e);
 		}
+		
+		interventi = dao.getAll();
 	}
 }

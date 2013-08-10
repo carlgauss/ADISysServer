@@ -14,7 +14,7 @@ import util.xml.validator.XMLValidatorFactory;
 import business.entity.*;
 
 public class XMLDAOPianificazione {
-	private static final String PACKAGE_PATH = "integration/xml/";
+	private static final String PACKAGE_PATH = "sorgenti/integration/xml/";
 	private static final String XML_SCHEMA_FILE_NAME = "XMLPianificazioneSchema.xsd";
 	private static final String CANONICAL_XML_SCHEMA_FILE_NAME = PACKAGE_PATH + XML_SCHEMA_FILE_NAME;
 	

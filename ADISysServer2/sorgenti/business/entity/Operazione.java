@@ -32,7 +32,12 @@ public class Operazione implements Entity {
 		return nota;
 	}
 	public void setNota(String nota) {
-		this.nota = nota;
+		if(nota != null) {
+			this.nota = nota;
+		} else {
+			this.nota = "";
+		}
+		
 	}
 	@XmlElement(required = false)
 	public ValoreRilevato getValoreRilevato() {

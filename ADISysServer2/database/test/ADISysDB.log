@@ -1,0 +1,96 @@
+/*C2*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(66,'aaa                           ','bbb                           ','1991-12-12')
+COMMIT
+/*C3*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',66)
+COMMIT
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',66)
+COMMIT
+/*C5*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(67,'Bbb                           ','Ccc                           ','1995-02-12')
+COMMIT
+/*C6*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(68,'bbb                           ','Zzz                           ','1991-12-02')
+COMMIT
+/*C7*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',68)
+COMMIT
+/*C8*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(69,'OoO                           ','q Qq                          ','1991-12-22')
+COMMIT
+/*C9*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124546745           ',69)
+COMMIT
+/*C10*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',69)
+COMMIT
+/*C11*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('3134                ',69)
+COMMIT
+/*C12*/SET SCHEMA PUBLIC
+INSERT INTO PAZIENTE VALUES(70,'l LL                          ','KKk                           ','2002-12-12')
+COMMIT
+/*C13*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('124                 ',70)
+COMMIT
+/*C14*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1412                ',70)
+COMMIT
+/*C15*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('1214                ',70)
+COMMIT
+/*C16*/SET SCHEMA PUBLIC
+INSERT INTO CELLULARE VALUES('32424               ',70)
+COMMIT
+/*C17*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(66,'aaa                           ','bbb                           ')
+COMMIT
+/*C18*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(67,'Bbb                           ','Ccc                           ')
+COMMIT
+/*C19*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(68,'bbb                           ','Zzz                           ')
+COMMIT
+/*C20*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(69,'OoO                           ','q Qq                          ')
+COMMIT
+/*C21*/SET SCHEMA PUBLIC
+INSERT INTO INFERMIERE VALUES(70,'l LL                          ','KKk                           ')
+COMMIT
+/*C56*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(61,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',60,56)
+COMMIT
+/*C57*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(62,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:00',59,57)
+COMMIT
+/*C58*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(124,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',62)
+COMMIT
+/*C59*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(63,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','23:59:59',58,58)
+COMMIT
+/*C60*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(125,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',63)
+COMMIT
+/*C61*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(126,'Eutanasia                     ','Uso di morfina (pericoloso)                                                                                                                                                                                                                               ',63)
+COMMIT
+/*C62*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(64,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','0:00:01',59,57)
+COMMIT
+/*C63*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(127,'Tracheotomia                  ','                                                                                                                                                                                                                                                          ',64)
+COMMIT
+/*C64*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(128,'Rimozione dell''appendice      ','                                                                                                                                                                                                                                                          ',64)
+COMMIT
+/*C65*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(129,'Anestesia                     ','Totale                                                                                                                                                                                                                                                    ',64)
+COMMIT
+/*C66*/SET SCHEMA PUBLIC
+INSERT INTO OPERAZIONE VALUES(130,'Fai SQL Injection             ',''' SELECT FROM                                                                                                                                                                                                                                             ',64)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+INSERT INTO INTERVENTO VALUES(65,'Bari                          ','12481                         ','via aaa 123                                       ','2015-12-11','12:00:00',60,60)
+COMMIT

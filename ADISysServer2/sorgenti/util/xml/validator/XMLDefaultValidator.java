@@ -23,9 +23,11 @@ class XMLDefaultValidator implements XMLValidator {
 			e.printStackTrace();
 			System.exit(0);
 		}
+		
+		validator = schema.newValidator();
 	}
 	
-	private Validator validator = schema.newValidator();
+	private Validator validator;
 	
 	@Override
 	public void validate(String fileName) throws SAXException {
