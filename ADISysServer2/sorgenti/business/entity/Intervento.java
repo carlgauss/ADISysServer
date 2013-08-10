@@ -2,24 +2,41 @@ package business.entity;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.*;
+
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import util.SerialClone;
 
+@XmlRootElement
 public class Intervento implements Entity {
 	/**
 	 * 
 	 */
+	@XmlTransient
 	private static final long serialVersionUID = 3822067935716362954L;
+	@XmlElement
 	private String id;
+	@XmlElement
 	private Paziente paziente;
+	@XmlElement
 	private Infermiere infermiere;
+	@XmlElement
 	private String citta;
+	@XmlElement
 	private String cap;
+	@XmlElement
 	private String indirizzo;
+	@XmlElement(type = String.class)
 	private LocalDate data;
+	@XmlElement(type = String.class)
 	private LocalTime ora;
+	
+	@XmlElements({ 
+	    @XmlElement(name="operazione", type=Operazione.class)
+	})
+	@XmlElementWrapper(name = "listaOperazioni")
 	private List<Operazione> operazione;
 	
 	public Paziente getPaziente() {

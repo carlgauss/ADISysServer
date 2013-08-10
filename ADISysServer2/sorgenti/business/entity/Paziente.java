@@ -6,16 +6,30 @@ import org.joda.time.LocalDate;
 
 import util.SerialClone;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
 public class Paziente implements Entity{
 	/**
 	 * 
 	 */
+	@XmlTransient
 	private static final long serialVersionUID = 5047761740352062543L;
+	@XmlElement
 	private String id;
+	@XmlElement
 	private String nome;
+	@XmlElement
 	private String cognome;
+	@XmlElement(type = String.class)
 	private LocalDate date;
+	
+	@XmlElements({ 
+	    @XmlElement(name="numero", type=String.class, required = false)
+	})
+	@XmlElementWrapper(name = "rubrica")
 	private List<String> numeroCellulare;
+	
 	public String getId() {
 		return id;
 	}

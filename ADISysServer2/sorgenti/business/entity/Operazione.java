@@ -2,14 +2,22 @@ package business.entity;
 
 import util.SerialClone;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
 public class Operazione implements Entity {
 	/**
 	 * 
 	 */
+	@XmlTransient
 	private static final long serialVersionUID = 3829368754663286748L;
+	@XmlElement
 	private String id;
-	private String nome; 
+	@XmlElement
+	private String nome;
+	@XmlElement(nillable = true)
 	private String nota;
+	@XmlElement(required = false)
 	private ValoreRilevato valoreRilevato;
 	
 	public String getNome() {
