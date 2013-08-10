@@ -1,4 +1,4 @@
-package util.xml;
+package util.xml.adapter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

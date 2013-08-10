@@ -10,6 +10,8 @@ import org.joda.time.LocalTime;
 
 import util.SerialClone;
 import util.xml.*;
+import util.xml.adapter.XMLDateAdapter;
+import util.xml.adapter.XMLTimeAdapter;
 
 @XmlRootElement
 @XmlType (propOrder={"id", "citta", "cap", "indirizzo", "data", "ora", "operazione", "paziente", "infermiere"})

@@ -6,6 +6,7 @@ import org.joda.time.LocalDate;
 
 import util.SerialClone;
 import util.xml.*;
+import util.xml.adapter.XMLDateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
