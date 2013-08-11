@@ -1,4 +1,8 @@
-package com.example.adisysmobile;
+package presentation.boundary;
+
+import com.example.adisysmobile.R;
+import com.example.adisysmobile.R.layout;
+import com.example.adisysmobile.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
