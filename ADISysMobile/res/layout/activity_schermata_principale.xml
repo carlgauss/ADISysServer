@@ -8,29 +8,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SchermataPrincipale" >
 
-	<TableLayout android:layout_width="fill_parent"
-		android:id="@+id/top_table">
-		<TableRow>
-			<TextView android:text="aaaa" />
-			<EditText android:layout_weight="1" android:id="@+id/user_name" />
-		</TableRow>
-		<TableRow>
-			<TextView android:text="dfff" />
-			<EditText android:layout_weight="1" android:id="@+id/password"
-				android:inputType="textPassword" />
-		</TableRow>
-	</TableLayout>
-	<CheckBox android:layout_width="wrap_content"
-		android:layout_below="@id/top_table" android:layout_height="wrap_content"
-		android:text="cccccc" android:id="@+id/resta_connesso" />
-	<LinearLayout android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:layout_below="@id/resta_connesso"
-		android:layout_centerHorizontal="true">
-		<Button android:layout_width="100dip" android:layout_height="wrap_content"
-			android:text="ddddddd" android:onClick="invia" />
-		<Button android:layout_width="100dip" android:layout_height="wrap_content"
-			android:text="kkkkkk" android:onClick="reset" 
-			android:id="@+id/reset_button" />
-	</LinearLayout>
-
 </RelativeLayout>
