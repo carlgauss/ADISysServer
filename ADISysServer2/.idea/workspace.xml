@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9415bb25-8693-419c-8f41-64a359aa7634" name="Default" comment="" />
+    <list default="true" id="9415bb25-8693-419c-8f41-64a359aa7634" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/ADISysDB.log" afterPath="$PROJECT_DIR$/database/ADISysDB.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/test/ADISysDB.log" afterPath="$PROJECT_DIR$/database/test/ADISysDB.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/ADISysDB.properties" afterPath="$PROJECT_DIR$/database/ADISysDB.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/test/ADISysDB.properties" afterPath="$PROJECT_DIR$/database/test/ADISysDB.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/test/ADISysDB.script" afterPath="$PROJECT_DIR$/database/test/ADISysDB.script" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sorgenti/integration/dao/test/DAOInterventoTest.java" afterPath="$PROJECT_DIR$/sorgenti/integration/dao/test/DAOInterventoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/aaaaa.java" afterPath="$PROJECT_DIR$/test/aaaaa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/coverage-report/index.html" afterPath="$PROJECT_DIR$/coverage-report/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="ADISysServer2.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/coverage-report/index.html" changelist="9415bb25-8693-419c-8f41-64a359aa7634" time="1376235044080" ignored="false" />
+    <file path="/Dummy.txt" changelist="9415bb25-8693-419c-8f41-64a359aa7634" time="1376239609609" ignored="false" />
+    <file path="/aaaaa.java" changelist="9415bb25-8693-419c-8f41-64a359aa7634" time="1376239820319" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,25 +80,16 @@
       <file leaf-file-name="XMLDAOPianificazioneTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sorgenti/integration/xml/test/XMLDAOPianificazioneTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="29" selection-start="916" selection-end="916" vertical-scroll-proportion="0.0">
+            <state line="16" column="13" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pianificazione 2013-08-11T17_30_40.838.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T17_30_40.838.xml">
+      <file leaf-file-name="DAOInterventoTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sorgenti/integration/dao/test/DAOInterventoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="34" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.2614601">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SchermataPazienti.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sorgenti/presentation/boundary/SchermataPazienti.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="45" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
+            <state line="16" column="24" selection-start="363" selection-end="363" vertical-scroll-proportion="-0.34391534">
               <folding />
             </state>
           </provider>
@@ -99,13 +102,30 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/test/aaaaa.java" />
+        <option value="$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T18_51_17.545.xml" />
+        <option value="$PROJECT_DIR$/sorgenti/integration/dao/test/DAOInterventoTest.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="10" />
-    <option name="y" value="29" />
-    <option name="width" value="1900" />
-    <option name="height" value="1040" />
+    <option name="y" value="22" />
+    <option name="width" value="1596" />
+    <option name="height" value="1024" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -118,7 +138,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -141,16 +161,14 @@
               <option name="myItemId" value="ADISysServer2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="junit4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="junit-4.10.jar" />
+              <option name="myItemId" value="ADISysServer2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -160,17 +178,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ADISysServer2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -185,24 +197,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sorgenti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ADISysServer2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ADISysServer2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sorgenti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presentation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -271,6 +265,54 @@
               <option name="myItemId" value="integration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sorgenti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ADISysServer2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sorgenti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -298,8 +340,8 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="IntelliLang.Configuration" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -470,7 +512,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="29" width="1900" height="1040" extended-state="0" />
+    <frame x="10" y="22" width="1596" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -484,15 +526,15 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973032" sideWeight="0.67065215" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2987097" sideWeight="0.67256635" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32743362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955772" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -578,42 +620,150 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sorgenti/integration/xml/test/XMLDAOPianificazioneTest.java">
+    <entry file="file://$PROJECT_DIR$/.idea/scopes/scope_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sorgenti/presentation/boundary/SchermataPazienti.java">
+    <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="45" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sorgenti/presentation/boundary/DialogoVerifica.form">
-      <provider selected="true" editor-type-id="ui-designer">
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.name">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ADISysServer2.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ADISysServer2_copy_used_for_eclipse.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ADISysServer2.eml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sorgenti/presentation/boundary/SchermataPazienti.java">
+    <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="45" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/ADISysDB.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/aaaaa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="36" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T18_56_12.979.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="13" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T18_55_23.335.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T18_51_17.545.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="0" selection-start="4034" selection-end="4034" vertical-scroll-proportion="0.13965517">
+          <folding>
+            <element signature="tag#intervento#0;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#1;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#2;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#listaOperazioni#0;tag#intervento#2;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#paziente#0;tag#intervento#2;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#infermiere#0;tag#intervento#2;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#3;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#4;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#5;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#6;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#7;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#8;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#9;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#10;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#11;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#12;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#13;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#14;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#15;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#16;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#17;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#18;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#19;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#20;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#21;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#22;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#23;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#24;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#25;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#26;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#27;tag#pianificazione#0" expanded="false" />
+            <element signature="tag#intervento#28;tag#pianificazione#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T18_44_16.206.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sorgenti/integration/xml/test/XMLDAOPianificazioneTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="29" selection-start="916" selection-end="916" vertical-scroll-proportion="0.0">
+        <state line="16" column="13" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pianificazione/pianificazione 2013-08-11T17_30_40.838.xml">
+    <entry file="file://$PROJECT_DIR$/sorgenti/integration/dao/test/DAOInterventoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="34" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.2614601">
+        <state line="16" column="24" selection-start="363" selection-end="363" vertical-scroll-proportion="-0.34391534">
           <folding />
         </state>
       </provider>
