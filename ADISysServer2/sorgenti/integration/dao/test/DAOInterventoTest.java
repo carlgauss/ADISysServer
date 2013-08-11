@@ -220,6 +220,15 @@ public class DAOInterventoTest {
 
     public static void fillAll() {
 
+        HQSQLConnectorStub conn = new HQSQLConnectorStub();
+        conn.deleteAll();
+        try {
+            conn.close();
+        } catch (Throwable e1) {
+            e1.printStackTrace();
+        }
+        conn = null;
+
         fillInfermieri();
         fillPazienti();
 
