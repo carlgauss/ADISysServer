@@ -11,7 +11,7 @@ import util.Parameter;
 
 public class ApplicationServiceIntervento implements ApplicationService, CRUG<Intervento> {
 	
-	private DAO<Intervento> daoIntervento = DAOFactory.buildInstance("DAOPIntervento");
+	private DAO<Intervento> daoIntervento = DAOFactory.buildInstance("DAOIntervento");
 
     public void create(Parameter parameter) {
     	Intervento intervento = (Intervento) parameter.getValue("intervento");
