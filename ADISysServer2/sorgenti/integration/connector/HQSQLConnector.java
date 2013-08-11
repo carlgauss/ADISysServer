@@ -13,6 +13,10 @@ public class HQSQLConnector implements Connector {
 
 	private Connection connection = null;
 
+    HQSQLConnector() {
+        connect();
+    }
+
 	@Override
 	public ResultSet executeReadQuery(String query) {
 		Statement statement = createDefaultStatement();
@@ -74,7 +78,5 @@ public class HQSQLConnector implements Connector {
 		connection = null;
 	}
 
-	HQSQLConnector() {
-		connect();
-	}
+
 }
