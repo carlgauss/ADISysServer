@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT applicationServiceMap (element*)>
+
+<!ELEMENT element (serviceName,class,method)>
+
+<!ELEMENT serviceName (#PCDATA)> 
+<!ELEMENT class (#PCDATA)> 
+<!ELEMENT method (#PCDATA)> 

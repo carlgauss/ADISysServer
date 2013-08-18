@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE applicationServiceMap SYSTEM "DTDApplicationServiceMap.dtd">
+<applicationServiceMap>
+	<element>
+		<serviceName>InserisciPaziente</serviceName>
+		<class>ApplicationServicePaziente</class>
+		<method>create</method>
+	</element>
+	<element>
+		<serviceName>ModificaPaziente</serviceName>
+		<class>ApplicationServicePaziente</class>
+		<method>update</method>
+	</element>
+</applicationServiceMap>
