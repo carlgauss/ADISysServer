@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="871.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="100.0" prefHeight="512.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -149,7 +149,7 @@
                                 <Label text="postalCode" />
                               </graphic>
                             </TableColumn>
-                            <TableColumn minWidth="100.0" prefWidth="120.0" fx:id="indirizzoIntervento">
+                            <TableColumn prefWidth="75.0" resizable="false" fx:id="indirizzoIntervento">
                               <graphic>
                                 <Label text="address" />
                               </graphic>

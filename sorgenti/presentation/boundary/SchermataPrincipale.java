@@ -28,7 +28,8 @@ public class SchermataPrincipale extends SimpleForm implements Boundary {
         Parent root = fxmlLoader.load(getClass().getResource("markup/SchermataPrincipale.fxml"));
         translateAll(root, bundle);
         stage.setTitle("Hello World");
-        Scene scene = new Scene(root, 500, 575);
+        Scene scene = new Scene(root, 870, 660);
+        stage.setFullScreen(true);
 
 
         stage.setScene(scene);
