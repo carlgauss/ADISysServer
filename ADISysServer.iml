@@ -69,6 +69,15 @@
     <orderEntry type="library" exported="" name="ADISysServer" level="project" />
     <orderEntry type="library" exported="" name="jdom" level="project" />
     <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/datafx-core-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
