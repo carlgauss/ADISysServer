@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="871.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <StackPane alignment="TOP_LEFT" maxHeight="100.0" prefHeight="512.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="anchor" maxHeight="100.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="682.0" snapToPixel="false" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <ImageView fitHeight="75.0000749999981" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                <Label id="title" text="%key.adisysServer">
+                  <font>
+                    <Font name="Arial" size="40.0" />
+                  </font>
+                </Label>
+              </children>
+            </HBox>
+          </children>
+        </AnchorPane>
+      </children>
+    </StackPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <children>
+        <BorderPane prefHeight="249.0" prefWidth="682.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <center>
+            <GridPane>
+              <children>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children>
+                    <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label text="%key.nurses">
+                          <font>
+                            <Font size="15.0" fx:id="x1" />
+                          </font>
+                        </Label>
+                      </children>
+                      <padding>
+                        <Insets top="3.0" />
+                      </padding>
+                    </StackPane>
+                    <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <TableView fx:id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn editable="false" prefWidth="75.0" text="%key.id" fx:id="idInfermiere" />
+                            <TableColumn prefWidth="75.0" text="%key.name" fx:id="nomeInfermiere" />
+                            <TableColumn prefWidth="75.0" text="%key.surname" fx:id="cognomeInfermiere" />
+                          </columns>
+                          <StackPane.margin>
+                            <Insets top="35.0" fx:id="x2" />
+                          </StackPane.margin>
+                        </TableView>
+                      </children>
+                    </StackPane>
+                  </children>
+                  <padding>
+                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" fx:id="x3" />
+                  </padding>
+                </AnchorPane>
+                <AnchorPane padding="$x3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <children>
+                    <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label font="$x1" text="%key.patients" />
+                      </children>
+                      <padding>
+                        <Insets top="3.0" />
+                      </padding>
+                    </StackPane>
+                    <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <TableView id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
+                          <columns>
+                            <TableColumn editable="false" prefWidth="75.0" text="%key.id" fx:id="idPaziente" />
+                            <TableColumn prefWidth="75.0" text="%key.name" fx:id="nomePaziente" />
+                            <TableColumn prefWidth="75.0" text="%key.surname" fx:id="cognomePaziente" />
+                            <TableColumn prefWidth="75.0" text="%key.birthDate" fx:id="dataPaziente" />
+                          </columns>
+                        </TableView>
+                      </children>
+                    </StackPane>
+                  </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="178.0" prefWidth="656.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                  <children>
+                    <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <Label font="$x1" text="%key.patients" />
+                      </children>
+                      <padding>
+                        <Insets top="3.0" />
+                      </padding>
+                    </StackPane>
+                    <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <TableView id="tabellaInfermiere" fx:id="tabellaIntervento" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
+                          <columns>
+                            <TableColumn editable="false" prefWidth="75.0" text="%key.id" fx:id="idIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.city" fx:id="cittaIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.postalCode" fx:id="capIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.adress" fx:id="indirizzoIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.date" fx:id="dataIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.time" fx:id="tempoIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.paziente" fx:id="pazienteIntervento" />
+                            <TableColumn prefWidth="75.0" text="%key.nurse" fx:id="infermiereIntervento" />
+                          </columns>
+                        </TableView>
+                      </children>
+                    </StackPane>
+                  </children>
+                  <padding>
+                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" fx:id="x3" />
+                  </padding>
+                </AnchorPane>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </center>
+          <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
+              <children>
+                <Button fx:id="esportaPianificazione" mnemonicParsing="false" styleClass="menuButton" text="%key.exportPlanification" />
+                <Button fx:id="verificaJournaling" mnemonicParsing="false" styleClass="menuButton" text="%key.deriveJournaling" />
+                <Button fx:id="aggiorna" mnemonicParsing="false" styleClass="menuButton" text="%key.refresh" />
+                <Button fx:id="esci" mnemonicParsing="false" styleClass="menuButton" text="%key.exit" />
+              </children>
+              <padding>
+                <Insets left="12.0" right="12.0" />
+              </padding>
+            </HBox>
+          </top>
+        </BorderPane>
+      </children>
+    </AnchorPane>
+  </children>
+  <padding>
+    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+  </padding>
+</AnchorPane>
