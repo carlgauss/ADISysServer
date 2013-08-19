@@ -2,9 +2,6 @@ package presentation.boundary.controller;
 
 import business.entity.Intervento;
 import business.entity.Paziente;
-import integration.connector.HQSQLConnector;
-import integration.dao.test.HQSQLConnectorStub;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,11 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import mockit.Mockit;
 import org.joda.time.LocalDate;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.ColorInterventoFactory;
+import util.InterventoColoringRowFactory;
 import util.DateValueFactory;
 
 import java.net.URL;
@@ -80,7 +76,7 @@ public class SchermataPrincipale implements Initializable {
         dataIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, LocalDate>("data"));
         dataIntervento.setCellFactory(new DateValueFactory<Paziente>());
         oraIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, LocalDate>("ora"));
-        oraIntervento.setCellFactory(new ColorInterventoFactory<>());
+        oraIntervento.setCellFactory(new InterventoColoringRowFactory<>());
 
         tabellaIntervento.setItems(interventoData);
     }

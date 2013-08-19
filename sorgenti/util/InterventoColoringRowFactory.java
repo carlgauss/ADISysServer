@@ -21,7 +21,7 @@ import org.joda.time.*;
  * Time: 14:37
  * To change this template use File | Settings | File Templates.
  */
-public class ColorInterventoFactory<AtomicType> implements Callback<TableColumn<Intervento, AtomicType>, TableCell<Intervento, AtomicType>> {
+public class InterventoColoringRowFactory<AtomicType> implements Callback<TableColumn<Intervento, AtomicType>, TableCell<Intervento, AtomicType>> {
 
     private final static double WIDTH = Screen.getPrimary().getBounds().getWidth();
     private final static double HEIGHT = Screen.getPrimary().getBounds().getHeight();
@@ -34,6 +34,8 @@ public class ColorInterventoFactory<AtomicType> implements Callback<TableColumn<
         red.setPaint(Color.rgb(0xFF, 0xDD, 0xDD));
         red.setHeight(HEIGHT);
         red.setWidth(WIDTH);
+        monochrome.setHue(0.85);
+        monochrome.setSaturation(-0.5);
         monochrome.setBrightness(-0.3);
         monochrome.setContrast(0.3);
         blush = new Blend(
@@ -51,15 +53,12 @@ public class ColorInterventoFactory<AtomicType> implements Callback<TableColumn<
             protected void updateItem(AtomicType item, boolean empty) {
                 super.updateItem(item, empty);
                 if (!empty) {
-                    //TEST
                     setText(item.toString());
                     TableRow<Intervento> row = getTableRow();
                     Intervento intervento = row.getItem();
-                    DateTime now = DateTime.now(DateTimeZone.getDefault());
-                    System.out.println(intervento.getId());
-                    row.setEffect(blush);
-                    //END TEST
-
+                    if(InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
+                        row.setEffect(blush);
+                    }
                 } else {
                     setText(null);
                 }
