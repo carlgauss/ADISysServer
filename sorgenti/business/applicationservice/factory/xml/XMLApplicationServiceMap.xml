@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE applicationServiceMap SYSTEM "DTDApplicationServiceMap.dtd">
 <applicationServiceMap>
+    <element>
+        <serviceName>VisualizzaTuttiPazienti</serviceName>
+        <class>ApplicationServicePaziente</class>
+        <method>getAll</method>
+    </element>
 	<element>
 		<serviceName>InserisciPaziente</serviceName>
 		<class>ApplicationServicePaziente</class>
@@ -11,4 +16,9 @@
 		<class>ApplicationServicePaziente</class>
 		<method>update</method>
 	</element>
+    <element>
+        <serviceName>VisualizzaTuttiInterventi</serviceName>
+        <class>ApplicationServiceIntervento</class>
+        <method>getAll</method>
+    </element>
 </applicationServiceMap>

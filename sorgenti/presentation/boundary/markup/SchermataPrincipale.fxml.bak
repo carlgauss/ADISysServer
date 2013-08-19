@@ -197,6 +197,13 @@
           <top>
             <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
               <children>
+                <MenuButton mnemonicParsing="false" text="manage">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="patient" />
+                    <MenuItem mnemonicParsing="false" text="nurse" />
+                    <MenuItem mnemonicParsing="false" text="intervention" />
+                  </items>
+                </MenuButton>
                 <Button fx:id="esportaPianificazione" mnemonicParsing="false" styleClass="menuButton" text="exportPlanification" />
                 <Button fx:id="verificaJournaling" mnemonicParsing="false" styleClass="menuButton" text="deriveJournaling" />
                 <Button fx:id="aggiorna" mnemonicParsing="false" styleClass="menuButton" text="refresh" />

@@ -159,7 +159,7 @@
                                 <Label text="date" />
                               </graphic>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" fx:id="tempoIntervento">
+                            <TableColumn prefWidth="75.0" fx:id="oraIntervento">
                               <graphic>
                                 <Label text="time" />
                               </graphic>

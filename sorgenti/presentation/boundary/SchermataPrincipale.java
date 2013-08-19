@@ -22,6 +22,7 @@ public class SchermataPrincipale extends Application implements Boundary {
     private static final String LANGUAGE_DIR = "presentation.boundary.markup.language.";
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";
+    private static final String STYLESHEET = "stylesheet/caspian.css";
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -37,6 +38,7 @@ public class SchermataPrincipale extends Application implements Boundary {
         double width = Screen.getPrimary().getBounds().getWidth();
         double height = Screen.getPrimary().getBounds().getHeight();
         Scene scene = new Scene(root, width, height);
+        //scene.getStylesheets().add(mainClass.getResource(STYLESHEET).toString());
         stage.setScene(scene);
         stage.show();
     }

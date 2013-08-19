@@ -56,11 +56,11 @@ public class DAOInterventoTest {
     };
 
     private static final Object[][] ARRAY_INTERVENTI = new Object[][]{
-            {"Bari", "12481", "via aaa 123", new LocalDate(2015, 12, 11), new LocalTime(12, 00, 00), 0, 4, 0},
-            {"Bari", "12481", "via aaa 123", new LocalDate(2015, 12, 11), new LocalTime(0, 00, 00), 1, 3, 1},
-            {"Bari", "12481", "via aaa 123", new LocalDate(2015, 12, 11), new LocalTime(23, 59, 59), 2, 2, 2},
-            {"Bari", "12481", "via aaa 123", new LocalDate(2015, 12, 11), new LocalTime(00, 00, 01), 3, 3, 1},
-            {"Bari", "12481", "via aaa 123", new LocalDate(2015, 12, 11), new LocalTime(12, 00, 00), 0, 4, 4},
+            {"Bari", "12481", "via aaa 123", LocalDate.now(), new LocalTime(12, 00, 00), 0, 4, 0},
+            {"Bari", "12481", "via aaa 123", LocalDate.now(), new LocalTime(0, 00, 00), 1, 3, 1},
+            {"Bari", "12481", "via aaa 123", LocalDate.now(), new LocalTime(23, 59, 59), 2, 2, 2},
+            {"Bari", "12481", "via aaa 123", LocalDate.now(), new LocalTime(00, 00, 01), 3, 3, 1},
+            {"Bari", "12481", "via aaa 123", LocalDate.now(), new LocalTime(12, 00, 00), 0, 4, 4},
     };
 
     private static final int SIZE = ARRAY_INTERVENTI.length;
