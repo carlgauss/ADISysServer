@@ -1,5 +1,6 @@
 package presentation.controller;
 
+import business.applicationservice.exception.CommonException;
 import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
 import presentation.boundary.Boundary;
@@ -14,17 +15,21 @@ class ADISysApplicationController implements ApplicationController {
 
 	public Object handleRequest(String serviceName, Parameter parameter) {
 		Object result = null;
-		
-		if (serviceName.matches(SHOW_SYNTAX)) {
-            dispatchGUI(serviceName);
-		} else {
-			result = execute(serviceName, parameter);
-		}
-		
-		return result;
+
+        try {
+            if (serviceName.matches(SHOW_SYNTAX)) {
+                dispatchGUI(serviceName);
+            } else {
+                result = execute(serviceName, parameter);
+            }
+        } catch (CommonException e) {
+            e.reportException();
+        }
+
+        return result;
 	}
 
-	private Object execute(String serviceName, Parameter parameter) {
+	private Object execute(String serviceName, Parameter parameter) throws CommonException {
 		ApplicationService asClass = ApplicationServiceFactory.buildInstance(serviceName);
 		ApplicationServiceMethod asMethod = ApplicationServiceMethodFactory.buildInstance(asClass);
 		return asMethod.invoke(serviceName, parameter);

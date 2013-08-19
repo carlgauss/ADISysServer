@@ -53,7 +53,7 @@
                       <children>
                         <TableView fx:id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" fx:id="idInfermiere">
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idInfermiere">
                               <graphic>
                                 <Label text="id" />
                               </graphic>
@@ -92,9 +92,9 @@
                     </StackPane>
                     <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <TableView id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
+                        <TableView id="tabellaInfermiere" fx:id="tabellaPaziente" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" fx:id="idPaziente">
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idPaziente">
                               <graphic>
                                 <Label text="id" />
                               </graphic>
@@ -134,7 +134,7 @@
                       <children>
                         <TableView id="tabellaInfermiere" fx:id="tabellaIntervento" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" fx:id="idIntervento">
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idIntervento">
                               <graphic>
                                 <Label text="id" />
                               </graphic>
@@ -149,7 +149,7 @@
                                 <Label text="postalCode" />
                               </graphic>
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" resizable="false" fx:id="indirizzoIntervento">
+                            <TableColumn prefWidth="75.0" fx:id="indirizzoIntervento">
                               <graphic>
                                 <Label text="address" />
                               </graphic>
@@ -197,6 +197,13 @@
           <top>
             <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
               <children>
+                <MenuButton mnemonicParsing="false" text="manage">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="patient" />
+                    <MenuItem mnemonicParsing="false" text="nurse" />
+                    <MenuItem mnemonicParsing="false" text="intervention" />
+                  </items>
+                </MenuButton>
                 <Button fx:id="esportaPianificazione" mnemonicParsing="false" styleClass="menuButton" text="exportPlanification" />
                 <Button fx:id="verificaJournaling" mnemonicParsing="false" styleClass="menuButton" text="deriveJournaling" />
                 <Button fx:id="aggiorna" mnemonicParsing="false" styleClass="menuButton" text="refresh" />

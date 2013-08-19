@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
+import business.applicationservice.exception.CommonException;
 import util.Parameter;
 
 import presentation.controller.ApplicationService;
@@ -16,7 +17,7 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 		this.as = as;
 	}
 
-	public Object invoke(String serviceName, Parameter parameter) {
+	public Object invoke(String serviceName, Parameter parameter) throws CommonException {
 		Object result = null;
 		try {
 			
@@ -31,7 +32,14 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+            Throwable cause = e.getCause();
+            Class<?> causeClass = cause.getClass();
+            if (CommonException.class.isAssignableFrom(causeClass)) {
+                CommonException commonCause = (CommonException) cause;
+                throw commonCause;
+            } else {
+                e.printStackTrace();
+            }
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
