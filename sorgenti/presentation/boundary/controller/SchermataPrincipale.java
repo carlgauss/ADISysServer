@@ -59,6 +59,10 @@ public class SchermataPrincipale implements Initializable {
 
         //test
 
+
+    }
+
+    private void loadAllTables() {
         List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
         ObservableList<Paziente> pazienteData = FXCollections.observableArrayList(pazienteList);
 

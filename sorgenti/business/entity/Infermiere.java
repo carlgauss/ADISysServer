@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement
 @XmlType (propOrder={"id", "nome", "cognome"})
-public class Infermiere implements Entity {
+public class Infermiere implements Person {
 	/**
 	 * 
 	 */

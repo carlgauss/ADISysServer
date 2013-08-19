@@ -1,11 +1,11 @@
 package util;
 
-public class Couple<X, Y> {
+public class Entry<X, Y> {
 
     private final X firstValue;
     private final Y secondValue;
     
-    public Couple(X firstValue, Y secondValue) {
+    public Entry(X firstValue, Y secondValue) {
 	this.firstValue = firstValue;
 	this.secondValue = secondValue;
     }

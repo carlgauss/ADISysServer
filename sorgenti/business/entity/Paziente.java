@@ -5,7 +5,6 @@ import java.util.List;
 import org.joda.time.LocalDate;
 
 import util.SerialClone;
-import util.xml.*;
 import util.xml.adapter.XMLDateAdapter;
 
 import javax.xml.bind.annotation.*;
@@ -13,7 +12,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement
 @XmlType (propOrder={"id", "nome", "cognome", "data", "numeroCellulare"})
-public class Paziente implements Entity{
+public class Paziente implements Person {
 	/**
 	 * 
 	 */
@@ -36,18 +35,22 @@ public class Paziente implements Entity{
 	public void setId(String id) {
 		this.id = id;
 	}
-	@XmlElement
+	@Override
+    @XmlElement
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	@Override
+    public void setNome(String nome) {
 		this.nome = nome;
 	}
-	@XmlElement
+	@Override
+    @XmlElement
 	public String getCognome() {
 		return cognome;
 	}
-	public void setCognome(String cognome) {
+	@Override
+    public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
 	

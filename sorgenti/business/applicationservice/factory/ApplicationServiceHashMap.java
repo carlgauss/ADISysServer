@@ -6,10 +6,10 @@ import java.util.Map;
 import business.applicationservice.exception.UnavaliableApplicationServiceException;
 import business.applicationservice.exception.UnselectedServiceNameException;
 
-import util.Couple;
+import util.Entry;
 
 class ApplicationServiceHashMap implements ApplicationServiceMap {
-	private Map<String, Couple<String, String>> asMapDictionary = new HashMap<>();
+	private Map<String, Entry<String, String>> asMapDictionary = new HashMap<>();
 	private String currentServiceName = null;
 	
 	@Override
@@ -20,7 +20,7 @@ class ApplicationServiceHashMap implements ApplicationServiceMap {
 	@Override
 	public void setApplicationServiceValues(String applicationService, String serviceFunction) {
 		if (isServiceNameSelected()) {
-			Couple<String, String> newValues = new Couple<>(applicationService, serviceFunction);
+			Entry<String, String> newValues = new Entry<>(applicationService, serviceFunction);
 			asMapDictionary.put(currentServiceName, newValues);
 
 		} else {
@@ -34,17 +34,17 @@ class ApplicationServiceHashMap implements ApplicationServiceMap {
 
 	@Override
 	public String getApplicationService(String serviceName) {
-		Couple<String, String> mappedCouple = mapCouple(serviceName);
-		return mappedCouple.getFirstValue();
+		Entry<String, String> mappedEntry = mapCouple(serviceName);
+		return mappedEntry.getFirstValue();
 	}
 
 	@Override
 	public String getServiceMethod(String serviceName) {
-		Couple<String, String> mappedCouple = mapCouple(serviceName);
-		return mappedCouple.getSecondValue();
+		Entry<String, String> mappedEntry = mapCouple(serviceName);
+		return mappedEntry.getSecondValue();
 	}
 
-    private Couple<String, String> mapCouple(String serviceName) {
+    private Entry<String, String> mapCouple(String serviceName) {
         checkService(serviceName);
         return asMapDictionary.get(serviceName);
     }
