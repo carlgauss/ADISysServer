@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="871.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="100.0" prefHeight="512.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -18,7 +18,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="682.0" snapToPixel="false" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <children>
                 <ImageView fitHeight="75.0000749999981" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
-                <Label id="title" text="aaaa">
+                <Label id="title" fx:id="titolo" text="adisysServer">
                   <font>
                     <Font name="Arial" size="40.0" />
                   </font>
@@ -39,7 +39,7 @@
                   <children>
                     <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <Label text="aaaa">
+                        <Label id="TitoloInfermiere" fx:id="titoloInfermiere" text="nurses">
                           <font>
                             <Font size="15.0" fx:id="x1" />
                           </font>
@@ -53,9 +53,21 @@
                       <children>
                         <TableView fx:id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" text="aaaaa" fx:id="idInfermiere" />
-                            <TableColumn prefWidth="75.0" text="aaaaa" fx:id="nomeInfermiere" />
-                            <TableColumn prefWidth="75.0" text="aaaaaa" fx:id="cognomeInfermiere" />
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idInfermiere">
+                              <graphic>
+                                <Label text="id" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="nomeInfermiere">
+                              <graphic>
+                                <Label text="name" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="cognomeInfermiere">
+                              <graphic>
+                                <Label text="surname" />
+                              </graphic>
+                            </TableColumn>
                           </columns>
                           <StackPane.margin>
                             <Insets top="35.0" fx:id="x2" />
@@ -72,7 +84,7 @@
                   <children>
                     <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <Label font="$x1" text="aaaaa" />
+                        <Label fx:id="titoloPaziente" font="$x1" text="patients" />
                       </children>
                       <padding>
                         <Insets top="3.0" />
@@ -80,12 +92,28 @@
                     </StackPane>
                     <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <TableView id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
+                        <TableView id="tabellaInfermiere" fx:id="tabellaPaziente" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" text="aaaaaa" fx:id="idPaziente" />
-                            <TableColumn prefWidth="75.0" text="aaaaa" fx:id="nomePaziente" />
-                            <TableColumn prefWidth="75.0" text="aaaaaa" fx:id="cognomePaziente" />
-                            <TableColumn prefWidth="75.0" text="aaaaaa" fx:id="dataPaziente" />
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idPaziente">
+                              <graphic>
+                                <Label text="id" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="nomePaziente">
+                              <graphic>
+                                <Label text="name" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="cognomePaziente">
+                              <graphic>
+                                <Label text="surname" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="dataPaziente">
+                              <graphic>
+                                <Label text="birthDate" />
+                              </graphic>
+                            </TableColumn>
                           </columns>
                         </TableView>
                       </children>
@@ -96,7 +124,7 @@
                   <children>
                     <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <Label font="$x1" text="aaaaa" />
+                        <Label fx:id="titoloIntervento" font="$x1" text="interventions" />
                       </children>
                       <padding>
                         <Insets top="3.0" />
@@ -106,14 +134,46 @@
                       <children>
                         <TableView id="tabellaInfermiere" fx:id="tabellaIntervento" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
                           <columns>
-                            <TableColumn editable="false" prefWidth="75.0" text="aaaaa" fx:id="idIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaa" fx:id="cittaIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaa" fx:id="capIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaaa" fx:id="indirizzoIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaa" fx:id="dataIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaaaa" fx:id="tempoIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaaaa" fx:id="pazienteIntervento" />
-                            <TableColumn prefWidth="75.0" text="aaaaaa" fx:id="infermiereIntervento" />
+                            <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idIntervento">
+                              <graphic>
+                                <Label text="id" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="cittaIntervento">
+                              <graphic>
+                                <Label text="city" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="capIntervento">
+                              <graphic>
+                                <Label text="postalCode" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="indirizzoIntervento">
+                              <graphic>
+                                <Label text="address" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="dataIntervento">
+                              <graphic>
+                                <Label text="date" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="tempoIntervento">
+                              <graphic>
+                                <Label text="time" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="pazienteIntervento">
+                              <graphic>
+                                <Label text="patient" />
+                              </graphic>
+                            </TableColumn>
+                            <TableColumn prefWidth="75.0" fx:id="infermiereIntervento">
+                              <graphic>
+                                <Label text="nurse" />
+                              </graphic>
+                            </TableColumn>
                           </columns>
                         </TableView>
                       </children>
@@ -137,10 +197,10 @@
           <top>
             <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
               <children>
-                <Button fx:id="esportaPianificazione" mnemonicParsing="false" styleClass="menuButton" text="aaaaa" />
-                <Button fx:id="verificaJournaling" mnemonicParsing="false" styleClass="menuButton" text="aaaa" />
-                <Button fx:id="aggiorna" mnemonicParsing="false" styleClass="menuButton" text="aaaaaa" />
-                <Button fx:id="esci" mnemonicParsing="false" styleClass="menuButton" text="aaaaaa" />
+                <Button fx:id="esportaPianificazione" mnemonicParsing="false" styleClass="menuButton" text="exportPlanification" />
+                <Button fx:id="verificaJournaling" mnemonicParsing="false" styleClass="menuButton" text="deriveJournaling" />
+                <Button fx:id="aggiorna" mnemonicParsing="false" styleClass="menuButton" text="refresh" />
+                <Button fx:id="esci" mnemonicParsing="false" styleClass="menuButton" text="exit" />
               </children>
               <padding>
                 <Insets left="12.0" right="12.0" />

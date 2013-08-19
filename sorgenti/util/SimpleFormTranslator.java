@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
+import java.io.*;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -61,6 +63,47 @@ public class SimpleFormTranslator {
                     }
                 }
             }
+        }
+    }
+
+    private static final String DEFAULT_LANGUAGE = "italiano";
+    private static final String LANGUAGE_KEY = "language";
+    private static final String PROPERTIES_EXTENSION = ".properties";
+    private static final String LANGUAGE_FILE = LANGUAGE_KEY + PROPERTIES_EXTENSION;
+    private static final String TRANSLATED_TEXT_PATH = "sorgenti/presentation/boundary/markup/language/";
+
+    public static String getLanguage() {
+        File languageFile = new File(LANGUAGE_FILE);
+        String language = null;
+        if (languageFile.exists()) {
+            Properties properties = new Properties();
+            try {
+                properties.load(new FileInputStream(LANGUAGE_FILE));
+                String extractedLanguage = properties.getProperty(LANGUAGE_KEY);
+                File languageTranslatorFile = new File(TRANSLATED_TEXT_PATH + extractedLanguage + PROPERTIES_EXTENSION);
+                if (languageTranslatorFile.exists()) {
+                    language = extractedLanguage;
+                } else {
+                    createDefaultLanguageFile();
+                    language = DEFAULT_LANGUAGE;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            createDefaultLanguageFile();
+            language = DEFAULT_LANGUAGE;
+        }
+        return language;
+    }
+
+    private static void createDefaultLanguageFile() {
+        Properties properties = new Properties();
+        properties.setProperty(LANGUAGE_KEY, DEFAULT_LANGUAGE);
+        try {
+            properties.store(new FileOutputStream(LANGUAGE_FILE), null);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
