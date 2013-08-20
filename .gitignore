@@ -1,6 +1,7 @@
 *.class
 .DS_Store
 *.DS_Store
+out
 
 workspace.xml
 .idea/workspace.xml
