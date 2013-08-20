@@ -17,6 +17,11 @@
 		<method>update</method>
 	</element>
     <element>
+        <serviceName>VisualizzaTuttiInfermieri</serviceName>
+        <class>ApplicationServiceInfermiere</class>
+        <method>getAll</method>
+    </element>
+    <element>
         <serviceName>VisualizzaTuttiInterventi</serviceName>
         <class>ApplicationServiceIntervento</class>
         <method>getAll</method>

@@ -12,7 +12,7 @@ import org.joda.time.LocalDate;
  * Time: 14:37
  * To change this template use File | Settings | File Templates.
  */
-public class DateValueFactory<Entity> implements Callback<TableColumn<Entity, LocalDate>, TableCell<Entity, LocalDate>> {
+public class DateDepictionFactory<Entity> implements Callback<TableColumn<Entity, LocalDate>, TableCell<Entity, LocalDate>> {
     @Override
     public TableCell<Entity, LocalDate> call(TableColumn<Entity, LocalDate> entityLocalDateTableColumn) {
         return new TableCell<Entity, LocalDate>() {
