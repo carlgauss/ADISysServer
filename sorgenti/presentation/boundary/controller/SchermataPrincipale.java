@@ -14,15 +14,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import org.joda.time.LocalDate;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.InterventoColoringRowFactory;
-import util.DateDepictionFactory;
-import util.PersonPortrayalFactory;
+import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory;
+import presentation.boundary.controller.itemfactory.DateDepictionFactory;
+import presentation.boundary.controller.itemfactory.PersonPortrayalFactory;
+import util.MessageDisplayer;
+import util.SimpleFormTranslator;
 
 import java.net.URL;
 import java.util.List;
@@ -37,7 +37,6 @@ import java.util.ResourceBundle;
  */
 public class SchermataPrincipale implements Initializable {
     private FrontController fc = FrontControllerFactory.buildInstance();
-
     @FXML private TableColumn idInfermiere;
     @FXML private TableColumn nomeInfermiere;
     @FXML private TableColumn cognomeInfermiere;
@@ -86,12 +85,22 @@ public class SchermataPrincipale implements Initializable {
         System.out.println(selectedIntervento.getId());
     }
 
+    @FXML private void onSetItaliano(ActionEvent event) {
+        SimpleFormTranslator.setLanguage("italiano");
+        MessageDisplayer.showMessage(null, "translateNextRestart");
+    }
+
+    @FXML private void onSetEnglish(ActionEvent event) {
+        SimpleFormTranslator.setLanguage("english");
+        MessageDisplayer.showMessage(null, "translateNextRestart");
+    }
+
     @FXML private void onAggiorna(ActionEvent event) {
         loadAllTables();
     }
 
     @FXML private void onExit(ActionEvent event) {
-        Stage stage = (Stage) esci.getScene().getWindow();
+        Stage stage = getStage();
         stage.close();
     }
 
@@ -174,8 +183,6 @@ public class SchermataPrincipale implements Initializable {
 
         @Override
         public void changed(ObservableValue<? extends Paziente> observableValue, Paziente oldPaziente, Paziente newPaziente) {
-            this.observableValue = observableValue;
-            this.oldPaziente = oldPaziente;
             selectedPaziente = newPaziente;
         }
     }
@@ -186,5 +193,9 @@ public class SchermataPrincipale implements Initializable {
         public void changed(ObservableValue<? extends Intervento> observableValue, Intervento oldIntervento, Intervento newIntervento) {
             selectedIntervento = newIntervento;
         }
+    }
+
+    private Stage getStage() {
+        return (Stage) esci.getScene().getWindow();
     }
 }

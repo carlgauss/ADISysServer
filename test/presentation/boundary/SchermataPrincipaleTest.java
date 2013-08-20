@@ -29,7 +29,7 @@ public class SchermataPrincipaleTest {
 
     @Test
     public void testShowWindow() throws Exception {
-         SchermataPrincipale pr = new SchermataPrincipale();
+        SchermataPrincipale pr = new SchermataPrincipale();
         pr.showWindow(null);
     }
 }

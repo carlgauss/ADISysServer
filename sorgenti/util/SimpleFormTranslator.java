@@ -19,6 +19,8 @@ import java.util.Set;
  */
 public class SimpleFormTranslator {
 
+    private static final String LANGUAGE_DIR = "presentation.boundary.markup.language.";
+
     private static final Class<?> LABELED_CLASS = Labeled.class;
     private static final Class<?> TABLE_VIEW = TableView.class;
     private static final Class<?> MENU_BUTTON = MenuButton.class;
@@ -72,7 +74,7 @@ public class SimpleFormTranslator {
     private static final String LANGUAGE_FILE = LANGUAGE_KEY + PROPERTIES_EXTENSION;
     private static final String TRANSLATED_TEXT_PATH = "sorgenti/presentation/boundary/markup/language/";
 
-    public static String getLanguage() {
+    public static ResourceBundle getLanguage() {
         File languageFile = new File(LANGUAGE_FILE);
         String language = null;
         if (languageFile.exists()) {
@@ -94,8 +96,12 @@ public class SimpleFormTranslator {
             createDefaultLanguageFile();
             language = DEFAULT_LANGUAGE;
         }
-        return language;
+        ResourceBundle bundle = ResourceBundle.getBundle(SimpleFormTranslator.LANGUAGE_DIR + language);
+        settedBundle = bundle;
+        return bundle;
     }
+
+    private static ResourceBundle settedBundle;
 
     private static void createDefaultLanguageFile() {
         Properties properties = new Properties();
@@ -105,5 +111,27 @@ public class SimpleFormTranslator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setLanguage(String language) {
+        Properties properties = new Properties();
+        properties.setProperty(LANGUAGE_KEY, language);
+        try {
+            properties.store(new FileOutputStream(LANGUAGE_FILE), null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        settedBundle = null;
+    }
+
+    public static String translate(String text) {
+        if(settedBundle == null) {
+            settedBundle = getLanguage();
+        }
+        String translatedText = text;
+        if (settedBundle.containsKey(text)) {
+            translatedText = settedBundle.getString(text);
+        }
+        return translatedText;
     }
 }

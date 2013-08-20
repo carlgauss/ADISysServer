@@ -1,9 +1,10 @@
-package util;
+package presentation.boundary.controller.itemfactory;
 
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 import org.joda.time.LocalDate;
+import util.DateConverter;
 
 /**
  * Created with IntelliJ IDEA.

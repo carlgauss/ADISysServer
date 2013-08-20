@@ -1,4 +1,4 @@
-package util;
+package presentation.boundary.controller.itemfactory;
 
 import business.entity.Person;
 import javafx.scene.control.TableCell;
