@@ -3,7 +3,6 @@ package integration.xml;
 import java.io.File;
 import java.util.List;
 
-import business.applicationservice.factory.xml.XMLApplicationServiceMapper;
 import org.joda.time.LocalDateTime;
 import org.xml.sax.SAXException;
 
@@ -25,6 +24,8 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 	private static final String SEPARATOR = " ";
 	private static final char OLD_HOUR_SEPARATOR = ':';
 	private static final char HOUR_SEPARATOR = '_';
+
+    private static final File XSD_PIANIFICAZIONE_SCHEMA_FILE = new File("schema/XMLPianificazioneSchema.xsd");
 	
 	private LocalDateTime now = LocalDateTime.now();
 	private String nowString = now.toString();
@@ -52,7 +53,7 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 		
 		marshaller.marshal(pianificazione);
 		
-		XMLValidator validator = XMLValidatorFactory.buildInstance(XMLApplicationServiceMapper.SCHEMA_FILE);
+		XMLValidator validator = XMLValidatorFactory.buildInstance(XSD_PIANIFICAZIONE_SCHEMA_FILE);
 		validator.validate(new File(canonicalXMLFileName));
 	}
 }

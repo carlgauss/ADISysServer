@@ -9,7 +9,22 @@ class ApplicationServiceSelector {
 	private static ApplicationServiceMap asMap = new ApplicationServiceHashMap();
 
 	static {
-		//XMLApplicationServiceMapper.map(asMap);
+        asMap.selectApplicationServiceBy("VisualizzaTuttiPazienti");
+        asMap.setApplicationServiceValues("ApplicationServicePaziente", "getAll");
+
+        asMap.selectApplicationServiceBy("InserisciPaziente");
+        asMap.setApplicationServiceValues("ApplicationServicePaziente", "create");
+
+        asMap.selectApplicationServiceBy("ModificaPaziente");
+        asMap.setApplicationServiceValues("ApplicationServicePaziente", "update");
+
+        asMap.selectApplicationServiceBy("VisualizzaTuttiInfermieri");
+        asMap.setApplicationServiceValues("ApplicationServiceInfermiere", "getAll");
+
+        asMap.selectApplicationServiceBy("VisualizzaTuttiInterventi");
+        asMap.setApplicationServiceValues("ApplicationServiceIntervento", "getAll");
+
+        //TODO implementare altre funzionalità
 	}
 
 	private ApplicationServiceSelector() {

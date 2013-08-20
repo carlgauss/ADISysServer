@@ -1,0 +1,79 @@
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="pianificazione" type="Pianificazione"/>
+
+    <xs:complexType name="Pianificazione">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="intervento" type="Intervento">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Intervento">
+        <xs:sequence>
+            <xs:element type="xs:string" name="id"/>
+            <xs:element type="xs:string" name="citta"/>
+            <xs:element type="xs:string" name="cap"/>
+            <xs:element type="xs:string" name="indirizzo"/>
+            <xs:element type="Date" name="data"/>
+            <xs:element type="Time" name="ora"/>
+
+            <xs:element name="listaOperazioni">
+                <xs:complexType>
+                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="operazione" type="Operazione"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element type="Paziente" name="paziente"/>
+            <xs:element type="Infermiere" name="infermiere"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Operazione">
+        <xs:sequence>
+            <xs:element type="xs:string" name="id"/>
+            <xs:element type="xs:string" name="nome"/>
+            <xs:element type="xs:string" name="nota"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Paziente">
+        <xs:sequence>
+            <xs:element type="xs:string" name="id"/>
+            <xs:element type="xs:string" name="nome"/>
+            <xs:element type="xs:string" name="cognome"/>
+            <xs:element type="Date" name="data"/>
+
+            <xs:element name="rubrica">
+                <xs:complexType>
+                    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="numero" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Infermiere">
+        <xs:sequence>
+            <xs:element type="xs:string" name="id"/>
+            <xs:element type="xs:string" name="nome"/>
+            <xs:element type="xs:string" name="cognome"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Date">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9])+[-]([0-9]){1,2}[-]([0-9]){1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Time">
+        <xs:restriction base="xs:string">
+            <xs:pattern
+                    value="(([2][0-3])|(([01])?[0-9]))([:](([0-5])?[0-9])){2}([.]([0-9])+)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -22,16 +22,12 @@
         <element id="extracted-dir" path="$PROJECT_DIR$/joda-time-2.2-javadoc.jar" path-in-jar="/" />
         <element id="extracted-dir" path="$PROJECT_DIR$/joda-time-2.2.jar" path-in-jar="/" />
         <element id="extracted-dir" path="$PROJECT_DIR$/sqltool.jar" path-in-jar="/" />
-        <element id="file-copy" path="$PROJECT_DIR$/sorgenti/business/applicationservice/factory/xml/XMLApplicationServiceMapSchema.xsd" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-contrib.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-javadoc.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-junit.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-sources.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/jaxen-1.1.3.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/xercesImpl.jar" path-in-jar="/" />
-        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/xml-apis.jar" path-in-jar="/" />
-        <element id="file-copy" path="$PROJECT_DIR$/sorgenti/business/applicationservice/factory/xml/XMLApplicationServiceMap.xml" />
+      </element>
+      <element id="directory" name="language">
+        <element id="dir-copy" path="$PROJECT_DIR$/language" />
+      </element>
+      <element id="directory" name="schema">
+        <element id="dir-copy" path="$PROJECT_DIR$/schema" />
       </element>
     </root>
   </artifact>
