@@ -60,40 +60,43 @@
                                     <Font size="15.0" fx:id="x1" />
                                   </font>
                                 </Label>
-                                <Button minWidth="75.0" mnemonicParsing="false" text="add" />
-                                <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                                <Button minWidth="75.0" mnemonicParsing="false" onAction="#onInserisciInfermiere" text="add" />
+                                <Button minWidth="75.0" mnemonicParsing="false" onAction="#onModificaInfermiere" text="edit" />
                               </children>
                             </HBox>
+                            <StackPane>
+                              <children>
+                                <TableView fx:id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0">
+                                  <columns>
+                                    <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idInfermiere">
+                                      <graphic>
+                                        <Label text="id" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="nomeInfermiere">
+                                      <graphic>
+                                        <Label text="name" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="cognomeInfermiere">
+                                      <graphic>
+                                        <Label text="surname" />
+                                      </graphic>
+                                    </TableColumn>
+                                  </columns>
+                                  <StackPane.margin>
+                                    <Insets fx:id="x2" />
+                                  </StackPane.margin>
+                                </TableView>
+                              </children>
+                              <StackPane.margin>
+                                <Insets top="30.0" fx:id="x4" />
+                              </StackPane.margin>
+                            </StackPane>
                           </children>
                           <padding>
                             <Insets top="3.0" />
                           </padding>
-                        </StackPane>
-                        <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <children>
-                            <TableView fx:id="tabellaInfermiere" prefHeight="200.0" prefWidth="200.0">
-                              <columns>
-                                <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idInfermiere">
-                                  <graphic>
-                                    <Label text="id" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="nomeInfermiere">
-                                  <graphic>
-                                    <Label text="name" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="cognomeInfermiere">
-                                  <graphic>
-                                    <Label text="surname" />
-                                  </graphic>
-                                </TableColumn>
-                              </columns>
-                              <StackPane.margin>
-                                <Insets top="35.0" fx:id="x2" />
-                              </StackPane.margin>
-                            </TableView>
-                          </children>
                         </StackPane>
                       </children>
                       <padding>
@@ -107,56 +110,56 @@
                             <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
                               <children>
                                 <Label fx:id="titoloPaziente" font="$x1" text="patients" />
-                                <Button minWidth="75.0" mnemonicParsing="false" text="add" />
-                                <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                                <Button minWidth="75.0" mnemonicParsing="false" onAction="#onInserisciPaziente" text="add" />
+                                <Button minWidth="75.0" mnemonicParsing="false" onAction="#onModificaPaziente" text="edit" />
                               </children>
                             </HBox>
+                            <StackPane prefHeight="242.0" prefWidth="415.0" StackPane.margin="$x4">
+                              <children>
+                                <TableView id="tabellaInfermiere" fx:id="tabellaPaziente" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
+                                  <columns>
+                                    <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idPaziente">
+                                      <graphic>
+                                        <Label text="id" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="nomePaziente">
+                                      <graphic>
+                                        <Label text="name" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="cognomePaziente">
+                                      <graphic>
+                                        <Label text="surname" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="dataPaziente">
+                                      <graphic>
+                                        <Label text="birthDate" />
+                                      </graphic>
+                                    </TableColumn>
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </StackPane>
                           </children>
                           <padding>
                             <Insets top="3.0" />
                           </padding>
                         </StackPane>
-                        <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <children>
-                            <TableView id="tabellaInfermiere" fx:id="tabellaPaziente" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
-                              <columns>
-                                <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idPaziente">
-                                  <graphic>
-                                    <Label text="id" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="nomePaziente">
-                                  <graphic>
-                                    <Label text="name" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="cognomePaziente">
-                                  <graphic>
-                                    <Label text="surname" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="dataPaziente">
-                                  <graphic>
-                                    <Label text="birthDate" />
-                                  </graphic>
-                                </TableColumn>
-                              </columns>
-                            </TableView>
-                          </children>
-                        </StackPane>
                       </children>
                     </AnchorPane>
                     <AnchorPane prefHeight="178.0" prefWidth="656.0" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
                       <children>
-                        <StackPane alignment="TOP_LEFT" layoutY="4.0" prefHeight="29.0" prefWidth="834.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <StackPane alignment="TOP_LEFT" prefHeight="250.0" prefWidth="846.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <children>
-                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                            <HBox maxHeight="18.0" spacing="15.0">
                               <children>
                                 <HBox alignment="CENTER" spacing="8.0">
                                   <children>
                                     <Label fx:id="titoloIntervento" font="$x1" text="interventions" />
-                                    <Button minWidth="75.0" mnemonicParsing="false" text="add" />
-                                    <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                                    <Button minWidth="75.0" mnemonicParsing="false" onAction="#onInserisciIntervento" text="add" />
+                                    <Button minWidth="75.0" mnemonicParsing="false" onAction="#onModificaIntervento" text="edit" />
                                     <Button minWidth="75.0" mnemonicParsing="false" text="delete" />
                                   </children>
                                 </HBox>
@@ -174,58 +177,58 @@
                                 </AnchorPane>
                               </children>
                             </HBox>
+                            <StackPane StackPane.margin="$x4">
+                              <children>
+                                <TableView id="tabellaInfermiere" fx:id="tabellaIntervento" StackPane.margin="$x2">
+                                  <columns>
+                                    <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idIntervento">
+                                      <graphic>
+                                        <Label text="id" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="cittaIntervento">
+                                      <graphic>
+                                        <Label text="city" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="capIntervento">
+                                      <graphic>
+                                        <Label text="postalCode" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="indirizzoIntervento">
+                                      <graphic>
+                                        <Label text="address" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="dataIntervento">
+                                      <graphic>
+                                        <Label text="date" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="oraIntervento">
+                                      <graphic>
+                                        <Label text="time" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="pazienteIntervento">
+                                      <graphic>
+                                        <Label text="patient" />
+                                      </graphic>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" fx:id="infermiereIntervento">
+                                      <graphic>
+                                        <Label text="nurse" />
+                                      </graphic>
+                                    </TableColumn>
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </StackPane>
                           </children>
                           <padding>
                             <Insets top="3.0" />
                           </padding>
-                        </StackPane>
-                        <StackPane prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <children>
-                            <TableView id="tabellaInfermiere" fx:id="tabellaIntervento" prefHeight="200.0" prefWidth="200.0" StackPane.margin="$x2">
-                              <columns>
-                                <TableColumn editable="false" maxWidth="80.0" minWidth="60.0" prefWidth="65.0" fx:id="idIntervento">
-                                  <graphic>
-                                    <Label text="id" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="cittaIntervento">
-                                  <graphic>
-                                    <Label text="city" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="capIntervento">
-                                  <graphic>
-                                    <Label text="postalCode" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="indirizzoIntervento">
-                                  <graphic>
-                                    <Label text="address" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="dataIntervento">
-                                  <graphic>
-                                    <Label text="date" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="oraIntervento">
-                                  <graphic>
-                                    <Label text="time" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="pazienteIntervento">
-                                  <graphic>
-                                    <Label text="patient" />
-                                  </graphic>
-                                </TableColumn>
-                                <TableColumn prefWidth="75.0" fx:id="infermiereIntervento">
-                                  <graphic>
-                                    <Label text="nurse" />
-                                  </graphic>
-                                </TableColumn>
-                              </columns>
-                            </TableView>
-                          </children>
                         </StackPane>
                       </children>
                       <padding>

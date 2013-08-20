@@ -3,6 +3,8 @@ package presentation.boundary.controller;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Paziente;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import org.joda.time.LocalDate;
 import presentation.controller.FrontController;
@@ -58,6 +62,30 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML private Button esci;
 
+    @FXML private void onInserisciInfermiere(ActionEvent event) {
+        System.out.println(clipboardInfermiere.getString());
+    }
+
+    @FXML private void onModificaInfermiere(ActionEvent event) {
+        System.out.println(clipboardInfermiere.getString());
+    }
+
+    @FXML private void onInserisciPaziente(ActionEvent event) {
+        System.out.println(clipboardPaziente.getString());
+    }
+
+    @FXML private void onModificaPaziente(ActionEvent event) {
+        System.out.println(clipboardPaziente.getString());
+    }
+
+    @FXML private void onInserisciIntervento(ActionEvent event) {
+        System.out.println(clipboardIntervento.getString());
+    }
+
+    @FXML private void onModificaIntervento(ActionEvent event) {
+        System.out.println(clipboardIntervento.getString());
+    }
+
     @FXML private void onAggiorna(ActionEvent event) {
         loadAllTables();
     }
@@ -73,10 +101,14 @@ public class SchermataPrincipale implements Initializable {
         tabellaPaziente.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabellaIntervento.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+        tabellaInfermiere.getSelectionModel().selectedItemProperty().addListener(new onSelectedInfermiereListener());
+        tabellaPaziente.getSelectionModel().selectedItemProperty().addListener(new onSelectedPazienteListener());
+        tabellaIntervento.getSelectionModel().selectedItemProperty().addListener(new onSelectedInterventoListener());
+
         loadAllTables();
     }
 
-    private void loadAllTables() {
+    private synchronized void loadAllTables() {
         //Paziente
         List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
         ObservableList<Paziente> pazienteData = FXCollections.observableArrayList(pazienteList);
@@ -123,4 +155,40 @@ public class SchermataPrincipale implements Initializable {
         tabellaIntervento.setItems(interventoData);
     }
 
+    private Clipboard clipboardInfermiere = Clipboard.getSystemClipboard();
+    private Clipboard clipboardPaziente = Clipboard.getSystemClipboard();
+    private Clipboard clipboardIntervento = Clipboard.getSystemClipboard();
+
+    private class onSelectedInfermiereListener implements ChangeListener<Infermiere> {
+
+        @Override
+        public void changed(ObservableValue<? extends Infermiere> observableValue, Infermiere oldInfermiere, Infermiere newInfermiere) {
+            Infermiere selectedInfermiere = newInfermiere;
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selectedInfermiere.getId());
+            clipboardInfermiere.setContent(content);
+        }
+    }
+
+    private class onSelectedPazienteListener implements ChangeListener<Paziente> {
+
+        @Override
+        public void changed(ObservableValue<? extends Paziente> observableValue, Paziente oldPaziente, Paziente newPaziente) {
+            Paziente selectedPaziente = newPaziente;
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selectedPaziente.getId());
+            clipboardPaziente.setContent(content);
+        }
+    }
+
+    private class onSelectedInterventoListener implements ChangeListener<Intervento> {
+
+        @Override
+        public void changed(ObservableValue<? extends Intervento> observableValue, Intervento oldIntervento, Intervento newIntervento) {
+            Intervento selectedIntervento = newIntervento;
+            ClipboardContent content = new ClipboardContent();
+            content.putString(selectedIntervento.getId());
+            clipboardIntervento.setContent(content);
+        }
+    }
 }

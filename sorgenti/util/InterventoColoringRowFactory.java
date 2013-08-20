@@ -59,7 +59,6 @@ public class InterventoColoringRowFactory<AtomicType> implements Callback<TableC
                     if(InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
                         row.setEffect(blush);
                         row.setEditable(false);
-                        row.setDisable(true);
                     }
                 } else {
                     setText(null);
