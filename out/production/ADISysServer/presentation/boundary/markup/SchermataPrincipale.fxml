@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,0,0.2);" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,0,0.2);" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
     <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,255,0.25);&#10;-fx-border-color: rgb(0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -19,7 +19,7 @@
           <children>
             <AnchorPane id="anchor" maxHeight="100.0" prefHeight="100.0" prefWidth="160.0">
               <children>
-                <StackPane prefHeight="100.0" prefWidth="454.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <StackPane prefHeight="100.0" prefWidth="539.0000999999975" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="846.0" snapToPixel="false" spacing="20.0">
                       <children>
@@ -47,7 +47,7 @@
                   <children>
                     <HBox alignment="CENTER_RIGHT" snapToPixel="false" spacing="35.0">
                       <children>
-                        <Button mnemonicParsing="false">
+                        <Button mnemonicParsing="false" onAction="#onSetItaliano">
                           <graphic>
                             <ImageView fitHeight="64.0" fitWidth="64.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                               <effect>
@@ -59,7 +59,7 @@
                             </ImageView>
                           </graphic>
                         </Button>
-                        <Button mnemonicParsing="false">
+                        <Button mnemonicParsing="false" onAction="#onSetEnglish">
                           <graphic>
                             <ImageView fitHeight="64.0" fitWidth="64.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                               <effect>
