@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
-    <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,255,0.3);&#10;-fx-border-color: rgb(0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,255,0.25);&#10;-fx-border-color: rgb(0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <StackPane alignment="TOP_LEFT" maxHeight="660.0" prefHeight="660.0" prefWidth="870.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -22,6 +22,9 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="682.0" snapToPixel="false" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                     <ImageView fitHeight="93.75001525878906" fitWidth="93.75001525878906" pickOnBounds="true" preserveRatio="true">
+                      <effect>
+                        <DropShadow color="WHITE" spread="0.07142857142857142" />
+                      </effect>
                       <image>
                         <Image url="@image/hospital.png" preserveRatio="false" smooth="false" />
                       </image>

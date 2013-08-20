@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,0,0.2);" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
     <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" style="-fx-background-color: rgba(0,0,255,0.25);&#10;-fx-border-color: rgb(0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,14 +30,14 @@
                       </image>
                     </ImageView>
                     <Label id="title" fx:id="titolo" text="adisysServer">
-                      <effect>
-                        <Glow />
-                      </effect>
                       <font>
-                        <Font name="Arial" size="40.0" />
+                        <Font name="Arial Rounded MT Bold" size="50.0" />
                       </font>
                     </Label>
                   </children>
+                  <padding>
+                    <Insets left="2.0" />
+                  </padding>
                 </HBox>
               </children>
             </AnchorPane>
@@ -53,11 +53,17 @@
                       <children>
                         <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <children>
-                            <Label id="TitoloInfermiere" fx:id="titoloInfermiere" text="nurses">
-                              <font>
-                                <Font size="15.0" fx:id="x1" />
-                              </font>
-                            </Label>
+                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+                              <children>
+                                <Label id="TitoloInfermiere" fx:id="titoloInfermiere" text="nurses">
+                                  <font>
+                                    <Font size="15.0" fx:id="x1" />
+                                  </font>
+                                </Label>
+                                <Button minWidth="75.0" mnemonicParsing="false" text="add" />
+                                <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                              </children>
+                            </HBox>
                           </children>
                           <padding>
                             <Insets top="3.0" />
@@ -98,7 +104,13 @@
                       <children>
                         <StackPane alignment="TOP_LEFT" prefHeight="179.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <children>
-                            <Label fx:id="titoloPaziente" font="$x1" text="patients" />
+                            <HBox prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+                              <children>
+                                <Label fx:id="titoloPaziente" font="$x1" text="patients" />
+                                <Button minWidth="75.0" mnemonicParsing="false" text="add" />
+                                <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                              </children>
+                            </HBox>
                           </children>
                           <padding>
                             <Insets top="3.0" />
@@ -140,7 +152,14 @@
                           <children>
                             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                               <children>
-                                <Label fx:id="titoloIntervento" font="$x1" text="interventions" />
+                                <HBox alignment="CENTER" spacing="8.0">
+                                  <children>
+                                    <Label fx:id="titoloIntervento" font="$x1" text="interventions" />
+                                    <Button minWidth="75.0" mnemonicParsing="false" text="add" />
+                                    <Button minWidth="75.0" mnemonicParsing="false" text="edit" />
+                                    <Button minWidth="75.0" mnemonicParsing="false" text="delete" />
+                                  </children>
+                                </HBox>
                                 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: rgba(255,0,0,0.3);&#10;">
                                   <children>
                                     <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
