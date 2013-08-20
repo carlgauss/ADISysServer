@@ -58,15 +58,6 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML private Button esci;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        tabellaInfermiere.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        tabellaPaziente.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        tabellaIntervento.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        loadAllTables();
-    }
-
     @FXML private void onAggiorna(ActionEvent event) {
         loadAllTables();
     }
@@ -74,6 +65,15 @@ public class SchermataPrincipale implements Initializable {
     @FXML private void onExit(ActionEvent event) {
         Stage stage = (Stage) esci.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tabellaInfermiere.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tabellaPaziente.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tabellaIntervento.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        loadAllTables();
     }
 
     private void loadAllTables() {
