@@ -10,6 +10,7 @@ import javafx.stage.StageStyle;
 import util.Parameter;
 import util.SimpleFormTranslator;
 
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -28,14 +29,14 @@ public class SchermataPrincipale extends Application implements Boundary {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        ResourceBundle bundle = SimpleFormTranslator.getLanguage();
+        Properties properties = SimpleFormTranslator.getLanguage();
 
         Class<?> mainClass = getClass();
 
         String schemePath = MARKUP_FOLDER + mainClass.getSimpleName() + FXML_EXTENSION;
         Parent root = fxmlLoader.load(mainClass.getResource(schemePath));
 
-        SimpleFormTranslator.translateAll(root, bundle);
+        SimpleFormTranslator.translateAll(root, properties);
 
         stage.setTitle(SimpleFormTranslator.translate("adisysServer"));
         stage.initStyle(StageStyle.UNDECORATED);

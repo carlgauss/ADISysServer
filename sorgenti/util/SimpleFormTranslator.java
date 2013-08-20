@@ -1,6 +1,5 @@
 package util;
 
-import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -19,13 +18,11 @@ import java.util.Set;
  */
 public class SimpleFormTranslator {
 
-    private static final String LANGUAGE_DIR = "presentation.boundary.markup.language.";
-
     private static final Class<?> LABELED_CLASS = Labeled.class;
     private static final Class<?> TABLE_VIEW = TableView.class;
     private static final Class<?> MENU_BUTTON = MenuButton.class;
 
-    public static void translateAll(Node root, ResourceBundle bundle) {
+    public static void translateAll(Node root, Properties properties) {
         Set<Node> nodeSet = root.lookupAll("*");
         for (Node node : nodeSet) {
             Class<?> nodeClass = node.getClass();
@@ -35,16 +32,16 @@ public class SimpleFormTranslator {
                     ObservableList<MenuItem> menuItems = menuButton.getItems();
                     for (MenuItem item : menuItems) {
                         String text = item.getText();
-                        if (bundle.containsKey(text)) {
-                            String translatedText = bundle.getString(text);
+                        if (properties.containsKey(text)) {
+                            String translatedText = properties.getProperty(text);
                             item.setText(translatedText);
                         }
                     }
                 }
                 Labeled labelObject = (Labeled) node;
                 String text = labelObject.getText();
-                if (bundle.containsKey(text)) {
-                    String translatedText = bundle.getString(text);
+                if (properties.containsKey(text)) {
+                    String translatedText = properties.getProperty(text);
                     labelObject.setText(translatedText);
                 }
 
@@ -56,12 +53,12 @@ public class SimpleFormTranslator {
                     if (LABELED_CLASS.isAssignableFrom(nodeClass)) {
                         Labeled labeled = (Labeled) graphic;
                         String text = labeled.getText();
-                        if (bundle.containsKey(text)) {
-                            String translatedText = bundle.getString(text);
+                        if (properties.containsKey(text)) {
+                            String translatedText = properties.getProperty(text);
                             labeled.setText(translatedText);
                         }
                     } else {
-                        translateAll(graphic, bundle);
+                        translateAll(graphic, properties);
                     }
                 }
             }
@@ -72,9 +69,9 @@ public class SimpleFormTranslator {
     private static final String LANGUAGE_KEY = "language";
     private static final String PROPERTIES_EXTENSION = ".properties";
     private static final String LANGUAGE_FILE = LANGUAGE_KEY + PROPERTIES_EXTENSION;
-    private static final String TRANSLATED_TEXT_PATH = "sorgenti/presentation/boundary/markup/language/";
+    private static final String TRANSLATED_TEXT_PATH = "language/";
 
-    public static ResourceBundle getLanguage() {
+    public static Properties getLanguage() {
         File languageFile = new File(LANGUAGE_FILE);
         String language = null;
         if (languageFile.exists()) {
@@ -96,12 +93,17 @@ public class SimpleFormTranslator {
             createDefaultLanguageFile();
             language = DEFAULT_LANGUAGE;
         }
-        ResourceBundle bundle = ResourceBundle.getBundle(SimpleFormTranslator.LANGUAGE_DIR + language);
-        settedBundle = bundle;
-        return bundle;
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream(TRANSLATED_TEXT_PATH + language + PROPERTIES_EXTENSION));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        settedProperties = properties;
+        return properties;
     }
 
-    private static ResourceBundle settedBundle;
+    private static Properties settedProperties;
 
     private static void createDefaultLanguageFile() {
         Properties properties = new Properties();
@@ -121,16 +123,16 @@ public class SimpleFormTranslator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        settedBundle = null;
+        settedProperties = null;
     }
 
     public static String translate(String text) {
-        if(settedBundle == null) {
-            settedBundle = getLanguage();
+        if(settedProperties == null) {
+            settedProperties = getLanguage();
         }
         String translatedText = text;
-        if (settedBundle.containsKey(text)) {
-            translatedText = settedBundle.getString(text);
+        if (settedProperties.containsKey(text)) {
+            translatedText = settedProperties.getProperty(text);
         }
         return translatedText;
     }

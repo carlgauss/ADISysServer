@@ -1,7 +1,9 @@
 package integration.xml;
 
+import java.io.File;
 import java.util.List;
 
+import business.applicationservice.factory.xml.XMLApplicationServiceMapper;
 import org.joda.time.LocalDateTime;
 import org.xml.sax.SAXException;
 
@@ -14,10 +16,6 @@ import util.xml.validator.XMLValidatorFactory;
 import business.entity.*;
 
 public class XMLDAOPianificazione implements DAOPianificazione {
-	private static final String PACKAGE_PATH = "sorgenti/integration/xml/";
-	private static final String XML_SCHEMA_FILE_NAME = "XMLPianificazioneSchema.xsd";
-	private static final String CANONICAL_XML_SCHEMA_FILE_NAME = PACKAGE_PATH + XML_SCHEMA_FILE_NAME;
-	
 	private static final String PIANIFICAZIONE_HEADER = "pianificazione";
 	
 	private static final String PIANIFICAZIONE_FOLDER = "pianificazione";
@@ -54,9 +52,7 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 		
 		marshaller.marshal(pianificazione);
 		
-		XMLValidator validator = XMLValidatorFactory.buildInstance(CANONICAL_XML_SCHEMA_FILE_NAME);
-		validator.validate(canonicalXMLFileName);
+		XMLValidator validator = XMLValidatorFactory.buildInstance(XMLApplicationServiceMapper.SCHEMA_FILE);
+		validator.validate(new File(canonicalXMLFileName));
 	}
-	
-	
 }

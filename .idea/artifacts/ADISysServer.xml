@@ -1,0 +1,38 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="ADISysServer">
+    <output-path>$PROJECT_DIR$/out/artifacts/ADISysServer</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="presentation.boundary.SchermataPrincipale" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="ADISys Server" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="ADISysServer.jar">
+        <element id="module-output" name="ADISysServer" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/datafx-core-1.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/DialogFX.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/hsqldb.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jmockit-coverage.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jmockit.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/joda-time-2.2-javadoc.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/joda-time-2.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/sqltool.jar" path-in-jar="/" />
+        <element id="file-copy" path="$PROJECT_DIR$/sorgenti/business/applicationservice/factory/xml/XMLApplicationServiceMapSchema.xsd" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-contrib.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-javadoc.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-junit.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3-sources.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/jdom-2.0.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/jaxen-1.1.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/xercesImpl.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$PROJECT_DIR$/jdom/lib/xml-apis.jar" path-in-jar="/" />
+        <element id="file-copy" path="$PROJECT_DIR$/sorgenti/business/applicationservice/factory/xml/XMLApplicationServiceMap.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,16 +1,15 @@
 <component name="libraryTable">
   <library name="ADISysServer">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/hsqldb.jar!/" />
-      <root url="jar://$PROJECT_DIR$/jmockit.jar!/" />
-      <root url="jar://$PROJECT_DIR$/jmockit-coverage.jar!/" />
-      <root url="jar://$PROJECT_DIR$/forms-1.3.0-src.zip!/" />
-      <root url="jar://$PROJECT_DIR$/joda-time-2.2-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/forms-1.3.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/joda-time-2.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/sqltool.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/test" />
+      <root url="file://$PROJECT_DIR$/sorgenti" />
+      <root url="file://$PROJECT_DIR$" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$" recursive="false" type="SOURCES" />
   </library>
 </component>

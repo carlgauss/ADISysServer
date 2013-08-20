@@ -1,7 +1,5 @@
 package business.applicationservice.factory;
 
-import business.applicationservice.factory.xml.XMLApplicationServiceMapper;
-
 
 
 class ApplicationServiceSelector {
@@ -11,7 +9,7 @@ class ApplicationServiceSelector {
 	private static ApplicationServiceMap asMap = new ApplicationServiceHashMap();
 
 	static {
-		XMLApplicationServiceMapper.map(asMap);
+		//XMLApplicationServiceMapper.map(asMap);
 	}
 
 	private ApplicationServiceSelector() {

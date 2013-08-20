@@ -1,5 +1,6 @@
 package util.xml.validator;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.XMLConstants;
@@ -16,7 +17,7 @@ class XMLDefaultValidator implements XMLValidator {
 	
 	private Schema schema;
 	
-	public XMLDefaultValidator(String canonicalSchemaFileName) {
+	public XMLDefaultValidator(File canonicalSchemaFileName) {
 		try {
 			schema = factory.newSchema(new StreamSource(canonicalSchemaFileName));
 		} catch (SAXException e) {
@@ -30,7 +31,7 @@ class XMLDefaultValidator implements XMLValidator {
 	private Validator validator;
 	
 	@Override
-	public void validate(String fileName) throws SAXException {
+	public void validate(File fileName) throws SAXException {
 		try {
 			validator.validate(new StreamSource(fileName));
 		} catch (IOException e) {
