@@ -2,6 +2,7 @@ package presentation.controller.test;
 
 import mockit.Mock;
 import presentation.boundary.Boundary;
+import util.Parameter;
 
 public class SchermataPazientiStub implements Boundary {
 
@@ -10,7 +11,7 @@ public class SchermataPazientiStub implements Boundary {
 	}
 
 	@Mock
-	public void showWindow() {
+	public void showWindow(Parameter parameter) {
 		System.out.println("OK Shown SchermataPaziente");
 
 	}

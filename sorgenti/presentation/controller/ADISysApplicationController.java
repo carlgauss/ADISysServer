@@ -18,7 +18,7 @@ class ADISysApplicationController implements ApplicationController {
 
         try {
             if (serviceName.matches(SHOW_SYNTAX)) {
-                dispatchGUI(serviceName);
+                dispatchGUI(serviceName, parameter);
             } else {
                 result = execute(serviceName, parameter);
             }
@@ -35,9 +35,9 @@ class ADISysApplicationController implements ApplicationController {
 		return asMethod.invoke(serviceName, parameter);
 	}
 
-    private static void dispatchGUI(String serviceName) {
+    private static void dispatchGUI(String serviceName, Parameter parameter) {
         Boundary boundary = BoundaryFactory.buildInstance(serviceName);
-        boundary.showWindow();
+        boundary.showWindow(parameter);
     }
 
 

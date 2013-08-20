@@ -1,7 +1,6 @@
 package presentation.boundary;
 
 import integration.connector.HQSQLConnector;
-import integration.dao.test.DAOInfermiereTest;
 import integration.dao.test.DAOInterventoTest;
 import integration.dao.test.HQSQLConnectorStub;
 import mockit.Mockit;
@@ -31,6 +30,6 @@ public class SchermataPrincipaleTest {
     @Test
     public void testShowWindow() throws Exception {
          SchermataPrincipale pr = new SchermataPrincipale();
-        pr.showWindow();
+        pr.showWindow(null);
     }
 }

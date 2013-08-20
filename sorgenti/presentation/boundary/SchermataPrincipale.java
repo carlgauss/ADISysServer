@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import util.Parameter;
 import util.SimpleFormTranslator;
 
 import java.util.ResourceBundle;
@@ -44,7 +45,7 @@ public class SchermataPrincipale extends Application implements Boundary {
     }
 
     @Override
-    public void showWindow() {
+    public void showWindow(Parameter parameter) {
         launch();
     }
 

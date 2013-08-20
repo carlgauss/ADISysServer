@@ -63,27 +63,27 @@ public class SchermataPrincipale implements Initializable {
     @FXML private Button esci;
 
     @FXML private void onInserisciInfermiere(ActionEvent event) {
-        System.out.println(clipboardInfermiere.getString());
+        System.out.println(selectedInfermiere.getId());
     }
 
     @FXML private void onModificaInfermiere(ActionEvent event) {
-        System.out.println(clipboardInfermiere.getString());
+        System.out.println(selectedInfermiere.getId());
     }
 
     @FXML private void onInserisciPaziente(ActionEvent event) {
-        System.out.println(clipboardPaziente.getString());
+        System.out.println(selectedPaziente.getId());
     }
 
     @FXML private void onModificaPaziente(ActionEvent event) {
-        System.out.println(clipboardPaziente.getString());
+        System.out.println(selectedPaziente.getId());
     }
 
     @FXML private void onInserisciIntervento(ActionEvent event) {
-        System.out.println(clipboardIntervento.getString());
+        System.out.println(selectedIntervento.getId());
     }
 
     @FXML private void onModificaIntervento(ActionEvent event) {
-        System.out.println(clipboardIntervento.getString());
+        System.out.println(selectedIntervento.getId());
     }
 
     @FXML private void onAggiorna(ActionEvent event) {
@@ -155,29 +155,28 @@ public class SchermataPrincipale implements Initializable {
         tabellaIntervento.setItems(interventoData);
     }
 
-    private Clipboard clipboardInfermiere = Clipboard.getSystemClipboard();
-    private Clipboard clipboardPaziente = Clipboard.getSystemClipboard();
-    private Clipboard clipboardIntervento = Clipboard.getSystemClipboard();
+    private Infermiere selectedInfermiere = null;
+    private Paziente selectedPaziente = null;
+    private Intervento selectedIntervento = null;
 
     private class onSelectedInfermiereListener implements ChangeListener<Infermiere> {
 
         @Override
         public void changed(ObservableValue<? extends Infermiere> observableValue, Infermiere oldInfermiere, Infermiere newInfermiere) {
-            Infermiere selectedInfermiere = newInfermiere;
-            ClipboardContent content = new ClipboardContent();
-            content.putString(selectedInfermiere.getId());
-            clipboardInfermiere.setContent(content);
+            selectedInfermiere = newInfermiere;
         }
     }
 
     private class onSelectedPazienteListener implements ChangeListener<Paziente> {
 
+        private ObservableValue<? extends Paziente> observableValue;
+        private Paziente oldPaziente;
+
         @Override
         public void changed(ObservableValue<? extends Paziente> observableValue, Paziente oldPaziente, Paziente newPaziente) {
-            Paziente selectedPaziente = newPaziente;
-            ClipboardContent content = new ClipboardContent();
-            content.putString(selectedPaziente.getId());
-            clipboardPaziente.setContent(content);
+            this.observableValue = observableValue;
+            this.oldPaziente = oldPaziente;
+            selectedPaziente = newPaziente;
         }
     }
 
@@ -185,10 +184,7 @@ public class SchermataPrincipale implements Initializable {
 
         @Override
         public void changed(ObservableValue<? extends Intervento> observableValue, Intervento oldIntervento, Intervento newIntervento) {
-            Intervento selectedIntervento = newIntervento;
-            ClipboardContent content = new ClipboardContent();
-            content.putString(selectedIntervento.getId());
-            clipboardIntervento.setContent(content);
+            selectedIntervento = newIntervento;
         }
     }
 }
