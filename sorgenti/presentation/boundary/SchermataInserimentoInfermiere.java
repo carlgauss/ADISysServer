@@ -11,7 +11,6 @@ import util.Parameter;
 import util.SimpleFormTranslator;
 
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,9 +19,12 @@ import java.util.ResourceBundle;
  * Time: 10:58
  * To change this template use File | Settings | File Templates.
  */
-public class SchermataPrincipale extends Application implements Boundary {
+
+//TODO
+public class SchermataInserimentoInfermiere extends Application implements Boundary {
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";
+    private static final String SCHEME_RESOURCE = "SchermataImmissioneInfermiere";
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -32,16 +34,16 @@ public class SchermataPrincipale extends Application implements Boundary {
 
         Class<?> mainClass = getClass();
 
-        String schemePath = MARKUP_FOLDER + mainClass.getSimpleName() + FXML_EXTENSION;
+        String schemePath = MARKUP_FOLDER + SCHEME_RESOURCE + FXML_EXTENSION;
         Parent root = fxmlLoader.load(mainClass.getResource(schemePath));
 
         SimpleFormTranslator.translateAll(root, properties);
 
-        stage.setTitle(SimpleFormTranslator.translate("adisysServer"));
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle(SimpleFormTranslator.translate("addNurseScreen"));
+        stage.setResizable(false);
 
-        double width = Screen.getPrimary().getBounds().getWidth();
-        double height = Screen.getPrimary().getBounds().getHeight();
+        double width = 400;
+        double height = 260;
 
         Scene scene = new Scene(root, width, height);
 

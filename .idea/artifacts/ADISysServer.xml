@@ -1,14 +1,16 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="ADISysServer">
+  <artifact type="javafx" name="ADISysServer">
     <output-path>$PROJECT_DIR$/out/artifacts/ADISysServer</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="presentation.boundary.SchermataPrincipale" />
+        <option name="appClass" value="" />
         <option name="description" value="" />
+        <option name="height" value="750" />
         <option name="htmlParamFile" value="" />
         <option name="paramFile" value="" />
-        <option name="title" value="ADISys Server" />
+        <option name="title" value="" />
         <option name="vendor" value="" />
+        <option name="width" value="900" />
       </options>
     </properties>
     <root id="root">
@@ -23,16 +25,16 @@
         <element id="extracted-dir" path="$PROJECT_DIR$/joda-time-2.2.jar" path-in-jar="/" />
         <element id="extracted-dir" path="$PROJECT_DIR$/sqltool.jar" path-in-jar="/" />
       </element>
+      <element id="directory" name="database">
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.log" />
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.properties" />
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.script" />
+      </element>
       <element id="directory" name="language">
         <element id="dir-copy" path="$PROJECT_DIR$/language" />
       </element>
       <element id="directory" name="schema">
         <element id="dir-copy" path="$PROJECT_DIR$/schema" />
-      </element>
-      <element id="directory" name="database">
-        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.log" />
-        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.properties" />
-        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.script" />
       </element>
     </root>
   </artifact>
