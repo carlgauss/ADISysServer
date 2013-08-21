@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" styleClass="window" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" styleClass="window" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
   <children>
     <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,7 +32,7 @@
                             <Image url="@image/hospital.png" preserveRatio="false" smooth="false" />
                           </image>
                         </ImageView>
-                        <Label id="title" fx:id="titolo" text="adisysServer">
+                        <Label id="title" fx:id="titolo" styleClass="title" text="adisysServer">
                           <font>
                             <Font name="Arial Rounded MT Bold" size="50.0" />
                           </font>

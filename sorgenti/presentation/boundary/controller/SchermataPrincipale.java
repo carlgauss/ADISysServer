@@ -62,7 +62,9 @@ public class SchermataPrincipale implements Initializable {
     @FXML private Button esci;
 
     @FXML private void onInserisciInfermiere(ActionEvent event) {
-        System.out.println(selectedInfermiere.getId());
+        //System.out.println(selectedInfermiere.getId());
+        fc.processRequest("MostraSchermataInserimentoInfermiere", null);
+        System.out.println("closed or failure");
     }
 
     @FXML private void onModificaInfermiere(ActionEvent event) {

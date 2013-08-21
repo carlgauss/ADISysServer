@@ -1,6 +1,10 @@
 package presentation.boundary.factory;
 
 import presentation.boundary.Boundary;
+import util.Parameter;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class BoundaryFactory {
 	private static final String BOUNDARY_PACKAGE_PATH = "presentation.boundary.";
@@ -11,9 +15,9 @@ public class BoundaryFactory {
 		
 	}
 	
-	public static Boundary buildInstance(String serviceName) {
+	public static Boundary buildInstance(String serviceName, Parameter parameter) {
 		Class<?> boundaryClass = getBoundaryClass(serviceName);
-		return newBoundaryInstance(boundaryClass);
+		return newBoundaryInstance(boundaryClass, parameter);
 	}
 	
 	private static String getSimpleClassName(String serviceName) {
@@ -40,19 +44,22 @@ public class BoundaryFactory {
 		return boundaryClass;
 	}
 	
-	private static Boundary newBoundaryInstance(Class<?> boundaryClass) {
+	private static Boundary newBoundaryInstance(Class<?> boundaryClass, Parameter parameter) {
 		Boundary boundaryInstance = null;
 		
 		try {
-			boundaryInstance = (Boundary) boundaryClass.newInstance();
+            Constructor constructor = boundaryClass.getConstructor(Parameter.class);
+			boundaryInstance = (Boundary) constructor.newInstance(parameter);
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		return boundaryInstance;
+		} catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+        return boundaryInstance;
 	}
 }

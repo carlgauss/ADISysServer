@@ -1,16 +1,9 @@
 package presentation.boundary;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.Modality;
 import util.Parameter;
 import util.SimpleFormTranslator;
-
-import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,38 +14,22 @@ import java.util.Properties;
  */
 
 //TODO
-public class SchermataInserimentoInfermiere extends Application implements Boundary {
+public class SchermataInserimentoInfermiere extends ReturnableStage {
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";
     private static final String SCHEME_RESOURCE = "SchermataImmissioneInfermiere";
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
+    private static final String SCHEME_PATH = MARKUP_FOLDER + SCHEME_RESOURCE + FXML_EXTENSION;
 
-        Properties properties = SimpleFormTranslator.getLanguage();
+    public SchermataInserimentoInfermiere(Parameter parameter) {
+        super(parameter, SCHEME_PATH);
 
-        Class<?> mainClass = getClass();
+        setTitle(SimpleFormTranslator.translate("addNurseScreen"));
+        setResizable(false);
 
-        String schemePath = MARKUP_FOLDER + SCHEME_RESOURCE + FXML_EXTENSION;
-        Parent root = fxmlLoader.load(mainClass.getResource(schemePath));
-
-        SimpleFormTranslator.translateAll(root, properties);
-
-        stage.setTitle(SimpleFormTranslator.translate("addNurseScreen"));
-        stage.setResizable(false);
-
-        double width = 400;
-        double height = 260;
-
+        initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(root, width, height);
 
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @Override
-    public void showWindow(Parameter parameter) {
-        launch();
+        setScene(scene);
     }
 }

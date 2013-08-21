@@ -50,7 +50,8 @@ public class SchermataPrincipale extends Application implements Boundary {
     }
 
     @Override
-    public void showWindow(Parameter parameter) {
+    public Object showWindow(Parameter parameter) {
         launch();
+        return null;
     }
 }

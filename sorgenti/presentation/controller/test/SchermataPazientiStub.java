@@ -11,9 +11,9 @@ public class SchermataPazientiStub implements Boundary {
 	}
 
 	@Mock
-	public void showWindow(Parameter parameter) {
+	public Object showWindow(Parameter parameter) {
 		System.out.println("OK Shown SchermataPaziente");
-
+        return null;
 	}
 
 }
