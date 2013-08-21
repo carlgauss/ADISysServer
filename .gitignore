@@ -2,7 +2,7 @@
 .DS_Store
 *.DS_Store
 out
-
+*.bak
 workspace.xml
 .idea/workspace.xml
 ADISysServer2/.idea/workspace.xml
