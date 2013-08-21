@@ -37,7 +37,6 @@ public class BoundaryFactory {
 		try {
 			boundaryClass = Class.forName(canonicalClassName);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

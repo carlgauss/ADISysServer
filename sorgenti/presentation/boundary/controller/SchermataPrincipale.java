@@ -73,7 +73,7 @@ public class SchermataPrincipale implements Initializable {
         Parameter parameter = new Parameter();
         if(selectedInfermiere != null) {
             parameter.setValue("infermiere", selectedInfermiere);
-            fc.processRequest("MostraSchermataModificaInfermiere", null);
+            fc.processRequest("MostraSchermataModificaInfermiere", parameter);
         } else {
             MessageDisplayer.showErrorMessage(null, "selectNurse");
         }

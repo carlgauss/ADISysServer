@@ -4,17 +4,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import presentation.boundary.controller.SchermataImmissione;
 import util.Parameter;
 import util.SimpleLabelTranslator;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 public abstract class ReturnableStage extends Stage implements Boundary {
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";
 
-    protected Parameter parameter;
     protected Object value;
     protected Region root;
     protected double width;
@@ -22,7 +24,6 @@ public abstract class ReturnableStage extends Stage implements Boundary {
     protected Scene scene;
 
     public ReturnableStage(Parameter parameter, String schemeResource) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
 
         Properties properties = SimpleLabelTranslator.getLanguage();
 
@@ -30,8 +31,13 @@ public abstract class ReturnableStage extends Stage implements Boundary {
 
         schemeResource = MARKUP_FOLDER + schemeResource + FXML_EXTENSION;
 
+        FXMLLoader fxmlLoader = new FXMLLoader(mainClass.getResource(schemeResource));
+
         try {
-            root = fxmlLoader.load(mainClass.getResource(schemeResource));
+            root = (Region) fxmlLoader.load();
+            SchermataImmissione schermataImmissione = fxmlLoader.getController();
+
+            schermataImmissione.initData(parameter);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,8 +49,6 @@ public abstract class ReturnableStage extends Stage implements Boundary {
 
         scene = new Scene(root, width, height);
         setScene(scene);
-
-        this.parameter = parameter;
     }
 
     public ReturnableStage() {
@@ -52,10 +56,6 @@ public abstract class ReturnableStage extends Stage implements Boundary {
 
     public void setResult(Object object) {
         value = object;
-    }
-
-    public Parameter getParameter() {
-        return parameter;
     }
 
     @Override
