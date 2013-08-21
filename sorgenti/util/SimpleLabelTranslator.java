@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 
 import java.io.*;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import java.util.Set;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Set;
  * Time: 20:50
  * To change this template use File | Settings | File Templates.
  */
-public class SimpleFormTranslator {
+public class SimpleLabelTranslator {
 
     private static final Class<?> LABELED_CLASS = Labeled.class;
     private static final Class<?> TABLE_VIEW = TableView.class;

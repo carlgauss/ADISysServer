@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,7 +23,8 @@ import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory
 import presentation.boundary.controller.itemfactory.DateDepictionFactory;
 import presentation.boundary.controller.itemfactory.PersonPortrayalFactory;
 import util.MessageDisplayer;
-import util.SimpleFormTranslator;
+import util.Parameter;
+import util.SimpleLabelTranslator;
 
 import java.net.URL;
 import java.util.List;
@@ -37,6 +39,8 @@ import java.util.ResourceBundle;
  */
 public class SchermataPrincipale implements Initializable {
     private FrontController fc = FrontControllerFactory.buildInstance();
+    @FXML private Node root;
+
     @FXML private TableColumn idInfermiere;
     @FXML private TableColumn nomeInfermiere;
     @FXML private TableColumn cognomeInfermiere;
@@ -62,13 +66,17 @@ public class SchermataPrincipale implements Initializable {
     @FXML private Button esci;
 
     @FXML private void onInserisciInfermiere(ActionEvent event) {
-        //System.out.println(selectedInfermiere.getId());
         fc.processRequest("MostraSchermataInserimentoInfermiere", null);
-        System.out.println("closed or failure");
     }
 
     @FXML private void onModificaInfermiere(ActionEvent event) {
-        System.out.println(selectedInfermiere.getId());
+        Parameter parameter = new Parameter();
+        if(selectedInfermiere != null) {
+            parameter.setValue("infermiere", selectedInfermiere);
+            fc.processRequest("MostraSchermataModificaInfermiere", null);
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectNurse");
+        }
     }
 
     @FXML private void onInserisciPaziente(ActionEvent event) {
@@ -88,12 +96,12 @@ public class SchermataPrincipale implements Initializable {
     }
 
     @FXML private void onSetItaliano(ActionEvent event) {
-        SimpleFormTranslator.setLanguage("italiano");
+        SimpleLabelTranslator.setLanguage("italiano");
         MessageDisplayer.showMessage(null, "translateNextRestart");
     }
 
     @FXML private void onSetEnglish(ActionEvent event) {
-        SimpleFormTranslator.setLanguage("english");
+        SimpleLabelTranslator.setLanguage("english");
         MessageDisplayer.showMessage(null, "translateNextRestart");
     }
 

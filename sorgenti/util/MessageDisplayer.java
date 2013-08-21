@@ -1,9 +1,7 @@
 package util;
 
 import org.thehecklers.dialogfx.DialogFX;
-import org.thehecklers.dialogfx.DialogFXBuilder;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +15,12 @@ import java.util.List;
 public class MessageDisplayer {
     public static void showMessage(String title, String text) {
         if (title == null) {
-            title = SimpleFormTranslator.translate("message");
+            title = SimpleLabelTranslator.translate("message");
         } else {
-            title = SimpleFormTranslator.translate(title);
+            title = SimpleLabelTranslator.translate(title);
         }
 
-        text = SimpleFormTranslator.translate(text);
+        text = SimpleLabelTranslator.translate(text);
 
         DialogFX dialog = new DialogFX();
         dialog.setTitleText(title);
@@ -32,12 +30,12 @@ public class MessageDisplayer {
 
     public static void showErrorMessage(String title, String text) {
         if (title == null) {
-            title = SimpleFormTranslator.translate("error");
+            title = SimpleLabelTranslator.translate("error");
         } else {
-            title = SimpleFormTranslator.translate(title);
+            title = SimpleLabelTranslator.translate(title);
         }
 
-        text = SimpleFormTranslator.translate(text);
+        text = SimpleLabelTranslator.translate(text);
 
         DialogFX dialog = new DialogFX(DialogFX.Type.ERROR);
         dialog.setTitleText(title);
@@ -47,12 +45,12 @@ public class MessageDisplayer {
 
     public static void showAcceptMessage(String title, String text) {
         if (title == null) {
-            title = SimpleFormTranslator.translate("error");
+            title = SimpleLabelTranslator.translate("success");
         } else {
-            title = SimpleFormTranslator.translate(title);
+            title = SimpleLabelTranslator.translate(title);
         }
 
-        text = SimpleFormTranslator.translate(text);
+        text = SimpleLabelTranslator.translate(text);
 
         DialogFX dialog = new DialogFX(DialogFX.Type.ACCEPT);
         dialog.setTitleText(title);
@@ -66,16 +64,16 @@ public class MessageDisplayer {
 
     public static boolean showConfirmMessage(String title, String text) {
         if (title == null) {
-            title = SimpleFormTranslator.translate("error");
+            title = SimpleLabelTranslator.translate("confirm");
         } else {
-            title = SimpleFormTranslator.translate(title);
+            title = SimpleLabelTranslator.translate(title);
         }
 
-        text = SimpleFormTranslator.translate(text);
+        text = SimpleLabelTranslator.translate(text);
 
         List<String> buttonLabels = new ArrayList<>(CONFIRM_BUTTON_NUMBER);
-        buttonLabels.add(SimpleFormTranslator.translate("ok"));
-        buttonLabels.add(SimpleFormTranslator.translate("cancel"));
+        buttonLabels.add(SimpleLabelTranslator.translate("ok"));
+        buttonLabels.add(SimpleLabelTranslator.translate("cancel"));
 
         DialogFX dialog = new DialogFX(DialogFX.Type.QUESTION);
         dialog.setTitleText(title);

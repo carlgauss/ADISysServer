@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import util.Parameter;
-import util.SimpleFormTranslator;
+import util.SimpleLabelTranslator;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -24,7 +24,7 @@ public abstract class ReturnableStage extends Stage implements Boundary {
     public ReturnableStage(Parameter parameter, String schemeResource) {
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        Properties properties = SimpleFormTranslator.getLanguage();
+        Properties properties = SimpleLabelTranslator.getLanguage();
 
         Class<?> mainClass = getClass();
 
@@ -36,7 +36,7 @@ public abstract class ReturnableStage extends Stage implements Boundary {
             e.printStackTrace();
         }
 
-        SimpleFormTranslator.translateAll(root, properties);
+        SimpleLabelTranslator.translateAll(root, properties);
 
         width = root.getPrefWidth();
         height = root.getPrefHeight();
