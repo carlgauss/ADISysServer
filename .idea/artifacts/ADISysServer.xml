@@ -29,6 +29,11 @@
       <element id="directory" name="schema">
         <element id="dir-copy" path="$PROJECT_DIR$/schema" />
       </element>
+      <element id="directory" name="database">
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.log" />
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.properties" />
+        <element id="file-copy" path="$PROJECT_DIR$/database/ADISysDB.script" />
+      </element>
     </root>
   </artifact>
 </component>
