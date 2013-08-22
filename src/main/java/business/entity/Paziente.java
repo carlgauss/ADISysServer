@@ -1,11 +1,13 @@
 package business.entity;
 
+import business.applicationservice.exception.InvalidPazienteFieldException;
 import org.joda.time.LocalDate;
 import utility.SerialClone;
 import utility.xml.adapter.XMLDateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.LinkedList;
 import java.util.List;
 
 @XmlRootElement
@@ -42,7 +44,13 @@ public class Paziente implements Person {
     }
 
     @Override
-    public void setNome(String nome) {
+    public void setNome(String nome) throws InvalidPazienteFieldException {
+        boolean isValid = (3 <= nome.length()) && (nome.length() <= 30);
+
+        if (!isValid) {
+            throw new InvalidPazienteFieldException("invalidPatientName");
+        }
+
         this.nome = nome;
     }
 
@@ -53,7 +61,13 @@ public class Paziente implements Person {
     }
 
     @Override
-    public void setCognome(String cognome) {
+    public void setCognome(String cognome) throws InvalidPazienteFieldException {
+        boolean isValid = (3 <= cognome.length()) && (cognome.length() <= 30);
+
+        if (!isValid) {
+            throw new InvalidPazienteFieldException("invalidPatientSurname");
+        }
+
         this.cognome = cognome;
     }
 
@@ -76,6 +90,18 @@ public class Paziente implements Person {
     }
 
     public void setNumeroCellulare(List<String> numeroCellulare) {
-        this.numeroCellulare = SerialClone.clone(numeroCellulare);
+        List<String> numeroCellulareFiltered = new LinkedList<>();
+
+        for (String numero : numeroCellulare) {
+            String numeroTrimmed = numero.trim();
+
+            boolean isNumeroValid = (3 <= numeroTrimmed.length()) && (numeroTrimmed.length() <= 20);
+
+            if (isNumeroValid) {
+                numeroCellulareFiltered.add(numeroTrimmed);
+            }
+        }
+
+        this.numeroCellulare = numeroCellulareFiltered;
     }
 }
