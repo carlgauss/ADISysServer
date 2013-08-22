@@ -138,7 +138,7 @@
             </plugin>
 
 
-            <!-- This version seems to work with jmockit -->
+            <!--
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -170,8 +170,7 @@
                                         <limit>
                                             <counter>COMPLEXITY</counter>
                                             <value>COVEREDRATIO</value>
-                                            <!-- Cambia il successivo parametro per far in modo che il build fallisca
-                                                 se non e' rispettato il minimo coverage nei test-->
+
                                             <minimum>0.05</minimum>
                                         </limit>
                                     </limits>
@@ -181,6 +180,7 @@
                     </execution>
                 </executions>
             </plugin>
+               -->
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -229,6 +229,7 @@
     <profiles>
         <profile>
             <id>coverage-per-test</id>
+            <!--
             <dependencies>
                 <dependency>
                     <groupId>org.codehaus.sonar-plugins.java</groupId>
@@ -237,6 +238,7 @@
                     <scope>test</scope>
                 </dependency>
             </dependencies>
+            -->
             <build>
                 <plugins>
                     <plugin>
@@ -245,12 +247,14 @@
                         <!-- Minimal supported version is 2.4 -->
                         <version>2.16</version>
                         <configuration>
+                            <!--
                             <properties>
                                 <property>
                                     <name>listener</name>
                                     <value>org.sonar.java.jacoco.JUnitListener</value>
                                 </property>
                             </properties>
+                            -->
                         </configuration>
                     </plugin>
                 </plugins>
@@ -266,11 +270,6 @@
             <version>1.3</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.9</version>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>2.3.0</version>
@@ -280,8 +279,11 @@
             <artifactId>joda-time</artifactId>
             <version>2.2</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
     </dependencies>
 
 
