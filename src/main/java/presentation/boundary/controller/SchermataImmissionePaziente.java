@@ -115,6 +115,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         nome.setText(paziente.getNome());
         cognome.setText(paziente.getCognome());
         data.setText(paziente.getData().toString(DateConverter.NORMAL_DATE_FORMAT));
+
+
     }
 
     private ReturnableStage getStage() {

@@ -1,8 +1,8 @@
 package presentation.boundary;
 
 import javafx.stage.Modality;
-import util.Parameter;
-import util.SimpleLabelTranslator;
+import utility.Parameter;
+import utility.SimpleLabelTranslator;
 
 public class SchermataInserimentoPaziente extends ReturnableStage {
     private static final String SCHEME_RESOURCE = "SchermataImmissionePaziente";
