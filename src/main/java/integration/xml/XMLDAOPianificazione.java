@@ -45,14 +45,14 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
         String canonicalXMLFileName = PIANIFICAZIONE_CURR_DIRECTORY + xmlFileName;
 
-        XMLMarshaller marshaller = XMLMarshallerFactory.buildInstance(canonicalXMLFileName, Pianificazione.class);
+        XMLMarshaller marshaller = XMLMarshallerFactory.getMarshaller(canonicalXMLFileName, Pianificazione.class);
 
         Pianificazione pianificazione = new Pianificazione();
         pianificazione.setIntervento(listaInterventi);
 
         marshaller.marshal(pianificazione);
 
-        XMLValidator validator = XMLValidatorFactory.buildInstance(XSD_PIANIFICAZIONE_SCHEMA_FILE);
+        XMLValidator validator = XMLValidatorFactory.getValidator(XSD_PIANIFICAZIONE_SCHEMA_FILE);
         validator.validate(new File(canonicalXMLFileName));
     }
 }

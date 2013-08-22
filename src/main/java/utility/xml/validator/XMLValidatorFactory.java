@@ -4,7 +4,7 @@ import java.io.File;
 
 public class XMLValidatorFactory {
 
-    public static XMLValidator buildInstance(File canonicalFileName) {
+    public static XMLValidator getValidator(File canonicalFileName) {
         return new XMLDefaultValidator(canonicalFileName);
     }
 
