@@ -53,4 +53,8 @@ public class SchermataPrincipale extends Application implements Boundary {
         launch();
         return null;
     }
+
+    public static void main(String... args) {
+        launch(args);
+    }
 }
