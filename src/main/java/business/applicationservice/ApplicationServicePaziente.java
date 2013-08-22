@@ -53,6 +53,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
 
         try {
             LocalDate data = LocalDate.parse(dataString, DateConverter.NORMAL_DATE_FORMAT);
+            paziente.setData(data);
         } catch (IllegalArgumentException e) {
             throw new InvalidPazienteFieldException("formatDateError");
         }
