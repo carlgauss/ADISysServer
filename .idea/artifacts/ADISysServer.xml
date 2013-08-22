@@ -15,10 +15,7 @@
       <element id="archive" name="ADISysServer.jar">
         <element id="module-output" name="ADISysServer" />
       </element>
-      <element id="library" level="project" name="joda-time:joda-time:2.3" />
       <element id="file-copy" path="$PROJECT_DIR$/DialogFX.jar" />
-      <element id="library" level="project" name="org.hsqldb:hsqldb:2.3.0" />
-      <element id="library" level="project" name="org.javafxdata:datafx-core:1.0" />
       <element id="directory" name="language">
         <element id="dir-copy" path="$PROJECT_DIR$/language" />
       </element>
