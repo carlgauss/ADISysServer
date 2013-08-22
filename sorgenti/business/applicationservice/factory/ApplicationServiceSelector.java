@@ -21,6 +21,12 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("VisualizzaTuttiInfermieri");
         asMap.setApplicationServiceValues("ApplicationServiceInfermiere", "getAll");
 
+        asMap.selectApplicationServiceBy("InserisciInfermiere");
+        asMap.setApplicationServiceValues("ApplicationServiceInfermiere", "create");
+
+        asMap.selectApplicationServiceBy("ModificaInfermiere");
+        asMap.setApplicationServiceValues("ApplicationServiceInfermiere", "update");
+
         asMap.selectApplicationServiceBy("VisualizzaTuttiInterventi");
         asMap.setApplicationServiceValues("ApplicationServiceIntervento", "getAll");
 

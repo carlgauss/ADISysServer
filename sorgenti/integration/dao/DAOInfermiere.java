@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import business.applicationservice.exception.InvalidInfermiereFieldException;
 import business.entity.Infermiere;
 
 import static util.QueryStringReplacer.*;
@@ -98,8 +99,10 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		return result;
+		} catch (InvalidInfermiereFieldException e) {
+            e.printStackTrace();
+        }
+
+        return result;
 	}
 }

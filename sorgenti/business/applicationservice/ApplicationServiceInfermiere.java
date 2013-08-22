@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import java.util.List;
 
+import business.applicationservice.exception.InvalidInfermiereFieldException;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
 import business.entity.Infermiere;
@@ -12,14 +13,17 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
 
 	private DAO<Infermiere> daoInfermiere = DAOFactory.buildInstance("DAOInfermiere");
 	
-    public void create(Parameter parameter) {
-    	Infermiere infermiere = (Infermiere) parameter.getValue("infermiere");
+    public void create(Parameter parameter) throws InvalidInfermiereFieldException {
+    	Infermiere infermiere = populate(parameter);
     	
     	daoInfermiere.create(infermiere);
     }
 
-    public void update(Parameter parameter) {	
-    	Infermiere infermiere = (Infermiere) parameter.getValue("infermiere");
+    public void update(Parameter parameter) throws InvalidInfermiereFieldException {
+        Infermiere infermiere = populate(parameter);
+
+        String id = (String) parameter.getValue("id");
+        infermiere.setId(id);
     	
     	daoInfermiere.update(infermiere);
     }
@@ -34,4 +38,16 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
     	return daoInfermiere.getAll();
     }
 
+
+    private Infermiere populate(Parameter parameter) throws InvalidInfermiereFieldException {
+        Infermiere infermiere = new Infermiere();
+
+        String nome = (String) parameter.getValue("nome");
+        infermiere.setNome(nome);
+
+        String cognome = (String) parameter.getValue("cognome");
+        infermiere.setCognome(cognome);
+
+        return infermiere;
+    }
 }

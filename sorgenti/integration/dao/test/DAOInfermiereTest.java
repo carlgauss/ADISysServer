@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.Statement;
 import java.util.List;
 
+import business.applicationservice.exception.InvalidInfermiereFieldException;
 import integration.connector.Connector;
 import integration.connector.ConnectorFactory;
 import integration.connector.HQSQLConnector;
@@ -36,9 +37,17 @@ public class DAOInfermiereTest {
 		infermieri = new Infermiere[INFERMIERI_STRING.length];
 		for (int i = 0; i < infermieri.length; i++) {
 			infermieri[i] = new Infermiere();
-			infermieri[i].setNome(INFERMIERI_STRING[i][0]);
-			infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
-		}
+            try {
+                infermieri[i].setNome(INFERMIERI_STRING[i][0]);
+            } catch (InvalidInfermiereFieldException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            try {
+                infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
+            } catch (InvalidInfermiereFieldException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        }
 	}
 
 	@Before
@@ -83,9 +92,17 @@ public class DAOInfermiereTest {
 		
 		System.out.println("---updating all queries (adding k to the names)---");
 		for (Infermiere e : list) {
-			e.setNome(e.getNome() + "k");
-			e.setCognome(e.getCognome() + "k");
-			dao.update(e);
+            try {
+                e.setNome(e.getNome() + "k");
+            } catch (InvalidInfermiereFieldException e1) {
+                e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            try {
+                e.setCognome(e.getCognome() + "k");
+            } catch (InvalidInfermiereFieldException e1) {
+                e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            dao.update(e);
 			System.out.println("infermiere updated");
 		}
 		

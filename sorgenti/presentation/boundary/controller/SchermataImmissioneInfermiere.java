@@ -6,10 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import presentation.boundary.ReturnableStage;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
+import util.MessageDisplayer;
+import util.Parameter;
 import util.SimpleLabelTranslator;
 
 import java.net.URL;
@@ -17,7 +18,6 @@ import java.util.ResourceBundle;
 
 public class SchermataImmissioneInfermiere extends SchermataImmissione {
     private ReturnableStage stage;
-    private boolean isEdit;
 
     private FrontController fc = FrontControllerFactory.buildInstance();
 
@@ -29,11 +29,33 @@ public class SchermataImmissioneInfermiere extends SchermataImmissione {
     @FXML private TextField cognome;
 
     @FXML private void onOk(ActionEvent event) {
-        System.out.println("aaaaa");
+        Object result = null;
+
+        Parameter nurseParameter = new Parameter();
+
+        nurseParameter.setValue("id", id.getText());
+        nurseParameter.setValue("nome", nome.getText());
+        nurseParameter.setValue("cognome", cognome.getText());
+
+        if(isEdit) {
+            result = fc.processRequest("ModificaInfermiere", nurseParameter);
+        } else {
+            result = fc.processRequest("InserisciInfermiere", nurseParameter);
+        }
+
+        if(result != null) {
+            if(isEdit) {
+                MessageDisplayer.showAcceptMessage(null, "editedNurse");
+            } else {
+                MessageDisplayer.showAcceptMessage(null, "insertedNurse");
+            }
+
+            getStage().setResult(result);
+            getStage().close();
+        }
     }
 
     @FXML private void onCancel(ActionEvent event) {
-        System.out.println("bbbbb");
         getStage().close();
     }
 
@@ -58,7 +80,7 @@ public class SchermataImmissioneInfermiere extends SchermataImmissione {
         cognome.setText(infermiere.getCognome());
     }
 
-    private Stage getStage() {
-        return (Stage) root.getScene().getWindow();
+    private ReturnableStage getStage() {
+        return (ReturnableStage) root.getScene().getWindow();
     }
 }

@@ -1,135 +1,237 @@
 /*C35*/SET SCHEMA PUBLIC
-DELETE FROM CELLULARE WHERE NUMERO='1214                ' AND PAZIENTEID=795
-DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=791
-DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=793
-DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=795
-DELETE FROM CELLULARE WHERE NUMERO='124546745           ' AND PAZIENTEID=794
-DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=791
-DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=794
-DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=795
-DELETE FROM CELLULARE WHERE NUMERO='3134                ' AND PAZIENTEID=794
-DELETE FROM CELLULARE WHERE NUMERO='32424               ' AND PAZIENTEID=795
+DELETE FROM CELLULARE WHERE NUMERO='1214                ' AND PAZIENTEID=860
+DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=856
+DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=858
+DELETE FROM CELLULARE WHERE NUMERO='124                 ' AND PAZIENTEID=860
+DELETE FROM CELLULARE WHERE NUMERO='124546745           ' AND PAZIENTEID=859
+DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=856
+DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=859
+DELETE FROM CELLULARE WHERE NUMERO='1412                ' AND PAZIENTEID=860
+DELETE FROM CELLULARE WHERE NUMERO='3134                ' AND PAZIENTEID=859
+DELETE FROM CELLULARE WHERE NUMERO='32424               ' AND PAZIENTEID=860
 COMMIT
-DELETE FROM OPERAZIONE WHERE ID=1128
-DELETE FROM OPERAZIONE WHERE ID=1129
-DELETE FROM OPERAZIONE WHERE ID=1130
-DELETE FROM OPERAZIONE WHERE ID=1131
-DELETE FROM OPERAZIONE WHERE ID=1132
-DELETE FROM OPERAZIONE WHERE ID=1133
-DELETE FROM OPERAZIONE WHERE ID=1134
+DELETE FROM OPERAZIONE WHERE ID=1219
+DELETE FROM OPERAZIONE WHERE ID=1220
+DELETE FROM OPERAZIONE WHERE ID=1221
+DELETE FROM OPERAZIONE WHERE ID=1222
+DELETE FROM OPERAZIONE WHERE ID=1223
+DELETE FROM OPERAZIONE WHERE ID=1224
+DELETE FROM OPERAZIONE WHERE ID=1225
 COMMIT
-DELETE FROM INTERVENTO WHERE ID=780
-DELETE FROM INTERVENTO WHERE ID=781
-DELETE FROM INTERVENTO WHERE ID=782
-DELETE FROM INTERVENTO WHERE ID=783
-DELETE FROM INTERVENTO WHERE ID=784
+DELETE FROM INTERVENTO WHERE ID=845
+DELETE FROM INTERVENTO WHERE ID=846
+DELETE FROM INTERVENTO WHERE ID=847
+DELETE FROM INTERVENTO WHERE ID=848
+DELETE FROM INTERVENTO WHERE ID=849
 COMMIT
-DELETE FROM INFERMIERE WHERE ID=791
-DELETE FROM INFERMIERE WHERE ID=792
-DELETE FROM INFERMIERE WHERE ID=793
-DELETE FROM INFERMIERE WHERE ID=794
-DELETE FROM INFERMIERE WHERE ID=795
+DELETE FROM INFERMIERE WHERE ID=867
+DELETE FROM INFERMIERE WHERE ID=868
+DELETE FROM INFERMIERE WHERE ID=869
+DELETE FROM INFERMIERE WHERE ID=870
+DELETE FROM INFERMIERE WHERE ID=871
 COMMIT
-DELETE FROM PAZIENTE WHERE ID=791
-DELETE FROM PAZIENTE WHERE ID=792
-DELETE FROM PAZIENTE WHERE ID=793
-DELETE FROM PAZIENTE WHERE ID=794
-DELETE FROM PAZIENTE WHERE ID=795
+DELETE FROM PAZIENTE WHERE ID=856
+DELETE FROM PAZIENTE WHERE ID=857
+DELETE FROM PAZIENTE WHERE ID=858
+DELETE FROM PAZIENTE WHERE ID=859
+DELETE FROM PAZIENTE WHERE ID=860
 COMMIT
 DISCONNECT
 /*C36*/SET SCHEMA PUBLIC
-INSERT INTO PAZIENTE VALUES(796,'aaa                           ','bbb                           ','1991-12-12')
+INSERT INTO PAZIENTE VALUES(861,'aaa                           ','bbb                           ','1991-12-12')
 COMMIT
 /*C37*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('124                 ',796)
+INSERT INTO CELLULARE VALUES('124                 ',861)
 COMMIT
 /*C38*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('1412                ',796)
+INSERT INTO CELLULARE VALUES('1412                ',861)
 COMMIT
 /*C39*/SET SCHEMA PUBLIC
-INSERT INTO PAZIENTE VALUES(797,'Bbb                           ','Ccc                           ','1995-02-12')
+INSERT INTO PAZIENTE VALUES(862,'Bbb                           ','Ccc                           ','1995-02-12')
 COMMIT
 /*C40*/SET SCHEMA PUBLIC
-INSERT INTO PAZIENTE VALUES(798,'bbb                           ','Zzz                           ','1991-12-02')
+INSERT INTO PAZIENTE VALUES(863,'bbb                           ','Zzz                           ','1991-12-02')
 COMMIT
 /*C41*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('124                 ',798)
+INSERT INTO CELLULARE VALUES('124                 ',863)
 COMMIT
 /*C42*/SET SCHEMA PUBLIC
-INSERT INTO PAZIENTE VALUES(799,'OoO                           ','q Qq                          ','1991-12-22')
+INSERT INTO PAZIENTE VALUES(864,'OoO                           ','q Qq                          ','1991-12-22')
 COMMIT
 /*C43*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('124546745           ',799)
+INSERT INTO CELLULARE VALUES('124546745           ',864)
 COMMIT
 /*C44*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('1412                ',799)
+INSERT INTO CELLULARE VALUES('1412                ',864)
 COMMIT
 /*C45*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('3134                ',799)
+INSERT INTO CELLULARE VALUES('3134                ',864)
 COMMIT
 /*C46*/SET SCHEMA PUBLIC
-INSERT INTO PAZIENTE VALUES(800,'l LL                          ','KKk                           ','2002-12-12')
+INSERT INTO PAZIENTE VALUES(865,'l LL                          ','KKk                           ','2002-12-12')
 COMMIT
 /*C47*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('124                 ',800)
+INSERT INTO CELLULARE VALUES('124                 ',865)
 COMMIT
 /*C48*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('1412                ',800)
+INSERT INTO CELLULARE VALUES('1412                ',865)
 COMMIT
 /*C49*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('1214                ',800)
+INSERT INTO CELLULARE VALUES('1214                ',865)
 COMMIT
 /*C50*/SET SCHEMA PUBLIC
-INSERT INTO CELLULARE VALUES('32424               ',800)
+INSERT INTO CELLULARE VALUES('32424               ',865)
 COMMIT
 /*C51*/SET SCHEMA PUBLIC
-INSERT INTO INFERMIERE VALUES(796,'aaa                           ','bbb                           ')
+INSERT INTO INFERMIERE VALUES(872,'aaa                           ','bbb                           ')
 COMMIT
 /*C52*/SET SCHEMA PUBLIC
-INSERT INTO INFERMIERE VALUES(797,'Bbb                           ','Ccc                           ')
+INSERT INTO INFERMIERE VALUES(873,'Bbb                           ','Ccc                           ')
 COMMIT
 /*C53*/SET SCHEMA PUBLIC
-INSERT INTO INFERMIERE VALUES(798,'bbb                           ','Zzz                           ')
+INSERT INTO INFERMIERE VALUES(874,'bbb                           ','Zzz                           ')
 COMMIT
 /*C54*/SET SCHEMA PUBLIC
-INSERT INTO INFERMIERE VALUES(799,'OoO                           ','q Qq                          ')
+INSERT INTO INFERMIERE VALUES(875,'OoO                           ','q Qq                          ')
 COMMIT
 /*C55*/SET SCHEMA PUBLIC
-INSERT INTO INFERMIERE VALUES(800,'l LL                          ','KKk                           ')
+INSERT INTO INFERMIERE VALUES(876,'l LL                          ','KKk                           ')
 COMMIT
 /*C70*/SET SCHEMA PUBLIC
-INSERT INTO INTERVENTO VALUES(785,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','12:00:00',800,796)
+INSERT INTO INTERVENTO VALUES(850,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','12:00:00',865,872)
 COMMIT
 /*C71*/SET SCHEMA PUBLIC
-INSERT INTO INTERVENTO VALUES(786,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','0:00:00',799,797)
+INSERT INTO INTERVENTO VALUES(851,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','0:00:00',864,873)
 COMMIT
 /*C72*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1135,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',786)
+INSERT INTO OPERAZIONE VALUES(1226,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',851)
 COMMIT
 /*C73*/SET SCHEMA PUBLIC
-INSERT INTO INTERVENTO VALUES(787,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','23:59:59',798,798)
+INSERT INTO INTERVENTO VALUES(852,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','23:59:59',863,874)
 COMMIT
 /*C74*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1136,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',787)
+INSERT INTO OPERAZIONE VALUES(1227,'Defribrillazione              ','                                                                                                                                                                                                                                                          ',852)
 COMMIT
 /*C75*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1137,'Eutanasia                     ','Uso di morfina (pericoloso)                                                                                                                                                                                                                               ',787)
+INSERT INTO OPERAZIONE VALUES(1228,'Eutanasia                     ','Uso di morfina (pericoloso)                                                                                                                                                                                                                               ',852)
 COMMIT
 /*C76*/SET SCHEMA PUBLIC
-INSERT INTO INTERVENTO VALUES(788,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','0:00:01',799,797)
+INSERT INTO INTERVENTO VALUES(853,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','0:00:01',864,873)
 COMMIT
 /*C77*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1138,'Tracheotomia                  ','                                                                                                                                                                                                                                                          ',788)
+INSERT INTO OPERAZIONE VALUES(1229,'Tracheotomia                  ','                                                                                                                                                                                                                                                          ',853)
 COMMIT
 /*C78*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1139,'Rimozione dell''appendice      ','                                                                                                                                                                                                                                                          ',788)
+INSERT INTO OPERAZIONE VALUES(1230,'Rimozione dell''appendice      ','                                                                                                                                                                                                                                                          ',853)
 COMMIT
 /*C79*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1140,'Anestesia                     ','Totale                                                                                                                                                                                                                                                    ',788)
+INSERT INTO OPERAZIONE VALUES(1231,'Anestesia                     ','Totale                                                                                                                                                                                                                                                    ',853)
 COMMIT
 /*C80*/SET SCHEMA PUBLIC
-INSERT INTO OPERAZIONE VALUES(1141,'Fai SQL Injection             ',''' SELECT FROM                                                                                                                                                                                                                                             ',788)
+INSERT INTO OPERAZIONE VALUES(1232,'Fai SQL Injection             ',''' SELECT FROM                                                                                                                                                                                                                                             ',853)
 COMMIT
 /*C81*/SET SCHEMA PUBLIC
-INSERT INTO INTERVENTO VALUES(789,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','12:00:00',800,800)
+INSERT INTO INTERVENTO VALUES(854,'Bari                          ','12481                         ','via aaa 123                                       ','2013-08-22','12:00:00',865,876)
 COMMIT
+/*C43*/DISCONNECT
+/*C73*/DISCONNECT
+/*C98*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C38*/DISCONNECT
+/*C42*/DISCONNECT
+/*C41*/DISCONNECT
+/*C40*/DISCONNECT
+/*C39*/DISCONNECT
+/*C37*/DISCONNECT
+/*C36*/DISCONNECT
+/*C102*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C101*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C100*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C99*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C97*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C96*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C95*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C94*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C93*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C92*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C91*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C90*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C89*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C88*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C87*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C86*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C85*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C84*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C83*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C82*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C81*/DISCONNECT
+/*C80*/DISCONNECT
+/*C79*/DISCONNECT
+/*C78*/DISCONNECT
+/*C77*/DISCONNECT
+/*C76*/DISCONNECT
+/*C75*/DISCONNECT
+/*C74*/DISCONNECT
+/*C72*/DISCONNECT
+/*C71*/DISCONNECT
+/*C70*/DISCONNECT
+/*C69*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C68*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C67*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C66*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C65*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C64*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C63*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C62*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C61*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C60*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C59*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C58*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C57*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C56*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C55*/DISCONNECT
+/*C54*/DISCONNECT
+/*C53*/DISCONNECT
+/*C52*/DISCONNECT
+/*C51*/DISCONNECT
+/*C50*/DISCONNECT
+/*C49*/DISCONNECT
+/*C48*/DISCONNECT
+/*C47*/DISCONNECT
+/*C46*/DISCONNECT
+/*C45*/DISCONNECT
+/*C44*/DISCONNECT

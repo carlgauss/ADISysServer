@@ -22,6 +22,9 @@ class ADISysApplicationController implements ApplicationController {
             } else {
                 result = execute(serviceName, parameter);
             }
+            if (result == null) {
+                result = true;
+            }
         } catch (CommonException e) {
             e.reportException();
         }

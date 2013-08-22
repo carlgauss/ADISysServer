@@ -1,5 +1,7 @@
 package business.entity;
 
+import business.applicationservice.exception.InvalidInfermiereFieldException;
+
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement
@@ -29,14 +31,26 @@ public class Infermiere implements Person {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String nome) throws InvalidInfermiereFieldException {
+        nome = nome.trim();
+        int length = nome.length();
+        boolean isValid = (length >= 3) && (length <= 30);
+        if (!isValid) {
+            throw new InvalidInfermiereFieldException("invalidNurseName");
+        }
+        this.nome = nome;
 	}
 	@XmlElement
 	public String getCognome() {
 		return cognome;
 	}
-	public void setCognome(String cognome) {
+	public void setCognome(String cognome) throws InvalidInfermiereFieldException {
+        cognome = cognome.trim();
+        int length = cognome.length();
+        boolean isValid = (length >= 3) && (length <= 30);
+        if (!isValid) {
+            throw new InvalidInfermiereFieldException("invalidNurseSurname");
+        }
 		this.cognome = cognome;
 	}
 }

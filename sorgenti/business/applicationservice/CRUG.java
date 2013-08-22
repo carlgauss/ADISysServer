@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import java.util.List;
 
+import business.applicationservice.exception.InvalidInfermiereFieldException;
 import util.Parameter;
 
 /*
@@ -13,9 +14,9 @@ import util.Parameter;
  * 
  */
 public interface CRUG<Entity> {
-    public void create(Parameter parameter);
+    public void create(Parameter parameter) throws InvalidInfermiereFieldException;
     
-    public void update(Parameter parameter);
+    public void update(Parameter parameter) throws InvalidInfermiereFieldException;
     
     public Entity read(Parameter parameter);
     
