@@ -14,7 +14,7 @@ public class ApplicationServicePianificazione implements ApplicationService {
     public void export(Parameter parameter) throws SAXException {
         List<Intervento> pianificazione = (List<Intervento>) parameter.getValue("pianificazione");
 
-        DAOPianificazione daoPianificazione = DAOPianificazioneFactory.buildInstance();
+        DAOPianificazione daoPianificazione = DAOPianificazioneFactory.getPianificazione();
 
         daoPianificazione.export(pianificazione);
     }

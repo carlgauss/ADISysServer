@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 
 
 public class SchermataPrincipale implements Initializable {
-    private FrontController fc = FrontControllerFactory.buildInstance();
+    private FrontController fc = FrontControllerFactory.getFrontController();
     @FXML
     private Node root;
 

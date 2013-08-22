@@ -54,7 +54,7 @@ public class DAOPazienteTest {
         fillPazienti();
 
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
-        dao = DAOFactory.buildInstance("DAOPaziente");
+        dao = DAOFactory.getDAOEntity("DAOPaziente");
     }
 
     @After

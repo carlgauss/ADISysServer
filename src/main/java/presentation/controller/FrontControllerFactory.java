@@ -6,7 +6,7 @@ public class FrontControllerFactory {
 
     }
 
-    public static FrontController buildInstance() {
+    public static FrontController getFrontController() {
         return new ADISysFC();
     }
 }

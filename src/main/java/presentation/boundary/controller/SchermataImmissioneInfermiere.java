@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class SchermataImmissioneInfermiere extends SchermataImmissione {
     private ReturnableStage stage;
 
-    private FrontController fc = FrontControllerFactory.buildInstance();
+    private FrontController fc = FrontControllerFactory.getFrontController();
 
     @FXML
     private Node root;

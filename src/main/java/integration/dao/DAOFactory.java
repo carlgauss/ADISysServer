@@ -7,13 +7,13 @@ public class DAOFactory {
     private DAOFactory() {
     }
 
-    public static <Entity> DAO<Entity> buildInstance(String daoName) {
+    public static <Entity> DAO<Entity> getDAOEntity(String daoName) {
         String daoCanonicalName = getDAOCanonicalName(daoName);
         Class<?> daoClass = getDAOClass(daoCanonicalName);
         return getDAOInstance(daoClass);
     }
 
-    static DAOOperazione buildInstance() {
+    static DAOOperazione getDAOOperazione() {
         return new DAOOperazione();
     }
 

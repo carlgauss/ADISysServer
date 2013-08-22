@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
 
-    private DAO<Paziente> daoPaziente = DAOFactory.buildInstance("DAOPaziente");
+    private DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
 
     public void create(Parameter parameter) {
         Paziente paziente = (Paziente) parameter.getValue("paziente");
