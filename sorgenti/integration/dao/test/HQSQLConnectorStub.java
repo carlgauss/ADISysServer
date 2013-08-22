@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import mockit.Mock;
+import org.hsqldb.jdbcDriver;
 
 public class HQSQLConnectorStub implements Connector {
 	private static final String DATABASE_URI = "jdbc:hsqldb:file:database/test/ADISysDB";
@@ -16,6 +17,10 @@ public class HQSQLConnectorStub implements Connector {
 	private static final String DATABASE_PASSWORD = "";
 
 	private Connection connection = null;
+
+    static {
+         new jdbcDriver();
+    }
 
 	@Mock
 	public ResultSet executeReadQuery(String query) {
@@ -102,7 +107,6 @@ public class HQSQLConnectorStub implements Connector {
 			try {
 				statement.execute(e);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
