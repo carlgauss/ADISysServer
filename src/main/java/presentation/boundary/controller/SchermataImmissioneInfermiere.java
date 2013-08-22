@@ -27,6 +27,8 @@ public class SchermataImmissioneInfermiere extends SchermataImmissione {
     private Labeled titolo;
 
     @FXML
+    private Labeled idLbl;
+    @FXML
     private Labeled id;
     @FXML
     private TextField nome;
@@ -77,8 +79,7 @@ public class SchermataImmissioneInfermiere extends SchermataImmissione {
     protected void initializeAdd() {
         titolo.setText(SimpleLabelTranslator.translate("addNurse"));
 
-        id.setVisible(false);
-        id.setText(BLANK);
+        idLbl.setVisible(false);
     }
 
     @Override
