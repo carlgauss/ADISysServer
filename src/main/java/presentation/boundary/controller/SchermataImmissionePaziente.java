@@ -105,6 +105,7 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         titolo.setText(SimpleLabelTranslator.translate("addPatient"));
 
         id.setVisible(false);
+        id.setText(BLANK);
     }
 
     @Override
