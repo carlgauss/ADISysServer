@@ -1,4 +1,4 @@
-package util.xml.marshaller;
+package utility.xml.marshaller;
 
 public class XMLMarshallerFactory {
 
@@ -6,7 +6,7 @@ public class XMLMarshallerFactory {
 
     }
 
-    public static XMLMarshaller buildInstance(String canonicalXMLFileName, Class<?> clazz) {
+    public static XMLMarshaller getMarshaller(String canonicalXMLFileName, Class<?> clazz) {
         return new XMLJAXBMarshaller(canonicalXMLFileName, clazz);
     }
 }

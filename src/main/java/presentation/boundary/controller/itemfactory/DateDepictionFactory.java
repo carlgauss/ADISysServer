@@ -4,7 +4,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 import org.joda.time.LocalDate;
-import util.DateConverter;
+import utility.DateConverter;
 
 
 public class DateDepictionFactory<Entity> implements Callback<TableColumn<Entity, LocalDate>, TableCell<Entity, LocalDate>> {

@@ -2,9 +2,9 @@ package business.entity;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-import util.SerialClone;
-import util.xml.adapter.XMLDateAdapter;
-import util.xml.adapter.XMLTimeAdapter;
+import utility.SerialClone;
+import utility.xml.adapter.XMLDateAdapter;
+import utility.xml.adapter.XMLTimeAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

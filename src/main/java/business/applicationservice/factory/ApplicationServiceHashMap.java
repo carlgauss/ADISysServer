@@ -2,7 +2,7 @@ package business.applicationservice.factory;
 
 import business.applicationservice.exception.UnavaliableApplicationServiceException;
 import business.applicationservice.exception.UnselectedServiceNameException;
-import util.Entry;
+import utility.Entry;
 
 import java.util.HashMap;
 import java.util.Map;

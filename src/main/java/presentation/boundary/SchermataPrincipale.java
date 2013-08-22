@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import util.Parameter;
-import util.SimpleLabelTranslator;
+import utility.Parameter;
+import utility.SimpleLabelTranslator;
 
 import java.util.Properties;
 

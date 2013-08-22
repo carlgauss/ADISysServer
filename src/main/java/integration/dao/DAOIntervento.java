@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static util.QueryStringReplacer.queryReplaceFirst;
+import static utility.QueryStringReplacer.queryReplaceFirst;
 
 public class DAOIntervento extends HQSQLDAO<Intervento> {
 

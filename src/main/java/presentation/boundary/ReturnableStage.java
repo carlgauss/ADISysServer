@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import presentation.boundary.controller.SchermataImmissione;
-import util.Parameter;
-import util.SimpleLabelTranslator;
+import utility.Parameter;
+import utility.SimpleLabelTranslator;
 
 import java.io.IOException;
 import java.util.Properties;

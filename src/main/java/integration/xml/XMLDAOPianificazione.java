@@ -4,11 +4,11 @@ import business.entity.Intervento;
 import business.entity.Pianificazione;
 import org.joda.time.LocalDateTime;
 import org.xml.sax.SAXException;
-import util.FolderManager;
-import util.xml.marshaller.XMLMarshaller;
-import util.xml.marshaller.XMLMarshallerFactory;
-import util.xml.validator.XMLValidator;
-import util.xml.validator.XMLValidatorFactory;
+import utility.FolderManager;
+import utility.xml.marshaller.XMLMarshaller;
+import utility.xml.marshaller.XMLMarshallerFactory;
+import utility.xml.validator.XMLValidator;
+import utility.xml.validator.XMLValidatorFactory;
 
 import java.io.File;
 import java.util.List;
@@ -35,7 +35,7 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
     @Override
     public void export(List<Intervento> listaInterventi) throws SAXException {
-        FolderManager.insertFolderIfNotExists(PIANIFICAZIONE_FOLDER);
+        FolderManager.createFolderIfNotExists(PIANIFICAZIONE_FOLDER);
 
         String xmlFileName = "";
         xmlFileName += PIANIFICAZIONE_HEADER;
@@ -45,14 +45,14 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
         String canonicalXMLFileName = PIANIFICAZIONE_CURR_DIRECTORY + xmlFileName;
 
-        XMLMarshaller marshaller = XMLMarshallerFactory.buildInstance(canonicalXMLFileName, Pianificazione.class);
+        XMLMarshaller marshaller = XMLMarshallerFactory.getMarshaller(canonicalXMLFileName, Pianificazione.class);
 
         Pianificazione pianificazione = new Pianificazione();
         pianificazione.setIntervento(listaInterventi);
 
         marshaller.marshal(pianificazione);
 
-        XMLValidator validator = XMLValidatorFactory.buildInstance(XSD_PIANIFICAZIONE_SCHEMA_FILE);
+        XMLValidator validator = XMLValidatorFactory.getValidator(XSD_PIANIFICAZIONE_SCHEMA_FILE);
         validator.validate(new File(canonicalXMLFileName));
     }
 }

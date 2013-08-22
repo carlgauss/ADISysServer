@@ -1,6 +1,6 @@
 package business.applicationservice.exception;
 
-import util.MessageDisplayer;
+import utility.MessageDisplayer;
 
 
 public class InvalidInfermiereFieldException extends CommonException {

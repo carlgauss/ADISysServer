@@ -1,4 +1,4 @@
-package util.dialogfx;
+package utility.dialogfx;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

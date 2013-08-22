@@ -1,6 +1,6 @@
-package util;
+package utility;
 
-import util.dialogfx.DialogFX;
+import utility.dialogfx.DialogFX;
 
 import java.util.ArrayList;
 import java.util.List;

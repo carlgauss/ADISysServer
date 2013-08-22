@@ -1,7 +1,7 @@
 package presentation.boundary.factory;
 
 import presentation.boundary.Boundary;
-import util.Parameter;
+import utility.Parameter;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +15,7 @@ public class BoundaryFactory {
 
     }
 
-    public static Boundary buildInstance(String serviceName, Parameter parameter) {
+    public static Boundary getBoundary(String serviceName, Parameter parameter) {
         Class<?> boundaryClass = getBoundaryClass(serviceName);
         return newBoundaryInstance(boundaryClass, parameter);
     }

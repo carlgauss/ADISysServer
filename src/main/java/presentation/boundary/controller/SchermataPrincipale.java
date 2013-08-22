@@ -22,9 +22,9 @@ import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory
 import presentation.boundary.controller.itemfactory.PersonPortrayalFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.MessageDisplayer;
-import util.Parameter;
-import util.SimpleLabelTranslator;
+import utility.MessageDisplayer;
+import utility.Parameter;
+import utility.SimpleLabelTranslator;
 
 import java.net.URL;
 import java.util.List;

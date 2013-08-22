@@ -5,7 +5,7 @@ import business.entity.Infermiere;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
 import presentation.controller.ApplicationService;
-import util.Parameter;
+import utility.Parameter;
 
 import java.util.List;
 
