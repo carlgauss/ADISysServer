@@ -11,7 +11,7 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.util.Callback;
-import util.InterventoDurationEditChecker;
+import utility.InterventoDurationEditChecker;
 
 public class InterventoColoringRowFactory<AtomicType> implements Callback<TableColumn<Intervento, AtomicType>, TableCell<Intervento, AtomicType>> {
 

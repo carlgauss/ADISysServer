@@ -1,6 +1,6 @@
 package business.entity;
 
-import util.SerialClone;
+import utility.SerialClone;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

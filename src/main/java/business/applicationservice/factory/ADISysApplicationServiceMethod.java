@@ -2,7 +2,7 @@ package business.applicationservice.factory;
 
 import business.applicationservice.exception.CommonException;
 import presentation.controller.ApplicationService;
-import util.Parameter;
+import utility.Parameter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

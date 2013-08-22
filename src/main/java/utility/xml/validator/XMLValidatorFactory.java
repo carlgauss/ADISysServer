@@ -1,4 +1,4 @@
-package util.xml.validator;
+package utility.xml.validator;
 
 import java.io.File;
 

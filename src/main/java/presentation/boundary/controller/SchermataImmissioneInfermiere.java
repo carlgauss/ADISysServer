@@ -9,9 +9,9 @@ import javafx.scene.control.TextField;
 import presentation.boundary.ReturnableStage;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.MessageDisplayer;
-import util.Parameter;
-import util.SimpleLabelTranslator;
+import utility.MessageDisplayer;
+import utility.Parameter;
+import utility.SimpleLabelTranslator;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,4 +1,4 @@
-package util.dialogfx;
+package utility.dialogfx;
 
 import javafx.beans.property.*;
 import javafx.scene.control.ControlBuilder;

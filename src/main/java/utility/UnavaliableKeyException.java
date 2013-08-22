@@ -1,4 +1,4 @@
-package util;
+package utility;
 
 public class UnavaliableKeyException extends RuntimeException {
 

@@ -1,7 +1,7 @@
 package business.applicationservice;
 
 import business.applicationservice.exception.InvalidInfermiereFieldException;
-import util.Parameter;
+import utility.Parameter;
 
 import java.util.List;
 

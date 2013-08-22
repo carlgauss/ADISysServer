@@ -1,4 +1,4 @@
-package util.xml.validator;
+package utility.xml.validator;
 
 import org.xml.sax.SAXException;
 

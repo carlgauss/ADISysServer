@@ -1,4 +1,4 @@
-package util.xml.marshaller;
+package utility.xml.marshaller;
 
 public interface XMLMarshaller {
     public void marshal(Object entity);

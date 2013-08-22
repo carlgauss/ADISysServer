@@ -1,4 +1,4 @@
-package util;
+package utility;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
