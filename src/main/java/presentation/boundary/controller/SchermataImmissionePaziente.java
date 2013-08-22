@@ -26,8 +26,6 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
     private FrontController fc = FrontControllerFactory.getFrontController();
 
-    //private Timeline animation;
-
     @FXML
     private Node root;
     @FXML
@@ -42,22 +40,24 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
     @FXML
     private TextField data;
     @FXML
-    private ListView numero;
+    private ListView<String> numero;
 
     @FXML
     private void onOk(ActionEvent event) {
         Object result = null;
 
-        Parameter nurseParameter = new Parameter();
+        Parameter patientParameter = new Parameter();
 
-        //nurseParameter.setValue("id", id.getText());
-        //nurseParameter.setValue("nome", nome.getText());
-        //nurseParameter.setValue("cognome", cognome.getText());
+        patientParameter.setValue("id", id.getText());
+        patientParameter.setValue("nome", nome.getText());
+        patientParameter.setValue("cognome", cognome.getText());
+        patientParameter.setValue("data", data.getText());
+        patientParameter.setValue("numero", numero.getItems());
 
         if (isEdit) {
-            //result = fc.processRequest("ModificaInfermiere", nurseParameter);
+            result = fc.processRequest("ModificaPaziente", patientParameter);
         } else {
-            //result = fc.processRequest("InserisciInfermiere", nurseParameter);
+            result = fc.processRequest("InserisciPaziente", patientParameter);
         }
 
         if (result != null) {
