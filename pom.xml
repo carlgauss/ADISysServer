@@ -17,21 +17,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <sonar.language>java</sonar.language>
 
+        <!-- BEGIN SONAR Settings - Decommenta quando hai installato Sonar
+        <sonar.language>java</sonar.language>
         <sonar.dynamicAnalysis>true</sonar.dynamicAnalysis>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-
-
-        <!-- Tells SonarQube to reuse existing reports -->
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-
-
-        <!-- Tells SonarQube where the unit tests execution reports are -->
         <sonar.surefire.reportsPath>${project.build.directory}/surefire-reports</sonar.surefire.reportsPath>
-
-        <!-- Tells SonarQube where the unit tests code coverage report is -->
         <sonar.jacoco.reportPath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPath>
+        END SONAR settings -->
+        
     </properties>
 
 
@@ -226,10 +221,10 @@
     </build>
 
     <!-- BEGIN: Specific to mapping unit tests and covered code -->
+    <!-- Decommenata questo profilo quando hai installato sonar
     <profiles>
         <profile>
             <id>coverage-per-test</id>
-            <!--
             <dependencies>
                 <dependency>
                     <groupId>org.codehaus.sonar-plugins.java</groupId>
@@ -238,29 +233,26 @@
                     <scope>test</scope>
                 </dependency>
             </dependencies>
-            -->
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <!-- Minimal supported version is 2.4 -->
                         <version>2.16</version>
                         <configuration>
-                            <!--
                             <properties>
                                 <property>
                                     <name>listener</name>
                                     <value>org.sonar.java.jacoco.JUnitListener</value>
                                 </property>
                             </properties>
-                            -->
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
+    -->
     <!-- END: Specific to mapping unit tests and covered code -->
 
     <dependencies>
