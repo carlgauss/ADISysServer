@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component inherit-compiler-output="true" inheritJdk="true">
-	<output-test url="file://$MODULE_DIR$/out/test/ADISysServer"/>
-	<exclude-output/>
+<component inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
 	<contentEntry url="file://$MODULE_DIR$">
 		<testFolder url="file://$MODULE_DIR$/test"/>
+		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
-	<lib name="$MODULE_DIR$/DialogFX.jar" scope="COMPILE">
+	<lib name="DialogFX.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/DialogFX.jar!/"/>
 	</lib>
 	<levels>

@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="400.0" styleClass="window" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataImmissioneInfermiere">
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="400.0" styleClass="window" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataImmissioneInfermiere">
   <children>
     <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <Label id = "titolo" fx:id="titolo" styleClass="smalltitle" text="defaultTitleExample" />
+        <Label fx:id="titolo" styleClass="smalltitle" text="defaultTitleExample" />
       </children>
     </StackPane>
     <GridPane alignment="CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
