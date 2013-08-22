@@ -22,13 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ADISysServerMaven" />
-        <module name="untitled" />
+        <module name="ADISysServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ADISysServerMaven" target="1.7" />
-      <module name="untitled" target="1.7" />
+      <module name="ADISysServer" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
