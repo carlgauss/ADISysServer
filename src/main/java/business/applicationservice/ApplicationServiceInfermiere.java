@@ -12,7 +12,7 @@ import java.util.List;
 //TODO tutti i metodi
 public class ApplicationServiceInfermiere implements ApplicationService, CRUG<Infermiere> {
 
-    private DAO<Infermiere> daoInfermiere = DAOFactory.buildInstance("DAOInfermiere");
+    private DAO<Infermiere> daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
 
     public void create(Parameter parameter) throws InvalidInfermiereFieldException {
         Infermiere infermiere = populate(parameter);

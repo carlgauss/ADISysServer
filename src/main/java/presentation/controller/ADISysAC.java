@@ -33,9 +33,9 @@ class ADISysAC implements ApplicationController {
     }
 
     private Object execute(String serviceName, Parameter parameter) throws CommonException {
-        ApplicationService asClass = ApplicationServiceFactory.buildInstance(serviceName);
-        ApplicationServiceMethod asMethod = ApplicationServiceMethodFactory.buildInstance(asClass);
-        return asMethod.invoke(serviceName, parameter);
+        ApplicationService appServiceClass = ApplicationServiceFactory.getApplicationController(serviceName);
+        ApplicationServiceMethod appServiceMethod = ApplicationServiceMethodFactory.getASMethod(appServiceClass);
+        return appServiceMethod.invoke(serviceName, parameter);
     }
 
     private static Object dispatchGUI(String serviceName, Parameter parameter) {

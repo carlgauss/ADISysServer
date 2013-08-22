@@ -105,9 +105,9 @@ public class DAOInterventoTest {
 
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 
-        dao = DAOFactory.buildInstance("DAOIntervento");
-        daoP = DAOFactory.buildInstance("DAOPaziente");
-        daoI = DAOFactory.buildInstance("DAOInfermiere");
+        dao = DAOFactory.getDAOEntity("DAOIntervento");
+        daoP = DAOFactory.getDAOEntity("DAOPaziente");
+        daoI = DAOFactory.getDAOEntity("DAOInfermiere");
 
         //Filling pazienti, infermieri and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {
@@ -224,9 +224,9 @@ public class DAOInterventoTest {
         fillInfermieri();
         DAOPazienteTest.fillPazienti();
 
-        dao = DAOFactory.buildInstance("DAOIntervento");
-        daoP = DAOFactory.buildInstance("DAOPaziente");
-        daoI = DAOFactory.buildInstance("DAOInfermiere");
+        dao = DAOFactory.getDAOEntity("DAOIntervento");
+        daoP = DAOFactory.getDAOEntity("DAOPaziente");
+        daoI = DAOFactory.getDAOEntity("DAOInfermiere");
 
         //Filling pazienti, infermieri and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {

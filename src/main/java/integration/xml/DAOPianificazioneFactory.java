@@ -6,7 +6,7 @@ public class DAOPianificazioneFactory {
 
     }
 
-    public static DAOPianificazione buildInstance() {
+    public static DAOPianificazione getPianificazione() {
         return new XMLDAOPianificazione();
     }
 }

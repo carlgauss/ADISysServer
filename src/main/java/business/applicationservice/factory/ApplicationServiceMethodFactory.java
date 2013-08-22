@@ -8,7 +8,7 @@ public class ApplicationServiceMethodFactory {
 
     }
 
-    public static ApplicationServiceMethod buildInstance(ApplicationService as) {
+    public static ApplicationServiceMethod getASMethod(ApplicationService as) {
         return new ADISysApplicationServiceMethod(as);
     }
 

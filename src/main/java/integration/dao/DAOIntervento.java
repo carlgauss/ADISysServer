@@ -34,7 +34,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
     private static final String DAO_PAZIENTE = "DAOPaziente";
     private static final String DAO_INFERMIERE = "DAOInfermiere";
 
-    private DAOOperazione daoOperazione = DAOFactory.buildInstance();
+    private DAOOperazione daoOperazione = DAOFactory.getDAOOperazione();
 
     @Override
     public void create(Intervento entity) {
@@ -145,8 +145,8 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
     private List<Intervento> createElencoInterventiBy(ResultSet resultSet) {
         List<Intervento> result = new LinkedList<Intervento>();
 
-        DAO<Paziente> daoPaziente = DAOFactory.buildInstance(DAO_PAZIENTE);
-        DAO<Infermiere> daoInfermiere = DAOFactory.buildInstance(DAO_INFERMIERE);
+        DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity(DAO_PAZIENTE);
+        DAO<Infermiere> daoInfermiere = DAOFactory.getDAOEntity(DAO_INFERMIERE);
 
         try {
             while (resultSet.next()) {

@@ -19,7 +19,7 @@ public class JAXBExample {
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
         DAOInterventoTest.fillAll();
 
-        DAO<Intervento> dao = DAOFactory.buildInstance("DAOIntervento");
+        DAO<Intervento> dao = DAOFactory.getDAOEntity("DAOIntervento");
         Pianificazione pianificazione = new Pianificazione();
         pianificazione.setIntervento(dao.getAll());
 
