@@ -105,7 +105,7 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML
     private void onInserisciPaziente(ActionEvent event) {
-        System.out.println(selectedPaziente.getId());
+        Object bool = fc.processRequest("MostraSchermataInserimentoPaziente", null);
     }
 
     @FXML
