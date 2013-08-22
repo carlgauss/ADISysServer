@@ -6,9 +6,10 @@
 
     <groupId>it.uniba.serlab</groupId>
     <artifactId>ADISysServer</artifactId>
-
-    <packaging>jar</packaging>
     <version>3.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ADISys Server</name>
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
