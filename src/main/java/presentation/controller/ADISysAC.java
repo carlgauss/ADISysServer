@@ -8,7 +8,7 @@ import presentation.boundary.Boundary;
 import presentation.boundary.factory.BoundaryFactory;
 import utility.Parameter;
 
-class ADISysApplicationController implements ApplicationController {
+class ADISysAC implements ApplicationController {
 
     //TODO decidere quali comandi utilizzare
     private static String SHOW_SYNTAX = "Mostra[a-zA-Z]+";

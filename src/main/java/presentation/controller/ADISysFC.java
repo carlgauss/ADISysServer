@@ -2,7 +2,7 @@ package presentation.controller;
 
 import utility.Parameter;
 
-class ADISysFrontController implements FrontController {
+class ADISysFC implements FrontController {
 
     public Object processRequest(String request, Parameter parameter) {
         ApplicationController ac = ApplicationControllerFactory.buildInstance();
