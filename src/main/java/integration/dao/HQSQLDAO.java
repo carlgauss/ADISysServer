@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class HQSQLDAO<Entity> implements DAO<Entity> {
 
-    protected Connector connector = ConnectorFactory.buildIstance();
+    protected Connector connector = ConnectorFactory.getConnector();
 
     protected static final int FIRST = 0;
 

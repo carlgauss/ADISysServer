@@ -5,7 +5,7 @@ public class ConnectorFactory {
 
     }
 
-    public static Connector buildIstance() {
+    public static Connector getConnector() {
         return new HQSQLConnector();
     }
 }
