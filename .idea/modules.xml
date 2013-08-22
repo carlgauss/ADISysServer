@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ADISysServer.iml" filepath="$PROJECT_DIR$/ADISysServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ADISysServerMaven.iml" filepath="$PROJECT_DIR$/ADISysServerMaven.iml" />
     </modules>
   </component>
 </project>
