@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- validated http://www.freeformatter.com/xml-validator-xsd.html -->
+<pianificazione>
+    <intervento>
+        <id>12</id>
+        <citta>Bari</citta>
+        <cap>70999</cap>
+        <indirizzo>Via xxx</indirizzo>
+        <data>1999-12-13</data>
+        <ora>23:34:12</ora>
+        <listaOperazioni>
+            <operazione>
+                <id>41</id>
+                <nome>abc</nome>
+                <nota></nota>
+            </operazione>
+            <operazione>
+                <id>43</id>
+                <nome>ghi</nome>
+                <nota>do re mi</nota>
+            </operazione>
+        </listaOperazioni>
+        <paziente>
+            <id>14</id>
+            <nome>paolo</nome>
+            <cognome>ruffini</cognome>
+            <data>1945-11-12</data>
+            <rubrica>
+                <numero>12234</numero>
+                <numero>52517</numero>
+            </rubrica>
+        </paziente>
+        <infermiere>
+            <id>4</id>
+            <nome>franco</nome>
+            <cognome>battiato</cognome>
+        </infermiere>
+    </intervento>
+    <intervento>
+        <id>15</id>
+        <citta>Bari</citta>
+        <cap>72499</cap>
+        <indirizzo>Via yyy</indirizzo>
+        <data>1999-12-23</data>
+        <ora>3:34:12</ora>
+        <listaOperazioni>
+            <operazione>
+                <id>41</id>
+                <nome>abc</nome>
+                <nota></nota>
+            </operazione>
+            <operazione>
+                <id>43</id>
+                <nome>ghi</nome>
+                <nota>do re mi</nota>
+            </operazione>
+        </listaOperazioni>
+        <paziente>
+            <id>16</id>
+            <nome>paolo</nome>
+            <cognome>puffini</cognome>
+            <data>1945-11-12</data>
+            <rubrica>
+                <numero>12234</numero>
+                <numero>52517</numero>
+            </rubrica>
+        </paziente>
+        <infermiere>
+            <id>4</id>
+            <nome>franco</nome>
+            <cognome>battiato</cognome>
+        </infermiere>
+    </intervento>
+    <intervento>
+        <id>16</id>
+        <citta>Napoli</citta>
+        <cap>42499</cap>
+        <indirizzo>Via yyy</indirizzo>
+        <data>1999-12-23</data>
+        <ora>13:34:12</ora>
+        <listaOperazioni>
+            <operazione>
+                <id>41</id>
+                <nome>abc</nome>
+                <nota></nota>
+            </operazione>
+            <operazione>
+                <id>43</id>
+                <nome>ghi</nome>
+                <nota>do re mi</nota>
+            </operazione>
+        </listaOperazioni>
+        <paziente>
+            <id>16</id>
+            <nome>paolo</nome>
+            <cognome>puffini</cognome>
+            <data>1945-11-12</data>
+            <rubrica>
+                <numero>12234</numero>
+                <numero>52517</numero>
+            </rubrica>
+        </paziente>
+        <infermiere>
+            <id>4</id>
+            <nome>franco</nome>
+            <cognome>battiato</cognome>
+        </infermiere>
+    </intervento>
+</pianificazione>
