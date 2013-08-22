@@ -1,13 +1,7 @@
-*.class
-.DS_Store
-*.DS_Store
-out
-*.bak
-workspace.xml
-.idea/workspace.xml
-ADISysServer2/.idea/workspace.xml
-*workspace.xml
-*/workspace.xml
+##################################################
+##########       Template file from   ###########
+######### http://j.mp/gitignoreTemplate ########
+###############################################
 
 #### Eclipse ####
 .classpath
@@ -19,6 +13,27 @@ ADISysServer2/.idea/workspace.xml
 *.iml
 *.iws
 
-##### Log files ####
+#### Mac ####
+.DS_Store
+*.DS_Store
+
+#### Maven ####
+log/
+target/
+
+################################
+###### End Template file ######
+##############################
+
+##############################
+#### Added successively #####
+############################
+
+##### Java ####
+*.class
+*.jar
+
+##### Log files and others ####
 *.log
 *.log*
+*.bak
