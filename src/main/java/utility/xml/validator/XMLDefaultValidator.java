@@ -11,15 +11,16 @@ import java.io.File;
 import java.io.IOException;
 
 class XMLDefaultValidator implements XMLValidator {
-    private static final SchemaFactory factory =
-            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+    private static String schemaLanguage =  XMLConstants.W3C_XML_SCHEMA_NS_URI;
+    private static SchemaFactory schemaFactory = SchemaFactory.newInstance(schemaLanguage);
 
     private Schema schema;
 
     public XMLDefaultValidator(File canonicalSchemaFileName) {
         try {
-            schema = factory.newSchema(new StreamSource(canonicalSchemaFileName));
+            schema = schemaFactory.newSchema(new StreamSource(canonicalSchemaFileName));
         } catch (SAXException e) {
+            // TODO: È il modo migliore, questo di seguito per gestire, un' eccezione?
             e.printStackTrace();
             System.exit(0);
         }
@@ -34,6 +35,7 @@ class XMLDefaultValidator implements XMLValidator {
         try {
             validator.validate(new StreamSource(fileName));
         } catch (IOException e) {
+            // TODO: È il modo migliore, questo di seguito, per gestire un' eccezione?
             e.printStackTrace();
         }
     }
