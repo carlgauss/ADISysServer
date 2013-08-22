@@ -3,13 +3,7 @@ package util;
 import business.entity.Intervento;
 import org.joda.time.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 20/08/13
- * Time: 00:42
- * To change this template use File | Settings | File Templates.
- */
+
 public class InterventoDurationEditChecker {
 
     private final static Duration MIN_EDIT_DURATION = new Duration(0, (new LocalTime(2, 0, 0).getMillisOfDay()));

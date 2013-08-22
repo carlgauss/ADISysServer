@@ -6,13 +6,7 @@ import javafx.util.Callback;
 import org.joda.time.LocalDate;
 import util.DateConverter;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 19/08/13
- * Time: 14:37
- * To change this template use File | Settings | File Templates.
- */
+
 public class DateDepictionFactory<Entity> implements Callback<TableColumn<Entity, LocalDate>, TableCell<Entity, LocalDate>> {
     @Override
     public TableCell<Entity, LocalDate> call(TableColumn<Entity, LocalDate> entityLocalDateTableColumn) {

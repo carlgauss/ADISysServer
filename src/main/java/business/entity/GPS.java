@@ -1,12 +1,6 @@
 package business.entity;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 14/08/13
- * Time: 19:25
- * To change this template use File | Settings | File Templates.
- */
+
 public class GPS implements Entity {
     private static final long serialVersionUID = -1552393217862969096L;
 

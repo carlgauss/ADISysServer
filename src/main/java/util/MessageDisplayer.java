@@ -5,13 +5,7 @@ import util.dialogfx.DialogFX;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 20/08/13
- * Time: 19:11
- * To change this template use File | Settings | File Templates.
- */
+
 public class MessageDisplayer {
     public static void showMessage(String title, String text) {
         if (title == null) {

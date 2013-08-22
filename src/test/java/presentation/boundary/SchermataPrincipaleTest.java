@@ -8,13 +8,6 @@ import org.junit.Test;
 
 import static junit.framework.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 22/08/13
- * Time: 17:31
- * To change this template use File | Settings | File Templates.
- */
 public class SchermataPrincipaleTest {
     @Before
     public void setUp() throws Exception {

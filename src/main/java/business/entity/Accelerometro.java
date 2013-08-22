@@ -2,13 +2,6 @@ package business.entity;
 
 import org.joda.time.LocalDateTime;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 15/08/13
- * Time: 01:14
- * To change this template use File | Settings | File Templates.
- */
 public class Accelerometro implements Entity {
     private static final long serialVersionUID = -5064182844412366320L;
     private double x;

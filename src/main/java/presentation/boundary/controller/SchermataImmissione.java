@@ -6,13 +6,7 @@ import util.Parameter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 22/08/13
- * Time: 01:32
- * To change this template use File | Settings | File Templates.
- */
+
 public abstract class SchermataImmissione implements Initializable {
     protected Parameter parameter;
 

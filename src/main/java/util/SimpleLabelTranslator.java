@@ -11,13 +11,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 18/08/13
- * Time: 20:50
- * To change this template use File | Settings | File Templates.
- */
+
 public class SimpleLabelTranslator {
 
     private static final Class<?> LABELED_CLASS = Labeled.class;

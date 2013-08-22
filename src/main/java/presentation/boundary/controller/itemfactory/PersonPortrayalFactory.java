@@ -5,13 +5,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 19/08/13
- * Time: 14:37
- * To change this template use File | Settings | File Templates.
- */
+
 public class PersonPortrayalFactory<Entity, AtomicPerson extends Person> implements Callback<TableColumn<Entity, AtomicPerson>, TableCell<Entity, AtomicPerson>> {
     @Override
     public TableCell<Entity, AtomicPerson> call(TableColumn<Entity, AtomicPerson> entityLocalDateTableColumn) {

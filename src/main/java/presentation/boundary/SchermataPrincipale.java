@@ -12,13 +12,7 @@ import util.SimpleLabelTranslator;
 
 import java.util.Properties;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 18/08/13
- * Time: 10:58
- * To change this template use File | Settings | File Templates.
- */
+
 public class SchermataPrincipale extends Application implements Boundary {
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";

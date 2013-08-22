@@ -13,13 +13,6 @@ import javafx.stage.Screen;
 import javafx.util.Callback;
 import util.InterventoDurationEditChecker;
 
-/**
- * Created with IntelliJ IDEA.
- * User: michelesummo
- * Date: 19/08/13
- * Time: 14:37
- * To change this template use File | Settings | File Templates.
- */
 public class InterventoColoringRowFactory<AtomicType> implements Callback<TableColumn<Intervento, AtomicType>, TableCell<Intervento, AtomicType>> {
 
     private final static double WIDTH = Screen.getPrimary().getBounds().getWidth();
