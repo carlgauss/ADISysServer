@@ -1,5 +1,6 @@
 package integration.dao;
 
+import business.applicationservice.exception.InvalidPazienteFieldException;
 import business.entity.Paziente;
 import org.joda.time.LocalDate;
 
@@ -119,10 +120,18 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
                 element.setId(id.trim());
 
                 String nome = resultSet.getString(NOME_PAZIENTE_ATTRIBUTE_NAME);
-                element.setNome(nome.trim());
+                try {
+                    element.setNome(nome.trim());
+                } catch (InvalidPazienteFieldException e) {
+                    e.printStackTrace();
+                }
 
                 String cognome = resultSet.getString(COGNOME_PAZIENTE_ATTRIBUTE_NAME);
-                element.setCognome(cognome.trim());
+                try {
+                    element.setCognome(cognome.trim());
+                } catch (InvalidPazienteFieldException e) {
+                    e.printStackTrace();
+                }
 
                 String dataString = resultSet.getString(DATA_PAZIENTE_ATTRIBUTE_NAME);
                 LocalDate data = LocalDate.parse(dataString);

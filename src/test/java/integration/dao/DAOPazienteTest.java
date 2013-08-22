@@ -1,5 +1,6 @@
 package integration.dao;
 
+import business.applicationservice.exception.InvalidPazienteFieldException;
 import business.entity.Paziente;
 import integration.connector.HQSQLConnector;
 import mockit.Mockit;
@@ -28,8 +29,16 @@ public class DAOPazienteTest {
         pazienti = new Paziente[ARRAY_PAZIENTI.length];
         for (int i = 0; i < pazienti.length; i++) {
             pazienti[i] = new Paziente();
-            pazienti[i].setNome(ARRAY_PAZIENTI[i][0].toString());
-            pazienti[i].setCognome(ARRAY_PAZIENTI[i][1].toString());
+            try {
+                pazienti[i].setNome(ARRAY_PAZIENTI[i][0].toString());
+            } catch (InvalidPazienteFieldException e) {
+                e.printStackTrace();
+            }
+            try {
+                pazienti[i].setCognome(ARRAY_PAZIENTI[i][1].toString());
+            } catch (InvalidPazienteFieldException e) {
+                e.printStackTrace();
+            }
             pazienti[i].setData((LocalDate) ARRAY_PAZIENTI[i][2]);
             String[] cell = (String[]) ARRAY_PAZIENTI[i][3];
             List<String> cellList = new LinkedList<>();
@@ -85,8 +94,16 @@ public class DAOPazienteTest {
 
         System.out.println("---updating all queries (adding k to the names and adding a cell phone number)---");
         for (Paziente e : list) {
-            e.setNome(e.getNome() + "k");
-            e.setCognome(e.getCognome() + "k");
+            try {
+                e.setNome(e.getNome() + "k");
+            } catch (InvalidPazienteFieldException e1) {
+                e1.printStackTrace();
+            }
+            try {
+                e.setCognome(e.getCognome() + "k");
+            } catch (InvalidPazienteFieldException e1) {
+                e1.printStackTrace();
+            }
             List<String> newCellList = e.getNumeroCellulare();
             newCellList.add("123456789");
             e.setNumeroCellulare(newCellList);

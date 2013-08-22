@@ -62,9 +62,9 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
         if (result != null) {
             if (isEdit) {
-                MessageDisplayer.showAcceptMessage(null, "editedNurse");
+                MessageDisplayer.showAcceptMessage(null, "editedPatient");
             } else {
-                MessageDisplayer.showAcceptMessage(null, "insertedNurse");
+                MessageDisplayer.showAcceptMessage(null, "insertedPatient");
             }
 
             getStage().setResult(result);
@@ -97,6 +97,7 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numero.setCellFactory(TextFieldListCell.forListView());
         numero.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
     }
 
     @Override
