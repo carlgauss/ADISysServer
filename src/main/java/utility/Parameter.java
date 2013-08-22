@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Parameter {
 
-    private Map<String, Object> dictionary = new HashMap<String, Object>();
+    private Map<String, Object> dictionary = new HashMap<>();
 
     public void setValue(String key, Object value) {
         dictionary.put(key, value);
