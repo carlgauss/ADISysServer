@@ -1,9 +1,9 @@
 .window {
-    -fx-background-color: rgba(0,0,0,0.2);
+    -fx-background-color: rgba(0, 0, 0, 0.2);
 }
 
 .header {
-    -fx-background-color: rgba(0,0,255,0.25);
+    -fx-background-color: rgba(0, 0, 255, 0.25);
     -fx-border-color: rgb(0, 0, 0);
 }
 

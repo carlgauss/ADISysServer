@@ -8,3 +8,17 @@ workspace.xml
 ADISysServer2/.idea/workspace.xml
 *workspace.xml
 */workspace.xml
+
+#### Eclipse ####
+.classpath
+.project
+.settings/
+
+#### Intellij ####
+.idea/
+*.iml
+*.iws
+
+##### Log files ####
+*.log
+*.log*

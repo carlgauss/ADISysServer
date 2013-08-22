@@ -74,6 +74,8 @@ public class SchermataImmissioneInfermiere extends SchermataImmissione {
     @Override
     protected void initializeAdd() {
         titolo.setText(SimpleLabelTranslator.translate("addNurse"));
+
+        id.setVisible(false);
     }
 
     @Override

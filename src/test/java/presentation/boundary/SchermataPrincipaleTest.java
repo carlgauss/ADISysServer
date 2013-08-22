@@ -1,7 +1,7 @@
 package presentation.boundary;
 
 import integration.connector.HQSQLConnector;
-import integration.dao.test.HQSQLConnectorStub;
+import integration.dao.HQSQLConnectorStub;
 import mockit.Mockit;
 import org.junit.Before;
 import org.junit.Test;
