@@ -4,6 +4,11 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+/**
+ * Classe usata per implementare la logica di conversione
+ * di date espresse in stringhe in date sintatticamente usabili in HQSQL
+ */
+
 public class DateConverter {
 
     private static final char HQSQL_DATE_SEPARATOR = '-';
@@ -23,13 +28,13 @@ public class DateConverter {
 
     }
 
-    public static String convert(LocalDate date) {
+    public static String convertFromDateToString(LocalDate date) {
         String dateString = date.toString();
 
         return convertHQSQLDateFormat(dateString);
     }
 
-    public static LocalDate convert(String dateString) {
+    public static LocalDate convertFromStringToDate(String dateString) {
         String[] splittedDateString = dateString.split(HQSQL_DATE_SEPARATOR_REGEX);
 
         Integer year = new Integer(splittedDateString[YEAR]);
