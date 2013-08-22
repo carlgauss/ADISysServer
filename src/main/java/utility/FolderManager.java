@@ -2,13 +2,18 @@ package utility;
 
 import java.io.File;
 
+/**
+ *  Classe usata principalmente per la creazione
+ *  della cartella in cui verranno salvati i file di esportazione
+ *  da spedire al lato mobile.
+ */
 public class FolderManager {
 
     private FolderManager() {
 
     }
 
-    public static void insertFolderIfNotExists(String folder) {
+    public static void createFolderIfNotExists(String folder) {
         File foldFile = new File(folder);
 
         if (!foldFile.exists()) {
@@ -16,7 +21,7 @@ public class FolderManager {
             foldFile.mkdir();
 
         } else if (foldFile.isFile()) {
-            throw new InvalidPathExeption("File instead a folder");
+            throw new InvalidPathExeption("It was given a file instead of a folder");
         }
     }
 }

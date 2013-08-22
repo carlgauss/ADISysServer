@@ -35,7 +35,7 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
     @Override
     public void export(List<Intervento> listaInterventi) throws SAXException {
-        FolderManager.insertFolderIfNotExists(PIANIFICAZIONE_FOLDER);
+        FolderManager.createFolderIfNotExists(PIANIFICAZIONE_FOLDER);
 
         String xmlFileName = "";
         xmlFileName += PIANIFICAZIONE_HEADER;
