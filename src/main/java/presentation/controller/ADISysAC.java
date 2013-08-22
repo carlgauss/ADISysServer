@@ -11,13 +11,13 @@ import utility.Parameter;
 class ADISysAC implements ApplicationController {
 
     //TODO decidere quali comandi utilizzare
-    private static String SHOW_SYNTAX = "Mostra[a-zA-Z]+";
+    private static String SHOW_GUI_SYNTAX = "Mostra[a-zA-Z]+";
 
     public Object handleRequest(String serviceName, Parameter parameter) {
         Object result = null;
 
         try {
-            if (serviceName.matches(SHOW_SYNTAX)) {
+            if (serviceName.matches(SHOW_GUI_SYNTAX)) {
                 result = dispatchGUI(serviceName, parameter);
             } else {
                 result = execute(serviceName, parameter);
@@ -39,7 +39,7 @@ class ADISysAC implements ApplicationController {
     }
 
     private static Object dispatchGUI(String serviceName, Parameter parameter) {
-        Boundary boundary = BoundaryFactory.buildInstance(serviceName, parameter);
+        Boundary boundary = BoundaryFactory.getBoundary(serviceName, parameter);
         return boundary.showWindow(parameter);
     }
 
