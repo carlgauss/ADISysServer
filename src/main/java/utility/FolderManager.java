@@ -2,6 +2,7 @@ package utility;
 
 import java.io.File;
 
+
 /**
  *  Classe usata principalmente per la creazione
  *  della cartella in cui verranno salvati i file di esportazione
@@ -21,7 +22,7 @@ public class FolderManager {
             foldFile.mkdir();
 
         } else if (foldFile.isFile()) {
-            throw new InvalidPathExeption("It was given a file instead of a folder");
-        }
+            throw new InvalidPathException("It was given a file instead of a folder");
+        } else throw new FolderAlreadyExistsException();
     }
 }
