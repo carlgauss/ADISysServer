@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class SchermataImmissionePaziente extends SchermataImmissione {
     private ReturnableStage stage;
 
-    private FrontController fc = FrontControllerFactory.buildInstance();
+    private FrontController fc = FrontControllerFactory.getFrontController();
 
     //private Timeline animation;
 
