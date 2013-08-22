@@ -18,6 +18,7 @@ import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SchermataImmissionePaziente extends SchermataImmissione {
@@ -54,9 +55,9 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         //nurseParameter.setValue("cognome", cognome.getText());
 
         if (isEdit) {
-            result = fc.processRequest("ModificaInfermiere", nurseParameter);
+            //result = fc.processRequest("ModificaInfermiere", nurseParameter);
         } else {
-            result = fc.processRequest("InserisciInfermiere", nurseParameter);
+            //result = fc.processRequest("InserisciInfermiere", nurseParameter);
         }
 
         if (result != null) {
@@ -116,7 +117,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         cognome.setText(paziente.getCognome());
         data.setText(paziente.getData().toString(DateConverter.NORMAL_DATE_FORMAT));
 
-
+        List<String> rubrica = paziente.getNumeroCellulare();
+        numero.getItems().setAll(rubrica);
     }
 
     private ReturnableStage getStage() {

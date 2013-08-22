@@ -106,11 +106,25 @@ public class SchermataPrincipale implements Initializable {
     @FXML
     private void onInserisciPaziente(ActionEvent event) {
         Object bool = fc.processRequest("MostraSchermataInserimentoPaziente", null);
+
+        if (bool != null) {
+            loadAllTables();
+        }
     }
 
     @FXML
     private void onModificaPaziente(ActionEvent event) {
-        System.out.println(selectedPaziente.getId());
+        Parameter parameter = new Parameter();
+        if (selectedPaziente != null) {
+            parameter.setValue("paziente", selectedPaziente);
+            Object bool = fc.processRequest("MostraSchermataModificaPaziente", parameter);
+
+            if (bool != null) {
+                loadAllTables();
+            }
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectPatient");
+        }
     }
 
     @FXML
