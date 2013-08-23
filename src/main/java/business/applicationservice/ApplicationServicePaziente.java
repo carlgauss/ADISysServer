@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
+import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidPazienteFieldException;
 import business.entity.Paziente;
 import integration.dao.DAO;
@@ -20,13 +21,13 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
     private DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
     Checker checker = CheckerFactory.buildInstance(Paziente.class);
 
-    public void create(Parameter parameter) throws InvalidPazienteFieldException {
+    public void create(Parameter parameter) throws CommonException {
         Paziente paziente = populate(parameter);
 
         daoPaziente.create(paziente);
     }
 
-    public void update(Parameter parameter) throws InvalidPazienteFieldException {
+    public void update(Parameter parameter) throws CommonException {
         Paziente paziente = populate(parameter);
 
         String id = (String) parameter.getValue("id");
@@ -45,7 +46,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         return daoPaziente.getAll();
     }
 
-    private Paziente populate(Parameter parameter) throws InvalidPazienteFieldException {
+    private Paziente populate(Parameter parameter) throws CommonException {
         String nome = (String) parameter.getValue("nome");
         String cognome = (String) parameter.getValue("cognome");
         String dataString = (String) parameter.getValue("data");
@@ -56,6 +57,8 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         values.add(cognome);
         values.add(dataString);
         values.add(numero);
+
+        checker.check(values);
 
         Paziente paziente = new Paziente();
 

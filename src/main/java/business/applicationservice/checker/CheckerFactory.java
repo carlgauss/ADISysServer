@@ -4,7 +4,7 @@ import business.entity.Entity;
 
 public class CheckerFactory {
     private static final String CHECKER_STRING = Checker.class.getSimpleName();
-    private static final String CHECKER_PKG_PATH = "business.applicationservice.checker";
+    private static final String CHECKER_PKG_PATH = "business.applicationservice.checker.";
 
     private  CheckerFactory() {
 

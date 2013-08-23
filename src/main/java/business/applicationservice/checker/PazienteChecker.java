@@ -20,14 +20,16 @@ class PazienteChecker implements Checker {
     @Override
     public void check(List<Object> values) throws CommonException {
         String nome = (String) values.get(NOME);
-        boolean isValid = (3 <= nome.length()) && (nome.length() <= 30);
+        boolean isValid = (MIN_NOME_VALUE <= nome.length())
+                       && (nome.length() <= MAX_NOME_VALUE);
 
         if (!isValid) {
             throw new InvalidPazienteFieldException("invalidPatientName");
         }
 
         String cognome = (String) values.get(COGNOME);
-        isValid = (3 <= cognome.length()) && (cognome.length() <= 30);
+        isValid = (MIN_COGNOME_VALUE <= cognome.length())
+               && (cognome.length() <= MAX_COGNOME_VALUE);
 
         if (!isValid) {
             throw new InvalidPazienteFieldException("invalidPatientSurname");
