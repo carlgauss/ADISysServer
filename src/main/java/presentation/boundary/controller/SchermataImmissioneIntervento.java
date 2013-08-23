@@ -91,6 +91,11 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     }
 
     @FXML
+    private void onOperazioneEdit(ActionEvent event) {
+
+    }
+
+    @FXML
     private void onOperazioneRemove(ActionEvent event) {
         int selectedItem = operazione.getSelectionModel().getSelectedIndex();
         if (selectedItem > -1) {
@@ -141,31 +146,34 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
         selectEntityById(intervento.getInfermiere(), infermiere);
 
-        //TODO operazioni
-
-        //List<String> rubrica = paziente.getNumeroCellulare();
-        //numero.getItems().setAll(rubrica);
+        List<Operazione> operazioneList = intervento.getOperazione();
+        operazione.getItems().setAll(operazioneList);
     }
 
     private ReturnableStage getStage() {
         return (ReturnableStage) root.getScene().getWindow();
     }
 
+    private static final int FIRST = 0;
+    private static final int NULL = -1;
+
     private <AtomicEntity extends IndipendentEntity> void selectEntityById(AtomicEntity entity, ComboBox<AtomicEntity> entityComboBox) {
         String entityId = entity.getId();
+
 
         ObservableList<AtomicEntity> entityData = entityComboBox.getItems();
 
         if (!entityData.isEmpty()) {
             boolean searched = false;
 
-            int i;
-            for (i = 0; (i < entityData.size()) && !searched; i++) {
+            int selectedPosition = NULL;
+            for (int i = FIRST; (i < entityData.size()) && !searched; i++) {
                 String searchedEntityId = entityData.get(i).getId();
                 searched = entityId.equals(searchedEntityId);
+                selectedPosition = i;
             }
 
-            entityComboBox.getSelectionModel().select(i);
+            entityComboBox.getSelectionModel().select(selectedPosition);
         }
     }
 

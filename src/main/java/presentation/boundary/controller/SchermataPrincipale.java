@@ -148,7 +148,7 @@ public class SchermataPrincipale implements Initializable {
                 loadAllTables();
             }
         } else {
-            MessageDisplayer.showErrorMessage(null, "selectIntervento");
+            MessageDisplayer.showErrorMessage(null, "selectIntervention");
         }
     }
 

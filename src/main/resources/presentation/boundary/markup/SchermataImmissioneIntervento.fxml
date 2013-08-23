@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.lang.*?>
 <?import java.net.URL?>
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" styleClass="window"
+            minWidth="-Infinity" prefHeight="450.0" prefWidth="622.0" styleClass="window"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="presentation.boundary.controller.SchermataImmissioneIntervento">
     <children>
@@ -100,15 +98,7 @@
                         <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
                                    AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <ComboBox id="paziente" fx:id="infermiere" maxWidth="1.7976931348623157E308">
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="Item 1"/>
-                                            <String fx:value="Item 2"/>
-                                            <String fx:value="Item 3"/>
-                                        </FXCollections>
-                                    </items>
-                                </ComboBox>
+                                <ComboBox id="paziente" fx:id="infermiere" maxWidth="1.7976931348623157E308"/>
                             </children>
                         </StackPane>
                     </children>
@@ -118,15 +108,7 @@
                         <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
                                    AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <ComboBox fx:id="paziente" maxWidth="1.7976931348623157E308">
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="Item 1"/>
-                                            <String fx:value="Item 2"/>
-                                            <String fx:value="Item 3"/>
-                                        </FXCollections>
-                                    </items>
-                                </ComboBox>
+                                <ComboBox fx:id="paziente" maxWidth="1.7976931348623157E308"/>
                             </children>
                         </StackPane>
                     </children>
@@ -161,11 +143,11 @@
                         </StackPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                <AnchorPane prefHeight="290.0" prefWidth="247.0" GridPane.columnIndex="2" GridPane.rowIndex="0"
                             GridPane.rowSpan="2147483647">
                     <children>
-                        <VBox prefHeight="290.0" prefWidth="216.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
-                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox prefHeight="290.0" prefWidth="257.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Label text="operations"/>
                                 <ListView fx:id="operazione"/>
@@ -173,8 +155,10 @@
                                     <children>
                                         <Button minWidth="70.0" mnemonicParsing="false" onAction="#onOperazioneAdd"
                                                 text="add"/>
+                                        <Button minWidth="70.0" mnemonicParsing="false" onAction="#onOperazioneEdit"
+                                                text="edit"/>
                                         <Button minWidth="70.0" mnemonicParsing="false" onAction="#onOperazioneRemove"
-                                                text="remove"/>
+                                                text="delete"/>
                                     </children>
                                 </HBox>
                             </children>
@@ -186,9 +170,9 @@
                 </AnchorPane>
             </children>
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="120.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="226.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="226.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="89.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="212.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.0" minWidth="10.0" prefWidth="261.0"/>
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
