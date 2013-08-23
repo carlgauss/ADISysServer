@@ -130,12 +130,26 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML
     private void onInserisciIntervento(ActionEvent event) {
-        System.out.println(selectedIntervento.getId());
+        Object bool = fc.processRequest("MostraSchermataInserimentoIntervento", null);
+
+        if (bool != null) {
+            loadAllTables();
+        }
     }
 
     @FXML
     private void onModificaIntervento(ActionEvent event) {
-        System.out.println(selectedIntervento.getId());
+        Parameter parameter = new Parameter();
+        if (selectedIntervento != null) {
+            parameter.setValue("intervento", selectedIntervento);
+            Object bool = fc.processRequest("MostraSchermataModificaIntervento", parameter);
+
+            if (bool != null) {
+                loadAllTables();
+            }
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectIntervento");
+        }
     }
 
     @FXML

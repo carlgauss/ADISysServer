@@ -1,12 +1,13 @@
 package presentation.boundary.controller.itemfactory;
 
+import business.entity.IndipendentEntity;
 import business.entity.Person;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
 
-public class PersonPortrayalCellFactory<Entity extends Person> implements Callback<ListView<Entity>, ListCell<Entity>> {
+public class PersonPortrayalCellFactory<Entity extends Person & IndipendentEntity> implements Callback<ListView<Entity>, ListCell<Entity>> {
 
     @Override
     public ListCell<Entity> call(ListView<Entity> entityListView) {
@@ -15,7 +16,7 @@ public class PersonPortrayalCellFactory<Entity extends Person> implements Callba
             protected void updateItem(Entity entity, boolean empty) {
                 super.updateItem(entity, empty);
                 if (!empty) {
-                    setText(entity.getNome() + " " + entity.getCognome());
+                    setText(entity.getId() + ": " + entity.getNome() + " " + entity.getCognome());
                 } else {
                     setText(null);
                 }

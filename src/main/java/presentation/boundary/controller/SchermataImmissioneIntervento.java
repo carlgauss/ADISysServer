@@ -103,6 +103,18 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         operazione.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+        List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
+
+        paziente.setCellFactory(new PersonPortrayalCellFactory<Paziente>());
+        ObservableList<Paziente> pazienteData = FXCollections.observableArrayList(pazienteList);
+        paziente.setItems(pazienteData);
+
+
+        List<Infermiere> infermiereList = (List<Infermiere>) fc.processRequest("VisualizzaTuttiInfermieri", null);
+
+        infermiere.setCellFactory(new PersonPortrayalCellFactory<Infermiere>());
+        ObservableList<Infermiere> infermiereData = FXCollections.observableArrayList(infermiereList);
+        infermiere.setItems(infermiereData);
     }
 
     @Override
@@ -125,22 +137,11 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
         data.setText(intervento.getData().toString(DateConverter.NORMAL_DATE_FORMAT));
         ora.setText(intervento.getOra().toString());
 
-        List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
-
-        paziente.setCellFactory(new PersonPortrayalCellFactory<Paziente>());
-        ObservableList<Paziente> pazienteData = FXCollections.observableArrayList(pazienteList);
-        paziente.setItems(pazienteData);
-
         selectEntityById(intervento.getPaziente(), paziente);
-
-        List<Infermiere> infermiereList = (List<Infermiere>) fc.processRequest("VisualizzaTuttiInfermieri", null);
-
-        infermiere.setCellFactory(new PersonPortrayalCellFactory<Infermiere>());
-        ObservableList<Infermiere> infermiereData = FXCollections.observableArrayList(infermiereList);
-        infermiere.setItems(infermiereData);
 
         selectEntityById(intervento.getInfermiere(), infermiere);
 
+        //TODO operazioni
 
         //List<String> rubrica = paziente.getNumeroCellulare();
         //numero.getItems().setAll(rubrica);

@@ -6,14 +6,18 @@ import business.applicationservice.exception.InvalidPazienteFieldException;
 import javax.xml.bind.annotation.XmlElement;
 
 
-public interface Person extends Entity {
+public abstract class Person implements Entity {
     @XmlElement
-    String getNome();
+    public abstract String getNome();
 
-    void setNome(String nome) throws InvalidInfermiereFieldException, InvalidPazienteFieldException;
+    public abstract void setNome(String nome) throws InvalidInfermiereFieldException, InvalidPazienteFieldException;
 
     @XmlElement
-    String getCognome();
+    public abstract String getCognome();
 
-    void setCognome(String cognome) throws InvalidInfermiereFieldException, InvalidPazienteFieldException;
+    public abstract void setCognome(String cognome) throws InvalidInfermiereFieldException, InvalidPazienteFieldException;
+
+    public String toString() {
+        return getNome() + " " + getCognome();
+    }
 }
