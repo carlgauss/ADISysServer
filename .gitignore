@@ -37,3 +37,9 @@ target/
 *.log
 *.log*
 *.bak
+
+###### Test DBs ######
+database/test
+
+###### Test Pianificazioni ######
+pianificazione
