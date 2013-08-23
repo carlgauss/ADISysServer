@@ -33,6 +33,9 @@ public class SchermataPrincipale extends Application implements Boundary {
         stage.setTitle(SimpleLabelTranslator.translate("adisysServer"));
         stage.initStyle(StageStyle.DECORATED);
 
+        stage.setMinWidth(800);
+        stage.setMinHeight(640);
+
         double width = Screen.getPrimary().getBounds().getWidth();
         double height = Screen.getPrimary().getBounds().getHeight();
 
