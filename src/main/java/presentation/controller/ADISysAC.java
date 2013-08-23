@@ -1,6 +1,6 @@
 package presentation.controller;
 
-import business.applicationservice.exception.CommonInvalidFieldException;
+import business.applicationservice.exception.CommonException;
 import business.applicationservice.factory.ApplicationServiceFactory;
 import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
@@ -25,14 +25,14 @@ class ADISysAC implements ApplicationController {
             if (result == null) {
                 result = true;
             }
-        } catch (CommonInvalidFieldException e) {
+        } catch (CommonException e) {
             e.reportException();
         }
 
         return result;
     }
 
-    private Object execute(String serviceName, Parameter parameter) throws CommonInvalidFieldException {
+    private Object execute(String serviceName, Parameter parameter) throws CommonException {
         ApplicationService appServiceClass = ApplicationServiceFactory.getApplicationController(serviceName);
         ApplicationServiceMethod appServiceMethod = ApplicationServiceMethodFactory.getASMethod(appServiceClass);
         return appServiceMethod.invoke(serviceName, parameter);

@@ -1,7 +1,7 @@
 package business.applicationservice.checker;
 
-import business.applicationservice.exception.CommonInvalidFieldException;
-import business.applicationservice.exception.InvalidInfermiereFieldException;
+import business.applicationservice.exception.CommonException;
+import business.applicationservice.exception.InvalidOperazioneFieldException;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ class OperazioneChecker implements Checker {
     private static final int MAX_NOME_VALUE = 30;
 
     @Override
-    public void check(List<Object> values) throws CommonInvalidFieldException {
+    public void check(List<Object> values) throws CommonException {
         String nome = (String) values.get(NOME);
         nome = nome.trim();
 
@@ -21,7 +21,7 @@ class OperazioneChecker implements Checker {
                 && (length <= MAX_NOME_VALUE);
 
         if (!isValid) {
-            throw new InvalidInfermiereFieldException("invalidOperationName");
+            throw new InvalidOperazioneFieldException("invalidOperationName");
         }
     }
 }

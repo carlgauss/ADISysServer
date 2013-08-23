@@ -2,7 +2,7 @@ package business.applicationservice;
 
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
-import business.applicationservice.exception.CommonInvalidFieldException;
+import business.applicationservice.exception.CommonException;
 import business.entity.Paziente;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
@@ -19,13 +19,13 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
     private DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
     Checker checker = CheckerFactory.buildInstance(Paziente.class);
 
-    public void create(Parameter parameter) throws CommonInvalidFieldException {
+    public void create(Parameter parameter) throws CommonException {
         Paziente paziente = populate(parameter);
 
         daoPaziente.create(paziente);
     }
 
-    public void update(Parameter parameter) throws CommonInvalidFieldException {
+    public void update(Parameter parameter) throws CommonException {
         Paziente paziente = populate(parameter);
 
         String id = (String) parameter.getValue("id");
@@ -44,7 +44,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         return daoPaziente.getAll();
     }
 
-    private Paziente populate(Parameter parameter) throws CommonInvalidFieldException {
+    private Paziente populate(Parameter parameter) throws CommonException {
         String nome = (String) parameter.getValue("nome");
         String cognome = (String) parameter.getValue("cognome");
         String dataString = (String) parameter.getValue("data");

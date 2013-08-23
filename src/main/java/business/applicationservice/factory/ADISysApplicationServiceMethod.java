@@ -1,6 +1,6 @@
 package business.applicationservice.factory;
 
-import business.applicationservice.exception.CommonInvalidFieldException;
+import business.applicationservice.exception.CommonException;
 import presentation.controller.ApplicationService;
 import utility.Parameter;
 
@@ -15,7 +15,7 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
         this.as = as;
     }
 
-    public Object invoke(String serviceName, Parameter parameter) throws CommonInvalidFieldException {
+    public Object invoke(String serviceName, Parameter parameter) throws CommonException {
         Object result = null;
         try {
 
@@ -32,8 +32,8 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
         } catch (InvocationTargetException e) {
             Throwable cause = e.getCause();
             Class<?> causeClass = cause.getClass();
-            if (CommonInvalidFieldException.class.isAssignableFrom(causeClass)) {
-                CommonInvalidFieldException commonCause = (CommonInvalidFieldException) cause;
+            if (CommonException.class.isAssignableFrom(causeClass)) {
+                CommonException commonCause = (CommonException) cause;
                 throw commonCause;
             } else {
                 e.printStackTrace();

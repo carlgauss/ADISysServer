@@ -2,7 +2,7 @@ package business.applicationservice;
 
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
-import business.applicationservice.exception.CommonInvalidFieldException;
+import business.applicationservice.exception.CommonException;
 import business.entity.Operazione;
 import presentation.controller.ApplicationService;
 import utility.Parameter;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ApplicationServiceOperazione implements ApplicationService {
 
-    public void checkOperazione(Parameter parameter) throws CommonInvalidFieldException {
+    public void checkOperazione(Parameter parameter) throws CommonException {
         String nome = (String) parameter.getValue("nome");
         List<Object> operazioneValues = new LinkedList<>();
         operazioneValues.add(nome);

@@ -1,6 +1,6 @@
 package business.applicationservice.checker;
 
-import business.applicationservice.exception.CommonInvalidFieldException;
+import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidInfermiereFieldException;
 
 import java.util.List;
@@ -15,7 +15,7 @@ class InfermiereChecker implements Checker {
     private static final int MAX_COGNOME_VALUE = 30;
 
     @Override
-    public void check(List<Object> values) throws CommonInvalidFieldException {
+    public void check(List<Object> values) throws CommonException {
         String nome = (String) values.get(NOME);
         nome = nome.trim();
 
