@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" styleClass="window"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="presentation.boundary.controller.SchermataImmissioneInfermiere">
+    <children>
+        <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="titolo" styleClass="smalltitle" text="defaultTitleExample"/>
+            </children>
+        </StackPane>
+        <GridPane alignment="CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0"
+                  AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <children>
+                        <Label fx:id="idLbl" alignment="CENTER_RIGHT" text="id" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="city" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="postalCode" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <children>
+                        <Label fx:id="id" prefHeight="34.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField id="nome" fx:id="citta"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField id="cognome" fx:id="cap"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <children>
+                        <Label id="idLbl" alignment="CENTER_RIGHT" text="address" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="date" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="time" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="patient" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane id="nurse" prefHeight="32.0" prefWidth="173.0" GridPane.columnIndex="0"
+                            GridPane.rowIndex="7">
+                    <children>
+                        <Label alignment="CENTER_RIGHT" text="nurse" AnchorPane.bottomAnchor="0.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ComboBox id="paziente" fx:id="infermiere" maxWidth="1.7976931348623157E308">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Item 1"/>
+                                            <String fx:value="Item 2"/>
+                                            <String fx:value="Item 3"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ComboBox fx:id="paziente" maxWidth="1.7976931348623157E308">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Item 1"/>
+                                            <String fx:value="Item 2"/>
+                                            <String fx:value="Item 3"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField id="nome" fx:id="ora"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField id="cognome" fx:id="data"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <children>
+                        <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
+                                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <TextField id="nome" fx:id="indirizzo"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                            GridPane.rowSpan="2147483647">
+                    <children>
+                        <VBox prefHeight="290.0" prefWidth="216.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label text="operations"/>
+                                <ListView/>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+                                    <children>
+                                        <Button minWidth="70.0" mnemonicParsing="false" text="add"/>
+                                        <Button minWidth="70.0" mnemonicParsing="false" text="remove"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" left="12.0" top="12.0"/>
+                            </padding>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="120.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="226.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="226.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
+        <StackPane prefHeight="37.0" prefWidth="406.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#onOk" text="ok"/>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#onCancel" text="cancel"/>
+                    </children>
+                </HBox>
+            </children>
+        </StackPane>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet/default.css"/>
+    </stylesheets>
+</AnchorPane>
