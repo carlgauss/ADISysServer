@@ -12,9 +12,9 @@ class PazienteChecker implements Checker {
     private static final int COGNOME = 1;
     private static final int DATA = 2;
 
-    private static final int MIN_NOME_VALUE = 3;
+    private static final int MIN_NOME_VALUE = 2;
     private static final int MAX_NOME_VALUE = 30;
-    private static final int MIN_COGNOME_VALUE = 3;
+    private static final int MIN_COGNOME_VALUE = 2;
     private static final int MAX_COGNOME_VALUE = 30;
 
     @Override
