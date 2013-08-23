@@ -36,7 +36,7 @@ public class Infermiere implements Person {
         return nome;
     }
 
-    public void setNome(String nome) throws InvalidInfermiereFieldException {
+    public void setNome(String nome) {
         nome = nome.trim();
         this.nome = nome;
     }
@@ -46,7 +46,7 @@ public class Infermiere implements Person {
         return cognome;
     }
 
-    public void setCognome(String cognome) throws InvalidInfermiereFieldException {
+    public void setCognome(String cognome) {
         cognome = cognome.trim();
         this.cognome = cognome;
     }

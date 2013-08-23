@@ -100,8 +100,6 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (InvalidInfermiereFieldException e) {
-            e.printStackTrace();
         }
 
         return result;

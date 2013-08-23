@@ -27,16 +27,8 @@ public class DAOInfermiereTest {
         infermieri = new Infermiere[INFERMIERI_STRING.length];
         for (int i = 0; i < infermieri.length; i++) {
             infermieri[i] = new Infermiere();
-            try {
-                infermieri[i].setNome(INFERMIERI_STRING[i][0]);
-            } catch (InvalidInfermiereFieldException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            try {
-                infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
-            } catch (InvalidInfermiereFieldException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
+            infermieri[i].setNome(INFERMIERI_STRING[i][0]);
+            infermieri[i].setCognome(INFERMIERI_STRING[i][1]);
         }
     }
 
@@ -82,16 +74,8 @@ public class DAOInfermiereTest {
 
         System.out.println("---updating all queries (adding k to the names)---");
         for (Infermiere e : list) {
-            try {
-                e.setNome(e.getNome() + "k");
-            } catch (InvalidInfermiereFieldException e1) {
-                e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            try {
-                e.setCognome(e.getCognome() + "k");
-            } catch (InvalidInfermiereFieldException e1) {
-                e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
+            e.setNome(e.getNome() + "k");
+            e.setCognome(e.getCognome() + "k");
             dao.update(e);
             System.out.println("infermiere updated");
         }

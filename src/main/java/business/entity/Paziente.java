@@ -44,7 +44,7 @@ public class Paziente implements Person {
     }
 
     @Override
-    public void setNome(String nome) throws InvalidPazienteFieldException {
+    public void setNome(String nome) {
         nome = nome.trim();
         this.nome = nome;
     }
@@ -56,7 +56,7 @@ public class Paziente implements Person {
     }
 
     @Override
-    public void setCognome(String cognome) throws InvalidPazienteFieldException {
+    public void setCognome(String cognome) {
         cognome = cognome.trim();
         this.cognome = cognome;
     }

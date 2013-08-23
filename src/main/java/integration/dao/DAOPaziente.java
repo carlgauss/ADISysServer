@@ -120,18 +120,10 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
                 element.setId(id.trim());
 
                 String nome = resultSet.getString(NOME_PAZIENTE_ATTRIBUTE_NAME);
-                try {
-                    element.setNome(nome.trim());
-                } catch (InvalidPazienteFieldException e) {
-                    e.printStackTrace();
-                }
+                element.setNome(nome.trim());
 
                 String cognome = resultSet.getString(COGNOME_PAZIENTE_ATTRIBUTE_NAME);
-                try {
-                    element.setCognome(cognome.trim());
-                } catch (InvalidPazienteFieldException e) {
-                    e.printStackTrace();
-                }
+                element.setCognome(cognome.trim());
 
                 String dataString = resultSet.getString(DATA_PAZIENTE_ATTRIBUTE_NAME);
                 LocalDate data = LocalDate.parse(dataString);
