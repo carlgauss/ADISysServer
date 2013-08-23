@@ -18,10 +18,9 @@
         <GridPane alignment="CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0"
                   AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
             <children>
-                <AnchorPane fx:id="idLbl" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0"
-                            GridPane.rowIndex="0">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                     <children>
-                        <Label alignment="CENTER_RIGHT" text="id" AnchorPane.bottomAnchor="0.0"
+                        <Label fx:id="idLbl" alignment="CENTER_RIGHT" text="id" AnchorPane.bottomAnchor="0.0"
                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0"/>
                     </children>
                 </AnchorPane>
