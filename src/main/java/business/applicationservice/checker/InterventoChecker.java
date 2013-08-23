@@ -75,12 +75,12 @@ class InterventoChecker implements Checker {
             throw new InvalidInterventoFieldException("formatTimeError");
         }
 
-        if (values.get(INFERMIERE) == null) {
-            throw new InvalidInterventoFieldException("invalidInterventionNurse");
-        }
-
         if (values.get(PAZIENTE) == null) {
             throw new InvalidInterventoFieldException("invalidInterventionPatient");
+        }
+
+        if (values.get(INFERMIERE) == null) {
+            throw new InvalidInterventoFieldException("invalidInterventionNurse");
         }
 
         List<Operazione> operazione = (List<Operazione>) values.get(OPERAZIONE);
