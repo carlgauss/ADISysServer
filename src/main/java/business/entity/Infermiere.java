@@ -38,11 +38,6 @@ public class Infermiere implements Person {
 
     public void setNome(String nome) throws InvalidInfermiereFieldException {
         nome = nome.trim();
-        int length = nome.length();
-        boolean isValid = (length >= 3) && (length <= 30);
-        if (!isValid) {
-            throw new InvalidInfermiereFieldException("invalidNurseName");
-        }
         this.nome = nome;
     }
 
@@ -53,11 +48,6 @@ public class Infermiere implements Person {
 
     public void setCognome(String cognome) throws InvalidInfermiereFieldException {
         cognome = cognome.trim();
-        int length = cognome.length();
-        boolean isValid = (length >= 3) && (length <= 30);
-        if (!isValid) {
-            throw new InvalidInfermiereFieldException("invalidNurseSurname");
-        }
         this.cognome = cognome;
     }
 }

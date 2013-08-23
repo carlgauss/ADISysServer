@@ -45,29 +45,19 @@ public class Paziente implements Person {
 
     @Override
     public void setNome(String nome) throws InvalidPazienteFieldException {
-        boolean isValid = (3 <= nome.length()) && (nome.length() <= 30);
-
-        if (!isValid) {
-            throw new InvalidPazienteFieldException("invalidPatientName");
-        }
-
+        nome = nome.trim();
         this.nome = nome;
     }
 
     @Override
     @XmlElement
-    public String getCognome() {
+    public String getCognome() {;
         return cognome;
     }
 
     @Override
     public void setCognome(String cognome) throws InvalidPazienteFieldException {
-        boolean isValid = (3 <= cognome.length()) && (cognome.length() <= 30);
-
-        if (!isValid) {
-            throw new InvalidPazienteFieldException("invalidPatientSurname");
-        }
-
+        cognome = cognome.trim();
         this.cognome = cognome;
     }
 
@@ -90,18 +80,6 @@ public class Paziente implements Person {
     }
 
     public void setNumeroCellulare(List<String> numeroCellulare) {
-        List<String> numeroCellulareFiltered = new LinkedList<>();
-
-        for (String numero : numeroCellulare) {
-            String numeroTrimmed = numero.trim();
-
-            boolean isNumeroValid = (3 <= numeroTrimmed.length()) && (numeroTrimmed.length() <= 20);
-
-            if (isNumeroValid) {
-                numeroCellulareFiltered.add(numeroTrimmed);
-            }
-        }
-
-        this.numeroCellulare = numeroCellulareFiltered;
+        this.numeroCellulare = SerialClone.clone(numeroCellulare);
     }
 }

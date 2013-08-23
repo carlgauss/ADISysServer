@@ -49,6 +49,22 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
         String cognome = (String) parameter.getValue("cognome");
         infermiere.setCognome(cognome);
 
+        nome = infermiere.getNome();
+
+        int length = nome.length();
+        boolean isValid = (length >= 3) && (length <= 30);
+        if (!isValid) {
+            throw new InvalidInfermiereFieldException("invalidNurseName");
+        }
+
+        cognome = infermiere.getCognome();
+
+        length = cognome.length();
+        isValid = (length >= 3) && (length <= 30);
+        if (!isValid) {
+            throw new InvalidInfermiereFieldException("invalidNurseSurname");
+        }
+
         return infermiere;
     }
 }

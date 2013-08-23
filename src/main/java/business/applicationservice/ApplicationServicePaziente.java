@@ -9,6 +9,7 @@ import presentation.controller.ApplicationService;
 import utility.DateConverter;
 import utility.Parameter;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
@@ -59,7 +60,35 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         }
 
         List<String> numero = (List<String>) parameter.getValue("numero");
-        paziente.setNumeroCellulare(numero);
+
+        List<String> numeroCellulareFiltered = new LinkedList<>();
+
+        for (String singoloNumero : numero) {
+            String numeroTrimmed = singoloNumero.trim();
+
+            boolean isNumeroValid = (3 <= numeroTrimmed.length()) && (numeroTrimmed.length() <= 20);
+
+            if (isNumeroValid) {
+                numeroCellulareFiltered.add(numeroTrimmed);
+            }
+        }
+
+        paziente.setNumeroCellulare(numeroCellulareFiltered);
+
+        nome = paziente.getNome();
+        boolean isValid = (3 <= nome.length()) && (nome.length() <= 30);
+
+        if (!isValid) {
+            throw new InvalidPazienteFieldException("invalidPatientName");
+        }
+
+        cognome = paziente.getCognome();
+        isValid = (3 <= cognome.length()) && (cognome.length() <= 30);
+
+        if (!isValid) {
+            throw new InvalidPazienteFieldException("invalidPatientSurname");
+        }
+
 
         return paziente;
     }
