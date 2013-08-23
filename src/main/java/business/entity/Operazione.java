@@ -65,6 +65,6 @@ public class Operazione implements IndipendentEntity {
     }
 
     public String toString() {
-        return id + ": " + nome;
+        return nome;
     }
 }

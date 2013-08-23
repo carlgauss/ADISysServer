@@ -140,7 +140,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
         cap.setText(intervento.getCap());
         indirizzo.setText(intervento.getIndirizzo());
         data.setText(intervento.getData().toString(DateConverter.NORMAL_DATE_FORMAT));
-        ora.setText(intervento.getOra().toString());
+        ora.setText(intervento.getOra().toString(DateConverter.EUROPEAN_TIME_FORMAT));
 
         selectEntityById(intervento.getPaziente(), paziente);
 

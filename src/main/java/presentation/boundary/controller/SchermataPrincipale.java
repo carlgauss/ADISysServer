@@ -21,6 +21,7 @@ import org.joda.time.LocalDate;
 import presentation.boundary.controller.itemfactory.DateDepictionFactory;
 import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory;
 import presentation.boundary.controller.itemfactory.PersonPortrayalTableFactory;
+import presentation.boundary.controller.itemfactory.TimeDepictionFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
@@ -221,15 +222,17 @@ public class SchermataPrincipale implements Initializable {
         ObservableList<Intervento> interventoData = FXCollections.observableArrayList(interventoList);
 
         idIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, String>("id"));
+        idIntervento.setCellFactory(new InterventoColoringRowFactory<>());
+
         cittaIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, String>("citta"));
         capIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, String>("cap"));
         indirizzoIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, String>("indirizzo"));
 
         dataIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, LocalDate>("data"));
-        dataIntervento.setCellFactory(new DateDepictionFactory<Paziente>());
+        dataIntervento.setCellFactory(new DateDepictionFactory<>());
 
         oraIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, LocalDate>("ora"));
-        oraIntervento.setCellFactory(new InterventoColoringRowFactory<>());
+        oraIntervento.setCellFactory(new TimeDepictionFactory<>());
 
         pazienteIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, Paziente>("paziente"));
         pazienteIntervento.setCellFactory(new PersonPortrayalTableFactory<>());

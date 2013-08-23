@@ -118,7 +118,7 @@
                         <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
                                    AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <TextField id="nome" fx:id="ora"/>
+                                <TextField id="nome" fx:id="ora" promptText="timeFormat"/>
                             </children>
                         </StackPane>
                     </children>
@@ -128,7 +128,7 @@
                         <StackPane id="StackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0"
                                    AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <TextField id="cognome" fx:id="data"/>
+                                <TextField id="cognome" fx:id="data" promptText="dateFormat"/>
                             </children>
                         </StackPane>
                     </children>

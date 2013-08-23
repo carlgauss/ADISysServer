@@ -17,6 +17,7 @@ public class SimpleLabelTranslator {
     private static final Class<?> LABELED_CLASS = Labeled.class;
     private static final Class<?> TABLE_VIEW = TableView.class;
     private static final Class<?> MENU_BUTTON = MenuButton.class;
+    private static final Class<?> TEXT_FIELD = TextField.class;
 
     public static void translateAll(Node root, Properties properties) {
         Set<Node> nodeSet = root.lookupAll("*");
@@ -56,6 +57,13 @@ public class SimpleLabelTranslator {
                     } else {
                         translateAll(graphic, properties);
                     }
+                }
+            } else if (TEXT_FIELD.isAssignableFrom(nodeClass)) {
+                TextField textField = (TextField) node;
+                String text = textField.getPromptText();
+                if (properties.containsKey(text)) {
+                    String translatedText = properties.getProperty(text);
+                    textField.setPromptText(translatedText);
                 }
             }
         }
