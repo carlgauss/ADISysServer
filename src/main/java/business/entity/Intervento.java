@@ -8,6 +8,7 @@ import utility.xml.adapter.XMLTimeAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.LinkedList;
 import java.util.List;
 
 @XmlRootElement
@@ -102,7 +103,13 @@ public class Intervento implements IndipendentEntity {
     }
 
     public void setOperazione(List<Operazione> operazione) {
-        this.operazione = SerialClone.clone(operazione);
+        List<Operazione> operazioneList = new LinkedList<>();
+
+        for (Operazione operazioneElem : operazione) {
+            operazioneList.add(SerialClone.clone(operazioneElem));
+        }
+
+        this.operazione = operazioneList;
     }
 
     @XmlElement
