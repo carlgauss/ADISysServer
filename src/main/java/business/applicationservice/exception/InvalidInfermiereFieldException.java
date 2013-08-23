@@ -3,7 +3,7 @@ package business.applicationservice.exception;
 import utility.MessageDisplayer;
 
 
-public class InvalidInfermiereFieldException extends CommonException {
+public class InvalidInfermiereFieldException extends CommonInvalidFieldException {
     public InvalidInfermiereFieldException(String message) {
         this.message = message;
     }

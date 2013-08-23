@@ -1,6 +1,5 @@
 package integration.dao;
 
-import business.applicationservice.exception.InvalidInfermiereFieldException;
 import business.entity.Infermiere;
 
 import java.sql.ResultSet;

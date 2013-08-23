@@ -1,6 +1,5 @@
 package business.entity;
 
-import business.applicationservice.exception.InvalidPazienteFieldException;
 import org.joda.time.LocalDate;
 import utility.SerialClone;
 import utility.xml.adapter.XMLDateAdapter;

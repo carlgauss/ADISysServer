@@ -1,6 +1,5 @@
 package integration.dao;
 
-import business.applicationservice.exception.InvalidPazienteFieldException;
 import business.entity.Paziente;
 import integration.connector.HQSQLConnector;
 import mockit.Mockit;

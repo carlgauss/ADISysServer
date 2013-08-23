@@ -1,8 +1,6 @@
 package business.applicationservice;
 
-import business.applicationservice.exception.CommonException;
-import business.applicationservice.exception.InvalidInfermiereFieldException;
-import business.applicationservice.exception.InvalidPazienteFieldException;
+import business.applicationservice.exception.CommonInvalidFieldException;
 import utility.Parameter;
 
 import java.util.List;
@@ -17,9 +15,9 @@ import java.util.List;
  * We don't implement delete operations.
  */
 public interface CRUG<Entity> {
-    public void create(Parameter parameter) throws CommonException;
+    public void create(Parameter parameter) throws CommonInvalidFieldException;
 
-    public void update(Parameter parameter) throws CommonException;
+    public void update(Parameter parameter) throws CommonInvalidFieldException;
 
     public Entity read(Parameter parameter);
 
