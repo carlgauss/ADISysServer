@@ -99,7 +99,6 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numero.setCellFactory(TextFieldListCell.forListView());
         numero.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
     }
 
     @Override

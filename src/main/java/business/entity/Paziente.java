@@ -11,7 +11,7 @@ import java.util.List;
 
 @XmlRootElement
 @XmlType(propOrder = {"id", "nome", "cognome", "data", "numeroCellulare"})
-public class Paziente implements Person {
+public class Paziente implements Person, IndipendentEntity {
     /**
      *
      */
@@ -50,7 +50,8 @@ public class Paziente implements Person {
 
     @Override
     @XmlElement
-    public String getCognome() {;
+    public String getCognome() {
+        ;
         return cognome;
     }
 

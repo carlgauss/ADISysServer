@@ -6,7 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
 
-public class PersonPortrayalFactory<Entity, AtomicPerson extends Person> implements Callback<TableColumn<Entity, AtomicPerson>, TableCell<Entity, AtomicPerson>> {
+public class PersonPortrayalTableFactory<Entity, AtomicPerson extends Person> implements Callback<TableColumn<Entity, AtomicPerson>, TableCell<Entity, AtomicPerson>> {
     @Override
     public TableCell<Entity, AtomicPerson> call(TableColumn<Entity, AtomicPerson> entityLocalDateTableColumn) {
         return new TableCell<Entity, AtomicPerson>() {

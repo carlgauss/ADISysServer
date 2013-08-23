@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlType(propOrder = {"id", "nome", "nota", "valoreRilevato"})
-public class Operazione implements Entity {
+public class Operazione implements IndipendentEntity {
     /**
      *
      */

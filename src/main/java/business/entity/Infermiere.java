@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlType(propOrder = {"id", "nome", "cognome"})
-public class Infermiere implements Person {
+public class Infermiere implements Person, IndipendentEntity {
     /**
      *
      */
@@ -20,11 +20,13 @@ public class Infermiere implements Person {
 
     private String cognome;
 
+    @Override
     @XmlElement
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }

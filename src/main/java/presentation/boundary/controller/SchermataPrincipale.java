@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import org.joda.time.LocalDate;
 import presentation.boundary.controller.itemfactory.DateDepictionFactory;
 import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory;
-import presentation.boundary.controller.itemfactory.PersonPortrayalFactory;
+import presentation.boundary.controller.itemfactory.PersonPortrayalTableFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
@@ -218,9 +218,9 @@ public class SchermataPrincipale implements Initializable {
         oraIntervento.setCellFactory(new InterventoColoringRowFactory<>());
 
         pazienteIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, Paziente>("paziente"));
-        pazienteIntervento.setCellFactory(new PersonPortrayalFactory<>());
+        pazienteIntervento.setCellFactory(new PersonPortrayalTableFactory<>());
         infermiereIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, Infermiere>("infermiere"));
-        infermiereIntervento.setCellFactory(new PersonPortrayalFactory<>());
+        infermiereIntervento.setCellFactory(new PersonPortrayalTableFactory<>());
 
         tabellaIntervento.setItems(interventoData);
         String noIntervention = SimpleLabelTranslator.translate("noIntervention");

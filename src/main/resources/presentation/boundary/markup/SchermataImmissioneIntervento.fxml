@@ -9,7 +9,7 @@
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" styleClass="window"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="presentation.boundary.controller.SchermataImmissioneInfermiere">
+            fx:controller="presentation.boundary.controller.SchermataImmissioneIntervento">
     <children>
         <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                    AnchorPane.topAnchor="0.0">
@@ -168,11 +168,13 @@
                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Label text="operations"/>
-                                <ListView/>
+                                <ListView fx:id="operazione"/>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
                                     <children>
-                                        <Button minWidth="70.0" mnemonicParsing="false" text="add"/>
-                                        <Button minWidth="70.0" mnemonicParsing="false" text="remove"/>
+                                        <Button minWidth="70.0" mnemonicParsing="false" onAction="#onOperazioneAdd"
+                                                text="add"/>
+                                        <Button minWidth="70.0" mnemonicParsing="false" onAction="#onOperazioneRemove"
+                                                text="remove"/>
                                     </children>
                                 </HBox>
                             </children>

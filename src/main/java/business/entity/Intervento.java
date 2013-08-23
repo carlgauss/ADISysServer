@@ -12,7 +12,7 @@ import java.util.List;
 
 @XmlRootElement
 @XmlType(propOrder = {"id", "citta", "cap", "indirizzo", "data", "ora", "operazione", "paziente", "infermiere"})
-public class Intervento implements Entity {
+public class Intervento implements IndipendentEntity {
     /**
      *
      */
