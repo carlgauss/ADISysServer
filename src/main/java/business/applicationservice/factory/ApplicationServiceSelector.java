@@ -29,6 +29,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("VisualizzaTuttiInterventi");
         asMap.setApplicationServiceValues("ApplicationServiceIntervento", "getAll");
 
+        asMap.selectApplicationServiceBy("VerificaOperazione");
+        asMap.setApplicationServiceValues("ApplicationServiceOperazione", "checkOperazione");
+
         //TODO implementare altre funzionalità
     }
 

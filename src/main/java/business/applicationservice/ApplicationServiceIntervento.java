@@ -33,5 +33,4 @@ public class ApplicationServiceIntervento implements ApplicationService, CRUG<In
     public List<Intervento> getAll(Parameter parameter) {
         return daoIntervento.getAll();
     }
-
 }

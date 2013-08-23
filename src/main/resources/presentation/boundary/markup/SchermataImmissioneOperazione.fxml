@@ -6,7 +6,8 @@
 <?import java.net.URL?>
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="377.0" prefWidth="400.0" styleClass="window"
-            xmlns:fx="http://javafx.com/fxml">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="presentation.boundary.controller.SchermataImmissioneOperazione">
     <children>
         <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                    AnchorPane.topAnchor="0.0">
@@ -47,8 +48,7 @@
                                 </Label>
                                 <StackPane id="StackPane" prefHeight="177.0" prefWidth="316.0">
                                     <children>
-                                        <TextField fx:id="cognome" alignment="TOP_RIGHT"
-                                                   maxHeight="1.7976931348623157E308"/>
+                                        <TextArea fx:id="nota" prefWidth="200.0" wrapText="true"/>
                                     </children>
                                 </StackPane>
                             </children>

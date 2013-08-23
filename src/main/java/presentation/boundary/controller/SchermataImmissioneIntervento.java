@@ -87,21 +87,37 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
     @FXML
     private void onOperazioneAdd(ActionEvent event) {
-
+        Operazione result = (Operazione) fc.processRequest("MostraSchermataInserimentoOperazione", null);
+        if (result != null) {
+            operazione.getItems().add(result);
+        }
     }
 
     @FXML
     private void onOperazioneEdit(ActionEvent event) {
-
+        int selectedItem = operazione.getSelectionModel().getSelectedIndex();
+        if (selectedItem > -1) {
+            Operazione selectedOperazione = operazione.getItems().get(selectedItem);
+            Parameter operationParameter = new Parameter();
+            operationParameter.setValue("operazione", selectedOperazione);
+            fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
+            forceOperazioneRefresh();
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectOperazione");
+        }
     }
 
     @FXML
     private void onOperazioneRemove(ActionEvent event) {
         int selectedItem = operazione.getSelectionModel().getSelectedIndex();
         if (selectedItem > -1) {
-            operazione.getItems().remove(selectedItem);
+            boolean confirm = MessageDisplayer.showConfirmMessage(null, "sureOperationDelete");
+            if (confirm) {
+                operazione.getItems().remove(selectedItem);
+            }
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectOperazione");
         }
-
     }
 
     @Override
@@ -177,4 +193,9 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
         }
     }
 
+    private void forceOperazioneRefresh() {
+        ObservableList<Operazione> operazioneData = operazione.getItems();
+        operazione.setItems(null);
+        operazione.setItems(operazioneData);
+    }
 }
