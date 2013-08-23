@@ -1,5 +1,7 @@
 package business.applicationservice;
 
+import business.applicationservice.checker.Checker;
+import business.applicationservice.checker.CheckerFactory;
 import business.applicationservice.exception.InvalidInfermiereFieldException;
 import business.entity.Infermiere;
 import integration.dao.DAO;
@@ -41,29 +43,21 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
 
 
     private Infermiere populate(Parameter parameter) throws InvalidInfermiereFieldException {
-        Infermiere infermiere = new Infermiere();
+        Checker checker = CheckerFactory.buildInstance(Infermiere.class);
 
         String nome = (String) parameter.getValue("nome");
+        String cognome = (String) parameter.getValue("cognome");
+
+        Infermiere infermiere = new Infermiere();
+
+
         infermiere.setNome(nome);
 
-        String cognome = (String) parameter.getValue("cognome");
+
         infermiere.setCognome(cognome);
 
         nome = infermiere.getNome();
-
-        int length = nome.length();
-        boolean isValid = (length >= 3) && (length <= 30);
-        if (!isValid) {
-            throw new InvalidInfermiereFieldException("invalidNurseName");
-        }
-
         cognome = infermiere.getCognome();
-
-        length = cognome.length();
-        isValid = (length >= 3) && (length <= 30);
-        if (!isValid) {
-            throw new InvalidInfermiereFieldException("invalidNurseSurname");
-        }
 
         return infermiere;
     }
