@@ -17,6 +17,9 @@ public class SchermataPrincipale extends Application implements Boundary {
     private static final String MARKUP_FOLDER = "markup/";
     private static final String FXML_EXTENSION = ".fxml";
 
+    private static final int MIN_HEIGHT = 800;
+    private static final int MIN_WIDTH = 640;
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -33,8 +36,8 @@ public class SchermataPrincipale extends Application implements Boundary {
         stage.setTitle(SimpleLabelTranslator.translate("adisysServer"));
         stage.initStyle(StageStyle.DECORATED);
 
-        stage.setMinWidth(800);
-        stage.setMinHeight(640);
+        stage.setMinWidth(MIN_HEIGHT);
+        stage.setMinHeight(MIN_WIDTH);
 
         double width = Screen.getPrimary().getBounds().getWidth();
         double height = Screen.getPrimary().getBounds().getHeight();
