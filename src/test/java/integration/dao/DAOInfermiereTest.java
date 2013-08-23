@@ -1,6 +1,5 @@
 package integration.dao;
 
-import business.applicationservice.exception.InvalidInfermiereFieldException;
 import business.entity.Infermiere;
 import integration.connector.HQSQLConnector;
 import mockit.Mockit;
