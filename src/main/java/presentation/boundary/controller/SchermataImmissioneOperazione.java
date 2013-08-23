@@ -39,7 +39,6 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
 
         operationParameter.setValue("nome", nome.getText());
 
-        //TODO
         result = fc.processRequest("VerificaOperazione", operationParameter);
 
         if (result != null) {

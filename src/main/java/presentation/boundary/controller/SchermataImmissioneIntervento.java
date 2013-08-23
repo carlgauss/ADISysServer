@@ -87,9 +87,10 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
     @FXML
     private void onOperazioneAdd(ActionEvent event) {
-        Operazione result = (Operazione) fc.processRequest("MostraSchermataInserimentoOperazione", null);
+        Object result = fc.processRequest("MostraSchermataInserimentoOperazione", null);
         if (result != null) {
-            operazione.getItems().add(result);
+            Operazione resultOperazione = (Operazione) result;
+            operazione.getItems().add(resultOperazione);
         }
     }
 
@@ -103,7 +104,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
             fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
             forceOperazioneRefresh();
         } else {
-            MessageDisplayer.showErrorMessage(null, "selectOperazione");
+            MessageDisplayer.showErrorMessage(null, "selectOperation");
         }
     }
 
@@ -116,7 +117,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
                 operazione.getItems().remove(selectedItem);
             }
         } else {
-            MessageDisplayer.showErrorMessage(null, "selectOperazione");
+            MessageDisplayer.showErrorMessage(null, "selectOperation");
         }
     }
 
