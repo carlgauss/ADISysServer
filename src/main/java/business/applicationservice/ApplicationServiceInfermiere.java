@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
+import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidInfermiereFieldException;
 import business.entity.Infermiere;
 import integration.dao.DAO;
@@ -9,20 +10,22 @@ import integration.dao.DAOFactory;
 import presentation.controller.ApplicationService;
 import utility.Parameter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //TODO tutti i metodi
 public class ApplicationServiceInfermiere implements ApplicationService, CRUG<Infermiere> {
 
     private DAO<Infermiere> daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
+    private Checker checker = CheckerFactory.buildInstance(Infermiere.class);
 
-    public void create(Parameter parameter) throws InvalidInfermiereFieldException {
+    public void create(Parameter parameter) throws CommonException {
         Infermiere infermiere = populate(parameter);
 
         daoInfermiere.create(infermiere);
     }
 
-    public void update(Parameter parameter) throws InvalidInfermiereFieldException {
+    public void update(Parameter parameter) throws CommonException {
         Infermiere infermiere = populate(parameter);
 
         String id = (String) parameter.getValue("id");
@@ -42,22 +45,20 @@ public class ApplicationServiceInfermiere implements ApplicationService, CRUG<In
     }
 
 
-    private Infermiere populate(Parameter parameter) throws InvalidInfermiereFieldException {
-        Checker checker = CheckerFactory.buildInstance(Infermiere.class);
-
+    private Infermiere populate(Parameter parameter) throws CommonException {
         String nome = (String) parameter.getValue("nome");
         String cognome = (String) parameter.getValue("cognome");
 
+        List<Object> infermiereValues = new ArrayList<>();
+        infermiereValues.add(nome);
+        infermiereValues.add(cognome);
+
+        checker.check(infermiereValues);
+
         Infermiere infermiere = new Infermiere();
 
-
         infermiere.setNome(nome);
-
-
         infermiere.setCognome(cognome);
-
-        nome = infermiere.getNome();
-        cognome = infermiere.getCognome();
 
         return infermiere;
     }

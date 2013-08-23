@@ -80,6 +80,18 @@ public class Paziente implements Person {
     }
 
     public void setNumeroCellulare(List<String> numeroCellulare) {
-        this.numeroCellulare = SerialClone.clone(numeroCellulare);
+        List<String> numeroCellulareFiltered = new LinkedList<>();
+
+        for (String singoloNumero : numeroCellulare) {
+            String numeroTrimmed = singoloNumero.trim();
+
+            boolean isNumeroValid = (3 <= numeroTrimmed.length()) && (numeroTrimmed.length() <= 20);
+
+            if (isNumeroValid) {
+                numeroCellulareFiltered.add(numeroTrimmed);
+            }
+        }
+
+        this.numeroCellulare = numeroCellulareFiltered;
     }
 }

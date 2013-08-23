@@ -1,5 +1,7 @@
 package business.applicationservice;
 
+import business.applicationservice.checker.Checker;
+import business.applicationservice.checker.CheckerFactory;
 import business.applicationservice.exception.InvalidPazienteFieldException;
 import business.entity.Paziente;
 import integration.dao.DAO;
@@ -9,12 +11,14 @@ import presentation.controller.ApplicationService;
 import utility.DateConverter;
 import utility.Parameter;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
 
     private DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
+    Checker checker = CheckerFactory.buildInstance(Paziente.class);
 
     public void create(Parameter parameter) throws InvalidPazienteFieldException {
         Paziente paziente = populate(parameter);
@@ -42,53 +46,26 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
     }
 
     private Paziente populate(Parameter parameter) throws InvalidPazienteFieldException {
-        Paziente paziente = new Paziente();
-
         String nome = (String) parameter.getValue("nome");
-        paziente.setNome(nome);
-
         String cognome = (String) parameter.getValue("cognome");
-        paziente.setCognome(cognome);
-
         String dataString = (String) parameter.getValue("data");
-
-        try {
-            LocalDate data = LocalDate.parse(dataString, DateConverter.NORMAL_DATE_FORMAT);
-            paziente.setData(data);
-        } catch (IllegalArgumentException e) {
-            throw new InvalidPazienteFieldException("formatDateError");
-        }
-
         List<String> numero = (List<String>) parameter.getValue("numero");
 
-        List<String> numeroCellulareFiltered = new LinkedList<>();
+        List<Object> values = new ArrayList<>();
+        values.add(nome);
+        values.add(cognome);
+        values.add(dataString);
+        values.add(numero);
 
-        for (String singoloNumero : numero) {
-            String numeroTrimmed = singoloNumero.trim();
+        Paziente paziente = new Paziente();
 
-            boolean isNumeroValid = (3 <= numeroTrimmed.length()) && (numeroTrimmed.length() <= 20);
+        paziente.setNome(nome);
+        paziente.setCognome(cognome);
 
-            if (isNumeroValid) {
-                numeroCellulareFiltered.add(numeroTrimmed);
-            }
-        }
+        LocalDate data = LocalDate.parse(dataString, DateConverter.NORMAL_DATE_FORMAT);
+        paziente.setData(data);
 
-        paziente.setNumeroCellulare(numeroCellulareFiltered);
-
-        nome = paziente.getNome();
-        boolean isValid = (3 <= nome.length()) && (nome.length() <= 30);
-
-        if (!isValid) {
-            throw new InvalidPazienteFieldException("invalidPatientName");
-        }
-
-        cognome = paziente.getCognome();
-        isValid = (3 <= cognome.length()) && (cognome.length() <= 30);
-
-        if (!isValid) {
-            throw new InvalidPazienteFieldException("invalidPatientSurname");
-        }
-
+        paziente.setNumeroCellulare(numero);
 
         return paziente;
     }
