@@ -1,4 +1,4 @@
-package utility;
+package business.applicationservice;
 
 import business.entity.Intervento;
 import org.joda.time.*;
@@ -21,6 +21,6 @@ public class InterventoDurationEditChecker {
 
         DateTime now = DateTime.now(DateTimeZone.getDefault());
         Duration duration = new Duration(now, dataComplInt);
-        return duration.isShorterThan(MIN_EDIT_DURATION);
+        return !duration.isShorterThan(MIN_EDIT_DURATION);
     }
 }

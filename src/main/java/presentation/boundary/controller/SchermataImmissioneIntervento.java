@@ -55,22 +55,29 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     private void onOk(ActionEvent event) {
         Object result = null;
 
-        Parameter patientParameter = new Parameter();
+        Parameter interventionParameter = new Parameter();
 
-        //patientParameter.setValue("id", id.getText());
-        //patientParameter.setValue("nome", nome.getText());
-        //TODO
+        interventionParameter.setValue("id", id.getText());
+        interventionParameter.setValue("citta", citta.getText());
+        interventionParameter.setValue("cap", cap.getText());
+        interventionParameter.setValue("indirizzo", indirizzo.getText());
+        interventionParameter.setValue("data", data.getText());
+        interventionParameter.setValue("ora", ora.getText());
+        interventionParameter.setValue("infermiere", infermiere.getSelectionModel().getSelectedItem());
+        interventionParameter.setValue("paziente", paziente.getSelectionModel().getSelectedItem());
+        interventionParameter.setValue("operazione", operazione.getItems());
+
         if (isEdit) {
-            //result = fc.processRequest("ModificaPaziente", patientParameter);
+            result = fc.processRequest("ModificaIntervento", interventionParameter);
         } else {
-            //result = fc.processRequest("InserisciPaziente", patientParameter);
+            result = fc.processRequest("InserisciIntervento", interventionParameter);
         }
 
         if (result != null) {
             if (isEdit) {
-                MessageDisplayer.showAcceptMessage(null, "editedPatient");
+                MessageDisplayer.showAcceptMessage(null, "editedIntervention");
             } else {
-                MessageDisplayer.showAcceptMessage(null, "insertedPatient");
+                MessageDisplayer.showAcceptMessage(null, "insertedIntervention");
             }
 
             getStage().setResult(result);
@@ -146,11 +153,13 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
         idLbl.setVisible(false);
     }
 
+    private Intervento intervento;
+
     @Override
     protected void initializeEdit() {
         titolo.setText(SimpleLabelTranslator.translate("editIntervention"));
 
-        Intervento intervento = (Intervento) parameter.getValue("intervento");
+        intervento = (Intervento) parameter.getValue("intervento");
 
         id.setText(intervento.getId());
         citta.setText(intervento.getCitta());

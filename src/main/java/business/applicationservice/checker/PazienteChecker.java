@@ -20,6 +20,7 @@ class PazienteChecker implements Checker {
     @Override
     public void check(List<Object> values) throws CommonException {
         String nome = (String) values.get(NOME);
+        nome = nome.trim();
         boolean isValid = (MIN_NOME_VALUE <= nome.length())
                 && (nome.length() <= MAX_NOME_VALUE);
 
@@ -28,6 +29,7 @@ class PazienteChecker implements Checker {
         }
 
         String cognome = (String) values.get(COGNOME);
+        cognome = cognome.trim();
         isValid = (MIN_COGNOME_VALUE <= cognome.length())
                 && (cognome.length() <= MAX_COGNOME_VALUE);
 

@@ -29,6 +29,12 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("VisualizzaTuttiInterventi");
         asMap.setApplicationServiceValues("ApplicationServiceIntervento", "getAll");
 
+        asMap.selectApplicationServiceBy("InserisciIntervento");
+        asMap.setApplicationServiceValues("ApplicationServiceIntervento", "create");
+
+        asMap.selectApplicationServiceBy("ModificaIntervento");
+        asMap.setApplicationServiceValues("ApplicationServiceIntervento", "update");
+
         asMap.selectApplicationServiceBy("VerificaOperazione");
         asMap.setApplicationServiceValues("ApplicationServiceOperazione", "checkOperazione");
 

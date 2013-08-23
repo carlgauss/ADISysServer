@@ -1,7 +1,9 @@
 package business.applicationservice.checker;
 
+import business.applicationservice.InterventoDurationEditChecker;
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidInterventoFieldException;
+import business.entity.Intervento;
 import business.entity.Operazione;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -31,6 +33,7 @@ class InterventoChecker implements Checker {
     @Override
     public void check(List<Object> values) throws CommonException {
         String citta = (String) values.get(CITTA);
+        citta = citta.trim();
         boolean isValid = (MIN_CITTA_VALUE <= citta.length())
                 && (citta.length() <= MAX_CITTA_VALUE);
 
@@ -39,6 +42,7 @@ class InterventoChecker implements Checker {
         }
 
         String cap = (String) values.get(CAP);
+        cap = cap.trim();
         isValid = (MIN_CAP_VALUE <= cap.length())
                 && (cap.length() <= MAX_CAP_VALUE);
 
@@ -47,6 +51,7 @@ class InterventoChecker implements Checker {
         }
 
         String indirizzo = (String) values.get(INDIRIZZO);
+        indirizzo = indirizzo.trim();
         isValid = (MIN_INDIRIZZO_VALUE <= indirizzo.length())
                 && (indirizzo.length() <= MAX_INDIRIZZO_VALUE);
 
@@ -54,16 +59,18 @@ class InterventoChecker implements Checker {
             throw new InvalidInterventoFieldException("invalidInterventionAddress");
         }
 
-        String data = (String) values.get(DATA);
+        LocalDate data = null;
+        String dataString = (String) values.get(DATA);
         try {
-            LocalDate.parse(data, DateConverter.NORMAL_DATE_FORMAT);
+            data = LocalDate.parse(dataString, DateConverter.NORMAL_DATE_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidInterventoFieldException("formatDateError");
         }
 
-        String ora = (String) values.get(ORA);
+        LocalTime ora = null;
+        String oraString = (String) values.get(ORA);
         try {
-            LocalTime.parse(ora, DateConverter.EUROPEAN_TIME_FORMAT);
+            ora = LocalTime.parse(oraString, DateConverter.EUROPEAN_TIME_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidInterventoFieldException("formatTimeError");
         }
@@ -80,6 +87,13 @@ class InterventoChecker implements Checker {
         int operazioneSize = operazione.size();
         if (operazioneSize < MIN_OPERAZIONE_SIZE) {
             throw new InvalidInterventoFieldException("invalidInterventionOperation");
+        }
+
+        Intervento intervento = new Intervento();
+        intervento.setData(data);
+        intervento.setOra(ora);
+        if (!InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
+            throw new InvalidInterventoFieldException("inconsistentInterventionDateTime");
         }
     }
 }

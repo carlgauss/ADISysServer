@@ -29,7 +29,7 @@ public class Operazione implements IndipendentEntity {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.trim();
     }
 
     @XmlElement(nillable = true)
@@ -39,7 +39,7 @@ public class Operazione implements IndipendentEntity {
 
     public void setNota(String nota) {
         if (nota != null) {
-            this.nota = nota;
+            this.nota = nota.trim();
         } else {
             this.nota = "";
         }

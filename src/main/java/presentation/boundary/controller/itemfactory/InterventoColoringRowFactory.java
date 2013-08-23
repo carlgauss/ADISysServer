@@ -11,7 +11,6 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.util.Callback;
-import utility.InterventoDurationEditChecker;
 
 public class InterventoColoringRowFactory<AtomicType> implements Callback<TableColumn<Intervento, AtomicType>, TableCell<Intervento, AtomicType>> {
 
@@ -48,7 +47,7 @@ public class InterventoColoringRowFactory<AtomicType> implements Callback<TableC
                     setText(item.toString());
                     TableRow<Intervento> row = getTableRow();
                     Intervento intervento = row.getItem();
-                    if (InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
+                    if (!intervento.isEditable()) {
                         row.setEffect(blush);
                         row.setEditable(false);
                     }

@@ -50,6 +50,8 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         String dataString = (String) parameter.getValue("data");
         List<String> numero = (List<String>) parameter.getValue("numero");
 
+        dataString = dataString.trim();
+
         List<Object> values = new ArrayList<>();
         values.add(nome);
         values.add(cognome);

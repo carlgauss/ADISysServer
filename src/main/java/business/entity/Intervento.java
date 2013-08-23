@@ -43,7 +43,7 @@ public class Intervento implements IndipendentEntity {
     }
 
     public void setCitta(String citta) {
-        this.citta = citta;
+        this.citta = citta.trim();
     }
 
     @XmlElement
@@ -52,7 +52,7 @@ public class Intervento implements IndipendentEntity {
     }
 
     public void setCap(String cap) {
-        this.cap = cap;
+        this.cap = cap.trim();
     }
 
     @XmlElement
@@ -61,7 +61,7 @@ public class Intervento implements IndipendentEntity {
     }
 
     public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
+        this.indirizzo = indirizzo.trim();
     }
 
     @XmlJavaTypeAdapter(XMLDateAdapter.class)
@@ -122,4 +122,17 @@ public class Intervento implements IndipendentEntity {
     public void setInfermiere(Infermiere infermiere) {
         this.infermiere = SerialClone.clone(infermiere);
     }
+
+    @XmlTransient
+    public boolean isEditable() {
+        return isEditable;
+    }
+
+    @XmlTransient
+    public void setEditable(boolean editable) {
+        isEditable = editable;
+    }
+
+    @XmlTransient
+    private boolean isEditable = true;
 }
