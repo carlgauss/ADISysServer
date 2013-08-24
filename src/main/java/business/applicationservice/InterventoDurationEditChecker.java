@@ -8,6 +8,7 @@ public class InterventoDurationEditChecker {
 
     private final static Duration MIN_EDIT_DURATION = new Duration(0, (new LocalTime(2, 0, 0).getMillisOfDay()));
     private final static DateTimeZone CURR_TIMEZONE = DateTimeZone.getDefault();
+    private final static MutableDateTime MAX_DATE = new MutableDateTime(9999, 12, 31, 23, 59, 59, 0);
 
     public static boolean checkInterventoEditable(Intervento intervento) {
         LocalDate dataInt = intervento.getData();
@@ -21,6 +22,7 @@ public class InterventoDurationEditChecker {
 
         DateTime now = DateTime.now(DateTimeZone.getDefault());
         Duration duration = new Duration(now, dataComplInt);
-        return !duration.isShorterThan(MIN_EDIT_DURATION);
+        return (!duration.isShorterThan(MIN_EDIT_DURATION))
+                && (dataComplInt.compareTo(MAX_DATE) <= 0);
     }
 }
