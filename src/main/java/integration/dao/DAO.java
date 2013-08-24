@@ -7,7 +7,7 @@ public interface DAO<Entity> {
 
     public void update(Entity entity);
 
-    public void delete(Entity entity);
+    public void delete(String ID);
 
     public Entity read(String ID);
 

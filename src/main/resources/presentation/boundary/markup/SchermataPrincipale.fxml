@@ -254,6 +254,7 @@
                                                                                 onAction="#onModificaIntervento"
                                                                                 text="edit"/>
                                                                         <Button minWidth="75.0" mnemonicParsing="false"
+                                                                                onAction="#onCancellaIntervento"
                                                                                 text="delete"/>
                                                                     </children>
                                                                 </HBox>

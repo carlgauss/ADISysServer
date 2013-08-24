@@ -53,7 +53,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
     }
 
     @Override
-    public void delete(Operazione entity) {
+    public void delete(String ID) {
         // Not implemented yet
     }
 

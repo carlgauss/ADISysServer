@@ -35,6 +35,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("ModificaIntervento");
         asMap.setApplicationServiceValues("ApplicationServiceIntervento", "update");
 
+        asMap.selectApplicationServiceBy("CancellaIntervento");
+        asMap.setApplicationServiceValues("ApplicationServiceIntervento", "delete");
+
         asMap.selectApplicationServiceBy("VerificaOperazione");
         asMap.setApplicationServiceValues("ApplicationServiceOperazione", "checkOperazione");
 

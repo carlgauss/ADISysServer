@@ -18,7 +18,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 
     private static final String INSERT_QUERY = "INSERT INTO Intervento(Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID) VALUES ('?', '?', '?', '?', '?', ?, ?)";
     private static final String UPDATE_QUERY = "UPDATE Intervento SET Citta = '?', CAP = '?', Indirizzo = '?', Data = '?', Ora = '?', PazienteID = ?, InfermiereID = ? WHERE ID = ?";
-    //DELETE_QUERY not implemented
+    private static final String DELETE_QUERY = "DELETE FROM Intervento WHERE ID = ?";
     private static final String READ_QUERY = "SELECT ID, Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID FROM Intervento where ID = ?";
     private static final String GET_ALL_QUERY = "SELECT ID, Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID FROM Intervento";
 
@@ -114,8 +114,14 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
     }
 
     @Override
-    public void delete(Intervento entity) {
-        //Not implemented yet
+    public void delete(String ID) {
+        String deleteQuery = DELETE_QUERY;
+
+        deleteQuery = queryReplaceFirst(deleteQuery, ID);
+
+        daoOperazione.deleteByIdIntervento(ID);
+
+        connector.executeUpdateQuery(deleteQuery);
     }
 
     @Override

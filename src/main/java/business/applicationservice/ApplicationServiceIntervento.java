@@ -66,6 +66,19 @@ public class ApplicationServiceIntervento implements ApplicationService, CRUG<In
         return interventoList;
     }
 
+    public void delete(Parameter parameter) throws CommonException {
+        String id = (String) parameter.getValue("id");
+
+        Intervento intervento = daoIntervento.read(id);
+        intervento.setEditable(InterventoDurationEditChecker.checkInterventoEditable(intervento));
+
+        if (intervento.isEditable()) {
+            daoIntervento.delete(id);
+        } else {
+            throw new InvalidInterventoFieldException("inconsistentUndoIntervention");
+        }
+    }
+
     private Intervento populate(Parameter parameter) throws CommonException {
         String citta = (String) parameter.getValue("citta");
         String cap = (String) parameter.getValue("cap");

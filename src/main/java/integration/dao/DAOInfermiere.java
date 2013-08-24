@@ -51,7 +51,7 @@ public class DAOInfermiere extends HQSQLDAO<Infermiere> {
     }
 
     @Override
-    public void delete(Infermiere entity) {
+    public void delete(String ID) {
         //Not implemented yet
     }
 

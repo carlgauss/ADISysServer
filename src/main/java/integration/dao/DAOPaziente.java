@@ -80,7 +80,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
     }
 
     @Override
-    public void delete(Paziente entity) {
+    public void delete(String ID) {
         //not implemented yet
     }
 

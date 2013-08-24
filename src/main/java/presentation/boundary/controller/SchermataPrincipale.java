@@ -154,6 +154,29 @@ public class SchermataPrincipale implements Initializable {
     }
 
     @FXML
+    private void onCancellaIntervento(ActionEvent event) {
+        Parameter parameter = new Parameter();
+        if (selectedIntervento != null) {
+            parameter.setValue("id", selectedIntervento.getId());
+
+            boolean confirm = MessageDisplayer.showConfirmMessage(null, "reallySureToDeleteIntervention");
+
+            Object bool = null;
+
+            if (confirm) {
+                bool = fc.processRequest("CancellaIntervento", parameter);
+            }
+
+            if (bool != null) {
+                MessageDisplayer.showAcceptMessage(null, "deletedIntervention");
+                loadAllTables();
+            }
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectIntervention");
+        }
+    }
+
+    @FXML
     private void onSetItaliano(ActionEvent event) {
         SimpleLabelTranslator.setLanguage("italiano");
         MessageDisplayer.showMessage(null, "translateNextRestart");

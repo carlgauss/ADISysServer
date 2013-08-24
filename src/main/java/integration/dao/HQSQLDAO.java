@@ -18,7 +18,7 @@ public abstract class HQSQLDAO<Entity> implements DAO<Entity> {
     public abstract void update(Entity entity);
 
     @Override
-    public abstract void delete(Entity entity);
+    public abstract void delete(String ID);
 
     @Override
     public abstract Entity read(String ID);
