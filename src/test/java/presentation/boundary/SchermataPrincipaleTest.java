@@ -1,7 +1,6 @@
 package presentation.boundary;
 
 import integration.connector.HQSQLConnector;
-import integration.dao.DAOInterventoTest;
 import integration.dao.HQSQLConnectorStub;
 import mockit.Mockit;
 import org.junit.Before;
@@ -13,7 +12,7 @@ public class SchermataPrincipaleTest {
     @Before
     public void setUp() throws Exception {
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
-        DAOInterventoTest.fillAll();
+        //DAOInterventoTest.fillAll();
     }
 
     @Test
