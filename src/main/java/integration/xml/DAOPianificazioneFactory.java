@@ -1,12 +1,10 @@
 package integration.xml;
 
+import business.entity.Infermiere;
+
 public class DAOPianificazioneFactory {
 
-    private DAOPianificazioneFactory() {
-
-    }
-
-    public static DAOPianificazione getPianificazione() {
-        return new XMLDAOPianificazione();
+    public static DAOPianificazione getPianificazione(Infermiere infermiere) {
+        return new XMLDAOPianificazione(infermiere);
     }
 }

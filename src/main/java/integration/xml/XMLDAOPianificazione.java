@@ -1,8 +1,9 @@
 package integration.xml;
 
+import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Pianificazione;
-import org.joda.time.LocalDateTime;
+import org.joda.time.LocalDate;
 import org.xml.sax.SAXException;
 import utility.FolderManager;
 import utility.xml.marshaller.XMLMarshaller;
@@ -26,12 +27,14 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
     private static final File XSD_PIANIFICAZIONE_SCHEMA_FILE = new File("schema/XMLPianificazioneSchema.xsd");
 
-    private LocalDateTime now = LocalDateTime.now();
+    private LocalDate now = LocalDate.now();
     private String nowString = now.toString();
 
-    public XMLDAOPianificazione() {
-        nowString = nowString.replace(OLD_HOUR_SEPARATOR, HOUR_SEPARATOR);
+    public XMLDAOPianificazione(Infermiere infermiere) {
+        this.infermiere = infermiere;
     }
+
+    private Infermiere infermiere;
 
     @Override
     public void export(List<Intervento> listaInterventi) throws SAXException {
@@ -39,6 +42,8 @@ public class XMLDAOPianificazione implements DAOPianificazione {
 
         String xmlFileName = "";
         xmlFileName += PIANIFICAZIONE_HEADER;
+        xmlFileName += SEPARATOR;
+        xmlFileName += infermiere.toString();
         xmlFileName += SEPARATOR;
         xmlFileName += nowString;
         xmlFileName += XML_EXTENSION;

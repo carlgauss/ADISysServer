@@ -25,7 +25,6 @@ import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -53,20 +52,20 @@ public class SchermataEsportazione extends Schermata {
     private void onOk(ActionEvent event) {
         Parameter pianificazioneParameter = new Parameter();
 
-        List<Intervento> interventoList = new LinkedList<>();
+        Object result = null;
 
         for (PianificazioneElement element : pianificazione.getItems()) {
             if (element.isEsporta()) {
-                interventoList.addAll(element.getPianificazione());
+                pianificazioneParameter.setValue("infermiere", element.getInfermiere());
+                pianificazioneParameter.setValue("pianificazione", element.getPianificazione());
+                result = fc.processRequest("EsportaPianificazione", pianificazioneParameter);
             }
         }
 
-        pianificazioneParameter.setValue("pianificazione", interventoList);
-
-        Object result = fc.processRequest("EsportaPianificazione", pianificazioneParameter);
-
         if (result != null) {
             MessageDisplayer.showAcceptMessage(null, "exportedPlanification");
+        } else {
+            MessageDisplayer.showErrorMessage(null, "emptyPianificazione");
         }
     }
 

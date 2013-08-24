@@ -18,12 +18,13 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
     public void export(Parameter parameter) throws SAXException, EmptyPianificazioneException {
         List<Intervento> pianificazione = (List<Intervento>) parameter.getValue("pianificazione");
+        Infermiere infermiere = (Infermiere) parameter.getValue("infermiere");
 
         if (pianificazione.isEmpty()) {
             throw new EmptyPianificazioneException();
         }
 
-        DAOPianificazione daoPianificazione = DAOPianificazioneFactory.getPianificazione();
+        DAOPianificazione daoPianificazione = DAOPianificazioneFactory.getPianificazione(infermiere);
 
         daoPianificazione.export(pianificazione);
     }
