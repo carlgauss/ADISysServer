@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.itemfactory.PersonPortrayalCellFactory;
 import presentation.controller.FrontController;
@@ -33,7 +34,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     @FXML
     private AnchorPane nonModificabile;
     @FXML
-    private TableView generale;
+    private GridPane generale;
     @FXML
     private Button ok;
 
