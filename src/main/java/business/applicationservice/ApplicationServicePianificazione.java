@@ -15,8 +15,6 @@ import java.util.*;
 
 public class ApplicationServicePianificazione implements ApplicationService {
 
-    private DAO<Intervento> daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
-
     public void export(Parameter parameter) throws SAXException {
         List<Intervento> pianificazione = (List<Intervento>) parameter.getValue("pianificazione");
 
@@ -25,7 +23,9 @@ public class ApplicationServicePianificazione implements ApplicationService {
         daoPianificazione.export(pianificazione);
     }
 
-    public List<PianificazioneElement> importPianificazione(Parameter parameter) {
+    public List<PianificazioneElement> showPianificazione(Parameter parameter) {
+        DAO<Intervento> daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
+
         PianificazioneEsportazioneMap pianificazioneMap = new PianificazioneEsportazioneMap();
 
         List<Intervento> interventoList = daoIntervento.getAll();

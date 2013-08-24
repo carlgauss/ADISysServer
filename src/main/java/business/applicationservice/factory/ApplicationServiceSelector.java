@@ -41,6 +41,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("VerificaOperazione");
         asMap.setApplicationServiceValues("ApplicationServiceOperazione", "checkOperazione");
 
+        asMap.selectApplicationServiceBy("PrelevaPianificazione");
+        asMap.setApplicationServiceValues("ApplicationServicePianificazione", "showPianificazione");
+
         //TODO implementare altre funzionalità
     }
 
