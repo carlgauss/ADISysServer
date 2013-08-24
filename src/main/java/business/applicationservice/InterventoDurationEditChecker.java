@@ -25,4 +25,22 @@ public class InterventoDurationEditChecker {
         return (!duration.isShorterThan(MIN_EDIT_DURATION))
                 && (dataComplInt.compareTo(MAX_DATE) <= 0);
     }
+
+    public static boolean checkDaily(Intervento intervento) {
+        boolean result = false;
+
+        LocalDate nowDate = LocalDate.now();
+        LocalDate interventoDate = intervento.getData();
+
+        result = nowDate.equals(interventoDate);
+
+        if (result) {
+            LocalTime nowTime = LocalTime.now();
+            LocalTime interventoTime = intervento.getOra();
+
+            result = (interventoTime.compareTo(nowDate) > 0);
+        }
+
+        return result;
+    }
 }

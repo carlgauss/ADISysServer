@@ -50,4 +50,9 @@ public class Infermiere extends Person implements IndipendentEntity {
         cognome = cognome.trim();
         this.cognome = cognome;
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
