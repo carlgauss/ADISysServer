@@ -15,11 +15,11 @@ public class DAOPazienteTest {
     private static DAO<Paziente> dao;
 
     private static final Object[][] ARRAY_PAZIENTI = new Object[][]{
-            {"aaa", "bbb", new LocalDate(1991, 12, 12), new String[]{"124", "1412"}},
-            {"Bbb", "Ccc", new LocalDate(1995, 2, 12), new String[]{}},
-            {"bbb", "Zzz", new LocalDate(1991, 12, 2), new String[]{"124"}},
-            {"OoO", "q Qq", new LocalDate(1991, 12, 22), new String[]{"124546745", "1412", "3134"}},
-            {"l LL", "KKk", new LocalDate(2002, 12, 12), new String[]{"124", "1412", "1214", "32424"}}
+            {"Rocco", "Coriandoli", new LocalDate(1965, 2, 22), new String[]{"0805241452", "368125510"}},
+            {"Nicola", "Amenicoli", new LocalDate(1988, 7, 17), new String[]{}},
+            {"Renzo", "Ottato", new LocalDate(1979, 12, 1), new String[]{"3256971266"}},
+            {"Eleonora", "Drachi Malfieri", new LocalDate(1954, 1, 31), new String[]{"0809541289", "0805436699", "3018230953"}},
+            {"Maria Caterina", "Colò", new LocalDate(1999, 8, 19), new String[]{"253735968", "021236490", "0804356715", "3206270012"}}
     };
 
     public static Paziente[] pazienti;

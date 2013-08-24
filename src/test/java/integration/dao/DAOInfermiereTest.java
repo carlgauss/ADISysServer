@@ -13,11 +13,11 @@ public class DAOInfermiereTest {
     private static DAO<Infermiere> dao;
 
     private static final String[][] INFERMIERI_STRING = new String[][]{
-            {"aaa", "bbb"},
-            {"Bbb", "Ccc"},
-            {"bbb", "Zzz"},
-            {"OoO", "q Qq"},
-            {"l LL", "KKk"}
+            {"Francesco", "Callistoli"},
+            {"Franco", "Scalati"},
+            {"Nicola", "Opizio"},
+            {"Lorenzo", "De Girolamo"},
+            {"Francesca Maria", "Tripolese"}
     };
 
     public static Infermiere[] infermieri;
