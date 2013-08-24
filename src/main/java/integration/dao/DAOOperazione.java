@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static utility.QueryStringReplacer.queryReplaceFirst;
+import static integration.QueryStringReplacer.queryReplaceFirst;
 
 public class DAOOperazione extends HQSQLDAO<Operazione> {
 
