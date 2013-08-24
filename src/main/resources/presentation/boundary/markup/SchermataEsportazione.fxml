@@ -29,9 +29,15 @@
                                 <Insets bottom="4.0"/>
                             </VBox.margin>
                         </Label>
-                        <TableView id="planification" fx:id="pianificazione">
+                        <TableView id="planification" fx:id="pianificazione" editable="true">
                             <columns>
-                                <TableColumn editable="false" prefWidth="241.0" resizable="false" fx:id="infermiere">
+                                <TableColumn maxWidth="30.0" minWidth="30.0" prefWidth="30.0" resizable="false"
+                                             sortable="false" fx:id="ok">
+                                    <graphic>
+                                        <Label/>
+                                    </graphic>
+                                </TableColumn>
+                                <TableColumn editable="false" prefWidth="211.0" resizable="false" fx:id="infermiere">
                                     <graphic>
                                         <Label text="nurse"/>
                                     </graphic>

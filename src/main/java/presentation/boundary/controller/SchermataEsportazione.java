@@ -3,6 +3,7 @@ package presentation.boundary.controller;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.transfer.PianificazioneElement;
+import javafx.beans.property.BooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.itemfactory.BooleanCheckTableFactory;
 import presentation.boundary.controller.itemfactory.ListTableCountFactory;
 import presentation.boundary.controller.itemfactory.PersonPortrayalTableFactory;
 import presentation.controller.FrontController;
@@ -36,11 +38,13 @@ public class SchermataEsportazione extends Schermata {
     private Labeled titolo;
 
     @FXML
-    private TableView pianificazione;
+    private TableView<PianificazioneElement> pianificazione;
     @FXML
     private TableColumn infermiere;
     @FXML
     private TableColumn numeroInterventi;
+    @FXML
+    private TableColumn ok;
 
 
     @FXML
@@ -48,6 +52,10 @@ public class SchermataEsportazione extends Schermata {
         Object result = null;
 
         Parameter nurseParameter = new Parameter();
+
+        for (PianificazioneElement element : pianificazione.getItems()) {
+            System.out.println(element.isEsporta());
+        }
 
         //TODO
         //result = fc.processRequest("InserisciInfermiere", nurseParameter);
@@ -82,6 +90,9 @@ public class SchermataEsportazione extends Schermata {
 
         numeroInterventi.setCellValueFactory(new PropertyValueFactory<PianificazioneElement, List<Intervento>>("pianificazione"));
         numeroInterventi.setCellFactory(new ListTableCountFactory());
+
+        ok.setCellValueFactory(new PropertyValueFactory<PianificazioneElement, BooleanProperty>("esportaProperty"));
+        ok.setCellFactory(new BooleanCheckTableFactory<>());
 
         pianificazione.setItems(pianificazioneData);
         String noValidNurse = SimpleLabelTranslator.translate("noValidNurse");
