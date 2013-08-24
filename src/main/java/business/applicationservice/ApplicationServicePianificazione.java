@@ -1,5 +1,6 @@
 package business.applicationservice;
 
+import business.applicationservice.exception.EmptyPianificazioneException;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.transfer.PianificazioneElement;
@@ -15,8 +16,12 @@ import java.util.*;
 
 public class ApplicationServicePianificazione implements ApplicationService {
 
-    public void export(Parameter parameter) throws SAXException {
+    public void export(Parameter parameter) throws SAXException, EmptyPianificazioneException {
         List<Intervento> pianificazione = (List<Intervento>) parameter.getValue("pianificazione");
+
+        if (pianificazione.isEmpty()) {
+            throw new EmptyPianificazioneException();
+        }
 
         DAOPianificazione daoPianificazione = DAOPianificazioneFactory.getPianificazione();
 
@@ -24,7 +29,6 @@ public class ApplicationServicePianificazione implements ApplicationService {
     }
 
     public List<PianificazioneElement> showPianificazione(Parameter parameter) {
-        System.out.println("method called");
         DAO<Intervento> daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
 
         PianificazioneEsportazioneMap pianificazioneMap = new PianificazioneEsportazioneMap();

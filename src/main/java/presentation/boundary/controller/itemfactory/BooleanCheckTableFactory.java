@@ -1,6 +1,7 @@
 package presentation.boundary.controller.itemfactory;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -16,8 +17,9 @@ public class BooleanCheckTableFactory<Entity> implements Callback<TableColumn<En
                 if (!empty) {
                     CheckBox checkBox = new CheckBox("");
                     checkBox.setAllowIndeterminate(false);
-                    checkBox.selectedProperty().bindBidirectional(aBoolean);
+                    aBoolean.bind(checkBox.selectedProperty());
                     setGraphic(checkBox);
+                    setAlignment(Pos.CENTER);
                 } else {
                     setText(null);
                 }

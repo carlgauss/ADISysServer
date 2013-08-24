@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
 <AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="346.0" prefWidth="403.0" styleClass="window"
+            minWidth="-Infinity" prefHeight="452.0" prefWidth="403.0" styleClass="window"
             xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataEsportazione">
     <children>
         <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"

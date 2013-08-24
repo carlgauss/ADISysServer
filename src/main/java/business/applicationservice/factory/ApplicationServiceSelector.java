@@ -44,6 +44,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("PrelevaPianificazione");
         asMap.setApplicationServiceValues("ApplicationServicePianificazione", "showPianificazione");
 
+        asMap.selectApplicationServiceBy("EsportaPianificazione");
+        asMap.setApplicationServiceValues("ApplicationServicePianificazione", "export");
+
         //TODO implementare altre funzionalità
     }
 

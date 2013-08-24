@@ -20,10 +20,12 @@ import presentation.boundary.controller.itemfactory.ListTableCountFactory;
 import presentation.boundary.controller.itemfactory.PersonPortrayalTableFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
+import utility.MessageDisplayer;
 import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,25 +51,22 @@ public class SchermataEsportazione extends Schermata {
 
     @FXML
     private void onOk(ActionEvent event) {
-        Object result = null;
+        Parameter pianificazioneParameter = new Parameter();
 
-        Parameter nurseParameter = new Parameter();
+        List<Intervento> interventoList = new LinkedList<>();
 
         for (PianificazioneElement element : pianificazione.getItems()) {
-            System.out.println(element.isEsporta());
+            if (element.isEsporta()) {
+                interventoList.addAll(element.getPianificazione());
+            }
         }
 
-        //TODO
-        //result = fc.processRequest("InserisciInfermiere", nurseParameter);
+        pianificazioneParameter.setValue("pianificazione", interventoList);
 
+        Object result = fc.processRequest("EsportaPianificazione", pianificazioneParameter);
 
         if (result != null) {
-
-            //MessageDisplayer.showAcceptMessage(null, "insertedNurse");
-
-
-            getStage().setResult(result);
-            getStage().close();
+            MessageDisplayer.showAcceptMessage(null, "exportedPlanification");
         }
     }
 

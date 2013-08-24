@@ -135,11 +135,9 @@ public class Intervento implements IndipendentEntity {
         return isEditable;
     }
 
-    @XmlTransient
     public void setEditable(boolean editable) {
         isEditable = editable;
     }
 
-    @XmlTransient
     private boolean isEditable = true;
 }
