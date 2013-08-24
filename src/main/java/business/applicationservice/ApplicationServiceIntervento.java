@@ -37,6 +37,7 @@ public class ApplicationServiceIntervento implements ApplicationService, CRUG<In
         intervento.setId(id);
 
         Intervento interventoBeforeEdit = daoIntervento.read(id);
+        interventoBeforeEdit.setEditable(InterventoDurationEditChecker.checkInterventoEditable(interventoBeforeEdit));
 
         if (interventoBeforeEdit.isEditable()) {
             daoIntervento.update(intervento);
