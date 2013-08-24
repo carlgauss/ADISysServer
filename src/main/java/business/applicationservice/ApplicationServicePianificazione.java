@@ -24,6 +24,7 @@ public class ApplicationServicePianificazione implements ApplicationService {
     }
 
     public List<PianificazioneElement> showPianificazione(Parameter parameter) {
+        System.out.println("method called");
         DAO<Intervento> daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
 
         PianificazioneEsportazioneMap pianificazioneMap = new PianificazioneEsportazioneMap();

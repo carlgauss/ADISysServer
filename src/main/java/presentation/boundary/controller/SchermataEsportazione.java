@@ -72,8 +72,10 @@ public class SchermataEsportazione extends Schermata {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titolo.setText(SimpleLabelTranslator.translate("exportPlanification"));
 
-        List<PianificazioneElement> pianificazioneList = (List<PianificazioneElement>) fc.processRequest("showPianificazione", null);
+        List<PianificazioneElement> pianificazioneList = (List<PianificazioneElement>) fc.processRequest("PrelevaPianificazione", null);
         ObservableList<PianificazioneElement> pianificazioneData = FXCollections.observableArrayList(pianificazioneList);
+
+        pianificazione.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         infermiere.setCellValueFactory(new PropertyValueFactory<PianificazioneElement, Infermiere>("infermiere"));
         infermiere.setCellFactory(new PersonPortrayalTableFactory<>());

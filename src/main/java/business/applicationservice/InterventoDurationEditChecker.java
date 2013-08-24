@@ -38,7 +38,7 @@ public class InterventoDurationEditChecker {
             LocalTime nowTime = LocalTime.now();
             LocalTime interventoTime = intervento.getOra();
 
-            result = (interventoTime.compareTo(nowDate) > 0);
+            result = (interventoTime.compareTo(nowTime) > 0);
         }
 
         return result;

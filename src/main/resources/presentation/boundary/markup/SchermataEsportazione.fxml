@@ -31,13 +31,13 @@
                         </Label>
                         <TableView id="planification" fx:id="pianificazione">
                             <columns>
-                                <TableColumn editable="false" prefWidth="75.0" fx:id="infermiere">
+                                <TableColumn editable="false" prefWidth="241.0" resizable="false" fx:id="infermiere">
                                     <graphic>
                                         <Label text="nurse"/>
                                     </graphic>
                                 </TableColumn>
                                 <TableColumn editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0"
-                                             fx:id="numeroInterventi">
+                                             resizable="false" fx:id="numeroInterventi">
                                     <graphic>
                                         <Label text="interventions"/>
                                     </graphic>
