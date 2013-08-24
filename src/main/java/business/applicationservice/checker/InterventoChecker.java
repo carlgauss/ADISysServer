@@ -24,7 +24,7 @@ class InterventoChecker implements Checker {
     private static final int MIN_CITTA_VALUE = 2;
     private static final int MAX_CITTA_VALUE = 30;
     private static final int MIN_CAP_VALUE = 3;
-    private static final int MAX_CAP_VALUE = 30;
+    private static final int MAX_CAP_VALUE = 12;
     private static final int MIN_INDIRIZZO_VALUE = 3;
     private static final int MAX_INDIRIZZO_VALUE = 50;
 
