@@ -49,7 +49,8 @@ public class InterventoColoringRowFactory<AtomicType> implements Callback<TableC
                     Intervento intervento = row.getItem();
                     if (!intervento.isEditable()) {
                         row.setEffect(blush);
-                        row.setEditable(false);
+                    } else {
+                        row.setEffect(null);
                     }
                 } else {
                     setText(null);
