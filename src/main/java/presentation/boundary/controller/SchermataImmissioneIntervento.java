@@ -103,7 +103,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     @FXML
     private void onOperazioneAdd(ActionEvent event) {
         Object result = fc.processRequest("MostraSchermataInserimentoOperazione", null);
-        if (result != null) {
+        if ((result != null) && (result instanceof Operazione)) {
             Operazione resultOperazione = (Operazione) result;
             operazione.getItems().add(resultOperazione);
         }

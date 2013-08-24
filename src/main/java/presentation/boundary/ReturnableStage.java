@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import presentation.boundary.controller.SchermataImmissione;
+import presentation.boundary.controller.Schermata;
 import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
@@ -33,9 +33,9 @@ public abstract class ReturnableStage extends Stage implements Boundary {
 
         try {
             root = (Region) fxmlLoader.load();
-            SchermataImmissione schermataImmissione = fxmlLoader.getController();
+            Schermata schermata = fxmlLoader.getController();
 
-            schermataImmissione.initData(parameter);
+            schermata.initData(parameter);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -59,6 +59,8 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
 
     @FXML
     private void onCancel(ActionEvent event) {
+        Boolean result = false;
+        getStage().setResult(result);
         getStage().close();
     }
 

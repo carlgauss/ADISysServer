@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="346.0" prefWidth="403.0" styleClass="window"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataEsportazione">
+    <children>
+        <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="titolo" styleClass="smalltitle" text="defaultTitleExample"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="260.0" prefWidth="400.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0"
+                   AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="nurseSelection"/>
+                        <Label text="exportedDailyOnly">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="4.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TableView id="planification" fx:id="pianificazione">
+                            <columns>
+                                <TableColumn editable="false" prefWidth="75.0" fx:id="infermiere">
+                                    <graphic>
+                                        <Label text="nurse"/>
+                                    </graphic>
+                                </TableColumn>
+                                <TableColumn editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0"
+                                             fx:id="numeroInterventi">
+                                    <graphic>
+                                        <Label text="interventions"/>
+                                    </graphic>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="37.0" prefWidth="406.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#onOk" text="ok"/>
+                        <Button minWidth="100.0" mnemonicParsing="false" onAction="#onCancel" text="cancel"/>
+                    </children>
+                </HBox>
+            </children>
+        </StackPane>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet/default.css"/>
+    </stylesheets>
+</AnchorPane>

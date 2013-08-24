@@ -1,22 +1,14 @@
 package presentation.boundary.controller;
 
-import javafx.fxml.Initializable;
 import utility.Parameter;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-
-public abstract class SchermataImmissione implements Initializable {
-    protected Parameter parameter;
-
+public abstract class SchermataImmissione extends Schermata {
     protected boolean isEdit;
 
     @Override
-    public abstract void initialize(URL url, ResourceBundle resourceBundle);
-
     public void initData(Parameter parameter) {
-        this.parameter = parameter;
+        super.initData(parameter);
 
         if (parameter == null) {
             initializeAdd();
