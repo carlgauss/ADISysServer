@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.itemfactory.PersonPortrayalCellFactory;
 import presentation.controller.FrontController;
@@ -29,6 +30,12 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
     private Node root;
     @FXML
     private Labeled titolo;
+    @FXML
+    private AnchorPane nonModificabile;
+    @FXML
+    private TableView generale;
+    @FXML
+    private Button ok;
 
     @FXML
     private Labeled idLbl;
@@ -174,6 +181,12 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
         List<Operazione> operazioneList = intervento.getOperazione();
         operazione.getItems().setAll(operazioneList);
+
+        if (!intervento.isEditable()) {
+            generale.setDisable(true);
+            ok.setDisable(true);
+            nonModificabile.setVisible(true);
+        }
     }
 
     private ReturnableStage getStage() {

@@ -259,7 +259,7 @@
                                                                 </HBox>
                                                                 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
                                                                             minHeight="-Infinity" minWidth="-Infinity"
-                                                                            style="-fx-background-color: rgba(255,0,0,0.3);&#10;">
+                                                                            style="&#10;" styleClass="expired">
                                                                     <children>
                                                                         <StackPane AnchorPane.bottomAnchor="0.0"
                                                                                    AnchorPane.leftAnchor="0.0"

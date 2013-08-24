@@ -16,3 +16,7 @@
     -fx-font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
     -fx-font-size: 36px;
 }
+
+.expired {
+    -fx-background-color: rgba(255, 0, 0, 0.3);
+}

@@ -3,6 +3,7 @@ package business.applicationservice;
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
 import business.applicationservice.exception.CommonException;
+import business.applicationservice.exception.InvalidInterventoFieldException;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Operazione;
@@ -35,7 +36,13 @@ public class ApplicationServiceIntervento implements ApplicationService, CRUG<In
         String id = (String) parameter.getValue("id");
         intervento.setId(id);
 
-        daoIntervento.update(intervento);
+        Intervento interventoBeforeEdit = daoIntervento.read(id);
+
+        if (interventoBeforeEdit.isEditable()) {
+            daoIntervento.update(intervento);
+        } else {
+            throw new InvalidInterventoFieldException("inconsistentInterventionDateTime");
+        }
     }
 
     public Intervento read(Parameter parameter) {
