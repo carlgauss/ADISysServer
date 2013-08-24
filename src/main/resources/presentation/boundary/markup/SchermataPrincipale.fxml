@@ -373,9 +373,10 @@
                                             </items>
                                         </MenuButton>
                                         <Button fx:id="esportaPianificazione" mnemonicParsing="false"
-                                                styleClass="menuButton" text="exportPlanification"/>
+                                                onAction="#onEsporta" styleClass="menuButton"
+                                                text="exportPlanification"/>
                                         <Button fx:id="verificaJournaling" mnemonicParsing="false"
-                                                styleClass="menuButton" text="deriveJournaling"/>
+                                                onAction="#onAnalizza" styleClass="menuButton" text="deriveJournaling"/>
                                         <Button fx:id="aggiorna" mnemonicParsing="false" onAction="#onAggiorna"
                                                 styleClass="menuButton" text="refresh"/>
                                         <Button fx:id="esci" mnemonicParsing="false" onAction="#onExit"

@@ -194,6 +194,16 @@ public class SchermataPrincipale implements Initializable {
     }
 
     @FXML
+    private void onEsporta(ActionEvent event) {
+        fc.processRequest("MostraSchermataEsportazione", null);
+    }
+
+    @FXML
+    private void onAnalizza(ActionEvent event) {
+        //TODO
+    }
+
+    @FXML
     private void onExit(ActionEvent event) {
         Stage stage = getStage();
         stage.close();
