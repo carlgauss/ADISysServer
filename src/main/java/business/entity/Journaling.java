@@ -21,7 +21,7 @@ public class Journaling implements Entity {
     private List<InterventoCompleto> intervento;
 
     @XmlElements({
-            @XmlElement(name = "intervento", type = Intervento.class)
+            @XmlElement(name = "intervento", type = InterventoCompleto.class)
     })
     public List<InterventoCompleto> getIntervento() {
         return SerialClone.clone(intervento);

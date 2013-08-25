@@ -107,13 +107,13 @@
                                                 <Insets left="6.0" top="6.0"/>
                                             </GridPane.margin>
                                         </Label>
-                                        <ListView fx:id="intervento" prefHeight="475.0" prefWidth="423.0"
-                                                  GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0"
-                                                  GridPane.rowSpan="2">
+                                        <TreeView fx:id="intervento" prefHeight="200.0" prefWidth="200.0"
+                                                  showRoot="false" GridPane.columnIndex="0" GridPane.columnSpan="2"
+                                                  GridPane.rowIndex="0" GridPane.rowSpan="2">
                                             <GridPane.margin>
-                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x2"/>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x1"/>
                                             </GridPane.margin>
-                                        </ListView>
+                                        </TreeView>
                                     </children>
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -134,7 +134,8 @@
                                 <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
                                     <children>
                                         <ComboBox fx:id="journaling" minWidth="180.0"/>
-                                        <Button mnemonicParsing="false" onAction="#onCarica" text="load"/>
+                                        <Button fx:id="carica" mnemonicParsing="false" onAction="#onCarica"
+                                                text="load"/>
                                         <Button id="aggiorna" mnemonicParsing="false" onAction="#onAggiorna"
                                                 styleClass="menuButton" text="refresh"/>
                                         <Button id="esci" mnemonicParsing="false" onAction="#onExit"

@@ -47,6 +47,12 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("EsportaPianificazione");
         asMap.setApplicationServiceValues("ApplicationServicePianificazione", "export");
 
+        asMap.selectApplicationServiceBy("ElencaFileJournaling");
+        asMap.setApplicationServiceValues("ApplicationServiceJournaling", "getFileList");
+
+        asMap.selectApplicationServiceBy("AnalizzaJournaling");
+        asMap.setApplicationServiceValues("ApplicationServiceJournaling", "importFile");
+
         //TODO implementare altre funzionalità
     }
 

@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class JournalingFile implements Comparable<JournalingFile> {
 
     private final static transient String FILE_HEADER = "Journaling ";
-    private final static transient String FILE_HEADER_REGEX = "pianificazione[ ]";
+    private final static transient String FILE_HEADER_REGEX = "journaling[ ]";
 
     private final static transient String XML_EXTENSION = "xml";
     private final static transient String XML_EXTENSION_REGEX = "[.]" + XML_EXTENSION;
@@ -18,7 +18,7 @@ public class JournalingFile implements Comparable<JournalingFile> {
     private final static transient String JOURNALING_PATH = "importazione/";
     private static final transient String DATE_REGEX_STRING = "(([0-9])+[-]){2}([0-9])+";
 
-    private static final transient String FOOTER_REGEX = DATE_REGEX_STRING + XML_EXTENSION_REGEX;
+    private static final transient String FOOTER_REGEX = " " + DATE_REGEX_STRING + XML_EXTENSION_REGEX;
 
     private static final transient Pattern DATE_REGEX = Pattern.compile(DATE_REGEX_STRING);
     private static final transient int FIRST_SUBGROUP = 0;
