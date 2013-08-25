@@ -3,19 +3,17 @@ package presentation.boundary.controller.component;
 import business.entity.Infermiere;
 import javafx.scene.control.TreeItem;
 
-public class TreeInfermiereItem extends TreeItem<Infermiere> {
+public class TreeInfermiereItem extends TreeItem {
     public TreeInfermiereItem(Infermiere infermiere) {
-        super(infermiere);
         this.infermiere = infermiere;
         build();
     }
 
     private Infermiere infermiere;
-    private TreeItem root;
 
     protected void build() {
         TranslatedCellLabel rootLabel = new TranslatedCellLabel("nurse", infermiere.getId());
-        setGraphic(rootLabel);
+        setValue(rootLabel);
 
         insertChild("name", infermiere.getNome());
         insertChild("surname", infermiere.getCognome());
@@ -24,6 +22,6 @@ public class TreeInfermiereItem extends TreeItem<Infermiere> {
     protected void insertChild(String key, String value) {
         TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
         TreeItem item = new TreeItem(cellLabel);
-        root.getChildren().add(item);
+        getChildren().add(item);
     }
 }

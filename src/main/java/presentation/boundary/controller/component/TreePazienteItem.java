@@ -6,19 +6,17 @@ import javafx.scene.control.TreeItem;
 import utility.DateConverter;
 import utility.SimpleLabelTranslator;
 
-public class TreePazienteItem extends TreeItem<Paziente> {
+public class TreePazienteItem extends TreeItem {
     public TreePazienteItem(Paziente paziente) {
-        super(paziente);
         this.paziente = paziente;
         build();
     }
 
     private Paziente paziente;
-    private TreeItem root;
 
     protected void build() {
         TranslatedCellLabel rootLabel = new TranslatedCellLabel("patient", paziente.getId());
-        setGraphic(rootLabel);
+        setValue(rootLabel);
 
         insertChild("name", paziente.getNome());
         insertChild("surname", paziente.getCognome());
@@ -28,7 +26,7 @@ public class TreePazienteItem extends TreeItem<Paziente> {
         TreeItem item = new TreeItem(labelRubrica);
 
         if (!paziente.getNumeroCellulare().isEmpty()) {
-            root.getChildren().add(item);
+            getChildren().add(item);
         }
 
         for (String numero : paziente.getNumeroCellulare()) {
@@ -41,6 +39,6 @@ public class TreePazienteItem extends TreeItem<Paziente> {
     protected void insertChild(String key, String value) {
         TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
         TreeItem item = new TreeItem(cellLabel);
-        root.getChildren().add(item);
+        getChildren().add(item);
     }
 }
