@@ -1,7 +1,14 @@
 package business.entity;
 
 import org.joda.time.LocalTime;
+import utility.xml.adapter.XMLTimeAdapter;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+@XmlRootElement
 public class ValoreRilevato implements Entity {
     /**
      *
@@ -10,6 +17,7 @@ public class ValoreRilevato implements Entity {
     private String misura;
     private LocalTime tempoOperazione;
 
+    @XmlValue
     public String getMisura() {
         return misura;
     }
@@ -18,6 +26,8 @@ public class ValoreRilevato implements Entity {
         this.misura = misura;
     }
 
+    @XmlAttribute
+    @XmlJavaTypeAdapter(XMLTimeAdapter.class)
     public LocalTime getTempoOperazione() {
         return tempoOperazione;
     }

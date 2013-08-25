@@ -200,7 +200,7 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML
     private void onAnalizza(ActionEvent event) {
-        //TODO
+        fc.processRequest("MostraSchermataJournaling", null);
     }
 
     @FXML

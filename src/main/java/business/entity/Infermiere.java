@@ -52,6 +52,11 @@ public class Infermiere extends Person implements IndipendentEntity {
     }
 
     @Override
+    public boolean equals(Object object) {
+        return (object != null) && (hashCode() == object.hashCode());
+    }
+
+    @Override
     public int hashCode() {
         return id.hashCode();
     }
