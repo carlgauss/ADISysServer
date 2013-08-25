@@ -1,4 +1,4 @@
-package utility.xml.marshaller;
+package integration.xml.marshaller;
 
 public class XMLMarshallerFactory {
 

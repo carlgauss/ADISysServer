@@ -111,7 +111,7 @@
                                                   GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0"
                                                   GridPane.rowSpan="2">
                                             <GridPane.margin>
-                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x1"/>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x2"/>
                                             </GridPane.margin>
                                         </ListView>
                                     </children>

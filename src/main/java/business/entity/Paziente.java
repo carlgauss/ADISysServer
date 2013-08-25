@@ -1,8 +1,8 @@
 package business.entity;
 
+import integration.xml.adapter.XMLDateAdapter;
 import org.joda.time.LocalDate;
 import utility.SerialClone;
-import utility.xml.adapter.XMLDateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

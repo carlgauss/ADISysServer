@@ -1,4 +1,4 @@
-package utility.xml.marshaller;
+package integration.xml.marshaller;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

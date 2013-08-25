@@ -1,4 +1,4 @@
-package utility.xml.marshaller;
+package integration.xml.marshaller;
 
 import business.entity.Journaling;
 import org.junit.After;

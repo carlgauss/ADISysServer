@@ -1,4 +1,4 @@
-package utility.xml.validator;
+package integration.xml.validator;
 
 import org.xml.sax.SAXException;
 
@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 class XMLDefaultValidator implements XMLValidator {
-    private static String schemaLanguage =  XMLConstants.W3C_XML_SCHEMA_NS_URI;
+    private static String schemaLanguage = XMLConstants.W3C_XML_SCHEMA_NS_URI;
     private static SchemaFactory schemaFactory = SchemaFactory.newInstance(schemaLanguage);
 
     private Schema schema;
@@ -20,9 +20,8 @@ class XMLDefaultValidator implements XMLValidator {
         try {
             schema = schemaFactory.newSchema(new StreamSource(canonicalSchemaFileName));
         } catch (SAXException e) {
-            // TODO: È il modo migliore, questo di seguito per gestire, un' eccezione?
             e.printStackTrace();
-            System.exit(0);
+            System.exit(1);
         }
 
         validator = schema.newValidator();
@@ -31,12 +30,17 @@ class XMLDefaultValidator implements XMLValidator {
     private Validator validator;
 
     @Override
-    public void validate(File fileName) throws SAXException {
+    public boolean validate(File fileName) {
+        boolean validated = false;
         try {
             validator.validate(new StreamSource(fileName));
+            validated = true;
         } catch (IOException e) {
-            // TODO: È il modo migliore, questo di seguito, per gestire un' eccezione?
             e.printStackTrace();
+            System.exit(1);
+        } catch (SAXException e) {
+
         }
+        return validated;
     }
 }

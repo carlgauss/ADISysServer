@@ -1,4 +1,4 @@
-package utility.xml.adapter;
+package integration.xml.adapter;
 
 import org.joda.time.LocalDate;
 

@@ -1,9 +1,9 @@
 package business.entity;
 
+import integration.xml.adapter.XMLDateAdapter;
+import integration.xml.adapter.XMLTimeAdapter;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-import utility.xml.adapter.XMLDateAdapter;
-import utility.xml.adapter.XMLTimeAdapter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

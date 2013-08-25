@@ -3,13 +3,13 @@ package integration.xml;
 import business.entity.Infermiere;
 import business.entity.Intervento;
 import business.entity.Pianificazione;
+import integration.xml.marshaller.XMLMarshaller;
+import integration.xml.marshaller.XMLMarshallerFactory;
+import integration.xml.validator.XMLValidator;
+import integration.xml.validator.XMLValidatorFactory;
 import org.joda.time.LocalDate;
 import org.xml.sax.SAXException;
 import utility.FolderManager;
-import utility.xml.marshaller.XMLMarshaller;
-import utility.xml.marshaller.XMLMarshallerFactory;
-import utility.xml.validator.XMLValidator;
-import utility.xml.validator.XMLValidatorFactory;
 
 import java.io.File;
 import java.util.List;
