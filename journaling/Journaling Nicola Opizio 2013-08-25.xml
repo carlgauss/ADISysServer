@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<journaling>
+    <intervento>
+        <id>959</id>
+        <citta>Bari</citta>
+        <cap>70123</cap>
+        <indirizzo>Via Nicolai 287</indirizzo>
+        <data>2013-08-25</data>
+        <ora>18:00:00.000</ora>
+        <listaOperazioni>
+            <operazione>
+                <id>1449</id>
+                <nome>Defribrillazione</nome>
+                <nota>Fatto con successo</nota>
+                <valoreRilevato tempoOperazione="00:00:13.873"></valoreRilevato>
+            </operazione>
+        </listaOperazioni>
+        <paziente>
+            <id>1001</id>
+            <nome>Eleonora</nome>
+            <cognome>Drachi Malfieri</cognome>
+            <data>1954-01-31</data>
+            <rubrica>
+                <numero>0805436699</numero>
+                <numero>0809541289</numero>
+                <numero>3018230953</numero>
+            </rubrica>
+        </paziente>
+        <infermiere>
+            <id>1018</id>
+            <nome>Nicola</nome>
+            <cognome>Opizio</cognome>
+        </infermiere>
+        <listaGPS>
+            <gps>
+                <latitudine>41.1203987</latitudine>
+                <longitudine>16.8527024</longitudine>
+            </gps>
+        </listaGPS>
+        <listaAccelerometro>
+            <accelerometro>
+                <x>0.0</x>
+                <y>9.0</y>
+                <z>0.0</z>
+                <data>2013-08-25</data>
+                <ora>13:35:12.900</ora>
+            </accelerometro>
+        </listaAccelerometro>
+    </intervento>
+    <intervento>
+        <id>960</id>
+        <citta>Bari</citta>
+        <cap>70123</cap>
+        <indirizzo>Via Nicolai 287</indirizzo>
+        <data>2013-08-25</data>
+        <ora>23:59:59.000</ora>
+        <listaOperazioni>
+            <operazione>
+                <id>1450</id>
+                <nome>Defribrillazione</nome>
+                <nota></nota>
+                <valoreRilevato tempoOperazione="00:00:46.840">Fallimento</valoreRilevato>
+            </operazione>
+            <operazione>
+                <id>1451</id>
+                <nome>Eutanasia</nome>
+                <nota>
+                    Uso di morfina
+                    Questo serve per alleviare le sofferenze del paziente
+                </nota>
+                <valoreRilevato tempoOperazione="00:00:20.761">Sente ancora dolore</valoreRilevato>
+            </operazione>
+        </listaOperazioni>
+        <paziente>
+            <id>1000</id>
+            <nome>Renzo</nome>
+            <cognome>Ottato</cognome>
+            <data>1979-12-01</data>
+            <rubrica>
+                <numero>3256971266</numero>
+            </rubrica>
+        </paziente>
+        <infermiere>
+            <id>1018</id>
+            <nome>Nicola</nome>
+            <cognome>Opizio</cognome>
+        </infermiere>
+        <listaGPS>
+            <gps>
+                <latitudine>41.1203987</latitudine>
+                <longitudine>16.8527024</longitudine>
+            </gps>
+        </listaGPS>
+        <listaAccelerometro>
+            <accelerometro>
+                <x>0.0</x>
+                <y>9.0</y>
+                <z>0.0</z>
+                <data>2013-08-25</data>
+                <ora>13:35:37.388</ora>
+            </accelerometro>
+            <accelerometro>
+                <x>0.0</x>
+                <y>9.0</y>
+                <z>0.0</z>
+                <data>2013-08-25</data>
+                <ora>13:36:08.700</ora>
+            </accelerometro>
+            <accelerometro>
+                <x>0.0</x>
+                <y>9.0</y>
+                <z>0.0</z>
+                <data>2013-08-25</data>
+                <ora>13:36:40.711</ora>
+            </accelerometro>
+        </listaAccelerometro>
+    </intervento>
+</journaling>

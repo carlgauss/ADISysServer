@@ -5,7 +5,10 @@ import business.entity.GPS;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Labeled;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import presentation.boundary.ReturnableStage;
 import presentation.controller.FrontController;
@@ -27,7 +30,7 @@ public class SchermataJournaling extends Schermata {
     @FXML
     private ComboBox journaling;
     @FXML
-    private TreeView intervento;
+    private ListView intervento;
     @FXML
     private TableView<GPS> gps;
     @FXML
@@ -51,11 +54,7 @@ public class SchermataJournaling extends Schermata {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TreeItem item = new TreeItem(new Label("aaaa"));
-        intervento.setRoot(item);
 
-        TreeItem item2 = new TreeItem(new Label("bbbb"));
-        item.getChildren().add(item2);
     }
 
     private static final String BLANK = "";
