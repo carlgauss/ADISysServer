@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" styleClass="window"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPrincipale">
+    <children>
+        <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" styleClass="header"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+        <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0"
+                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <children>
+                <StackPane alignment="TOP_LEFT" maxHeight="660.0" prefHeight="103.0" prefWidth="822.0"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <AnchorPane id="anchor" maxHeight="100.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <StackPane prefHeight="100.0" prefWidth="539.0000999999975"
+                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="846.0"
+                                              snapToPixel="false" spacing="20.0">
+                                            <children>
+                                                <ImageView fitHeight="90.0" fitWidth="90.0" pickOnBounds="true"
+                                                           preserveRatio="true">
+                                                    <effect>
+                                                        <DropShadow spread="0.07142857142857142"/>
+                                                    </effect>
+                                                    <image>
+                                                        <Image url="@image/log.png" preserveRatio="false"
+                                                               smooth="false"/>
+                                                    </image>
+                                                </ImageView>
+                                                <Label id="title" fx:id="titolo" styleClass="title"
+                                                       text="journalingScreen">
+                                                    <font>
+                                                        <Font name="Arial Rounded MT Bold" size="50.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                            <padding>
+                                                <Insets left="2.0"/>
+                                            </padding>
+                                        </HBox>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </StackPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="536.0000915527344" prefWidth="846.0"
+                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                            AnchorPane.topAnchor="99.0">
+                    <children>
+                        <BorderPane prefHeight="484.0" prefWidth="822.0" AnchorPane.bottomAnchor="0.0"
+                                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <center>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                </GridPane>
+                            </center>
+                            <top>
+                                <HBox alignment="CENTER_LEFT" prefHeight="36.0" spacing="12.0">
+                                    <children>
+                                        <MenuButton minWidth="100.0" mnemonicParsing="false" text="add">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" onAction="#onInserisciInfermiere"
+                                                          text="nurse"/>
+                                                <MenuItem mnemonicParsing="false" onAction="#onInserisciPaziente"
+                                                          text="patient"/>
+                                                <MenuItem mnemonicParsing="false" onAction="#onInserisciIntervento"
+                                                          text="intervention"/>
+                                            </items>
+                                        </MenuButton>
+                                        <Button fx:id="esportaPianificazione" mnemonicParsing="false"
+                                                onAction="#onEsporta" styleClass="menuButton"
+                                                text="exportPlanification"/>
+                                        <Button fx:id="verificaJournaling" mnemonicParsing="false"
+                                                onAction="#onAnalizza" styleClass="menuButton" text="deriveJournaling"/>
+                                        <Button fx:id="aggiorna" mnemonicParsing="false" onAction="#onAggiorna"
+                                                styleClass="menuButton" text="refresh"/>
+                                        <Button fx:id="esci" mnemonicParsing="false" onAction="#onExit"
+                                                styleClass="menuButton" text="exit"/>
+                                    </children>
+                                    <padding>
+                                        <Insets left="12.0" right="12.0"/>
+                                    </padding>
+                                </HBox>
+                            </top>
+                        </BorderPane>
+                    </children>
+                </AnchorPane>
+            </children>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+            </padding>
+        </AnchorPane>
+    </children>
+    <stylesheets>
+        <URL value="@../stylesheet/default.css"/>
+    </stylesheets>
+</AnchorPane>
