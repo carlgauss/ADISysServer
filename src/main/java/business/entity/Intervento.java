@@ -66,7 +66,7 @@ public class Intervento implements IndipendentEntity {
     }
 
     @XmlJavaTypeAdapter(XMLDateAdapter.class)
-    @XmlElement(type = String.class)
+    @XmlElement
     public LocalDate getData() {
         return data;
     }
@@ -76,7 +76,7 @@ public class Intervento implements IndipendentEntity {
     }
 
     @XmlJavaTypeAdapter(XMLTimeAdapter.class)
-    @XmlElement(type = String.class)
+    @XmlElement
     public LocalTime getOra() {
         return ora;
     }
@@ -139,5 +139,5 @@ public class Intervento implements IndipendentEntity {
         isEditable = editable;
     }
 
-    private boolean isEditable = true;
+    private boolean isEditable = false;
 }

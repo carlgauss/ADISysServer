@@ -1,7 +1,10 @@
 package business.entity;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@XmlRootElement(name = "intervento")
+@XmlType(propOrder = {"id", "citta", "cap", "indirizzo", "data", "ora", "operazione", "paziente", "infermiere", "gps", "accelerometro"})
 public class InterventoCompleto extends Intervento {
     private static final long serialVersionUID = 1593975017900475176L;
 
@@ -25,6 +28,10 @@ public class InterventoCompleto extends Intervento {
         setInfermiere(intervento.getInfermiere());
     }
 
+    @XmlElements({
+            @XmlElement(name = "gps", type = GPS.class)
+    })
+    @XmlElementWrapper(name = "listaGPS")
     public List<GPS> getGps() {
         return gps;
     }
@@ -33,6 +40,10 @@ public class InterventoCompleto extends Intervento {
         this.gps = gps;
     }
 
+    @XmlElements({
+            @XmlElement(name = "accelerometro", type = Accelerometro.class)
+    })
+    @XmlElementWrapper(name = "listaAccelerometro")
     public List<Accelerometro> getAccelerometro() {
         return accelerometro;
     }

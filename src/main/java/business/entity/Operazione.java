@@ -37,9 +37,20 @@ public class Operazione implements IndipendentEntity {
         return nota;
     }
 
+    private static final transient String NEW_LINE_REGEX = "\\r?\\n";
+
     public void setNota(String nota) {
         if (nota != null) {
-            this.nota = nota.trim();
+            String notaTrimmed = "";
+            nota = nota.trim();
+            String[] notaLines = nota.split(NEW_LINE_REGEX);
+            for (int i = 0; i < notaLines.length; i++) {
+                notaTrimmed += notaLines[i].trim();
+                if (i < notaLines.length - 1) {
+                    notaTrimmed += "\n";
+                }
+            }
+            this.nota = notaTrimmed;
         } else {
             this.nota = "";
         }

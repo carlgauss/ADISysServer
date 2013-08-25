@@ -62,7 +62,7 @@ public class Paziente extends Person implements IndipendentEntity {
     }
 
     @XmlJavaTypeAdapter(XMLDateAdapter.class)
-    @XmlElement(type = String.class)
+    @XmlElement
     public LocalDate getData() {
         return data;
     }
