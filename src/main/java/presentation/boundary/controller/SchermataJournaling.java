@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.component.TreeInterventoCompletoItem;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.Parameter;
@@ -94,8 +95,12 @@ public class SchermataJournaling extends Schermata {
 
     private void populateJournaling(Journaling journalingEntity) {
         List<InterventoCompleto> list = journalingEntity.getIntervento();
-        ObservableList<InterventoCompleto> data = FXCollections.observableArrayList();
 
+        TreeItem root = new TreeItem(null);
+        intervento.setRoot(root);
 
+        for (InterventoCompleto intervento : list) {
+            root.getChildren().add(new TreeInterventoCompletoItem(intervento));
+        }
     }
 }

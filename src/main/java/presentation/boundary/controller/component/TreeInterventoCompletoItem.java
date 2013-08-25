@@ -18,8 +18,6 @@ public class TreeInterventoCompletoItem extends TreeItem<InterventoCompleto> {
     private TreeItem root;
 
     protected void build() {
-        //TODO
-
         TranslatedCellLabel rootLabel = new TranslatedCellLabel("intervention", intervento.getId());
         setGraphic(rootLabel);
 
