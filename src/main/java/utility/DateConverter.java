@@ -1,6 +1,8 @@
 package utility;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+import org.joda.time.MutableDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -26,6 +28,18 @@ public class DateConverter {
 
     private DateConverter() {
 
+    }
+
+    public static MutableDateTime getDateTime(LocalDate date, LocalTime time) {
+        return new MutableDateTime(
+                date.getYear(),
+                date.getMonthOfYear(),
+                date.getDayOfMonth(),
+                time.getHourOfDay(),
+                time.getMinuteOfHour(),
+                time.getSecondOfMinute(),
+                time.getMillisOfSecond()
+        );
     }
 
     public static String convertFromDateToString(LocalDate date) {

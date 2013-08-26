@@ -78,9 +78,18 @@ public class SchermataJournaling extends Schermata {
         loadJournalingList();
     }
 
+    private static final int NULL_POS = -1;
+
+    private int oldPos = NULL_POS;
+
     @FXML
     private void onCarica(ActionEvent event) {
         int pos = journaling.getSelectionModel().getSelectedIndex();
+
+        if (oldPos != pos) {
+            gps.setItems(null);
+            accelerometro.setItems(null);
+        }
 
         String journalingFileName = journaling.getItems().get(pos).getFileName();
         Parameter parameterJournaling = new Parameter();
@@ -88,9 +97,11 @@ public class SchermataJournaling extends Schermata {
 
         Journaling journalingEntity = (Journaling) fc.processRequest("AnalizzaJournaling", parameterJournaling);
         populateJournaling(journalingEntity);
+
+        oldPos = pos;
     }
 
-    private static final double MAX_ACCELEROMETER_VALUE_WIDTH = 30;
+    private static final double MAX_ACCELEROMETER_VALUE_WIDTH = 48;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -114,11 +125,21 @@ public class SchermataJournaling extends Schermata {
             @Override
             public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
                 if (newValue instanceof TreeChild) {
-                    TreeChild internalNode = (TreeChild) newValue;
-                    TreeInterventoCompletoItem interventoCompleto =
-                            (TreeInterventoCompletoItem) internalNode.getRootChild();
+                    TreeChild newInternalNode = (TreeChild) newValue;
+                    TreeInterventoCompletoItem newInterventoCompleto =
+                            (TreeInterventoCompletoItem) newInternalNode.getRootChild();
 
-                    fillRilevation(interventoCompleto.getIntervento());
+                    if (oldValue instanceof TreeChild) {
+                        TreeChild oldInternalNode = (TreeChild) oldValue;
+                        TreeInterventoCompletoItem oldInterventoCompleto =
+                                (TreeInterventoCompletoItem) oldInternalNode.getRootChild();
+
+                        if (newInterventoCompleto != oldInterventoCompleto) {
+                            fillRilevation(newInterventoCompleto.getIntervento());
+                        }
+                    } else {
+                        fillRilevation(newInterventoCompleto.getIntervento());
+                    }
                 }
             }
         });

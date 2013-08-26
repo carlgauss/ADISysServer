@@ -2,8 +2,11 @@ package business.entity;
 
 import integration.xml.adapter.XMLDateAdapter;
 import integration.xml.adapter.XMLTimeAdapter;
+import org.joda.time.Duration;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.joda.time.MutableDateTime;
+import utility.DateConverter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -66,6 +69,25 @@ public class Accelerometro implements Entity {
 
     public void setOra(LocalTime ora) {
         this.ora = ora;
+    }
+
+    public boolean isNullSignal(Accelerometro accelerometro) {
+        boolean result = true;
+
+        result &= (x == accelerometro.x);
+        result &= (y == accelerometro.y);
+        result &= (z == accelerometro.z);
+
+        return result;
+    }
+
+    public Duration getDuration(Accelerometro accelerometro) {
+        MutableDateTime dateTimeTo = DateConverter.getDateTime(data, ora);
+        MutableDateTime dateTimeFrom = DateConverter.getDateTime(accelerometro.data, accelerometro.ora);
+
+        Duration result = new Duration(dateTimeTo, dateTimeFrom);
+
+        return result;
     }
 
     public String toString() {
