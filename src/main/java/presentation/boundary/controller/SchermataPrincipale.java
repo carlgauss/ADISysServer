@@ -11,10 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.joda.time.LocalDate;
@@ -77,6 +74,11 @@ public class SchermataPrincipale implements Initializable {
     private TableView tabellaPaziente;
     @FXML
     private TableView tabellaIntervento;
+
+    @FXML
+    private TextField cercaInfermiere;
+    @FXML
+    private TextField cercaData;
 
     @FXML
     private Button esci;

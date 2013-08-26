@@ -3,6 +3,7 @@ package presentation.boundary.controller.component;
 import business.entity.InterventoCompleto;
 import business.entity.Operazione;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import utility.DateConverter;
 import utility.SimpleLabelTranslator;
 
@@ -17,10 +18,19 @@ public class TreeInterventoCompletoItem extends TreeChild {
     }
 
     private InterventoCompleto intervento;
+    private static final double STATUS_SPACING = 12;
 
     protected void build() {
         TranslatedCellLabel rootLabel = new TranslatedCellLabel("intervention", intervento.getId());
-        setValue(rootLabel);
+
+        HBox statusBox = new HBox();
+
+        statusBox.setSpacing(STATUS_SPACING);
+        statusBox.getChildren().addAll(rootLabel);
+        statusBox.getChildren().add(new GPSLabel(intervento.getGps()));
+        statusBox.getChildren().add(new AccelerometroLabel(intervento.getAccelerometro()));
+
+        setValue(statusBox);
 
         insertChild("city", intervento.getCitta());
         insertChild("postalCode", intervento.getCap());

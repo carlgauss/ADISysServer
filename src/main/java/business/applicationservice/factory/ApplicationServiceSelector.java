@@ -53,7 +53,13 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("AnalizzaJournaling");
         asMap.setApplicationServiceValues("ApplicationServiceJournaling", "importFile");
 
-        //TODO implementare altre funzionalità
+        asMap.selectApplicationServiceBy("AnalizzaGPS");
+        asMap.setApplicationServiceValues("ApplicationServiceVerifica", "deriveGPS");
+
+        asMap.selectApplicationServiceBy("AnalizzaAccelerometro");
+        asMap.setApplicationServiceValues("ApplicationServiceVerifica", "deriveAccelerometro");
+
+        //TODO implementare Patologia
     }
 
     private ApplicationServiceSelector() {

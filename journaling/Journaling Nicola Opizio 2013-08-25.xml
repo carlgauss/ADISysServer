@@ -90,6 +90,10 @@
                 <latitudine>51.1203987</latitudine>
                 <longitudine>36.8527024</longitudine>
             </gps>
+            <gps>
+                <latitudine>51.1203987</latitudine>
+                <longitudine>46.8527024</longitudine>
+            </gps>
         </listaGPS>
         <listaAccelerometro>
             <accelerometro>
