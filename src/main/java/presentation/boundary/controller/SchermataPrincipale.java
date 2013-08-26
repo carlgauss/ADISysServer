@@ -181,7 +181,7 @@ public class SchermataPrincipale implements Initializable {
 
     @FXML
     private void onCerca(ActionEvent event) {
-        loadIntervento();
+        searchIntervento();
     }
 
     @FXML
@@ -290,10 +290,10 @@ public class SchermataPrincipale implements Initializable {
         cercaInfermiere.setText(BLANK);
         cercaData.setText(BLANK);
 
-        loadIntervento();
+        searchIntervento();
     }
 
-    private synchronized void loadIntervento() {
+    private synchronized void searchIntervento() {
         Parameter parameter = new Parameter();
         parameter.setValue("infermiere", cercaInfermiere.getText());
         parameter.setValue("data", cercaData.getText());
