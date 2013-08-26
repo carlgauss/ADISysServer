@@ -20,8 +20,11 @@ public class TreeInterventoCompletoItem extends TreeChild {
     private InterventoCompleto intervento;
     private static final double STATUS_SPACING = 12;
 
+    private static final double ROOT_TRANSLATE = 3;
+
     protected void build() {
         TranslatedCellLabel rootLabel = new TranslatedCellLabel("intervention", intervento.getId());
+        rootLabel.setTranslateY(ROOT_TRANSLATE);
 
         HBox statusBox = new HBox();
 
