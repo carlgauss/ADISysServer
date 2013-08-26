@@ -3,6 +3,7 @@ package presentation.boundary;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import presentation.boundary.controller.Schermata;
 import utility.Parameter;
@@ -22,6 +23,10 @@ public abstract class ReturnableStage extends Stage implements Boundary {
     protected Scene scene;
 
     public ReturnableStage(Parameter parameter, String schemeResource) {
+        this(parameter, schemeResource, false);
+    }
+
+    public ReturnableStage(Parameter parameter, String schemeResource, boolean fullscreen) {
 
         Properties properties = SimpleLabelTranslator.getLanguage();
 
@@ -44,6 +49,11 @@ public abstract class ReturnableStage extends Stage implements Boundary {
 
         width = root.getPrefWidth();
         height = root.getPrefHeight();
+
+        if (fullscreen) {
+            width = Screen.getPrimary().getBounds().getWidth();
+            height = Screen.getPrimary().getBounds().getHeight();
+        }
 
         scene = new Scene(root, width, height);
         setScene(scene);

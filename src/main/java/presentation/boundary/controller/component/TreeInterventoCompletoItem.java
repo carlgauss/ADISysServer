@@ -7,7 +7,7 @@ import javafx.scene.control.TreeItem;
 import utility.DateConverter;
 import utility.SimpleLabelTranslator;
 
-public class TreeInterventoCompletoItem extends TreeItem {
+public class TreeInterventoCompletoItem extends TreeItem implements TreeChild {
     public TreeInterventoCompletoItem(InterventoCompleto intervento) {
         this.intervento = intervento;
         build();
@@ -48,5 +48,17 @@ public class TreeInterventoCompletoItem extends TreeItem {
         TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
         TreeItem item = new TreeItem(cellLabel);
         getChildren().add(item);
+    }
+
+    private boolean isRootChild;
+
+    @Override
+    public boolean isRootChild() {
+        return isRootChild;
+    }
+
+    @Override
+    public void setRootChild(boolean value) {
+        isRootChild = value;
     }
 }

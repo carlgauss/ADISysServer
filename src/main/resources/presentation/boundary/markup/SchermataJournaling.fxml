@@ -75,6 +75,33 @@
                                         <TableView fx:id="accelerometro" prefHeight="200.0" prefWidth="200.0"
                                                    GridPane.columnIndex="2" GridPane.columnSpan="2"
                                                    GridPane.rowIndex="1">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" fx:id="x">
+                                                    <graphic>
+                                                        <Label text="x"/>
+                                                    </graphic>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="75.0" fx:id="y">
+                                                    <graphic>
+                                                        <Label text="y"/>
+                                                    </graphic>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="75.0" fx:id="z">
+                                                    <graphic>
+                                                        <Label text="z"/>
+                                                    </graphic>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="75.0" fx:id="data">
+                                                    <graphic>
+                                                        <Label text="date"/>
+                                                    </graphic>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="75.0" fx:id="ora">
+                                                    <graphic>
+                                                        <Label text="time"/>
+                                                    </graphic>
+                                                </TableColumn>
+                                            </columns>
                                             <GridPane.margin>
                                                 <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x1"/>
                                             </GridPane.margin>
@@ -83,12 +110,12 @@
                                                    GridPane.columnIndex="2" GridPane.columnSpan="2"
                                                    GridPane.margin="$x1" GridPane.rowIndex="0">
                                             <columns>
-                                                <TableColumn prefWidth="75.0">
+                                                <TableColumn prefWidth="75.0" fx:id="latitudine">
                                                     <graphic>
                                                         <Label text="latitude"/>
                                                     </graphic>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="75.0">
+                                                <TableColumn prefWidth="75.0" fx:id="longitudine">
                                                     <graphic>
                                                         <Label text="longitude"/>
                                                     </graphic>
@@ -111,7 +138,7 @@
                                                   showRoot="false" GridPane.columnIndex="0" GridPane.columnSpan="2"
                                                   GridPane.rowIndex="0" GridPane.rowSpan="2">
                                             <GridPane.margin>
-                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x1"/>
+                                                <Insets bottom="6.0" left="6.0" right="6.0" top="24.0" fx:id="x2"/>
                                             </GridPane.margin>
                                         </TreeView>
                                     </children>

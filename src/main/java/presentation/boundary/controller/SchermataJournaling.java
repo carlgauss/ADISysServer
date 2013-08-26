@@ -57,7 +57,7 @@ public class SchermataJournaling extends Schermata {
     @FXML
     private void onCarica(ActionEvent event) {
         int pos = journaling.getSelectionModel().getSelectedIndex();
-        //TODO
+
         String journalingFileName = journaling.getItems().get(pos).getFileName();
         Parameter parameterJournaling = new Parameter();
         parameterJournaling.setValue("journaling", journalingFileName);
@@ -69,6 +69,11 @@ public class SchermataJournaling extends Schermata {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadJournalingList();
+
+        gps.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        accelerometro.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        //intervento.getSelectionModel().
     }
 
     private static final String BLANK = "";
@@ -77,6 +82,8 @@ public class SchermataJournaling extends Schermata {
     private ReturnableStage getStage() {
         return (ReturnableStage) root.getScene().getWindow();
     }
+
+    private static final int FIRST = 0;
 
     private void loadJournalingList() {
         List<JournalingFile> fileList = (List<JournalingFile>) fc.processRequest("ElencaFileJournaling", null);
@@ -87,6 +94,7 @@ public class SchermataJournaling extends Schermata {
             carica.setDisable(false);
 
             journaling.setItems(fileData);
+            journaling.getSelectionModel().select(FIRST);
         } else {
             journaling.setDisable(true);
             carica.setDisable(true);
@@ -100,7 +108,8 @@ public class SchermataJournaling extends Schermata {
         intervento.setRoot(root);
 
         for (InterventoCompleto intervento : list) {
-            root.getChildren().add(new TreeInterventoCompletoItem(intervento));
+            TreeInterventoCompletoItem item = new TreeInterventoCompletoItem(intervento);
+            root.getChildren().add(item);
         }
     }
 }

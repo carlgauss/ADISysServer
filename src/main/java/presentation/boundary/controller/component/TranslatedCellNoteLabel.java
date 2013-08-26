@@ -1,5 +1,7 @@
 package presentation.boundary.controller.component;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import utility.SimpleLabelTranslator;
@@ -22,7 +24,8 @@ public class TranslatedCellNoteLabel extends HBox {
     }
 
     private static final double SPACING_SIZE = 0;
-    private static final double NOTE_MAX_WIDTH = 300;
+    private static final DoubleProperty NOTE_MAX_WIDTH = new SimpleDoubleProperty(280);
+    //private static final double WIDTH_COEFFICIENT = 3;
 
     protected void build(String key, String separator, String value) {
         setSpacing(SPACING_SIZE);
@@ -31,7 +34,7 @@ public class TranslatedCellNoteLabel extends HBox {
         Label separatorLbl = new Label(separator);
         Label valueLbl = new Label(value);
 
-        valueLbl.setMaxWidth(NOTE_MAX_WIDTH);
+        valueLbl.maxWidthProperty().bind(NOTE_MAX_WIDTH);
         valueLbl.setWrapText(true);
 
         getChildren().addAll(keyLbl, separatorLbl, valueLbl);
