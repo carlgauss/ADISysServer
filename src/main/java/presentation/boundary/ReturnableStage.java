@@ -56,6 +56,10 @@ public abstract class ReturnableStage extends Stage implements Boundary {
         }
 
         scene = new Scene(root, width, height);
+
+        this.setMinWidth(width);
+        this.setMinHeight(height);
+
         setScene(scene);
     }
 

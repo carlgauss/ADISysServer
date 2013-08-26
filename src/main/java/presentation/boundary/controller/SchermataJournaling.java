@@ -106,6 +106,10 @@ public class SchermataJournaling extends Schermata {
         y.setMaxWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
         z.setMaxWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
 
+        x.setMinWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+        y.setMinWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+        z.setMinWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+
         intervento.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
