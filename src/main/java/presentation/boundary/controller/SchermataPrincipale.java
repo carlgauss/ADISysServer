@@ -219,6 +219,15 @@ public class SchermataPrincipale implements Initializable {
         tabellaPaziente.getSelectionModel().selectedItemProperty().addListener(new onSelectedPazienteListener());
         tabellaIntervento.getSelectionModel().selectedItemProperty().addListener(new onSelectedInterventoListener());
 
+        String noPatient = SimpleLabelTranslator.translate("noPatient");
+        tabellaPaziente.setPlaceholder(new Label(noPatient));
+
+        String noNurse = SimpleLabelTranslator.translate("noNurse");
+        tabellaInfermiere.setPlaceholder(new Label(noNurse));
+
+        String noIntervention = SimpleLabelTranslator.translate("noIntervention");
+        tabellaIntervento.setPlaceholder(new Label(noIntervention));
+
         loadAllTables();
     }
 
@@ -235,8 +244,6 @@ public class SchermataPrincipale implements Initializable {
         dataPaziente.setCellFactory(new DateDepictionFactory<Paziente>());
 
         tabellaPaziente.setItems(pazienteData);
-        String noPatient = SimpleLabelTranslator.translate("noPatient");
-        tabellaPaziente.setPlaceholder(new Label(noPatient));
 
         //Infermiere
         List<Infermiere> infermiereList = (List<Infermiere>) fc.processRequest("VisualizzaTuttiInfermieri", null);
@@ -247,8 +254,6 @@ public class SchermataPrincipale implements Initializable {
         cognomeInfermiere.setCellValueFactory(new PropertyValueFactory<Infermiere, String>("cognome"));
 
         tabellaInfermiere.setItems(infermiereData);
-        String noNurse = SimpleLabelTranslator.translate("noNurse");
-        tabellaInfermiere.setPlaceholder(new Label(noNurse));
 
         //Intervento
         List<Intervento> interventoList = (List<Intervento>) fc.processRequest("VisualizzaTuttiInterventi", null);
@@ -273,8 +278,6 @@ public class SchermataPrincipale implements Initializable {
         infermiereIntervento.setCellFactory(new PersonPortrayalTableFactory<>());
 
         tabellaIntervento.setItems(interventoData);
-        String noIntervention = SimpleLabelTranslator.translate("noIntervention");
-        tabellaIntervento.setPlaceholder(new Label(noIntervention));
     }
 
     private Infermiere selectedInfermiere = null;

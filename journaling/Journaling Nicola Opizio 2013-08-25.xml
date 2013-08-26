@@ -87,13 +87,13 @@
         </infermiere>
         <listaGPS>
             <gps>
-                <latitudine>41.1203987</latitudine>
-                <longitudine>16.8527024</longitudine>
+                <latitudine>51.1203987</latitudine>
+                <longitudine>36.8527024</longitudine>
             </gps>
         </listaGPS>
         <listaAccelerometro>
             <accelerometro>
-                <x>0.0</x>
+                <x>1.0</x>
                 <y>9.0</y>
                 <z>0.0</z>
                 <data>2013-08-25</data>
@@ -102,12 +102,12 @@
             <accelerometro>
                 <x>0.0</x>
                 <y>9.0</y>
-                <z>0.0</z>
+                <z>3.0</z>
                 <data>2013-08-25</data>
                 <ora>13:36:08.700</ora>
             </accelerometro>
             <accelerometro>
-                <x>0.0</x>
+                <x>1.0</x>
                 <y>9.0</y>
                 <z>0.0</z>
                 <data>2013-08-25</data>

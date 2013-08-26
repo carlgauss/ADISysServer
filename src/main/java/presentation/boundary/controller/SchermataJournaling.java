@@ -5,15 +5,23 @@ import business.entity.GPS;
 import business.entity.InterventoCompleto;
 import business.entity.Journaling;
 import business.transfer.JournalingFile;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.component.TreeChild;
 import presentation.boundary.controller.component.TreeInterventoCompletoItem;
+import presentation.boundary.controller.itemfactory.DateDepictionFactory;
+import presentation.boundary.controller.itemfactory.TimeDepictionFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.Parameter;
@@ -37,11 +45,27 @@ public class SchermataJournaling extends Schermata {
     @FXML
     private Button carica;
     @FXML
-    private TreeView<InterventoCompleto> intervento;
+    private TreeView intervento;
+
     @FXML
     private TableView<GPS> gps;
     @FXML
+    private TableColumn<GPS, Double> latitudine;
+    @FXML
+    private TableColumn<GPS, Double> longitudine;
+
+    @FXML
     private TableView<Accelerometro> accelerometro;
+    @FXML
+    private TableColumn<Accelerometro, Double> x;
+    @FXML
+    private TableColumn<Accelerometro, Double> y;
+    @FXML
+    private TableColumn<Accelerometro, Double> z;
+    @FXML
+    private TableColumn<Accelerometro, LocalDate> data;
+    @FXML
+    private TableColumn<Accelerometro, LocalTime> ora;
 
     @FXML
     private void onExit(ActionEvent event) {
@@ -66,14 +90,34 @@ public class SchermataJournaling extends Schermata {
         populateJournaling(journalingEntity);
     }
 
+    private static final double MAX_ACCELEROMETER_VALUE_WIDTH = 30;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadJournalingList();
 
         gps.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        accelerometro.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        gps.setPlaceholder(new Label(BLANK));
 
-        //intervento.getSelectionModel().
+        accelerometro.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        accelerometro.setPlaceholder(new Label(BLANK));
+
+        x.setMaxWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+        y.setMaxWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+        z.setMaxWidth(MAX_ACCELEROMETER_VALUE_WIDTH);
+
+        intervento.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+                if (newValue instanceof TreeChild) {
+                    TreeChild internalNode = (TreeChild) newValue;
+                    TreeInterventoCompletoItem interventoCompleto =
+                            (TreeInterventoCompletoItem) internalNode.getRootChild();
+
+                    fillRilevation(interventoCompleto.getIntervento());
+                }
+            }
+        });
     }
 
     private static final String BLANK = "";
@@ -109,7 +153,33 @@ public class SchermataJournaling extends Schermata {
 
         for (InterventoCompleto intervento : list) {
             TreeInterventoCompletoItem item = new TreeInterventoCompletoItem(intervento);
+            item.setRootChild(true);
             root.getChildren().add(item);
         }
+    }
+
+    private void fillRilevation(InterventoCompleto interventoCompleto) {
+        List<GPS> gpsList = interventoCompleto.getGps();
+        ObservableList<GPS> gpsData = FXCollections.observableArrayList(gpsList);
+
+        latitudine.setCellValueFactory(new PropertyValueFactory<GPS, Double>("latitudine"));
+        longitudine.setCellValueFactory(new PropertyValueFactory<GPS, Double>("longitudine"));
+
+        gps.setItems(gpsData);
+
+        List<Accelerometro> accelerometroList = interventoCompleto.getAccelerometro();
+        ObservableList<Accelerometro> accelerometroData = FXCollections.observableArrayList(accelerometroList);
+
+        x.setCellValueFactory(new PropertyValueFactory<Accelerometro, Double>("x"));
+        y.setCellValueFactory(new PropertyValueFactory<Accelerometro, Double>("y"));
+        z.setCellValueFactory(new PropertyValueFactory<Accelerometro, Double>("z"));
+
+        data.setCellValueFactory(new PropertyValueFactory<Accelerometro, LocalDate>("data"));
+        data.setCellFactory(new DateDepictionFactory<Accelerometro>());
+
+        ora.setCellValueFactory(new PropertyValueFactory<Accelerometro, LocalTime>("ora"));
+        ora.setCellFactory(new TimeDepictionFactory<Accelerometro>());
+
+        accelerometro.setItems(accelerometroData);
     }
 }

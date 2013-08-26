@@ -2,8 +2,15 @@ package presentation.boundary.controller.component;
 
 import javafx.scene.control.TreeItem;
 
-public abstract class TreeChild<T> extends TreeItem<T> {
+public class TreeChild<T> extends TreeItem<T> {
     protected boolean isRootChild;
+
+    public TreeChild(T item) {
+        super(item);
+    }
+
+    public TreeChild() {
+    }
 
 
     public boolean isRootChild() {
@@ -27,5 +34,11 @@ public abstract class TreeChild<T> extends TreeItem<T> {
         }
 
         return rootChild;
+    }
+
+    protected void insertChild(String key, String value) {
+        TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
+        TreeChild item = new TreeChild(cellLabel);
+        getChildren().add(item);
     }
 }

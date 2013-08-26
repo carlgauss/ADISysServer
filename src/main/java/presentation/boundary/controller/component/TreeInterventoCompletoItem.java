@@ -3,7 +3,6 @@ package presentation.boundary.controller.component;
 import business.entity.InterventoCompleto;
 import business.entity.Operazione;
 import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
 import utility.DateConverter;
 import utility.SimpleLabelTranslator;
 
@@ -33,7 +32,7 @@ public class TreeInterventoCompletoItem extends TreeChild {
         getChildren().add(new TreeInfermiereItem(intervento.getInfermiere()));
 
         Label labelOperazione = new Label(SimpleLabelTranslator.translate("operations"));
-        TreeItem item = new TreeItem(labelOperazione);
+        TreeChild item = new TreeChild(labelOperazione);
 
         if (!intervento.getOperazione().isEmpty()) {
             getChildren().add(item);
@@ -42,11 +41,5 @@ public class TreeInterventoCompletoItem extends TreeChild {
         for (Operazione operazione : intervento.getOperazione()) {
             item.getChildren().add(new TreeOperazioneItem(operazione));
         }
-    }
-
-    protected void insertChild(String key, String value) {
-        TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
-        TreeItem item = new TreeItem(cellLabel);
-        getChildren().add(item);
     }
 }

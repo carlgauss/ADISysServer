@@ -2,7 +2,6 @@ package presentation.boundary.controller.component;
 
 import business.entity.Operazione;
 import business.entity.ValoreRilevato;
-import javafx.scene.control.TreeItem;
 
 public class TreeOperazioneItem extends TreeChild {
     public TreeOperazioneItem(Operazione operazione) {
@@ -33,14 +32,8 @@ public class TreeOperazioneItem extends TreeChild {
 
         if (!operazione.getNota().equals(BLANK)) {
             TranslatedCellNoteLabel cellLabel = new TranslatedCellNoteLabel("note", operazione.getNota());
-            TreeItem item = new TreeItem(cellLabel);
+            TreeChild item = new TreeChild(cellLabel);
             getChildren().add(item);
         }
-    }
-
-    protected void insertChild(String key, String value) {
-        TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
-        TreeItem item = new TreeItem(cellLabel);
-        getChildren().add(item);
     }
 }
