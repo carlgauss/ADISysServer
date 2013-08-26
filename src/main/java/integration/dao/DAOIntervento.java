@@ -20,7 +20,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
     private static final String UPDATE_QUERY = "UPDATE Intervento SET Citta = '?', CAP = '?', Indirizzo = '?', Data = '?', Ora = '?', PazienteID = ?, InfermiereID = ? WHERE ID = ?";
     private static final String DELETE_QUERY = "DELETE FROM Intervento WHERE ID = ?";
     private static final String READ_QUERY = "SELECT ID, Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID FROM Intervento where ID = ?";
-    private static final String GET_ALL_QUERY = "SELECT ID, Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID FROM Intervento";
+    private static final String GET_ALL_QUERY = "SELECT ID, Citta, CAP, Indirizzo, Data, Ora, PazienteID, InfermiereID FROM Intervento ORDER BY Data DESC, Ora DESC";
 
     private static final String ID_INTERVENTO_ATTRIBUTE_NAME = "ID";
     private static final String CITTA_INTERVENTO_ATTRIBUTE_NAME = "Citta";
