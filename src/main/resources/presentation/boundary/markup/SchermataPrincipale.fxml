@@ -303,6 +303,8 @@
                                                                                    prefWidth="200.0"/>
                                                                         <Button mnemonicParsing="false"
                                                                                 onAction="#onCerca" text="send"/>
+                                                                        <Button mnemonicParsing="false"
+                                                                                onAction="#onReimposta" text="reset"/>
                                                                     </children>
                                                                 </HBox>
                                                             </children>

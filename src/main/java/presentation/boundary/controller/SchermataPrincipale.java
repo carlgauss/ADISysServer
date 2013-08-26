@@ -185,6 +185,13 @@ public class SchermataPrincipale implements Initializable {
     }
 
     @FXML
+    private void onReimposta(ActionEvent event) {
+        cercaInfermiere.setText(BLANK);
+        cercaData.setText(BLANK);
+        searchIntervento();
+    }
+
+    @FXML
     private void onSetItaliano(ActionEvent event) {
         SimpleLabelTranslator.setLanguage("italiano");
         MessageDisplayer.showMessage(null, "translateNextRestart");
