@@ -123,4 +123,28 @@ public class ApplicationServiceIntervento implements ApplicationService, CRUG<In
 
         return intervento;
     }
+
+    public List<Intervento> queryIntervento(Parameter parameter) {
+        List<Intervento> result = new ArrayList<>();
+
+        List<Intervento> interventoList = (List<Intervento>) parameter.getValue("intervento");
+
+        String infermiereSearch = (String) parameter.getValue("infermiere");
+        String dataSearch = (String) parameter.getValue("data");
+
+        for (Intervento intervento : interventoList) {
+            Infermiere infermiere = intervento.getInfermiere();
+            String infermiereName = infermiere.getNome() + " " + infermiere.getCognome();
+            String dataString = intervento.getData().toString(DateConverter.NORMAL_DATE_FORMAT);
+
+            boolean containsInfermiere = infermiereName.toLowerCase().contains(infermiereSearch.toLowerCase());
+            boolean containsData = dataString.contains(dataSearch);
+
+            if (containsInfermiere && containsData) {
+                result.add(intervento);
+            }
+        }
+
+        return result;
+    }
 }

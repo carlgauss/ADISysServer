@@ -178,6 +178,12 @@ public class SchermataPrincipale implements Initializable {
         }
     }
 
+
+    @FXML
+    private void onCerca(ActionEvent event) {
+        loadIntervento();
+    }
+
     @FXML
     private void onSetItaliano(ActionEvent event) {
         SimpleLabelTranslator.setLanguage("italiano");
@@ -233,6 +239,9 @@ public class SchermataPrincipale implements Initializable {
         loadAllTables();
     }
 
+    private List<Intervento> allInterventoList;
+    private static final String BLANK = "";
+
     private synchronized void loadAllTables() {
         //Paziente
         List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
@@ -258,8 +267,7 @@ public class SchermataPrincipale implements Initializable {
         tabellaInfermiere.setItems(infermiereData);
 
         //Intervento
-        List<Intervento> interventoList = (List<Intervento>) fc.processRequest("VisualizzaTuttiInterventi", null);
-        ObservableList<Intervento> interventoData = FXCollections.observableArrayList(interventoList);
+        allInterventoList = (List<Intervento>) fc.processRequest("VisualizzaTuttiInterventi", null);
 
         idIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, String>("id"));
         idIntervento.setCellFactory(new InterventoColoringRowFactory<>());
@@ -279,6 +287,21 @@ public class SchermataPrincipale implements Initializable {
         infermiereIntervento.setCellValueFactory(new PropertyValueFactory<Intervento, Infermiere>("infermiere"));
         infermiereIntervento.setCellFactory(new PersonPortrayalTableFactory<>());
 
+        cercaInfermiere.setText(BLANK);
+        cercaData.setText(BLANK);
+
+        loadIntervento();
+    }
+
+    private synchronized void loadIntervento() {
+        Parameter parameter = new Parameter();
+        parameter.setValue("infermiere", cercaInfermiere.getText());
+        parameter.setValue("data", cercaData.getText());
+        parameter.setValue("intervento", allInterventoList);
+
+        List<Intervento> interventoList = (List<Intervento>) fc.processRequest("CercaIntervento", parameter);
+
+        ObservableList<Intervento> interventoData = FXCollections.observableArrayList(interventoList);
         tabellaIntervento.setItems(interventoData);
     }
 

@@ -59,6 +59,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("AnalizzaAccelerometro");
         asMap.setApplicationServiceValues("ApplicationServiceVerifica", "deriveAccelerometro");
 
+        asMap.selectApplicationServiceBy("CercaIntervento");
+        asMap.setApplicationServiceValues("ApplicationServiceIntervento", "queryIntervento");
+
         //TODO implementare Patologia
     }
 

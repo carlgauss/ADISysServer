@@ -301,6 +301,8 @@
                                                                         <TextField fx:id="cercaData"
                                                                                    maxWidth="-Infinity"
                                                                                    prefWidth="200.0"/>
+                                                                        <Button mnemonicParsing="false"
+                                                                                onAction="#onCerca" text="send"/>
                                                                     </children>
                                                                 </HBox>
                                                             </children>
