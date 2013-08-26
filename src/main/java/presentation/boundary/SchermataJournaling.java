@@ -11,7 +11,6 @@ public class SchermataJournaling extends ReturnableStage {
         super(parameter, SCHEME_RESOURCE);
 
         setTitle(SimpleLabelTranslator.translate("deriveJournaling"));
-        setResizable(false);
 
         initModality(Modality.APPLICATION_MODAL);
     }

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" styleClass="window"
-            xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataJournaling">
+<AnchorPane id="AnchorPane" fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0"
+            styleClass="window" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="presentation.boundary.controller.SchermataJournaling">
     <children>
         <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="870.0" styleClass="header"
                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
