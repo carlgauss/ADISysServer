@@ -1,7 +1,31 @@
 package presentation.boundary.controller.component;
 
-public interface TreeChild {
-    public boolean isRootChild();
+import javafx.scene.control.TreeItem;
 
-    public void setRootChild(boolean value);
+public abstract class TreeChild<T> extends TreeItem<T> {
+    protected boolean isRootChild;
+
+
+    public boolean isRootChild() {
+        return isRootChild;
+    }
+
+    public void setRootChild(boolean value) {
+        isRootChild = value;
+    }
+
+    public TreeChild getRootChild() {
+        TreeChild rootChild = null;
+
+        if (isRootChild) {
+            rootChild = this;
+        } else {
+            TreeChild parent = (TreeChild) getParent();
+            if (parent != null) {
+                rootChild = parent.getRootChild();
+            }
+        }
+
+        return rootChild;
+    }
 }

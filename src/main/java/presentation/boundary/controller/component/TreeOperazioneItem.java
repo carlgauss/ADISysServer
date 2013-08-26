@@ -4,7 +4,7 @@ import business.entity.Operazione;
 import business.entity.ValoreRilevato;
 import javafx.scene.control.TreeItem;
 
-public class TreeOperazioneItem extends TreeItem implements TreeChild {
+public class TreeOperazioneItem extends TreeChild {
     public TreeOperazioneItem(Operazione operazione) {
         this.operazione = operazione;
         build();
@@ -42,17 +42,5 @@ public class TreeOperazioneItem extends TreeItem implements TreeChild {
         TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
         TreeItem item = new TreeItem(cellLabel);
         getChildren().add(item);
-    }
-
-    private boolean isRootChild;
-
-    @Override
-    public boolean isRootChild() {
-        return isRootChild;
-    }
-
-    @Override
-    public void setRootChild(boolean value) {
-        isRootChild = value;
     }
 }

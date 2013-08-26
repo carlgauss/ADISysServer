@@ -6,7 +6,7 @@ import javafx.scene.control.TreeItem;
 import utility.DateConverter;
 import utility.SimpleLabelTranslator;
 
-public class TreePazienteItem extends TreeItem implements TreeChild {
+public class TreePazienteItem extends TreeChild {
     public TreePazienteItem(Paziente paziente) {
         this.paziente = paziente;
         build();
@@ -40,17 +40,5 @@ public class TreePazienteItem extends TreeItem implements TreeChild {
         TranslatedCellLabel cellLabel = new TranslatedCellLabel(key, value);
         TreeItem item = new TreeItem(cellLabel);
         getChildren().add(item);
-    }
-
-    private boolean isRootChild;
-
-    @Override
-    public boolean isRootChild() {
-        return isRootChild;
-    }
-
-    @Override
-    public void setRootChild(boolean value) {
-        isRootChild = value;
     }
 }
