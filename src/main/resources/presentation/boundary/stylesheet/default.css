@@ -47,3 +47,11 @@
     -fx-padding: 3, 3, 3, 3;
     -fx-text-fill: black;
 }
+
+.transparent {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0, 0, 0, 0;
+    -fx-end-margin: 0, 0, 0, 0;
+    -fx-start-margin: 0, 0, 0, 0;
+}

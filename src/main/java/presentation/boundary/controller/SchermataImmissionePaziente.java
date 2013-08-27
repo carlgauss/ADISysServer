@@ -1,25 +1,20 @@
 package presentation.boundary.controller;
 
 import business.entity.Paziente;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import utility.DateConverter;
-import utility.MessageDisplayer;
-import utility.Parameter;
-import utility.SimpleLabelTranslator;
+import utility.*;
 
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class SchermataImmissionePaziente extends SchermataImmissione {
     private ReturnableStage stage;
@@ -46,6 +41,7 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
     @FXML
     private void onOk(ActionEvent event) {
+        updateAll();
         Object result = null;
 
         Parameter patientParameter = new Parameter();
@@ -83,12 +79,14 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
     @FXML
     private void onAggiungi(ActionEvent event) {
+        updateAll();
         numero.getItems().add(BLANK);
         numero.getSelectionModel().selectLast();
     }
 
     @FXML
     private void onElimina(ActionEvent event) {
+        updateAll();
         int selectedItem = numero.getSelectionModel().getSelectedIndex();
         if (selectedItem > -1) {
             numero.getItems().remove(selectedItem);
@@ -97,7 +95,7 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        numero.setCellFactory(TextFieldListCell.forListView());
+        numero.setCellFactory(new ListViewTextFieldFactory());
         numero.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
@@ -127,4 +125,56 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         return (ReturnableStage) root.getScene().getWindow();
     }
 
+    private class ListViewTextFieldFactory implements Callback<ListView<String>, ListCell<String>> {
+
+        @Override
+        public ListCell<String> call(ListView<String> stringListView) {
+            return new CellTextField();
+        }
+
+        private class CellTextField extends ListCell<String> {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                int i = getIndex();
+                if(!empty) {
+                    final IndexedTextField numeroField = new IndexedTextField(i);
+                    numeroField.textProperty().addListener(new ChangeListener<String>() {
+                        @Override
+                        public void changed(ObservableValue<? extends String> observableValue, String s, String s2) {
+                            textFieldCache.put(numeroField.i, numeroField.getText());
+                        }
+                    });
+
+                    numeroField.getStyleClass().add("transparent");
+                    numeroField.setText(item);
+
+                    setGraphic(numeroField);
+                } else {
+                    setText(null);
+                    setGraphic(null);
+                }
+            }
+        }
+
+        private class IndexedTextField extends TextField {
+            public final int i;
+
+            public IndexedTextField(int i) {
+                super();
+                this.i = i;
+            }
+        }
+    }
+
+    private void updateAll() {
+        Iterator<Map.Entry<Integer, String>> iterator = textFieldCache.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry<Integer, String> entry = iterator.next();
+            numero.getItems().set(entry.getKey(), entry.getValue());
+            iterator.remove();
+        }
+    }
+
+    Map<Integer, String> textFieldCache = new HashMap<>();
 }
