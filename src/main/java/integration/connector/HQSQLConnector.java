@@ -74,5 +74,14 @@ public class HQSQLConnector implements Connector {
         connection = null;
     }
 
+    public static void main(String...args) throws SQLException {
+        HQSQLConnector connector = new HQSQLConnector();
+        Statement statement = connector.connection.createStatement();
 
+        for(String query : DefinitionStatements.CREATE_TABLE) {
+            statement.addBatch(query);
+        }
+
+        statement.executeBatch();
+    }
 }
