@@ -9,6 +9,7 @@ public class OperazioneTO extends Operazione {
      */
     private static final long serialVersionUID = -1252928395615720975L;
     private String idIntervento;
+    private String idPaziente;
 
     public OperazioneTO() {
 
@@ -34,5 +35,13 @@ public class OperazioneTO extends Operazione {
 
     public void setIdIntervento(String idIntervento) {
         this.idIntervento = idIntervento;
+    }
+
+    public String getIdPaziente() {
+        return idPaziente;
+    }
+
+    public void setIdPaziente(String idPaziente) {
+        this.idPaziente = idPaziente;
     }
 }

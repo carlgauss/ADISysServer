@@ -71,7 +71,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 
         List<Operazione> operazioneList = entity.getOperazione();
 
-        daoOperazione.insertListaOperazioneByIntervento(operazioneList, idIntervento);
+        daoOperazione.insertListaOperazioneByIntervento(operazioneList, entity);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
         daoOperazione.deleteByIdIntervento(idIntervento);
         List<Operazione> operazioneList = entity.getOperazione();
 
-        daoOperazione.insertListaOperazioneByIntervento(operazioneList, idIntervento);
+        daoOperazione.insertListaOperazioneByIntervento(operazioneList, entity);
     }
 
     @Override

@@ -1,10 +1,13 @@
 package integration.dao;
 
+import business.entity.Intervento;
 import business.entity.Operazione;
+import business.entity.Patologia;
 import business.transfer.OperazioneTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,6 +27,13 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
     private static final String NOME_OPERAZIONE_ATTRIBUTE_NAME = "Nome";
     private static final String NOTA_OPERAZIONE_ATTRIBUTE_NAME = "Nota";
 
+    private static final String INSERT_CURA = "INSERT INTO Cura(SofferenzaPazienteID, SofferenzaPatologiaCodice, OperazioneID) VALUES ?, '?', ?)";
+    private static final String SELECT_CURA = "SELECT SofferenzaPazienteID, SofferenzaPatologiaCodice, OperazioneID FROM Cura WHERE OperazioneID = ?";
+
+    private static final String SOFFERENZA_PATOLOGIA_CODICE_CURA_ATTRIBUTE_NAME = "SofferenzaPatologiaCodice";
+
+    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("Patologia");
+
     @Override
     public void create(Operazione entity) {
         String insertQuery = INSERT_QUERY;
@@ -42,7 +52,19 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         String idIntervento = operazioneTO.getIdIntervento();
         insertQuery = queryReplaceFirst(insertQuery, idIntervento);
 
-        connector.executeUpdateQuery(insertQuery);
+        ResultSet idList = connector.executeUpdateQuery(insertQuery);
+
+        String idOperazione = null;
+
+        try {
+            while (idList.next()) {
+                idOperazione = idList.getString(ID_OPERAZIONE_ATTRIBUTE_NAME);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        insertCura(idOperazione, operazioneTO.getIdPaziente(), operazioneTO.getPatologia());
     }
 
     @Override
@@ -68,10 +90,11 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         return null;
     }
 
-    public void insertListaOperazioneByIntervento(List<Operazione> operazioneList, String idIntervento) {
+    public void insertListaOperazioneByIntervento(List<Operazione> operazioneList, Intervento intervento) {
         for (Operazione operazione : operazioneList) {
             OperazioneTO operazioneTO = new OperazioneTO(operazione);
-            operazioneTO.setIdIntervento(idIntervento);
+            operazioneTO.setIdIntervento(intervento.getId());
+            operazioneTO.setIdPaziente(intervento.getPaziente().getId());
             create(operazioneTO);
         }
     }
@@ -117,5 +140,37 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         }
 
         return result;
+    }
+
+    private void insertCura(String operazioneID, String pazienteID, List<Patologia> patologiaList) {
+        for (Patologia patologia : patologiaList) {
+            String insertCura = INSERT_CURA;
+
+            insertCura = queryReplaceFirst(insertCura, pazienteID);
+            insertCura = queryReplaceFirst(insertCura, patologia.getCodice());
+            insertCura = queryReplaceFirst(insertCura, operazioneID);
+
+            connector.executeUpdateQuery(insertCura);
+        }
+    }
+
+    private List<Patologia> getPatologia(String operazioneID) {
+        List<Patologia> patologiaList = new ArrayList<>();
+
+        String selectCura = SELECT_CURA;
+        selectCura = queryReplaceFirst(selectCura, operazioneID);
+
+        ResultSet resultSet = connector.executeReadQuery(SELECT_CURA);
+
+        try {
+            while (resultSet.next()) {
+                String codicePatologia = resultSet.getString(SOFFERENZA_PATOLOGIA_CODICE_CURA_ATTRIBUTE_NAME);
+                Patologia patologia = daoPatologia.read(codicePatologia);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return patologiaList;
     }
 }

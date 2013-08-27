@@ -1,10 +1,12 @@
 package integration.dao;
 
+import business.entity.Patologia;
 import business.entity.Paziente;
 import org.joda.time.LocalDate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +34,13 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 
     private static final String NUM_CELL_ATTRIBUTE_NAME = "Numero";
 
-    private static final String INSERT_PATOLOGIA = "INSERT INTO Sofferenza(PazienteID, PatologiaCodice) VALUES (?, ?)";
+    private static final String INSERT_SOFFERENZA = "INSERT INTO Sofferenza(PazienteID, PatologiaCodice) VALUES (?, '?')";
+    private static final String SELECT_SOFFERENZA = "SELECT PazienteID, PatologiaCodice FROM Sofferenza WHERE PazienteID = ?";
+    private static final String DELETE_SOFFERENZA = "DELETE FROM Sofferenza WHERE PazienteID = ?";
+
+    private static final String PATOLOGIA_CODICE_ATTRIBUTE_NAME = "PatologiaCodice";
+
+    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("Patologia");
 
     @Override
     public void create(Paziente entity) {
@@ -54,6 +62,8 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 
         String insertedPazienteID = getIDPazienteBy(insertedRow);
         insertNumCell(insertedPazienteID, numCellList);
+
+        insertSofferenza(insertedPazienteID, entity.getPatologia());
     }
 
     @Override
@@ -76,9 +86,12 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
         connector.executeUpdateQuery(updateQuery);
 
         deleteNumCell(idPaziente);
+        deleteSofferenza(idPaziente);
 
         List<String> updatedNumCellList = entity.getNumeroCellulare();
         insertNumCell(idPaziente, updatedNumCellList);
+
+        insertSofferenza(idPaziente, entity.getPatologia());
     }
 
     @Override
@@ -132,6 +145,9 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 
                 List<String> numCellList = getNumCell(id);
                 element.setNumeroCellulare(numCellList);
+
+                List<Patologia> patologiaList = getPatologiaPaziente(id);
+                element.setPatologia(patologiaList);
 
                 result.add(element);
             }
@@ -188,5 +204,47 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
             e.printStackTrace();
         }
         return id;
+    }
+
+    private void insertSofferenza(String id, List<Patologia> patologiaList) {
+        for (Patologia patologia : patologiaList) {
+            String insertSofferenzaQuery = INSERT_SOFFERENZA;
+
+            insertSofferenzaQuery = queryReplaceFirst(insertSofferenzaQuery, id);
+            insertSofferenzaQuery = queryReplaceFirst(insertSofferenzaQuery, patologia.getCodice());
+
+            connector.executeUpdateQuery(insertSofferenzaQuery);
+        }
+    }
+
+    private void deleteSofferenza(String id) {
+        String deleteSofferenzaQuery = DELETE_SOFFERENZA;
+
+        deleteSofferenzaQuery = queryReplaceFirst(deleteSofferenzaQuery, id);
+
+        connector.executeUpdateQuery(deleteSofferenzaQuery);
+    }
+
+    private List<Patologia> getPatologiaPaziente(String id) {
+        String selectSofferenzaQuery = SELECT_SOFFERENZA;
+        selectSofferenzaQuery = queryReplaceFirst(selectSofferenzaQuery, id);
+
+        ResultSet resultSet = connector.executeReadQuery(selectSofferenzaQuery);
+
+        List<Patologia> patologiaList = new ArrayList<>();
+
+        try {
+            while (resultSet.next()) {
+                String codice = resultSet.getString(PATOLOGIA_CODICE_ATTRIBUTE_NAME);
+
+                Patologia patologia = daoPatologia.read(codice);
+
+                patologiaList.add(patologia);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return patologiaList;
     }
 }
