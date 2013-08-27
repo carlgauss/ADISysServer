@@ -4,9 +4,11 @@ import business.entity.Paziente;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
 import presentation.controller.FrontController;
@@ -143,6 +145,13 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
                         @Override
                         public void changed(ObservableValue<? extends String> observableValue, String s, String s2) {
                             textFieldCache.put(numeroField.i, numeroField.getText());
+                        }
+                    });
+
+                    numeroField.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            numero.getSelectionModel().select(numeroField.i);
                         }
                     });
 
