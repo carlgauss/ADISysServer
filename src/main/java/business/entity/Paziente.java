@@ -97,7 +97,7 @@ public class Paziente extends Person implements IndipendentEntity {
     }
 
     @XmlElements({
-            @XmlElement(name = "patologia", required = false) //TODO
+            @XmlElement(name = "patologia", required = false)
     })
     @XmlElementWrapper(name = "listaPatologie")
     public List<Patologia> getPatologia() {

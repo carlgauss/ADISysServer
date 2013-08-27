@@ -40,7 +40,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 
     private static final String PATOLOGIA_CODICE_ATTRIBUTE_NAME = "PatologiaCodice";
 
-    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("Patologia");
+    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
 
     @Override
     public void create(Paziente entity) {

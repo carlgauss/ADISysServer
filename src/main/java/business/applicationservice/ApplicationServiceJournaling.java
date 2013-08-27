@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//TODO
 public class ApplicationServiceJournaling implements ApplicationService {
 
     private static final String JOURNALING_PATH = "journaling";

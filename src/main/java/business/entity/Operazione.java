@@ -76,7 +76,7 @@ public class Operazione implements IndipendentEntity {
     }
 
     @XmlElements({
-            @XmlElement(name = "patologia", required = false) //TODO
+            @XmlElement(name = "patologia")
     })
     @XmlElementWrapper(name = "listaPatologie")
     public List<Patologia> getPatologia() {

@@ -18,6 +18,7 @@ public class Patologia implements Entity {
     }
 
     public void setCodice(String codice) {
+        codice = codice.trim();
         this.codice = codice;
     }
 
@@ -27,6 +28,7 @@ public class Patologia implements Entity {
     }
 
     public void setNome(String nome) {
+        nome = nome.trim();
         this.nome = nome;
     }
 

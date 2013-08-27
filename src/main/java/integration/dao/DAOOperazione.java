@@ -32,7 +32,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
 
     private static final String SOFFERENZA_PATOLOGIA_CODICE_CURA_ATTRIBUTE_NAME = "SofferenzaPatologiaCodice";
 
-    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("Patologia");
+    private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
 
     @Override
     public void create(Operazione entity) {

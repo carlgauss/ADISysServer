@@ -12,7 +12,6 @@ import utility.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO tutti i metodi
 public class ApplicationServiceInfermiere implements ApplicationService, CRUG<Infermiere> {
 
     private DAO<Infermiere> daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
