@@ -32,6 +32,8 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
 
     private static final String NUM_CELL_ATTRIBUTE_NAME = "Numero";
 
+    private static final String INSERT_PATOLOGIA = "INSERT INTO Sofferenza(PazienteID, PatologiaCodice) VALUES (?, ?)";
+
     @Override
     public void create(Paziente entity) {
         String insertQuery = INSERT_QUERY;

@@ -16,7 +16,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
     //UPDATE_QUERY not implemented
     //DELETE_QUERY not implemented
     //READ_QUERY not implemented
-    //GET_ALL_QUERY = not implemented
+    //GET_ALL_QUERY not implemented
     private static final String DELETE_BY_INTERVENTO_QUERY = "DELETE FROM Operazione WHERE InterventoID = ?";
     private static final String GET_BY_INTERVENTO_QUERY = "SELECT ID, Nome, Nota FROM Operazione WHERE InterventoID = ?";
 
@@ -43,7 +43,6 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         insertQuery = queryReplaceFirst(insertQuery, idIntervento);
 
         connector.executeUpdateQuery(insertQuery);
-
     }
 
     @Override
