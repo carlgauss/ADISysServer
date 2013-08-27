@@ -13,7 +13,6 @@ import utility.Parameter;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO tutti i metodi
 public class ApplicationServicePatologia implements ApplicationService, CRUG<Patologia> {
     private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
     private Checker checker = CheckerFactory.buildInstance(Patologia.class);
