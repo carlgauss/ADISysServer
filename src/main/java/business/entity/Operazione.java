@@ -2,13 +2,11 @@ package business.entity;
 
 import utility.SerialClone;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "nome", "nota", "valoreRilevato"})
+@XmlType(propOrder = {"id", "nome", "nota", "valoreRilevato", "patologia"})
 public class Operazione implements IndipendentEntity {
     /**
      *
@@ -22,6 +20,8 @@ public class Operazione implements IndipendentEntity {
 
     private String nota;
     private ValoreRilevato valoreRilevato;
+
+    private List<Patologia> patologia;
 
     @XmlElement
     public String getNome() {
@@ -73,6 +73,18 @@ public class Operazione implements IndipendentEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @XmlElements({
+            @XmlElement(name = "patologia", required = false) //TODO
+    })
+    @XmlElementWrapper(name = "listaPatologie")
+    public List<Patologia> getPatologia() {
+        return SerialClone.clone(patologia);
+    }
+
+    public void setPatologia(List<Patologia> patologia) {
+        this.patologia = SerialClone.clone(patologia);
     }
 
     public String toString() {

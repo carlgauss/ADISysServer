@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @XmlRootElement
-@XmlType(propOrder = {"id", "nome", "cognome", "data", "numeroCellulare"})
+@XmlType(propOrder = {"id", "nome", "cognome", "data", "numeroCellulare", "patologia"})
 public class Paziente extends Person implements IndipendentEntity {
     /**
      *
@@ -26,6 +26,7 @@ public class Paziente extends Person implements IndipendentEntity {
     private LocalDate data;
 
     private List<String> numeroCellulare;
+    private List<Patologia> patologia;
 
     @XmlElement
     public String getId() {
@@ -93,5 +94,17 @@ public class Paziente extends Person implements IndipendentEntity {
         }
 
         this.numeroCellulare = numeroCellulareFiltered;
+    }
+
+    @XmlElements({
+            @XmlElement(name = "patologia", required = false) //TODO
+    })
+    @XmlElementWrapper(name = "listaPatologie")
+    public List<Patologia> getPatologia() {
+        return SerialClone.clone(patologia);
+    }
+
+    public void setPatologia(List<Patologia> patologia) {
+        this.patologia = SerialClone.clone(patologia);
     }
 }
