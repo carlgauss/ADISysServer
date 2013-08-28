@@ -68,6 +68,4 @@ public class ApplicationServicePatologia implements ApplicationService, CRUG<Pat
 
         return patologia;
     }
-
-
 }

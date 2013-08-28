@@ -17,7 +17,7 @@ public class DAOPatologia extends HQSQLDAO<Patologia> {
     private static final String READ_QUERY = "SELECT Codice, Nome, Gravita FROM Patologia WHERE Codice = '?'";
     private static final String GET_ALL_QUERY = "SELECT Codice, Nome, Gravita FROM Patologia";
 
-    private static final String CODICE_PATOLOGIA_ATTRIBUTE_NAME = "ID";
+    private static final String CODICE_PATOLOGIA_ATTRIBUTE_NAME = "Codice";
     private static final String NOME_PATOLOGIA_ATTRIBUTE_NAME = "Nome";
     private static final String GRAVITA_PATOLOGIA_ATTRIBUTE_NAME = "Gravita";
 

@@ -109,7 +109,7 @@ public class DAOInterventoTest {
         daoP = DAOFactory.getDAOEntity("DAOPaziente");
         daoI = DAOFactory.getDAOEntity("DAOInfermiere");
 
-        //Filling pazienti, infermieri and operazioni
+        //Filling pazienti, patologie and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {
             daoP.create(e);
         }
@@ -129,7 +129,7 @@ public class DAOInterventoTest {
             System.out.println(msg);
         }
 
-        System.out.println("---printing infermieri using get all---");
+        System.out.println("---printing patologie using get all---");
         List<Infermiere> listI2 = daoI.getAll();
         for (Infermiere e : listI2) {
             msg = e.getId() + " " + e.getNome() + " " + e.getCognome();
@@ -228,7 +228,7 @@ public class DAOInterventoTest {
         daoP = DAOFactory.getDAOEntity("DAOPaziente");
         daoI = DAOFactory.getDAOEntity("DAOInfermiere");
 
-        //Filling pazienti, infermieri and operazioni
+        //Filling pazienti, patologie and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {
             daoP.create(e);
         }
