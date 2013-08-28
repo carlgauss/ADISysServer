@@ -90,6 +90,7 @@ public class HQSQLConnectorStub implements Connector {
     private static final String[] DELETE_QUERIES = new String[]{
             "DELETE FROM Cura CASCADE",
             "DELETE FROM Sofferenza CASCADE",
+            "DELETE FROM Cellulare CASCADE",
             "DELETE FROM Patologia CASCADE",
             "DELETE FROM Operazione CASCADE",
             "DELETE FROM Intervento CASCADE",
@@ -99,10 +100,9 @@ public class HQSQLConnectorStub implements Connector {
 
 
     public void deleteAll() {
-        Statement statement = createDefaultStatement();
         for (String e : DELETE_QUERIES) {
             try {
-                statement.execute(e);
+                connection.prepareStatement(e).execute();
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }

@@ -34,6 +34,15 @@ public class DAOPatologiaTest {
         }
     }
 
+    public static void createPatologieDB() {
+        dao = DAOFactory.getDAOEntity("DAOPatologia");
+
+        for (Patologia e : patologie) {
+            dao.create(e);
+        }
+
+    }
+
     @Before
     public void setUp() throws Exception {
         HQSQLConnectorStub conn = new HQSQLConnectorStub();

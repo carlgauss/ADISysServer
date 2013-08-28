@@ -61,6 +61,7 @@ public class DAOPaziente extends HQSQLDAO<Paziente> {
         List<String> numCellList = entity.getNumeroCellulare();
 
         String insertedPazienteID = getIDPazienteBy(insertedRow);
+
         insertNumCell(insertedPazienteID, numCellList);
 
         insertSofferenza(insertedPazienteID, entity.getPatologia());
