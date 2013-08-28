@@ -10,8 +10,6 @@ class PatologiaChecker implements Checker {
     private static final int NOME = 1;
     private static final int GRAVITA = 2;
 
-    private static final int CODICE_LENGTH = 6;
-    private static final String CODICE_REGEX = "([0-9]){" + CODICE_LENGTH + "}";
     private static final int MIN_NOME_VALUE = 3;
     private static final int MAX_NOME_VALUE = 20;
     private static final String GRAVITA_REGEX = "[1-5]";
@@ -19,11 +17,6 @@ class PatologiaChecker implements Checker {
     @Override
     public void check(List<Object> values) throws CommonException {
         String codice = (String) values.get(CODICE);
-        codice = codice.trim();
-
-        if (!codice.matches(CODICE_REGEX)) {
-            throw new InvalidPatologiaFieldException("invalidDiseaseCode");
-        }
 
         String nome = (String) values.get(NOME);
         nome = nome.trim();
@@ -34,12 +27,12 @@ class PatologiaChecker implements Checker {
                 && (length <= MAX_NOME_VALUE);
 
         if (!isValid) {
-            throw new InvalidPatologiaFieldException("invalidDiseaseName");
+            throw new InvalidPatologiaFieldException("invalidDiseaseName", codice);
         }
 
         String gravita = String.valueOf((int) values.get(GRAVITA));
         if (!gravita.matches(GRAVITA_REGEX)) {
-            throw new InvalidPatologiaFieldException("invalidDiseaseGravity");
+            throw new InvalidPatologiaFieldException("invalidDiseaseGravity", codice);
         }
     }
 }

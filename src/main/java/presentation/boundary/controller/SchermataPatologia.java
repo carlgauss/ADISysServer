@@ -17,6 +17,7 @@ import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.component.ChoiceBoxGravita;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
+import utility.MessageDisplayer;
 import utility.Parameter;
 
 import java.net.URL;
@@ -43,10 +44,29 @@ public class SchermataPatologia extends Schermata {
     @FXML
     private TextField inputCodice;
 
+    private static final int DEFAULT_GRAVITA = 1;
+
     @FXML
     private void onAggiungi(ActionEvent event) {
         update();
 
+        Parameter codiceParameter = new Parameter();
+
+        codiceParameter.setValue("codice", inputCodice.getText());
+        codiceParameter.setValue("patologieDaInserire", editedPatologiaMap.keySet());
+
+        Object result = fc.processRequest("VerificaCodicePatologia", codiceParameter);
+
+        if (result != null) {
+            PatologiaTO patologiaTO = new PatologiaTO();
+            patologiaTO.setCodice(inputCodice.getText());
+            patologiaTO.setGravita(DEFAULT_GRAVITA);
+
+            patologiaTO.setToInsert(true);
+
+            patologiaData.add(patologiaTO);
+            editedPatologiaMap.put(patologiaTO.getCodice(), patologiaTO);
+        }
     }
 
     @FXML
@@ -57,12 +77,12 @@ public class SchermataPatologia extends Schermata {
 
         Parameter diseaseParameter = new Parameter();
 
-        diseaseParameter.setValue("nome", nome.getText());
+        diseaseParameter.setValue("listaPatologia", editedPatologiaMap.values());
 
-        result = fc.processRequest("ModificaInfermiere", diseaseParameter);
+        result = fc.processRequest("AggiornaTutteLePatologie", diseaseParameter);
 
         if (result != null) {
-            //MessageDisplayer.showAcceptMessage(null, "editedNurse");
+            MessageDisplayer.showAcceptMessage(null, "updatedDiseases");
 
             getStage().setResult(result);
             getStage().close();
@@ -133,10 +153,6 @@ public class SchermataPatologia extends Schermata {
 
                         Patologia oldPatologia = patologia.getItems().get(index);
 
-                        if (editedPatologiaMapCache.containsKey(oldPatologia.getCodice())) {
-                            oldPatologia = editedPatologiaMapCache.get(oldPatologia.getCodice());
-                        }
-
                         final Patologia finalOldPatologia = oldPatologia;
 
                         textField.setText(text);
@@ -144,14 +160,20 @@ public class SchermataPatologia extends Schermata {
 
                         textField.textProperty().addListener(new ChangeListener<String>() {
                             @Override
-                            public void changed(ObservableValue<? extends String> observableValue, String s, String s2) {
-                                PatologiaTO editedPatologia = new PatologiaTO(finalOldPatologia);
+                            public void changed(ObservableValue<? extends String> observableValue, String oltText, String newText) {
+                                Patologia oldPatologia = finalOldPatologia;
+
+                                if (editedPatologiaMapCache.containsKey(oldPatologia.getCodice())) {
+                                    oldPatologia = editedPatologiaMapCache.get(oldPatologia.getCodice());
+                                }
+
+                                PatologiaTO editedPatologia = new PatologiaTO(oldPatologia);
 
                                 if (finalOldPatologia instanceof PatologiaTO) {
                                     editedPatologia.setToInsert(((PatologiaTO) finalOldPatologia).isToInsert());
                                 }
 
-                                editedPatologia.setNome(textField.getText());
+                                editedPatologia.setNome(newText);
                                 editedPatologia.setIndex(index);
                                 editedPatologiaMapCache.put(editedPatologia.getCodice(), editedPatologia);
                             }
@@ -192,14 +214,20 @@ public class SchermataPatologia extends Schermata {
 
                         boxGravita.valueProperty().addListener(new ChangeListener<Integer>() {
                             @Override
-                            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer integer2) {
-                                PatologiaTO editedPatologia = new PatologiaTO(finalOldPatologia);
+                            public void changed(ObservableValue<? extends Integer> observableValue, Integer oldGravita, Integer newGravita) {
+                                Patologia oldPatologia = finalOldPatologia;
+
+                                if (editedPatologiaMapCache.containsKey(oldPatologia.getCodice())) {
+                                    oldPatologia = editedPatologiaMapCache.get(oldPatologia.getCodice());
+                                }
+
+                                PatologiaTO editedPatologia = new PatologiaTO(oldPatologia);
 
                                 if (finalOldPatologia instanceof PatologiaTO) {
                                     editedPatologia.setToInsert(((PatologiaTO) finalOldPatologia).isToInsert());
                                 }
 
-                                editedPatologia.setGravita(boxGravita.getValue());
+                                editedPatologia.setGravita(newGravita);
                                 editedPatologia.setIndex(index);
                                 editedPatologiaMapCache.put(editedPatologia.getCodice(), editedPatologia);
                             }

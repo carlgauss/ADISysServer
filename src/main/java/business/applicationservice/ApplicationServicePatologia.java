@@ -5,13 +5,14 @@ import business.applicationservice.checker.CheckerFactory;
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidPatologiaFieldException;
 import business.entity.Patologia;
+import business.transfer.PatologiaTO;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
+import integration.dao.DAOPatologia;
 import presentation.controller.ApplicationService;
 import utility.Parameter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ApplicationServicePatologia implements ApplicationService, CRUG<Patologia> {
     private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
@@ -69,12 +70,12 @@ public class ApplicationServicePatologia implements ApplicationService, CRUG<Pat
         return patologia;
     }
 
-
     private static final int CODICE_LENGTH = 6;
     private static final String CODICE_REGEX = "([0-9]){" + CODICE_LENGTH + "}";
 
     public void checkCodice(Parameter parameter) throws CommonException {
         String codice = (String) parameter.getValue("codice");
+        Set<String> codiceToInsert = (Set<String>) parameter.getValue("patologieDaInserire");
 
         codice = codice.trim();
 
@@ -82,10 +83,35 @@ public class ApplicationServicePatologia implements ApplicationService, CRUG<Pat
             throw new InvalidPatologiaFieldException("invalidDiseaseCode");
         }
 
+        if (codiceToInsert.contains(codice)) {
+            throw new InvalidPatologiaFieldException("duplicateDiseaseCode");
+        }
+
         Patologia patologiaDuplicate = daoPatologia.read(codice);
 
         if (patologiaDuplicate != null) {
             throw new InvalidPatologiaFieldException("duplicateDiseaseCode");
+        }
+    }
+
+    public void updateAll(Parameter parameter) throws CommonException {
+        Collection<Patologia> patologiaList = (Collection<Patologia>) parameter.getValue("listaPatologia");
+        for (Patologia patologia : patologiaList) {
+            List<Object> attibutes = new LinkedList<>();
+            attibutes.add(patologia.getCodice());
+            attibutes.add(patologia.getNome());
+            attibutes.add(patologia.getGravita());
+
+            checker.check(attibutes);
+        }
+
+        for (Patologia patologia : patologiaList) {
+            PatologiaTO patologiaTO = (PatologiaTO) patologia;
+            if(patologiaTO.isToInsert()) {
+                daoPatologia.create(patologia);
+            } else {
+                daoPatologia.update(patologia);
+            }
         }
     }
 }

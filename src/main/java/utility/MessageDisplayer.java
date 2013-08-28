@@ -37,6 +37,27 @@ public class MessageDisplayer {
         dialog.showDialog();
     }
 
+    private static final String SEPARATOR = " ";
+    private static final String INDENT = "\n";
+
+    public static void showErrorMessage(String title, String subtitle, String reference, String body) {
+        if (title == null) {
+            title = SimpleLabelTranslator.translate("error");
+        } else {
+            title = SimpleLabelTranslator.translate(title);
+        }
+
+        String text = SimpleLabelTranslator.translate(subtitle);
+        text += SEPARATOR + reference + INDENT + INDENT;
+        text += SimpleLabelTranslator.translate(body);
+
+        DialogFX dialog = new DialogFX(DialogFX.Type.ERROR);
+        dialog.setTitleText(title);
+        dialog.setMessage(text);
+        dialog.showDialog();
+    }
+
+
     public static void showAcceptMessage(String title, String text) {
         if (title == null) {
             title = SimpleLabelTranslator.translate("success");

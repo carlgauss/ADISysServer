@@ -3,8 +3,13 @@ package business.transfer;
 import business.entity.Patologia;
 
 public class PatologiaTO extends Patologia {
+    private static final String BLANK = "";
 
-    public  PatologiaTO(Patologia patologia) {
+    public PatologiaTO() {
+        setNome(BLANK);
+    }
+
+    public PatologiaTO(Patologia patologia) {
         setCodice(patologia.getCodice());
         setNome(patologia.getNome());
         setGravita(patologia.getGravita());
