@@ -71,6 +71,8 @@ public class DAOIntervento extends HQSQLDAO<Intervento> {
 
         List<Operazione> operazioneList = entity.getOperazione();
 
+        entity.setId(idIntervento);
+
         daoOperazione.insertListaOperazioneByIntervento(operazioneList, entity);
     }
 

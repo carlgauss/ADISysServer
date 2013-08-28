@@ -1,7 +1,10 @@
 package business.transfer;
 
 import business.entity.Operazione;
+import business.entity.Patologia;
 import business.entity.ValoreRilevato;
+
+import java.util.List;
 
 public class OperazioneTO extends Operazione {
     /**
@@ -27,6 +30,9 @@ public class OperazioneTO extends Operazione {
 
         ValoreRilevato valoreRilevato = operazione.getValoreRilevato();
         setValoreRilevato(valoreRilevato);
+
+        List<Patologia> patologiaList = operazione.getPatologia();
+        setPatologia(patologiaList);
     }
 
     public String getIdIntervento() {

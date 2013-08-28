@@ -1,9 +1,6 @@
 package integration.dao;
 
-import business.entity.Infermiere;
-import business.entity.Intervento;
-import business.entity.Operazione;
-import business.entity.Paziente;
+import business.entity.*;
 import integration.connector.HQSQLConnector;
 import mockit.Mockit;
 import org.joda.time.LocalDate;
@@ -12,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,20 +28,20 @@ public class DAOInterventoTest {
     private static List<Paziente> listP;
     private static List<Infermiere> listI;
 
-    private static final String[][][] ARRAY_OPERAZIONI = new String[][][]{
+    private static final Object[][][] ARRAY_OPERAZIONI = new Object[][][]{
             {},
             {
-                    {"Defribrillazione", null},
+                    {"Defribrillazione", null, new int[]{0, 2}},
             },
             {
-                    {"Defribrillazione", ""},
-                    {"Eutanasia", "Uso di morfina (pericoloso)"},
+                    {"Defribrillazione", "", new int[]{0, 2}},
+                    {"Eutanasia", "Uso di morfina (pericoloso)", new int[]{2, 0}},
             },
             {
-                    {"Tracheotomia", null},
-                    {"Rimozione dell'appendice", ""},
-                    {"Anestesia", "Totale"},
-                    {"Fai SQL Injection", "' SELECT FROM"},
+                    {"Tracheotomia", null, new int[]{0, 2}},
+                    {"Rimozione dell'appendice", "", new int[]{2, 0}},
+                    {"Anestesia", "Totale", new int[]{0, 2}},
+                    {"Fai SQL Injection", "' SELECT FROM", new int[]{2, 0}},
             },
     };
 
@@ -66,18 +64,30 @@ public class DAOInterventoTest {
             msg2 += e.getId() + " ";
             msg2 += e.getNome() + ", ";
             msg2 += e.getNota() + "\n";
+            msg2 += "\t\tDiseases:";
+            for (Patologia patologia : e.getPatologia()) {
+                msg2 += " " + patologia.getCodice();
+            }
+            msg2+="\n";
         }
         return msg2;
     }
 
     public static List<List<Operazione>> fillOperazioni() {
         List<List<Operazione>> operazioni = new LinkedList<>();
-        for (String[][] e : ARRAY_OPERAZIONI) {
+        for (Object[][] e : ARRAY_OPERAZIONI) {
             List<Operazione> tempL = new LinkedList<>();
-            for (String[] f : e) {
+            for (Object[] f : e) {
                 Operazione temp = new Operazione();
-                temp.setNome(f[0]);
-                temp.setNota(f[1]);
+                temp.setNome((String) f[0]);
+                temp.setNota((String) f[1]);
+
+                List<Patologia> patologiaList = new ArrayList<>(2);
+                int[] list = (int[]) f[2];
+                for(int i : list) {
+                    patologiaList.add(DAOPatologiaTest.patologie[i]);
+                }
+                temp.setPatologia(patologiaList);
 
                 tempL.add(temp);
             }
@@ -100,10 +110,10 @@ public class DAOInterventoTest {
         }
         conn = null;
 
+        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
+
         fillInfermieri();
         DAOPazienteTest.fillPazienti();
-
-        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 
         dao = DAOFactory.getDAOEntity("DAOIntervento");
         daoP = DAOFactory.getDAOEntity("DAOPaziente");
@@ -181,13 +191,17 @@ public class DAOInterventoTest {
             System.out.print(msg);
         }
 
-        System.out.println("---updating all queries (adding k to the cities and operation note, and mixing both paziente and infermiere)---");
+        System.out.println("---updating all queries (adding k to the cities and operation note, and mixing both paziente and infermiere, ecc)---");
         int i = 0;
         for (Intervento e : list) {
             e.setCitta(e.getCitta() + "k");
             List<Operazione> temp = e.getOperazione();
             for (Operazione f : temp) {
                 f.setNota(f.getNota() + "k");
+
+                List<Patologia> patologiaList = f.getPatologia();
+                patologiaList.remove(0);
+                f.setPatologia(patologiaList);
             }
             e.setOperazione(temp);
 

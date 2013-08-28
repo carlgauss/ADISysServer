@@ -27,7 +27,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
     private static final String NOME_OPERAZIONE_ATTRIBUTE_NAME = "Nome";
     private static final String NOTA_OPERAZIONE_ATTRIBUTE_NAME = "Nota";
 
-    private static final String INSERT_CURA = "INSERT INTO Cura(SofferenzaPazienteID, SofferenzaPatologiaCodice, OperazioneID) VALUES ?, '?', ?)";
+    private static final String INSERT_CURA = "INSERT INTO Cura(SofferenzaPazienteID, SofferenzaPatologiaCodice, OperazioneID) VALUES (?, '?', ?)";
     private static final String SELECT_CURA = "SELECT SofferenzaPazienteID, SofferenzaPatologiaCodice, OperazioneID FROM Cura WHERE OperazioneID = ?";
 
     private static final String SOFFERENZA_PATOLOGIA_CODICE_CURA_ATTRIBUTE_NAME = "SofferenzaPatologiaCodice";
@@ -50,6 +50,7 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         insertQuery = queryReplaceFirst(insertQuery, notaOperazione);
 
         String idIntervento = operazioneTO.getIdIntervento();
+
         insertQuery = queryReplaceFirst(insertQuery, idIntervento);
 
         ResultSet idList = connector.executeUpdateQuery(insertQuery);
@@ -133,6 +134,9 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
                 String nota = resultSet.getString(NOTA_OPERAZIONE_ATTRIBUTE_NAME);
                 element.setNota(nota.trim());
 
+                List<Patologia> patologia = getPatologia(id);
+                element.setPatologia(patologia);
+
                 result.add(element);
             }
         } catch (SQLException e) {
@@ -160,12 +164,13 @@ public class DAOOperazione extends HQSQLDAO<Operazione> {
         String selectCura = SELECT_CURA;
         selectCura = queryReplaceFirst(selectCura, operazioneID);
 
-        ResultSet resultSet = connector.executeReadQuery(SELECT_CURA);
+        ResultSet resultSet = connector.executeReadQuery(selectCura);
 
         try {
             while (resultSet.next()) {
                 String codicePatologia = resultSet.getString(SOFFERENZA_PATOLOGIA_CODICE_CURA_ATTRIBUTE_NAME);
                 Patologia patologia = daoPatologia.read(codicePatologia);
+                patologiaList.add(patologia);
             }
         } catch (SQLException e) {
             e.printStackTrace();

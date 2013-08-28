@@ -17,11 +17,11 @@ public class DAOPazienteTest {
     private static DAO<Paziente> dao;
 
     private static final Object[][] ARRAY_PAZIENTI = new Object[][]{
-            {"Rocco", "Coriandoli", new LocalDate(1965, 2, 22), new String[]{"0805241452", "368125510"}, new int[]{0}},
+            {"Rocco", "Coriandoli", new LocalDate(1965, 2, 22), new String[]{"0805241452", "368125510"}, new int[]{0, 2}},
             {"Nicola", "Amenicoli", new LocalDate(1988, 7, 17), new String[]{}, new int[]{0, 2, 3, 4, 5}},
             {"Renzo", "Ottato", new LocalDate(1979, 12, 1), new String[]{"3256971266"}, new int[]{4, 0, 3, 2}},
-            {"Eleonora", "Drachi Malfieri", new LocalDate(1954, 1, 31), new String[]{"0809541289", "0805436699", "3018230953"}, new int[]{5}},
-            {"Maria Caterina", "Colò", new LocalDate(1999, 8, 19), new String[]{"253735968", "021236490", "0804356715", "3206270012"}, new int[]{3, 2}}
+            {"Eleonora", "Drachi Malfieri", new LocalDate(1954, 1, 31), new String[]{"0809541289", "0805436699", "3018230953"}, new int[]{5, 0, 2}},
+            {"Maria Caterina", "Colò", new LocalDate(1999, 8, 19), new String[]{"253735968", "021236490", "0804356715", "3206270012"}, new int[]{0, 3, 2}}
     };
 
     public static Paziente[] pazienti;
@@ -29,6 +29,7 @@ public class DAOPazienteTest {
     public static void fillPazienti() {
 
         DAOPatologiaTest.fillPatologie();
+        DAOPatologiaTest.createPatologieDB();
 
         pazienti = new Paziente[ARRAY_PAZIENTI.length];
         for (int i = 0; i < pazienti.length; i++) {
@@ -63,12 +64,10 @@ public class DAOPazienteTest {
         }
         conn = null;
 
+        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
         fillPazienti();
 
-        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
         dao = DAOFactory.getDAOEntity("DAOPaziente");
-
-        DAOPatologiaTest.createPatologieDB();
     }
 
     @After
