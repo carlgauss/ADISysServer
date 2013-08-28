@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="488.0" styleClass="window" xmlns:fx="http://javafx.com/fxml" fx:controller="presentation.boundary.controller.SchermataPatologia">
+  <children>
+    <StackPane prefHeight="84.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label fx:id="titolo" styleClass="smalltitle" text="manageDiseases" />
+      </children>
+    </StackPane>
+    <GridPane alignment="CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
+      <children>
+        <TableView fx:id="patologia" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <columns>
+            <TableColumn maxWidth="90.0" prefWidth="90.0" fx:id="codice">
+              <graphic>
+                <Label text="code" />
+              </graphic>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" fx:id="nome">
+              <graphic>
+                <Label text="name" />
+              </graphic>
+            </TableColumn>
+            <TableColumn maxWidth="90.0" prefWidth="90.0" fx:id="gravita">
+              <graphic>
+                <Label text="import" />
+              </graphic>
+            </TableColumn>
+          </columns>
+        </TableView>
+        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="12.0">
+              <children>
+                <Label text="code" />
+                <TextField fx:id="inputCodice" maxWidth="120.0" />
+                <Button mnemonicParsing="false" onAction="#onAggiungi" text="add" />
+              </children>
+              <padding>
+                <Insets right="12.0" />
+              </padding>
+            </HBox>
+          </children>
+        </StackPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <StackPane prefHeight="37.0" prefWidth="406.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <children>
+        <HBox alignment="CENTER" spacing="20.0">
+          <children>
+            <Button minWidth="100.0" mnemonicParsing="false" onAction="#onOk" text="ok" />
+            <Button minWidth="100.0" mnemonicParsing="false" onAction="#onCancel" text="cancel" />
+          </children>
+        </HBox>
+      </children>
+    </StackPane>
+  </children>
+  <stylesheets>
+    <URL value="@../stylesheet/default.css" />
+  </stylesheets>
+</AnchorPane>

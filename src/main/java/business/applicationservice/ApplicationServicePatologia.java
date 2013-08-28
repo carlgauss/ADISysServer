@@ -68,4 +68,24 @@ public class ApplicationServicePatologia implements ApplicationService, CRUG<Pat
 
         return patologia;
     }
+
+
+    private static final int CODICE_LENGTH = 6;
+    private static final String CODICE_REGEX = "([0-9]){" + CODICE_LENGTH + "}";
+
+    public void checkCodice(Parameter parameter) throws CommonException {
+        String codice = (String) parameter.getValue("codice");
+
+        codice = codice.trim();
+
+        if (!codice.matches(CODICE_REGEX)) {
+            throw new InvalidPatologiaFieldException("invalidDiseaseCode");
+        }
+
+        Patologia patologiaDuplicate = daoPatologia.read(codice);
+
+        if (patologiaDuplicate != null) {
+            throw new InvalidPatologiaFieldException("duplicateDiseaseCode");
+        }
+    }
 }

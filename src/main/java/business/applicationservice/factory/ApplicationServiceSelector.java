@@ -62,6 +62,9 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("CercaIntervento");
         asMap.setApplicationServiceValues("ApplicationServiceIntervento", "queryIntervento");
 
+        asMap.selectApplicationServiceBy("VisualizzaTuttePatologie");
+        asMap.setApplicationServiceValues("ApplicationServicePatologia", "getAll");
+
         //TODO implementare Patologia
     }
 

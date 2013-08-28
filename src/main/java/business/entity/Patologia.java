@@ -40,4 +40,21 @@ public class Patologia implements Entity {
     public void setGravita(int gravita) {
         this.gravita = gravita;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Patologia)) return false;
+
+        Patologia patologia = (Patologia) o;
+
+        if (!codice.equals(patologia.codice)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return codice.hashCode();
+    }
 }

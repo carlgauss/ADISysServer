@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.component.IndexedTextField;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.*;
@@ -155,7 +156,6 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
                         }
                     });
 
-                    numeroField.getStyleClass().add("transparent");
                     numeroField.setText(item);
 
                     setGraphic(numeroField);
@@ -163,15 +163,6 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
                     setText(null);
                     setGraphic(null);
                 }
-            }
-        }
-
-        private class IndexedTextField extends TextField {
-            public final int i;
-
-            public IndexedTextField(int i) {
-                super();
-                this.i = i;
             }
         }
     }

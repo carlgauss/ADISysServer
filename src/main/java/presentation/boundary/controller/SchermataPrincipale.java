@@ -209,6 +209,11 @@ public class SchermataPrincipale implements Initializable {
     }
 
     @FXML
+    private void onPatologia(ActionEvent event) {
+        fc.processRequest("MostraSchermataPatologia", null);
+    }
+
+    @FXML
     private void onEsporta(ActionEvent event) {
         fc.processRequest("MostraSchermataEsportazione", null);
     }
