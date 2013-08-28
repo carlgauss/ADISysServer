@@ -11,6 +11,7 @@ public class PatologiaTO extends Patologia {
     }
 
     private boolean toInsert;
+    private int index = -1;
 
     public boolean isToInsert() {
         return toInsert;
@@ -18,5 +19,13 @@ public class PatologiaTO extends Patologia {
 
     public void setToInsert(boolean toInsert) {
         this.toInsert = toInsert;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

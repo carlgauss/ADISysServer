@@ -18,17 +18,17 @@
       <children>
         <TableView fx:id="patologia" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <columns>
-            <TableColumn maxWidth="90.0" prefWidth="90.0" fx:id="codice">
+            <TableColumn editable="false" maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" style="-fx-text-alignment: center;" fx:id="codice">
               <graphic>
                 <Label text="code" />
               </graphic>
             </TableColumn>
-            <TableColumn prefWidth="75.0" fx:id="nome">
+            <TableColumn prefWidth="246.0" resizable="false" fx:id="nome">
               <graphic>
                 <Label text="name" />
               </graphic>
             </TableColumn>
-            <TableColumn maxWidth="90.0" prefWidth="90.0" fx:id="gravita">
+            <TableColumn maxWidth="90.0" minWidth="90.0" prefWidth="90.0" resizable="false" fx:id="gravita">
               <graphic>
                 <Label text="import" />
               </graphic>

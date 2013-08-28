@@ -43,14 +43,9 @@ public class Patologia implements Entity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Patologia)) return false;
-
         Patologia patologia = (Patologia) o;
-
-        if (!codice.equals(patologia.codice)) return false;
-
-        return true;
+        return  (o != null) &&
+                codice.equals(patologia.codice);
     }
 
     @Override
