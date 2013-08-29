@@ -134,4 +134,12 @@
                     value="(([2][0-3])|(([01])?[0-9]))([:](([0-5])?[0-9])){2}([.]([0-9])+)?"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:complexType name="Patologia">
+        <xs:sequence>
+            <xs:element type="xs:string" name="codice"/>
+            <xs:element type="xs:string" name="nome"/>
+            <xs:element type="xs:integer" name="cognome"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
