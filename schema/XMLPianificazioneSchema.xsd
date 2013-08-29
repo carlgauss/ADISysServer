@@ -82,11 +82,18 @@
 
     <xs:complexType name="Patologia">
         <xs:sequence>
-            <xs:element type="xs:string" name="codice"/>
+            <xs:element type="Code" name="codice"/>
             <xs:element type="xs:string" name="nome"/>
             <xs:element type="xs:integer" name="cognome"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="Code">
+        <xs:restriction base="xs:string">
+            <xs:pattern
+                    value="([0-9]){6}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:simpleType name="Date">
         <xs:restriction base="xs:string">
