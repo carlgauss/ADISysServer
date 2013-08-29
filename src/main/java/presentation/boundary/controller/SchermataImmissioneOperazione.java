@@ -1,13 +1,21 @@
 package presentation.boundary.controller;
 
 import business.entity.Operazione;
+import business.entity.Patologia;
+import business.entity.Paziente;
+import business.transfer.BooleanBox;
+import javafx.beans.property.BooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.itemfactory.BooleanCheckTableFactory;
+import presentation.boundary.controller.itemfactory.PatologiaGravitaDepictionTableFactory;
+import presentation.boundary.controller.itemfactory.PatologiaPartialDepictionTableFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
@@ -15,7 +23,7 @@ import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class SchermataImmissioneOperazione extends SchermataImmissione {
     private ReturnableStage stage;
@@ -32,12 +40,31 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
     private TextArea nota;
 
     @FXML
+    private TableView<BooleanBox<Patologia>> patologia;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, BooleanProperty> checkedPatologia;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, Patologia> patologiaColonna;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, Patologia> gravitaPatologia;
+
+    @FXML
     private void onOk(ActionEvent event) {
         Object result = null;
 
         Parameter operationParameter = new Parameter();
 
         operationParameter.setValue("nome", nome.getText());
+
+        List<Patologia> patologiaList = new ArrayList<>();
+
+        for (BooleanBox<Patologia> patologiaBox : patologiaData) {
+            if(patologiaBox.getChecked().get()) {
+                patologiaList.add(patologiaBox.getElement());
+            }
+        }
+
+        operationParameter.setValue("patologia", patologiaList);
 
         result = fc.processRequest("VerificaOperazione", operationParameter);
 
@@ -51,6 +78,7 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
 
             operazione.setNome(nome.getText());
             operazione.setNota(nota.getText());
+            operazione.setPatologia(patologiaList);
 
             getStage().setResult(operazione);
             getStage().close();
@@ -74,22 +102,67 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
     @Override
     protected void initializeAdd() {
         titolo.setText(SimpleLabelTranslator.translate("addOperation"));
+
+        paziente = (Paziente) parameter.getValue("paziente");
     }
 
     private Operazione operazione;
+    private Paziente paziente;
+
+    private Map<String, Patologia> insertedMap = new HashMap<>();
 
     @Override
     protected void initializeEdit() {
         titolo.setText(SimpleLabelTranslator.translate("editOperation"));
 
         Operazione operazione = (Operazione) parameter.getValue("operazione");
+        Paziente paziente = (Paziente) parameter.getValue("paziente");
+
         this.operazione = operazione;
+        this.paziente = paziente;
 
         nome.setText(operazione.getNome());
         nota.setText(operazione.getNota());
+
+        for (Patologia patologiaItem : operazione.getPatologia()) {
+            insertedMap.put(patologiaItem.getCodice(), patologiaItem);
+        }
     }
 
     private ReturnableStage getStage() {
         return (ReturnableStage) root.getScene().getWindow();
+    }
+
+    private ObservableList<BooleanBox<Patologia>> patologiaData = FXCollections.observableArrayList();
+
+    private void loadPatologia() {
+        List<Patologia> patologiaList = paziente.getPatologia();
+        for (Patologia patologiaItem : patologiaList) {
+            BooleanBox<Patologia> patologiaBox = new BooleanBox<Patologia>(patologiaItem);
+            boolean isContained = insertedMap.containsKey(patologiaItem.getCodice());
+            patologiaBox.setChecked(isContained);
+
+            patologiaData.add(patologiaBox);
+
+            if (isContained) {
+                insertedMap.remove(patologiaItem.getCodice());
+            }
+        }
+
+        if (insertedMap.size() > 0) {
+            //TODO
+            MessageDisplayer.showMessage(null, "missingDiseaseRiconfirm");
+        }
+
+        checkedPatologia.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, BooleanProperty>("checked"));
+        checkedPatologia.setCellFactory(new BooleanCheckTableFactory());
+
+        patologiaColonna.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, Patologia>("element"));
+        patologiaColonna.setCellFactory(new PatologiaPartialDepictionTableFactory());
+
+        gravitaPatologia.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, Patologia>("element"));
+        gravitaPatologia.setCellFactory(new PatologiaGravitaDepictionTableFactory());
+
+        patologia.setItems(patologiaData);
     }
 }

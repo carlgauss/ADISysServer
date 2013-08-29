@@ -1,6 +1,8 @@
 package presentation.boundary.controller;
 
 import business.entity.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -102,7 +104,18 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
     @FXML
     private void onOperazioneAdd(ActionEvent event) {
-        Object result = fc.processRequest("MostraSchermataInserimentoOperazione", null);
+        Paziente selectedPaziente = paziente.getSelectionModel().getSelectedItem();
+
+        Object result = null;
+
+        if (selectedPaziente != null) {
+            Parameter operationParameter = new Parameter();
+            parameter.setValue("paziente", selectedPaziente);
+            result = fc.processRequest("MostraSchermataInserimentoOperazione", operationParameter);
+        } else {
+            MessageDisplayer.showErrorMessage(null, "selectPatient");
+        }
+
         if ((result != null) && (result instanceof Operazione)) {
             Operazione resultOperazione = (Operazione) result;
             operazione.getItems().add(resultOperazione);
@@ -111,12 +124,21 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
     @FXML
     private void onOperazioneEdit(ActionEvent event) {
+        Paziente selectedPaziente = paziente.getSelectionModel().getSelectedItem();
         int selectedItem = operazione.getSelectionModel().getSelectedIndex();
+
         if (selectedItem > -1) {
             Operazione selectedOperazione = operazione.getItems().get(selectedItem);
             Parameter operationParameter = new Parameter();
             operationParameter.setValue("operazione", selectedOperazione);
-            fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
+
+            if (selectedPaziente != null) {
+                parameter.setValue("paziente", selectedPaziente);
+                fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
+            } else {
+                MessageDisplayer.showErrorMessage(null, "selectPatient");
+            }
+
             forceOperazioneRefresh();
         } else {
             MessageDisplayer.showErrorMessage(null, "selectOperation");

@@ -5,6 +5,8 @@ import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidInterventoFieldException;
 import business.entity.Intervento;
 import business.entity.Operazione;
+import business.entity.Patologia;
+import business.entity.Paziente;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import utility.DateConverter;
@@ -75,7 +77,8 @@ class InterventoChecker implements Checker {
             throw new InvalidInterventoFieldException("formatTimeError");
         }
 
-        if (values.get(PAZIENTE) == null) {
+        Paziente paziente = (Paziente) values.get(PAZIENTE);
+        if (paziente == null) {
             throw new InvalidInterventoFieldException("invalidInterventionPatient");
         }
 
@@ -94,6 +97,13 @@ class InterventoChecker implements Checker {
         intervento.setOra(ora);
         if (!InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
             throw new InvalidInterventoFieldException("inconsistentInterventionDateTime");
+        }
+
+        List<Patologia> patologiaList = paziente.getPatologia();
+        for (Operazione operazioneItem : operazione) {
+            if (!patologiaList.containsAll(operazioneItem.getPatologia())) {
+                throw new InvalidInterventoFieldException("inconsistentOperationDisease", operazioneItem.getId());
+            }
         }
     }
 }
