@@ -1,17 +1,26 @@
 package presentation.boundary.controller;
 
+import business.entity.Patologia;
 import business.entity.Paziente;
+import business.transfer.BooleanBox;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.component.IndexedTextField;
+import presentation.boundary.controller.itemfactory.BooleanCheckTableFactory;
+import presentation.boundary.controller.itemfactory.PatologiaGravitaDepictionTableFactory;
+import presentation.boundary.controller.itemfactory.PatologiaPartialDepictionTableFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.*;
@@ -43,6 +52,15 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
     private ListView<String> numero;
 
     @FXML
+    private TableView<BooleanBox<Patologia>> patologia;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, BooleanProperty> checkedPatologia;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, Patologia> patologiaColonna;
+    @FXML
+    private TableColumn<BooleanBox<Patologia>, Patologia> gravitaPatologia;
+
+    @FXML
     private void onOk(ActionEvent event) {
         updateAll();
         Object result = null;
@@ -54,6 +72,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         patientParameter.setValue("cognome", cognome.getText());
         patientParameter.setValue("data", data.getText());
         patientParameter.setValue("numero", numero.getItems());
+
+        //TODO inserire patologia list
 
         if (isEdit) {
             result = fc.processRequest("ModificaPaziente", patientParameter);
@@ -100,6 +120,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         numero.setCellFactory(new ListViewTextFieldFactory());
         numero.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        patologia.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @Override
@@ -107,6 +129,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         titolo.setText(SimpleLabelTranslator.translate("addPatient"));
 
         idLbl.setVisible(false);
+
+        loadPatologia();
     }
 
     @Override
@@ -122,6 +146,12 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
 
         List<String> rubrica = paziente.getNumeroCellulare();
         numero.getItems().setAll(rubrica);
+
+        for (Patologia patologiaItem : paziente.getPatologia()) {
+            insertedMap.put(patologiaItem.getCodice(), patologiaItem);
+        }
+
+        loadPatologia();
     }
 
     private ReturnableStage getStage() {
@@ -176,5 +206,30 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         }
     }
 
-    Map<Integer, String> textFieldCache = new HashMap<>();
+    private Map<Integer, String> textFieldCache = new HashMap<>();
+
+    private Map<String, Patologia> insertedMap = new HashMap<>();
+    private ObservableList<BooleanBox<Patologia>> patologiaData = FXCollections.observableArrayList();
+
+    private void loadPatologia() {
+        List<Patologia> patologiaList = (List<Patologia>) fc.processRequest("VisualizzaTuttePatologie", null);
+        for (Patologia patologiaItem : patologiaList) {
+            BooleanBox<Patologia> patologiaBox = new BooleanBox<Patologia>(patologiaItem);
+            boolean isContained = insertedMap.containsKey(patologiaItem.getCodice());
+            patologiaBox.setChecked(isContained);
+
+            patologiaData.add(patologiaBox);
+        }
+
+        checkedPatologia.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, BooleanProperty>("checked"));
+        checkedPatologia.setCellFactory(new BooleanCheckTableFactory());
+
+        patologiaColonna.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, Patologia>("element"));
+        patologiaColonna.setCellFactory(new PatologiaPartialDepictionTableFactory());
+
+        gravitaPatologia.setCellValueFactory(new PropertyValueFactory<BooleanBox<Patologia>, Patologia>("element"));
+        gravitaPatologia.setCellFactory(new PatologiaGravitaDepictionTableFactory());
+
+        patologia.setItems(patologiaData);
+    }
 }

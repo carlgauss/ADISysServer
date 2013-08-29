@@ -17,6 +17,7 @@ public class BooleanCheckTableFactory<Entity> implements Callback<TableColumn<En
                 if (!empty) {
                     CheckBox checkBox = new CheckBox("");
                     checkBox.setAllowIndeterminate(false);
+                    checkBox.setSelected(aBoolean.get());
                     aBoolean.bind(checkBox.selectedProperty());
                     setGraphic(checkBox);
                     setAlignment(Pos.CENTER);

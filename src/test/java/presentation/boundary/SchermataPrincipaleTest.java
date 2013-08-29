@@ -1,6 +1,7 @@
 package presentation.boundary;
 
 import integration.connector.HQSQLConnector;
+import integration.dao.DAOInterventoTest;
 import integration.dao.HQSQLConnectorStub;
 import mockit.Mockit;
 import org.junit.Before;
