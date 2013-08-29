@@ -3,6 +3,7 @@ package business.applicationservice;
 import business.applicationservice.checker.Checker;
 import business.applicationservice.checker.CheckerFactory;
 import business.applicationservice.exception.CommonException;
+import business.entity.Patologia;
 import business.entity.Paziente;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
@@ -49,6 +50,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         String cognome = (String) parameter.getValue("cognome");
         String dataString = (String) parameter.getValue("data");
         List<String> numero = (List<String>) parameter.getValue("numero");
+        List<Patologia> patologia = (List<Patologia>) parameter.getValue("patologia");
 
         dataString = dataString.trim();
 
@@ -57,6 +59,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         values.add(cognome);
         values.add(dataString);
         values.add(numero);
+        values.add(patologia);
 
         checker.check(values);
 
@@ -69,6 +72,7 @@ public class ApplicationServicePaziente implements ApplicationService, CRUG<Pazi
         paziente.setData(data);
 
         paziente.setNumeroCellulare(numero);
+        paziente.setPatologia(patologia);
 
         return paziente;
     }

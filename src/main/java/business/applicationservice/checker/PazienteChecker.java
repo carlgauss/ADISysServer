@@ -2,6 +2,7 @@ package business.applicationservice.checker;
 
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.InvalidPazienteFieldException;
+import business.entity.Patologia;
 import org.joda.time.LocalDate;
 import utility.DateConverter;
 
@@ -11,6 +12,8 @@ class PazienteChecker implements Checker {
     private static final int NOME = 0;
     private static final int COGNOME = 1;
     private static final int DATA = 2;
+    private static final int NUMERO = 3;
+    private static final int PATOLOGIA = 4;
 
     private static final int MIN_NOME_VALUE = 3;
     private static final int MAX_NOME_VALUE = 30;
@@ -42,6 +45,11 @@ class PazienteChecker implements Checker {
             LocalDate.parse(data, DateConverter.NORMAL_DATE_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidPazienteFieldException("formatDateError");
+        }
+
+        List<Patologia> patologia = (List<Patologia>) values.get(PATOLOGIA);
+        if (patologia.isEmpty()) {
+            throw new InvalidPazienteFieldException("emptyDisease");
         }
     }
 }

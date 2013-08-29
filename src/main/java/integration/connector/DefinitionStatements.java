@@ -16,7 +16,6 @@ class DefinitionStatements {
             "ALTER TABLE Operazione ADD CONSTRAINT FKOperazione802138 FOREIGN KEY (InterventoID) REFERENCES Intervento (ID);\n" +
             "ALTER TABLE Sofferenza ADD CONSTRAINT FKSofferenza752097 FOREIGN KEY (PazienteID) REFERENCES Paziente (ID);\n" +
             "ALTER TABLE Sofferenza ADD CONSTRAINT FKSofferenza655323 FOREIGN KEY (PatologiaCodice) REFERENCES Patologia (Codice);\n" +
-            "ALTER TABLE Cura ADD CONSTRAINT FKCura583995 FOREIGN KEY (SofferenzaPazienteID, SofferenzaPatologiaCodice) REFERENCES Sofferenza (PazienteID, PatologiaCodice) ON DELETE No action;\n" +
             "ALTER TABLE Cura ADD CONSTRAINT FKCura401306 FOREIGN KEY (OperazioneID) REFERENCES Operazione (ID) ON DELETE Cascade;";
 
 }

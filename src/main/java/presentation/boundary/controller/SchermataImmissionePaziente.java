@@ -73,7 +73,15 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         patientParameter.setValue("data", data.getText());
         patientParameter.setValue("numero", numero.getItems());
 
-        //TODO inserire patologia list
+        List<Patologia> patologiaList = new ArrayList<>();
+
+        for (BooleanBox<Patologia> patologiaBox : patologiaData) {
+            if(patologiaBox.getChecked().get()) {
+                patologiaList.add(patologiaBox.getElement());
+            }
+        }
+
+        patientParameter.setValue("patologia", patologiaList);
 
         if (isEdit) {
             result = fc.processRequest("ModificaPaziente", patientParameter);

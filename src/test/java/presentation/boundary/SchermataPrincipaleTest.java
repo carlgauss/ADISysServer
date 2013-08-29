@@ -13,7 +13,7 @@ public class SchermataPrincipaleTest {
     @Before
     public void setUp() throws Exception {
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
-        //DAOInterventoTest.fillAll();
+        DAOInterventoTest.fillAll();
     }
 
     @Test
