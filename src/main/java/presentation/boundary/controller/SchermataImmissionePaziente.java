@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.component.IndexedTextField;
+import presentation.boundary.controller.component.TranslatedLabel;
 import presentation.boundary.controller.itemfactory.BooleanCheckTableFactory;
 import presentation.boundary.controller.itemfactory.PatologiaGravitaDepictionTableFactory;
 import presentation.boundary.controller.itemfactory.PatologiaPartialDepictionTableFactory;
@@ -130,6 +131,8 @@ public class SchermataImmissionePaziente extends SchermataImmissione {
         numero.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         patologia.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        patologia.setPlaceholder(new TranslatedLabel("noDisease"));
     }
 
     @Override

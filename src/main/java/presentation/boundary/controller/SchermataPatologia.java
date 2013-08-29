@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import presentation.boundary.ReturnableStage;
 import presentation.boundary.controller.component.ChoiceBoxGravita;
+import presentation.boundary.controller.component.TranslatedLabel;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
@@ -115,6 +116,8 @@ public class SchermataPatologia extends Schermata {
         gravita.setCellFactory(new ChoiceCellFactory());
 
         patologia.setItems(patologiaData);
+
+        patologia.setPlaceholder(new TranslatedLabel("noDisease"));
     }
 
     private static final String BLANK = "";

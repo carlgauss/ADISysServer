@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import presentation.boundary.ReturnableStage;
+import presentation.boundary.controller.component.TranslatedLabel;
 import presentation.boundary.controller.itemfactory.BooleanCheckTableFactory;
 import presentation.boundary.controller.itemfactory.PatologiaGravitaDepictionTableFactory;
 import presentation.boundary.controller.itemfactory.PatologiaPartialDepictionTableFactory;
@@ -94,7 +95,7 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        patologia.setPlaceholder(new TranslatedLabel("noDisease"));
     }
 
     private static final String BLANK = "";
