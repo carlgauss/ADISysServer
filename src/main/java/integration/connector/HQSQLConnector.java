@@ -1,5 +1,8 @@
 package integration.connector;
 
+import utility.FolderManager;
+
+import java.io.File;
 import java.sql.*;
 
 public class HQSQLConnector implements Connector {
@@ -43,7 +46,14 @@ public class HQSQLConnector implements Connector {
         return queryUpdateResult;
     }
 
+    private static final String DB_FOLDER_STRING = "database";
+    private static final File DB_FILE = new File(DB_FOLDER_STRING + "/ADIsysDB.script");
+
     private void connect() {
+        FolderManager.createFolderIfNotExists(DB_FOLDER_STRING);
+
+        boolean fileExists = DB_FILE.exists();
+
         try {
             connection = DriverManager.getConnection(
                     DATABASE_URI,
@@ -55,6 +65,9 @@ public class HQSQLConnector implements Connector {
             System.exit(0);
         }
 
+        if (!fileExists) {
+            recreateAll();
+        }
     }
 
     private Statement createDefaultStatement() {
@@ -74,15 +87,20 @@ public class HQSQLConnector implements Connector {
         connection = null;
     }
 
+    private void recreateAll() {
+        String[] physicalModel = DefinitionStatements.PHYSICAL_MODEL.split(";(\\n)?");
+        try {
+            for(String query : physicalModel) {
+                connection.prepareStatement(query).execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String...args) throws Throwable {
         HQSQLConnector connector = new HQSQLConnector();
 
-        String[] physicalModel = DefinitionStatements.PHYSICAL_MODEL.split(";(\\n)?");
-
-        for(String query : physicalModel) {
-            connector.connection.prepareStatement(query).execute();
-        }
-
-        connector.finalize();
+        connector.recreateAll();
     }
 }

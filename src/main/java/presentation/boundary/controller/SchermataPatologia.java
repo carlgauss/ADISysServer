@@ -5,6 +5,7 @@ import business.transfer.PatologiaTO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -97,7 +98,7 @@ public class SchermataPatologia extends Schermata {
 
     private Map<String, PatologiaTO> editedPatologiaMapCache = new HashMap<>();
     private Map<String, PatologiaTO> editedPatologiaMap = new HashMap<>();
-    private ObservableList<Patologia> patologiaData;
+    private volatile ObservableList<Patologia> patologiaData;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
