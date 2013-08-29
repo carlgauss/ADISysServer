@@ -1,5 +1,6 @@
 package presentation.boundary.controller.component;
 
+import business.entity.Patologia;
 import business.entity.Paziente;
 import javafx.scene.control.Label;
 import utility.DateConverter;
@@ -33,5 +34,10 @@ public class TreePazienteItem extends TreeChild {
             TreeChild numeroItem = new TreeChild(labelNumero);
             item.getChildren().add(numeroItem);
         }
+
+        TreePatologiaItem treePatologiaItem =
+                new TreePatologiaItem(paziente.getPatologia(), "afflictedDiseases");
+
+        getChildren().add(treePatologiaItem);
     }
 }

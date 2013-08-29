@@ -35,5 +35,10 @@ public class TreeOperazioneItem extends TreeChild {
             TreeChild item = new TreeChild(cellLabel);
             getChildren().add(item);
         }
+
+        TreePatologiaItem treePatologiaItem =
+                new TreePatologiaItem(operazione.getPatologia(), "curedDiseases");
+
+        getChildren().add(treePatologiaItem);
     }
 }
