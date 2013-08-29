@@ -110,7 +110,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
         if (selectedPaziente != null) {
             Parameter operationParameter = new Parameter();
-            parameter.setValue("paziente", selectedPaziente);
+            operationParameter.setValue("paziente", selectedPaziente);
             result = fc.processRequest("MostraSchermataInserimentoOperazione", operationParameter);
         } else {
             MessageDisplayer.showErrorMessage(null, "selectPatient");
@@ -133,7 +133,7 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
             operationParameter.setValue("operazione", selectedOperazione);
 
             if (selectedPaziente != null) {
-                parameter.setValue("paziente", selectedPaziente);
+                operationParameter.setValue("paziente", selectedPaziente);
                 fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
             } else {
                 MessageDisplayer.showErrorMessage(null, "selectPatient");

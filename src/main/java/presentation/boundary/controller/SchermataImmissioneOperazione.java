@@ -104,6 +104,8 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
         titolo.setText(SimpleLabelTranslator.translate("addOperation"));
 
         paziente = (Paziente) parameter.getValue("paziente");
+
+        loadPatologia();
     }
 
     private Operazione operazione;
@@ -127,6 +129,8 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
         for (Patologia patologiaItem : operazione.getPatologia()) {
             insertedMap.put(patologiaItem.getCodice(), patologiaItem);
         }
+
+        loadPatologia();
     }
 
     private ReturnableStage getStage() {
@@ -150,7 +154,6 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
         }
 
         if (insertedMap.size() > 0) {
-            //TODO
             MessageDisplayer.showMessage(null, "missingDiseaseRiconfirm");
         }
 

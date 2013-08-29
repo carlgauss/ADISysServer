@@ -87,7 +87,9 @@ public class Operazione implements IndipendentEntity {
         this.patologia = SerialClone.clone(patologia);
     }
 
+    private static final String SEPARATOR = " ";
+
     public String toString() {
-        return nome;
+        return id + SEPARATOR + nome;
     }
 }

@@ -102,7 +102,6 @@ class InterventoChecker implements Checker {
         List<Patologia> patologiaList = paziente.getPatologia();
         for (Operazione operazioneItem : operazione) {
             if (!patologiaList.containsAll(operazioneItem.getPatologia())) {
-                //TODO
                 throw new InvalidInterventoFieldException("inconsistentOperationDisease", operazioneItem.getId());
             }
         }
