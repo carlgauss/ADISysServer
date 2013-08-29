@@ -154,7 +154,7 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
             }
         }
 
-        if (insertedMap.size() > 0) {
+        if (!insertedMap.isEmpty()) {
             MessageDisplayer.showMessage(null, "missingDiseaseRiconfirm");
         }
 
