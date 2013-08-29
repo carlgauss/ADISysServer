@@ -53,6 +53,14 @@
             <xs:element type="xs:string" name="nome"/>
             <xs:element type="xs:string" name="nota"/>
             <xs:element name="valoreRilevato" type="ValoreRilevato"/>
+
+            <xs:element name="listaPatologie">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                        <xs:element name="patologia" type="Patologia"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -67,6 +75,14 @@
                 <xs:complexType>
                     <xs:sequence minOccurs="0" maxOccurs="unbounded">
                         <xs:element name="numero" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="listaPatologie">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                        <xs:element name="patologia" type="Patologia"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>

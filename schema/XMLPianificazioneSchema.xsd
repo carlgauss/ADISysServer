@@ -36,6 +36,14 @@
             <xs:element type="xs:string" name="id"/>
             <xs:element type="xs:string" name="nome"/>
             <xs:element type="xs:string" name="nota"/>
+
+            <xs:element name="listaPatologie">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                        <xs:element name="patologia" type="Patologia"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -53,6 +61,14 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+
+            <xs:element name="listaPatologie">
+                <xs:complexType>
+                    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                        <xs:element name="patologia" type="Patologia"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -61,6 +77,14 @@
             <xs:element type="xs:string" name="id"/>
             <xs:element type="xs:string" name="nome"/>
             <xs:element type="xs:string" name="cognome"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Patologia">
+        <xs:sequence>
+            <xs:element type="xs:string" name="codice"/>
+            <xs:element type="xs:string" name="nome"/>
+            <xs:element type="xs:integer" name="cognome"/>
         </xs:sequence>
     </xs:complexType>
 
