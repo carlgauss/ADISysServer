@@ -71,7 +71,8 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("AggiornaTutteLePatologie");
         asMap.setApplicationServiceValues("ApplicationServicePatologia", "updateAll");
 
-        //TODO implementare Patologia
+        asMap.selectApplicationServiceBy("VerificaIniziale");
+        asMap.setApplicationServiceValues("ApplicationServiceGeneral", "check");
     }
 
     private ApplicationServiceSelector() {

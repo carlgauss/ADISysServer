@@ -59,3 +59,4 @@ INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
 INSERT INTO INFERMIERE VALUES(1,'Carlo                         ','Lucarelli                     ')
 INSERT INTO PATOLOGIA VALUES('123123','asdasd              ',1)
+INSERT INTO PATOLOGIA VALUES('321321','dsadsa              ',1)

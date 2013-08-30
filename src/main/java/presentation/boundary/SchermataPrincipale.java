@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import presentation.controller.FrontControllerFactory;
 import utility.Parameter;
 import utility.SimpleLabelTranslator;
 
@@ -55,6 +56,7 @@ public class SchermataPrincipale extends Application implements Boundary {
     }
 
     public static void main(String... args) {
+        FrontControllerFactory.getFrontController().processRequest("VerificaIniziale", null);
         launch(args);
     }
 }

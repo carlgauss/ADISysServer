@@ -1,6 +1,7 @@
 package integration.connector;
 
 import utility.FolderManager;
+import utility.MessageDisplayer;
 
 import java.io.File;
 import java.sql.*;
@@ -66,6 +67,7 @@ public class HQSQLConnector implements Connector {
         }
 
         if (!fileExists) {
+            MessageDisplayer.showMessage(null, "noDatabase");
             recreateAll();
         }
     }
