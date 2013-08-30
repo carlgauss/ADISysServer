@@ -6,7 +6,7 @@ import business.applicationservice.exception.CommonException;
 import business.entity.Operazione;
 import business.entity.Patologia;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.LinkedList;
 import java.util.List;

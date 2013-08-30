@@ -20,7 +20,7 @@ import presentation.boundary.controller.itemfactory.PatologiaPartialDepictionTab
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
@@ -99,6 +99,19 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
     }
 
     private static final String BLANK = "";
+
+    @Override
+    public void initData(Parameter parameter) {
+        this.parameter = parameter;
+
+        if (!parameter.containsKey("operazione")) {
+            initializeAdd();
+            isEdit = false;
+        } else {
+            initializeEdit();
+            isEdit = true;
+        }
+    }
 
     @Override
     protected void initializeAdd() {

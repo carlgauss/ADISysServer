@@ -5,7 +5,6 @@ import business.transfer.PatologiaTO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +19,7 @@ import presentation.boundary.controller.component.TranslatedLabel;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.net.URL;
 import java.util.*;

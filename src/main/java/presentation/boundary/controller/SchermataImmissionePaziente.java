@@ -3,6 +3,7 @@ package presentation.boundary.controller;
 import business.entity.Patologia;
 import business.entity.Paziente;
 import business.transfer.BooleanBox;
+import business.transfer.Parameter;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

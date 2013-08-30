@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.joda.time.LocalDate;
 import presentation.boundary.controller.itemfactory.DateDepictionFactory;
 import presentation.boundary.controller.itemfactory.InterventoColoringRowFactory;
@@ -22,7 +23,7 @@ import presentation.boundary.controller.itemfactory.TimeDepictionFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;
@@ -255,6 +256,7 @@ public class SchermataPrincipale implements Initializable {
     private static final String BLANK = "";
 
     private synchronized void loadAllTables() {
+
         //Paziente
         List<Paziente> pazienteList = (List<Paziente>) fc.processRequest("VisualizzaTuttiPazienti", null);
         ObservableList<Paziente> pazienteData = FXCollections.observableArrayList(pazienteList);

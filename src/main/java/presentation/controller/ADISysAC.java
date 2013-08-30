@@ -6,7 +6,7 @@ import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
 import presentation.boundary.Boundary;
 import presentation.boundary.factory.BoundaryFactory;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 class ADISysAC implements ApplicationController {
 

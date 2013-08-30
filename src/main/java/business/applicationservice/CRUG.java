@@ -1,7 +1,7 @@
 package business.applicationservice;
 
 import business.applicationservice.exception.CommonException;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import integration.dao.DAOFactory;
 import org.joda.time.LocalDate;
 import presentation.controller.ApplicationService;
 import utility.DateConverter;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.ArrayList;
 import java.util.List;

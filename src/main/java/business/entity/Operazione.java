@@ -90,6 +90,6 @@ public class Operazione implements IndipendentEntity {
     private static final String SEPARATOR = " ";
 
     public String toString() {
-        return id + SEPARATOR + nome;
+        return nome;
     }
 }

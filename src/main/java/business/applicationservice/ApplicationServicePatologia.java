@@ -8,9 +8,8 @@ import business.entity.Patologia;
 import business.transfer.PatologiaTO;
 import integration.dao.DAO;
 import integration.dao.DAOFactory;
-import integration.dao.DAOPatologia;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.*;
 

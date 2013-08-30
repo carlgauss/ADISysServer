@@ -10,7 +10,7 @@ import integration.xml.DAOPianificazione;
 import integration.xml.DAOPianificazioneFactory;
 import org.xml.sax.SAXException;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.*;
 
@@ -50,23 +50,26 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
 }
 
-class PianificazioneEsportazioneMap extends HashMap<Infermiere, List<Intervento>> {
+class PianificazioneEsportazioneMap extends HashMap<String, List<Intervento>> {
     public void addIntervento(Infermiere infermiere, Intervento intervento) {
-        if (containsKey(infermiere)) {
-            get(infermiere).add(intervento);
+        if (containsKey(infermiere.getId())) {
+            get(infermiere.getId()).add(intervento);
         } else {
             List<Intervento> interventoList = new LinkedList<>();
             interventoList.add(intervento);
-            put(infermiere, interventoList);
+            put(infermiere.getId(), interventoList);
+            infermiereHashMap.put(infermiere.getId(), infermiere);
         }
     }
 
     public List<PianificazioneElement> getList() {
         List<PianificazioneElement> list = new ArrayList<>();
 
-        for (Map.Entry<Infermiere, List<Intervento>> elem : entrySet()) {
+        for (Map.Entry<String, List<Intervento>> elem : entrySet()) {
             PianificazioneElement pianificazioneElement = new PianificazioneElement();
-            pianificazioneElement.setInfermiere(elem.getKey());
+
+            Infermiere infermiere = infermiereHashMap.get(elem.getKey());
+            pianificazioneElement.setInfermiere(infermiere);
             pianificazioneElement.setPianificazione(elem.getValue());
 
             list.add(pianificazioneElement);
@@ -74,4 +77,6 @@ class PianificazioneEsportazioneMap extends HashMap<Infermiere, List<Intervento>
 
         return list;
     }
+
+    private Map<String, Infermiere> infermiereHashMap = new HashMap<>();
 }

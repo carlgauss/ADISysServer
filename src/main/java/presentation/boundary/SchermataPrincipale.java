@@ -8,7 +8,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.controller.FrontControllerFactory;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.util.Properties;

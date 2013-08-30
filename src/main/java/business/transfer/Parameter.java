@@ -1,4 +1,6 @@
-package utility;
+package business.transfer;
+
+import utility.UnavaliableKeyException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,5 +24,9 @@ public class Parameter {
         }
 
         return result;
+    }
+
+    public boolean containsKey(String key) {
+        return dictionary.containsKey(key);
     }
 }

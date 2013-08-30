@@ -6,7 +6,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import presentation.boundary.controller.Schermata;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package presentation.boundary.controller;
 
 import javafx.fxml.Initializable;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.net.URL;
 import java.util.ResourceBundle;

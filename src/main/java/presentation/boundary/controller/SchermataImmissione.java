@@ -1,6 +1,6 @@
 package presentation.boundary.controller;
 
-import utility.Parameter;
+import business.transfer.Parameter;
 
 
 public abstract class SchermataImmissione extends Schermata {

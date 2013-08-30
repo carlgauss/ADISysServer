@@ -1,6 +1,6 @@
 package presentation.boundary;
 
-import utility.Parameter;
+import business.transfer.Parameter;
 
 public interface Boundary {
     public Object showWindow(Parameter parameter);

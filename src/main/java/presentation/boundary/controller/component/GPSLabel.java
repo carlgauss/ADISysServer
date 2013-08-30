@@ -4,7 +4,7 @@ import business.entity.GPS;
 import javafx.scene.control.Label;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.util.List;

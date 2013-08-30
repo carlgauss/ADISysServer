@@ -5,7 +5,7 @@ import business.entity.GPS;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.util.List;
 

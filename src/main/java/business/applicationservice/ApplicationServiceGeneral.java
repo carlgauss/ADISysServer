@@ -2,7 +2,7 @@ package business.applicationservice;
 
 import business.applicationservice.exception.FatalMissingFileException;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.io.File;
 

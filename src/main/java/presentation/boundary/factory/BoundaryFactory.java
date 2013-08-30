@@ -1,7 +1,7 @@
 package presentation.boundary.factory;
 
 import presentation.boundary.Boundary;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

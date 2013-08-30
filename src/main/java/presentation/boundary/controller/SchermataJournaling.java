@@ -24,7 +24,7 @@ import presentation.boundary.controller.itemfactory.DateDepictionFactory;
 import presentation.boundary.controller.itemfactory.TimeDepictionFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.net.URL;
 import java.util.List;

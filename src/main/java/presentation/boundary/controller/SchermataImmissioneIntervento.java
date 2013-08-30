@@ -1,8 +1,6 @@
 package presentation.boundary.controller;
 
 import business.entity.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +15,7 @@ import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.DateConverter;
 import utility.MessageDisplayer;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;

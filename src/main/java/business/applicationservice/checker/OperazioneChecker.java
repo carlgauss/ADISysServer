@@ -28,8 +28,7 @@ class OperazioneChecker implements Checker {
 
         List<Patologia> patologia = (List<Patologia>) values.get(PATOLOGIA);
         if (patologia.isEmpty()) {
-            //TODO
-            throw new InvalidOperazioneFieldException("emptyOperationDiseaseList");
+            throw new InvalidOperazioneFieldException("emptyDisease");
         }
     }
 }

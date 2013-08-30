@@ -1,6 +1,6 @@
 package presentation.controller;
 
-import utility.Parameter;
+import business.transfer.Parameter;
 
 class ADISysFC implements FrontController {
 

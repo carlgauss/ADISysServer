@@ -21,7 +21,7 @@ import presentation.boundary.controller.itemfactory.PersonPortrayalTableFactory;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import utility.MessageDisplayer;
-import utility.Parameter;
+import business.transfer.Parameter;
 import utility.SimpleLabelTranslator;
 
 import java.net.URL;

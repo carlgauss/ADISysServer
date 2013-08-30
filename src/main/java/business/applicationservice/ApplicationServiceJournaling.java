@@ -9,7 +9,7 @@ import integration.xml.validator.XMLValidator;
 import integration.xml.validator.XMLValidatorFactory;
 import presentation.controller.ApplicationService;
 import utility.FolderManager;
-import utility.Parameter;
+import business.transfer.Parameter;
 
 import java.io.File;
 import java.io.FileFilter;
