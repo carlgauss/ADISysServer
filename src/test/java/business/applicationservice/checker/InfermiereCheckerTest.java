@@ -95,7 +95,7 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameExactlyMaxValue() throws Exception {
-        String name = getAStringOfExactlyLength(MAX_NOME_VALUE);
+        String name = StringGenerator.getAStringOfExactlyLength(MAX_NOME_VALUE);
         listOfValues.add(name);
         listOfValues.add("il cognome");
         infermiereChecker.check(listOfValues);
@@ -104,7 +104,7 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameExactlyMinValue() throws Exception {
-        String name = getAStringOfExactlyLength(MIN_NOME_VALUE);
+        String name = StringGenerator.getAStringOfExactlyLength(MIN_NOME_VALUE);
         listOfValues.add(name);
         listOfValues.add("il cognome");
         infermiereChecker.check(listOfValues);
@@ -114,8 +114,8 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameAndSurnameExactlyMaxValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MAX_NOME_VALUE);
-        String cognome = getAStringOfExactlyLength(MAX_COGNOME_VALUE);
+        String nome = StringGenerator.getAStringOfExactlyLength(MAX_NOME_VALUE);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MAX_COGNOME_VALUE);
 
         assertThat(nome.length(), equalTo(MAX_NOME_VALUE));
         assertThat(cognome.length(), equalTo(MAX_COGNOME_VALUE));
@@ -129,8 +129,8 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameAndSurnameExactlyMinValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MIN_NOME_VALUE);
-        String cognome = getAStringOfExactlyLength(MIN_COGNOME_VALUE);
+        String nome = StringGenerator.getAStringOfExactlyLength(MIN_NOME_VALUE);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MIN_COGNOME_VALUE);
 
         assertThat(nome.length(), equalTo(MIN_NOME_VALUE));
         assertThat(cognome.length(), equalTo(MIN_COGNOME_VALUE));
@@ -145,7 +145,7 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameUnderBoundaryValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MAX_NOME_VALUE - 1);
+        String nome = StringGenerator.getAStringOfExactlyLength(MAX_NOME_VALUE - 1);
         assertThat(nome.length(), equalTo(MAX_NOME_VALUE - 1));
 
         listOfValues.add(nome);
@@ -157,7 +157,7 @@ public class InfermiereCheckerTest {
 
     @Test(expected = InvalidInfermiereFieldException.class)
     public void testCheckNameOverBoundaryMaxValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MAX_NOME_VALUE + 1);
+        String nome = StringGenerator.getAStringOfExactlyLength(MAX_NOME_VALUE + 1);
         assertThat(nome.length(), equalTo(MAX_NOME_VALUE + 1));
 
         listOfValues.add(nome);
@@ -169,7 +169,7 @@ public class InfermiereCheckerTest {
 
     @Test(expected = InvalidInfermiereFieldException.class)
     public void testCheckSurnameOverBoundaryMaxValue() throws Exception {
-        String cognome = getAStringOfExactlyLength(MAX_COGNOME_VALUE + 1);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MAX_COGNOME_VALUE + 1);
         assertThat(cognome.length(), equalTo(MAX_COGNOME_VALUE + 1));
 
         listOfValues.add("il nome");
@@ -181,7 +181,7 @@ public class InfermiereCheckerTest {
 
     @Test(expected = InvalidInfermiereFieldException.class)
     public void testCheckNameUnderBoundaryMinValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MIN_NOME_VALUE - 1);
+        String nome = StringGenerator.getAStringOfExactlyLength(MIN_NOME_VALUE - 1);
         assertThat(nome.length(), equalTo(MIN_NOME_VALUE - 1));
 
         listOfValues.add(nome);
@@ -191,7 +191,7 @@ public class InfermiereCheckerTest {
 
     @Test(expected = InvalidInfermiereFieldException.class)
     public void testCheckSurnameUnderBoundaryMinValue() throws Exception {
-        String cognome = getAStringOfExactlyLength(MIN_COGNOME_VALUE - 1);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MIN_COGNOME_VALUE - 1);
         assertThat(cognome.length(), equalTo(MIN_COGNOME_VALUE - 1));
 
         listOfValues.add("il nome");
@@ -202,7 +202,7 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckNameOverBoundaryMinValue() throws Exception {
-        String nome = getAStringOfExactlyLength(MIN_NOME_VALUE + 1);
+        String nome = StringGenerator.getAStringOfExactlyLength(MIN_NOME_VALUE + 1);
         assertThat(nome.length(), equalTo(MIN_NOME_VALUE + 1));
 
         listOfValues.add(nome);
@@ -213,7 +213,7 @@ public class InfermiereCheckerTest {
 
     @Test
     public void testCheckSurnameOverBoundaryMinValue() throws Exception {
-        String cognome = getAStringOfExactlyLength(MIN_COGNOME_VALUE + 1);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MIN_COGNOME_VALUE + 1);
         assertThat(cognome.length(), equalTo(MIN_COGNOME_VALUE + 1));
 
         listOfValues.add("il nome");
@@ -223,13 +223,4 @@ public class InfermiereCheckerTest {
     }
 
 
-
-
-    private static String getAStringOfExactlyLength(int length) {
-        String result = "";
-        for (int i = 0; i < length; i++) {
-            result += "v";
-        }
-        return result;
-    }
 }

@@ -17,9 +17,8 @@ public class PazienteCheckerTest {
     private static final int MIN_COGNOME_VALUE = 3;
     private static final int MAX_COGNOME_VALUE = 30;
 
-    List<Object> listOfValues;
     PazienteChecker pazienteChecker;
-
+    List<Object> listOfValues;
     Patologia patologia;
 
     @Before
@@ -56,7 +55,7 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidName() throws Exception {
-        String name = getAStringOfExactlyLength(0);
+        String name = StringGenerator.getAStringOfExactlyLength(0);
         assertThat(name.length(), equalTo(0));
         listOfValues.add(name);
         pazienteChecker.check(listOfValues);
@@ -65,8 +64,8 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidSurname() throws Exception {
-        String nome = getAStringOfExactlyLength(5);
-        String cognome = getAStringOfExactlyLength(0);
+        String nome = StringGenerator.getAStringOfExactlyLength(5);
+        String cognome = StringGenerator.getAStringOfExactlyLength(0);
 
         listOfValues.add(nome);
         listOfValues.add(cognome);
@@ -76,8 +75,8 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidData() throws Exception {
-        String nome = getAStringOfExactlyLength(5);
-        String cognome = getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
+        String nome = StringGenerator.getAStringOfExactlyLength(5);
+        String cognome = StringGenerator.getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
         String data = "00/12/1200";
 
         listOfValues.add(nome);
@@ -88,8 +87,8 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidData2() throws Exception {
-        String nome = getAStringOfExactlyLength(5);
-        String cognome = getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
+        String nome = StringGenerator.getAStringOfExactlyLength(5);
+        String cognome = StringGenerator.getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
         String data = "01/00/1200";
 
         listOfValues.add(nome);
@@ -100,8 +99,8 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidData3() throws Exception {
-        String nome = getAStringOfExactlyLength(5);
-        String cognome = getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
+        String nome = StringGenerator.getAStringOfExactlyLength(5);
+        String cognome = StringGenerator.getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
         String data = "1/1/1000000000";
 
         listOfValues.add(nome);
@@ -123,8 +122,8 @@ public class PazienteCheckerTest {
 
     @Test (expected = InvalidPazienteFieldException.class)
     public void testCheckInvalidPatologiaList() throws Exception {
-        String nome = getAStringOfExactlyLength(5);
-        String cognome = getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
+        String nome = StringGenerator.getAStringOfExactlyLength(5);
+        String cognome = StringGenerator.getAStringOfExactlyLength((MAX_COGNOME_VALUE + MIN_COGNOME_VALUE) /2);
         String data = "1/1/1000000000";
 
         listOfValues.add(nome);
@@ -145,7 +144,7 @@ public class PazienteCheckerTest {
 
     @Test
     public void testCheckNameExactMaxValue() throws Exception {
-        String name = getAStringOfExactlyLength(MAX_NOME_VALUE);
+        String name = StringGenerator.getAStringOfExactlyLength(MAX_NOME_VALUE);
         listOfValues.add(name);
         listOfValues.add("il cognome");
         listOfValues.add("5/6/1900");
@@ -163,7 +162,7 @@ public class PazienteCheckerTest {
 
     @Test
     public void testCheckNameExactMinValue() throws Exception {
-        String name = getAStringOfExactlyLength(MIN_NOME_VALUE);
+        String name = StringGenerator.getAStringOfExactlyLength(MIN_NOME_VALUE);
         listOfValues.add(name);
         listOfValues.add("il cognome");
         listOfValues.add("9/9/2009");
@@ -181,7 +180,7 @@ public class PazienteCheckerTest {
 
     @Test
     public void testCheckSurnameExactMaxValue() throws Exception {
-        String cognome = getAStringOfExactlyLength(MAX_COGNOME_VALUE);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MAX_COGNOME_VALUE);
 
         listOfValues.add("Il nome");
         listOfValues.add(cognome);
@@ -200,7 +199,7 @@ public class PazienteCheckerTest {
 
     @Test
     public void testCheckSurnameExactMinValue() throws Exception {
-        String cognome = getAStringOfExactlyLength(MIN_COGNOME_VALUE);
+        String cognome = StringGenerator.getAStringOfExactlyLength(MIN_COGNOME_VALUE);
 
         listOfValues.add("Il nome");
         listOfValues.add(cognome);
@@ -217,11 +216,4 @@ public class PazienteCheckerTest {
 
     }
 
-    private static String getAStringOfExactlyLength(int length) {
-        String result = "";
-        for (int i = 0; i < length; i++) {
-            result += "v";
-        }
-        return result;
-    }
 }

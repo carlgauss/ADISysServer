@@ -13,20 +13,33 @@ class OperazioneChecker implements Checker {
     private static final int MIN_NOME_VALUE = 3;
     private static final int MAX_NOME_VALUE = 30;
 
+    private List<Object> listOfValues = null;
+    private boolean isValid;
+
     @Override
     public void check(List<Object> values) throws CommonException {
-        String nome = (String) values.get(NOME);
+        listOfValues = values;
+        checkNome();
+        checkPatologia();
+    }
+
+
+
+    private void checkNome() throws InvalidOperazioneFieldException {
+        String nome = (String) listOfValues.get(NOME);
         nome = nome.trim();
 
         int length = nome.length();
-        boolean isValid = (length >= MIN_NOME_VALUE)
+        isValid = (length >= MIN_NOME_VALUE)
                 && (length <= MAX_NOME_VALUE);
 
         if (!isValid) {
             throw new InvalidOperazioneFieldException("invalidOperationName");
         }
+    }
 
-        List<Patologia> patologia = (List<Patologia>) values.get(PATOLOGIA);
+    private void checkPatologia() throws InvalidOperazioneFieldException {
+        List<Patologia> patologia = (List<Patologia>) listOfValues.get(PATOLOGIA);
         if (patologia.isEmpty()) {
             throw new InvalidOperazioneFieldException("emptyDisease");
         }
