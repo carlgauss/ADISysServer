@@ -17,4 +17,9 @@ public abstract class CommonException extends Exception {
     public void reportException() {
         MessageDisplayer.showErrorMessage(null, message);
     }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
 }
