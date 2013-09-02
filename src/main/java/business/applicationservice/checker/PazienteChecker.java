@@ -20,18 +20,33 @@ class PazienteChecker implements Checker {
     private static final int MIN_COGNOME_VALUE = 3;
     private static final int MAX_COGNOME_VALUE = 30;
 
+    private List<Object> listOfValues = null;
+    private boolean isValid;
+
     @Override
     public void check(List<Object> values) throws CommonException {
-        String nome = (String) values.get(NOME);
+        listOfValues = values;
+        checkNome();
+        checkCognome();
+        checkData();
+        checkPatologia();
+    }
+
+
+    private void checkNome() throws InvalidPazienteFieldException {
+        String nome = (String) listOfValues.get(NOME);
         nome = nome.trim();
-        boolean isValid = (MIN_NOME_VALUE <= nome.length())
+        isValid = (MIN_NOME_VALUE <= nome.length())
                 && (nome.length() <= MAX_NOME_VALUE);
 
         if (!isValid) {
             throw new InvalidPazienteFieldException("invalidPatientName");
         }
+    }
 
-        String cognome = (String) values.get(COGNOME);
+
+    private void checkCognome() throws InvalidPazienteFieldException {
+        String cognome = (String) listOfValues.get(COGNOME);
         cognome = cognome.trim();
         isValid = (MIN_COGNOME_VALUE <= cognome.length())
                 && (cognome.length() <= MAX_COGNOME_VALUE);
@@ -39,15 +54,19 @@ class PazienteChecker implements Checker {
         if (!isValid) {
             throw new InvalidPazienteFieldException("invalidPatientSurname");
         }
+    }
 
-        String data = (String) values.get(DATA);
+    private void checkData() throws InvalidPazienteFieldException {
+        String data = (String) listOfValues.get(DATA);
         try {
             LocalDate.parse(data, DateConverter.NORMAL_DATE_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidPazienteFieldException("formatDateError");
         }
+    }
 
-        List<Patologia> patologia = (List<Patologia>) values.get(PATOLOGIA);
+    private void checkPatologia() throws InvalidPazienteFieldException {
+        List<Patologia> patologia = (List<Patologia>) listOfValues.get(PATOLOGIA);
         if (patologia.isEmpty()) {
             throw new InvalidPazienteFieldException("emptyDisease");
         }
