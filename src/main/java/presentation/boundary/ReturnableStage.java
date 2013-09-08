@@ -63,8 +63,10 @@ public abstract class ReturnableStage extends Stage implements Boundary {
         setScene(scene);
     }
 
+    /*
     public ReturnableStage() {
     }
+    */
 
     public void setResult(Object object) {
         value = object;
