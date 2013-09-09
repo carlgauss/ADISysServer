@@ -71,18 +71,21 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
         result = fc.processRequest("VerificaOperazione", operationParameter);
 
         if (result != null) {
+            OperazioneTO operazioneTO = null;
+
             if (isEdit) {
                 MessageDisplayer.showAcceptMessage(null, "editedOperation");
+                operazioneTO = new OperazioneTO(operazione);
             } else {
                 MessageDisplayer.showAcceptMessage(null, "insertedOperation");
-                operazione = new OperazioneTO();
+                operazioneTO = new OperazioneTO();
             }
 
-            operazione.setNome(nome.getText());
-            operazione.setNota(nota.getText());
-            operazione.setPatologia(patologiaList);
+            operazioneTO.setNome(nome.getText());
+            operazioneTO.setNota(nota.getText());
+            operazioneTO.setPatologia(patologiaList);
 
-            getStage().setResult(operazione);
+            getStage().setResult(operazioneTO);
             getStage().close();
         }
     }
