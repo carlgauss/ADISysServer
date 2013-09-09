@@ -4,6 +4,7 @@ import business.entity.Operazione;
 import business.entity.Patologia;
 import business.entity.Paziente;
 import business.transfer.BooleanBox;
+import business.transfer.OperazioneTO;
 import javafx.beans.property.BooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -74,7 +75,7 @@ public class SchermataImmissioneOperazione extends SchermataImmissione {
                 MessageDisplayer.showAcceptMessage(null, "editedOperation");
             } else {
                 MessageDisplayer.showAcceptMessage(null, "insertedOperation");
-                operazione = new Operazione();
+                operazione = new OperazioneTO();
             }
 
             operazione.setNome(nome.getText());
