@@ -125,6 +125,8 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
         Paziente selectedPaziente = paziente.getSelectionModel().getSelectedItem();
         int selectedItem = operazione.getSelectionModel().getSelectedIndex();
 
+        Object result = null;
+
         if (selectedItem > -1) {
             Operazione selectedOperazione = operazione.getItems().get(selectedItem);
             Parameter operationParameter = new Parameter();
@@ -132,12 +134,17 @@ public class SchermataImmissioneIntervento extends SchermataImmissione {
 
             if (selectedPaziente != null) {
                 operationParameter.setValue("paziente", selectedPaziente);
-                fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
+                result = fc.processRequest("MostraSchermataModificaOperazione", operationParameter);
             } else {
                 MessageDisplayer.showErrorMessage(null, "selectPatient");
             }
 
-            forceOperazioneRefresh();
+            if ((result != null) && (result instanceof Operazione)) {
+                Operazione resultOperazione = (Operazione) result;
+                operazione.getItems().remove(selectedOperazione);
+                operazione.getItems().add(resultOperazione);
+            }
+
         } else {
             MessageDisplayer.showErrorMessage(null, "selectOperation");
         }
