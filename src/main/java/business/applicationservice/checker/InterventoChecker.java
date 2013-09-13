@@ -32,27 +32,50 @@ class InterventoChecker implements Checker {
 
     private static final int MIN_OPERAZIONE_SIZE = 1;
 
+    private List<Object> listOfValues = null;
+    private boolean isValid;
+
     @Override
     public void check(List<Object> values) throws CommonException {
-        String citta = (String) values.get(CITTA);
+        listOfValues = values;
+
+        checkNomeCitta();
+        checkCAP();
+        checkIndirizzo();
+        LocalDate data = checkDateAndReturnIt();
+        LocalTime ora = checkLocalTimeAndReturnIt();
+        checkInfermiere();
+        Paziente paziente = checkPazienteAndReturnIt();
+        List<Operazione> operazioni = checkOperazioneAndReturnIt();
+        checkInterventoDate(data, ora);
+        checkPatologie(paziente, operazioni);
+    }
+
+
+    private void checkNomeCitta() throws InvalidInterventoFieldException {
+        String citta = (String) listOfValues.get(CITTA);
         citta = citta.trim();
-        boolean isValid = (MIN_CITTA_VALUE <= citta.length())
-                && (citta.length() <= MAX_CITTA_VALUE);
+        isValid = (MIN_CITTA_VALUE <= citta.length()) && (citta.length() <= MAX_CITTA_VALUE);
 
         if (!isValid) {
             throw new InvalidInterventoFieldException("invalidInterventionCity");
         }
+    }
 
-        String cap = (String) values.get(CAP);
+
+    private void checkCAP() throws InvalidInterventoFieldException {
+        String cap = (String) listOfValues.get(CAP);
         cap = cap.trim();
-        isValid = (MIN_CAP_VALUE <= cap.length())
-                && (cap.length() <= MAX_CAP_VALUE);
+        isValid = (MIN_CAP_VALUE <= cap.length()) && (cap.length() <= MAX_CAP_VALUE);
 
         if (!isValid) {
             throw new InvalidInterventoFieldException("invalidInterventionPostalCode");
         }
 
-        String indirizzo = (String) values.get(INDIRIZZO);
+    }
+
+    private void checkIndirizzo() throws InvalidInterventoFieldException {
+        String indirizzo = (String) listOfValues.get(INDIRIZZO);
         indirizzo = indirizzo.trim();
         isValid = (MIN_INDIRIZZO_VALUE <= indirizzo.length())
                 && (indirizzo.length() <= MAX_INDIRIZZO_VALUE);
@@ -60,45 +83,67 @@ class InterventoChecker implements Checker {
         if (!isValid) {
             throw new InvalidInterventoFieldException("invalidInterventionAddress");
         }
+    }
 
+    private LocalDate checkDateAndReturnIt() throws InvalidInterventoFieldException {
         LocalDate data = null;
-        String dataString = (String) values.get(DATA);
+        String dataString = (String) listOfValues.get(DATA);
         try {
             data = LocalDate.parse(dataString, DateConverter.NORMAL_DATE_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidInterventoFieldException("formatDateError");
         }
+        return data;
+    }
 
+    private LocalTime checkLocalTimeAndReturnIt() throws InvalidInterventoFieldException {
         LocalTime ora = null;
-        String oraString = (String) values.get(ORA);
+        String oraString = (String) listOfValues.get(ORA);
         try {
             ora = LocalTime.parse(oraString, DateConverter.EUROPEAN_TIME_FORMAT);
         } catch (IllegalArgumentException e) {
             throw new InvalidInterventoFieldException("formatTimeError");
         }
+        return ora;
+    }
 
-        Paziente paziente = (Paziente) values.get(PAZIENTE);
+
+    private void checkInfermiere() throws InvalidInterventoFieldException {
+        if (listOfValues.get(INFERMIERE) == null) {
+            throw new InvalidInterventoFieldException("invalidInterventionNurse");
+        }
+    }
+
+    private Paziente checkPazienteAndReturnIt() throws InvalidInterventoFieldException {
+        Paziente paziente = (Paziente) listOfValues.get(PAZIENTE);
         if (paziente == null) {
             throw new InvalidInterventoFieldException("invalidInterventionPatient");
         }
+        return paziente;
+    }
 
-        if (values.get(INFERMIERE) == null) {
-            throw new InvalidInterventoFieldException("invalidInterventionNurse");
-        }
 
-        List<Operazione> operazione = (List<Operazione>) values.get(OPERAZIONE);
+    private List<Operazione> checkOperazioneAndReturnIt() throws InvalidInterventoFieldException {
+        List<Operazione> operazione = (List<Operazione>) listOfValues.get(OPERAZIONE);
         int operazioneSize = operazione.size();
         if (operazioneSize < MIN_OPERAZIONE_SIZE) {
             throw new InvalidInterventoFieldException("invalidInterventionOperation");
         }
+        return operazione;
+    }
 
+
+    private void checkInterventoDate(LocalDate data, LocalTime ora) throws InvalidInterventoFieldException {
         Intervento intervento = new Intervento();
         intervento.setData(data);
         intervento.setOra(ora);
         if (!InterventoDurationEditChecker.checkInterventoEditable(intervento)) {
             throw new InvalidInterventoFieldException("inconsistentInterventionDateTime");
         }
+    }
 
+
+    private void checkPatologie(Paziente paziente, List<Operazione> operazione) throws InvalidInterventoFieldException {
         List<Patologia> patologiaList = paziente.getPatologia();
         for (Operazione operazioneItem : operazione) {
             if (!patologiaList.containsAll(operazioneItem.getPatologia())) {

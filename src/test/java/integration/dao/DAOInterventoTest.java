@@ -15,12 +15,20 @@ import java.util.List;
 
 import static integration.dao.DAOInfermiereTest.fillInfermieri;
 import static integration.dao.DAOInfermiereTest.infermieri;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class DAOInterventoTest {
 
-    private static DAO<Intervento> dao;
-    private static DAO<Paziente> daoP;
-    private static DAO<Infermiere> daoI;
+    private static DAO<Intervento> daoIntervento;
+    private static DAO<Paziente> daoPaziente;
+    private static DAO<Infermiere> daoInfermiere;
+    private static DAO<Patologia> daoPatologia;
+
+    private Intervento intervento;
+    private Paziente paziente;
+    private Patologia patologia;
+    private List<Patologia> patologiaList;
 
     private static String msg;
 
@@ -57,21 +65,7 @@ public class DAOInterventoTest {
 
     public static List<Intervento> interventi;
 
-    public static String printOperazioni(List<Operazione> op) {
-        String msg2 = "";
-        for (Operazione e : op) {
-            msg2 += "\t";
-            msg2 += e.getId() + " ";
-            msg2 += e.getNome() + ", ";
-            msg2 += e.getNota() + "\n";
-            msg2 += "\t\tDiseases:";
-            for (Patologia patologia : e.getPatologia()) {
-                msg2 += " " + patologia.getCodice();
-            }
-            msg2+="\n";
-        }
-        return msg2;
-    }
+
 
     public static List<List<Operazione>> fillOperazioni() {
         List<List<Operazione>> operazioni = new LinkedList<>();
@@ -102,6 +96,9 @@ public class DAOInterventoTest {
     @Before
     public void setUp() throws Exception {
         HQSQLConnectorStub conn = new HQSQLConnectorStub();
+        intervento = new Intervento();
+        paziente = new Paziente();
+        patologiaList = new ArrayList<>();
         conn.deleteAll();
         try {
             conn.close();
@@ -112,39 +109,35 @@ public class DAOInterventoTest {
 
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 
+        daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
+        daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
+        daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
+        daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
+
+
+    }
+
+    private void preTest() {
         fillInfermieri();
         DAOPazienteTest.fillPazienti();
 
-        dao = DAOFactory.getDAOEntity("DAOIntervento");
-        daoP = DAOFactory.getDAOEntity("DAOPaziente");
-        daoI = DAOFactory.getDAOEntity("DAOInfermiere");
 
         //Filling pazienti, patologie and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {
-            daoP.create(e);
+            daoPaziente.create(e);
         }
 
         for (Infermiere e : infermieri) {
-            daoI.create(e);
+            daoInfermiere.create(e);
         }
 
         listOpList = fillOperazioni();
-        listP = daoP.getAll();
-        listI = daoI.getAll();
+        listP = daoPaziente.getAll();
+        listI = daoInfermiere.getAll();
 
-        System.out.println("---printing pazienti using get all---");
-        List<Paziente> listP2 = daoP.getAll();
-        for (Paziente e : listP2) {
-            msg = e.getId() + " " + e.getNome() + " " + e.getCognome() + " " + e.getData();
-            System.out.println(msg);
-        }
+        List<Paziente> listP2 = daoPaziente.getAll();
 
-        System.out.println("---printing patologie using get all---");
-        List<Infermiere> listI2 = daoI.getAll();
-        for (Infermiere e : listI2) {
-            msg = e.getId() + " " + e.getNome() + " " + e.getCognome();
-            System.out.println(msg);
-        }
+        List<Infermiere> listI2 = daoInfermiere.getAll();
 
         //Filling interventi
 
@@ -168,30 +161,25 @@ public class DAOInterventoTest {
 
     @After
     public void tearDown() throws Exception {
-        dao = null;
-        daoP = null;
-        daoI = null;
+        daoIntervento = null;
+        daoPaziente = null;
+        daoInfermiere = null;
+
+        intervento = null;
+        paziente = null;
+        patologiaList = null;
         System.gc();
     }
 
     @Test
     public void testUnique() {
-        System.out.println("---create test---");
+        preTest();
         for (Intervento e : interventi) {
-            dao.create(e);
-            System.out.println("intervento created");
+            daoIntervento.create(e);
         }
 
-        System.out.println("---printing using get all---");
-        List<Intervento> list = dao.getAll();
-        for (Intervento e : list) {
-            msg = e.getId() + " " + e.getCitta() + " " + e.getCap() + " " + e.getIndirizzo() + " " + e.getData() + " " + e.getOra()
-                    + " Paziente " + e.getPaziente().getId() + " Infermiere " + e.getInfermiere().getId() + "\n";
-            msg += printOperazioni(e.getOperazione());
-            System.out.print(msg);
-        }
+        List<Intervento> list = daoIntervento.getAll();
 
-        System.out.println("---updating all queries (adding k to the cities and operation note, and mixing both paziente and infermiere, ecc)---");
         int i = 0;
         for (Intervento e : list) {
             e.setCitta(e.getCitta() + "k");
@@ -210,17 +198,11 @@ public class DAOInterventoTest {
 
             i++;
 
-            dao.update(e);
-            System.out.println("intervento updated");
+            daoIntervento.update(e);
         }
 
-        System.out.println("---printing using read---");
         for (Intervento e : list) {
-            Intervento gotInt = dao.read(e.getId());
-            msg = gotInt.getId() + " " + gotInt.getCitta() + " " + gotInt.getCap() + " " + gotInt.getIndirizzo() + " " + gotInt.getData() + " " + gotInt.getOra()
-                    + " Paziente " + gotInt.getPaziente().getId() + " Infermiere " + gotInt.getInfermiere().getId() + "\n";
-            msg += printOperazioni(gotInt.getOperazione());
-            System.out.print(msg);
+            Intervento gotInt = daoIntervento.read(e.getId());
         }
     }
 
@@ -238,26 +220,26 @@ public class DAOInterventoTest {
         fillInfermieri();
         DAOPazienteTest.fillPazienti();
 
-        dao = DAOFactory.getDAOEntity("DAOIntervento");
-        daoP = DAOFactory.getDAOEntity("DAOPaziente");
-        daoI = DAOFactory.getDAOEntity("DAOInfermiere");
+        daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
+        daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
+        daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
 
         //Filling pazienti, patologie and operazioni
         for (Paziente e : DAOPazienteTest.pazienti) {
-            daoP.create(e);
+            daoPaziente.create(e);
         }
 
         for (Infermiere e : infermieri) {
-            daoI.create(e);
+            daoInfermiere.create(e);
         }
 
         listOpList = fillOperazioni();
-        listP = daoP.getAll();
-        listI = daoI.getAll();
+        listP = daoPaziente.getAll();
+        listI = daoInfermiere.getAll();
 
-        List<Paziente> listP2 = daoP.getAll();
+        List<Paziente> listP2 = daoPaziente.getAll();
 
-        List<Infermiere> listI2 = daoI.getAll();
+        List<Infermiere> listI2 = daoInfermiere.getAll();
 
         //Filling interventi
 
@@ -279,9 +261,867 @@ public class DAOInterventoTest {
         }
 
         for (Intervento e : interventi) {
-            dao.create(e);
+            daoIntervento.create(e);
         }
 
-        interventi = dao.getAll();
+        interventi = daoIntervento.getAll();
+    }
+
+
+    @Test
+    public void testCreateInterventoWithNoOperazioni() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(0));
+
+    }
+
+
+    @Test
+    public void testCreateInterventoWithOneOperazione() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+    }
+
+
+    @Test
+    public void testCreateInterventoWithTwoOperazioniforTheSamePatologia() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento1 = new Operazione();
+        operazioneIntervento1.setNome("Fai qualcosa");
+        operazioneIntervento1.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento1);
+
+        Operazione operazioneIntervento2 = new Operazione();
+        operazioneIntervento2.setNome("Fai ancora qualcosa");
+        operazioneIntervento2.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento2);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(2));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento1.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento1.getPatologia()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(1).getNome(), equalTo(operazioneIntervento2.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(1).getPatologia(), equalTo(operazioneIntervento2.getPatologia()));
+
+
+    }
+
+
+    @Test  (expected = NullPointerException.class)
+    public void testCreateInterventoWithOperazioneForDifferentPazientePatologia() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+
+         //New Patologia list, different from the one of the patient
+        List<Patologia> differentPatologiaList = new ArrayList<>();
+        Patologia differentPatologia = new Patologia();
+        differentPatologia.setCodice("987654");
+        differentPatologia.setNome("differente patologia");
+        differentPatologia.setGravita(4);
+        differentPatologiaList.add(differentPatologia);
+
+
+        operazioneIntervento.setPatologia(differentPatologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia().get(0).getCodice(), equalTo("987654"));
+
+    }
+
+
+
+    @Test
+    public void testCreateCittaInterventoWithDateInThePast() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(1200, 1, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        String newCittaIntervento = "nuova citta";
+        tuttiInterventi.get(0).setCitta(newCittaIntervento);
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(newCittaIntervento));
+    }
+
+
+
+    @Test
+    public void testUpdateCittaIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        String newCittaIntervento = "nuova citta";
+        tuttiInterventi.get(0).setCitta(newCittaIntervento);
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(newCittaIntervento));
+    }
+
+    @Test
+    public void testUpdateCAPIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        String newCapIntervento = "nuovo CAP";
+        tuttiInterventi.get(0).setCap(newCapIntervento);
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(newCapIntervento));
+    }
+
+    @Test
+    public void testUpdateIndirizzoIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        String newIndirizzoIntervento = "nuova citta";
+        tuttiInterventi.get(0).setIndirizzo(newIndirizzoIntervento);
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(newIndirizzoIntervento));
+    }
+
+    @Test
+    public void testUpdateOraIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        LocalTime newOraIntervento = new LocalTime(15, 0, 0);
+        tuttiInterventi.get(0).setOra(newOraIntervento);
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(newOraIntervento));
+    }
+
+
+    @Test
+    public void testUpdateInfermiereIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        Infermiere newInfermiereIntervento = new Infermiere();
+        newInfermiereIntervento.setNome("John");
+        newInfermiereIntervento.setCognome("Locke");
+
+        tuttiInterventi.get(0).setInfermiere(newInfermiereIntervento);
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(newInfermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(newInfermiereIntervento.getCognome()));
+    }
+
+
+    @Test
+    public void testUpdatePazienteIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        Paziente newPazienteIntervento = new Paziente();
+        newPazienteIntervento.setNome("Jamie");
+        newPazienteIntervento.setCognome("Lewis");
+        newPazienteIntervento.setData(new LocalDate(1, 1, 1));
+
+        tuttiInterventi.get(0).setPaziente(newPazienteIntervento);
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(newPazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(newPazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(newPazienteIntervento.getData()));
+    }
+
+    @Test
+    public void testUpdatePazienteInterventoAddingOnePatologia() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        Paziente newPazienteIntervento = new Paziente();
+        newPazienteIntervento.setNome("Jamie");
+        newPazienteIntervento.setCognome("Lewis");
+        newPazienteIntervento.setData(new LocalDate(1, 1, 1));
+
+        Patologia newPatologia = new Patologia();
+        newPatologia.setCodice("666");
+        newPatologia.setNome("morte certa");
+        newPatologia.setGravita(1);
+        patologiaList.add(newPatologia);
+        newPazienteIntervento.setPatologia(patologiaList);
+
+        tuttiInterventi.get(0).setPaziente(newPazienteIntervento);
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(newPazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(newPazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(newPazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia().size(), equalTo(2));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia().get(1).getNome(), equalTo(newPatologia.getNome()));
+    }
+
+
+
+
+
+    @Test
+    public void testUpdateDataIntervento() throws Exception {
+        String cittaIntervento = "citta";
+        String capIntervento = "CAP";
+        String indirizzoIntervento = "indirizzo";
+        LocalDate dataIntervento = new LocalDate(3100, 5, 30);
+        LocalTime oraIntervento = new LocalTime(9, 0, 0);
+        Infermiere infermiereIntervento = giveMeACompleteInfermiere();
+        Paziente pazienteIntervento = giveMeACompletePaziente();
+        List<Operazione> operazioniIntervento = new ArrayList<>();
+
+        //Operazione matters
+        Operazione operazioneIntervento = new Operazione();
+        operazioneIntervento.setNome("Fai qualcosa");
+        operazioneIntervento.setPatologia(patologiaList);
+        operazioniIntervento.add(operazioneIntervento);
+
+        intervento.setCitta(cittaIntervento);
+        intervento.setCap(capIntervento);
+        intervento.setIndirizzo(indirizzoIntervento);
+        intervento.setData(dataIntervento);
+        intervento.setOra(oraIntervento);
+        intervento.setPaziente(pazienteIntervento);
+        intervento.setInfermiere(infermiereIntervento);
+        intervento.setOperazione(operazioniIntervento);
+
+        daoIntervento.create(intervento);
+
+        //Assertions
+        List<Intervento> tuttiInterventi = daoIntervento.getAll();
+
+        assertThat(tuttiInterventi.size(), equalTo(1));
+
+        assertThat(tuttiInterventi.get(0).getCitta(), equalTo(cittaIntervento));
+        assertThat(tuttiInterventi.get(0).getCap(), equalTo(capIntervento));
+        assertThat(tuttiInterventi.get(0).getIndirizzo(), equalTo(indirizzoIntervento));
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(dataIntervento));
+        assertThat(tuttiInterventi.get(0).getOra(), equalTo(oraIntervento));
+
+        assertThat(tuttiInterventi.get(0).getPaziente().getNome(), equalTo(pazienteIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getCognome(), equalTo(pazienteIntervento.getCognome()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getData(), equalTo(pazienteIntervento.getData()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getNumeroCellulare(), equalTo(pazienteIntervento.getNumeroCellulare()));
+        assertThat(tuttiInterventi.get(0).getPaziente().getPatologia(), equalTo(pazienteIntervento.getPatologia()));
+
+        assertThat(tuttiInterventi.get(0).getInfermiere().getNome(), equalTo(infermiereIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getInfermiere().getCognome(), equalTo(infermiereIntervento.getCognome()));
+
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(operazioniIntervento.size()));
+        assertThat(tuttiInterventi.get(0).getOperazione().size(), equalTo(1));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getNome(), equalTo(operazioneIntervento.getNome()));
+        assertThat(tuttiInterventi.get(0).getOperazione().get(0).getPatologia(), equalTo(operazioneIntervento.getPatologia()));
+
+
+        //Updating
+        LocalDate newDataIntervento = new LocalDate(5490, 4, 29);
+        tuttiInterventi.get(0).setData(newDataIntervento);
+        assertThat(tuttiInterventi.get(0).getData(), equalTo(newDataIntervento));
+    }
+
+
+
+    private Paziente giveMeACompletePaziente(){
+        String nomePaziente = "Il nome";
+        String cognomePaziente = "Il cognome";
+        LocalDate dataNascitaPaziente = new LocalDate(1700, 12, 19);
+        String cellularePaziente = "123456789";
+
+        String codicePatologia = "112233";
+        String nomePatologia = "Tumore";
+        int gravitaPatologia = 4;
+
+        paziente.setNome(nomePaziente);
+        paziente.setCognome(cognomePaziente);
+        paziente.setData(dataNascitaPaziente);
+
+        List<String> cellList = new ArrayList<>();
+        cellList.add(cellularePaziente);
+        paziente.setNumeroCellulare(cellList);
+
+        Patologia patologia = new Patologia();
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+        patologiaList.add(patologia);
+
+        daoPatologia.create(patologia);
+
+        paziente.setPatologia(patologiaList);
+
+
+        daoPaziente.create(paziente);
+        return daoPaziente.getAll().get(0);
+    }
+
+    private Infermiere giveMeACompleteInfermiere(){
+        Infermiere infermiere = new Infermiere();
+        String nomeInfermiere = "nome infermiere";
+        String cognomeInfermiere = "cognome infermiere";
+
+        infermiere.setNome(nomeInfermiere);
+        infermiere.setCognome(cognomeInfermiere);
+
+        daoInfermiere.create(infermiere);
+        return daoInfermiere.getAll().get(0);
     }
 }

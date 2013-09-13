@@ -18,8 +18,6 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
     public Object invoke(String serviceName, Parameter parameter) throws CommonException {
         Object result = null;
         try {
-
-            //TODO codice temporaneo. necessario restyling
             Class<?> asClass = as.getClass();
             String asMethodInString = ApplicationServiceSelector.getServiceMethod(serviceName);
             Method asMethod = asClass.getMethod(asMethodInString, Parameter.class);

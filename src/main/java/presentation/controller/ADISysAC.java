@@ -10,7 +10,7 @@ import business.transfer.Parameter;
 
 class ADISysAC implements ApplicationController {
 
-    //TODO decidere quali comandi utilizzare
+
     private static String SHOW_GUI_SYNTAX = "Mostra[a-zA-Z]+";
 
     public Object handleRequest(String serviceName, Parameter parameter) {
@@ -33,7 +33,7 @@ class ADISysAC implements ApplicationController {
     }
 
     private Object execute(String serviceName, Parameter parameter) throws CommonException {
-        ApplicationService appServiceClass = ApplicationServiceFactory.getApplicationController(serviceName);
+        ApplicationService appServiceClass = ApplicationServiceFactory.getApplicationService(serviceName);
         ApplicationServiceMethod appServiceMethod = ApplicationServiceMethodFactory.getASMethod(appServiceClass);
         return appServiceMethod.invoke(serviceName, parameter);
     }

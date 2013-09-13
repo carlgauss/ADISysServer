@@ -23,11 +23,8 @@ public class ApplicationServiceGeneral implements ApplicationService {
     private static final String INDENT = "\n";
 
     public void check(Parameter parameter) throws FatalMissingFileException {
-        boolean isValid =
-                ENG_LANGUE.exists() &&
-                ITA_LANGUE.exists() &&
-                XSD_JOURNALING.exists() &&
-                XSD_PIANIFICAZIONE.exists();
+        boolean isValid = ENG_LANGUE.exists() && ITA_LANGUE.exists() &&
+                          XSD_JOURNALING.exists() && XSD_PIANIFICAZIONE.exists();
 
         if(!isValid) {
             System.runFinalization();

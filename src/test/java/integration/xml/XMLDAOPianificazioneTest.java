@@ -15,14 +15,14 @@ import static org.junit.Assert.assertTrue;
 public class XMLDAOPianificazioneTest {
 
 
-    DAOPianificazione pianif;
+    DAOPianificazione pianificazione;
 
     @Before
     public void setUp() throws Exception {
-        Infermiere inf = new Infermiere();
-        inf.setId("12");
+        Infermiere infermiere = new Infermiere();
+        infermiere.setId("12");
 
-        pianif = new XMLDAOPianificazione(inf);
+        pianificazione = new XMLDAOPianificazione(infermiere);
 
         Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
 
@@ -36,7 +36,7 @@ public class XMLDAOPianificazioneTest {
     @Test
     public void testExport() {
         try {
-            pianif.export(DAOInterventoTest.interventi);
+            pianificazione.export(DAOInterventoTest.interventi);
             assertTrue(true);
         } catch (SAXException e) {
             e.printStackTrace();

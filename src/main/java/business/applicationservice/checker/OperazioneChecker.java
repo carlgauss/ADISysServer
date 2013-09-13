@@ -30,8 +30,8 @@ class OperazioneChecker implements Checker {
         nome = nome.trim();
 
         int length = nome.length();
-        isValid = (length >= MIN_NOME_VALUE)
-                && (length <= MAX_NOME_VALUE);
+
+        isValid = (length >= MIN_NOME_VALUE) && (length <= MAX_NOME_VALUE);
 
         if (!isValid) {
             throw new InvalidOperazioneFieldException("invalidOperationName");

@@ -11,19 +11,18 @@ public class InterventoDurationEditChecker {
     private final static MutableDateTime MAX_DATE = new MutableDateTime(9999, 12, 31, 23, 59, 59, 0);
 
     public static boolean checkInterventoEditable(Intervento intervento) {
-        LocalDate dataInt = intervento.getData();
-        LocalTime oraInt = intervento.getOra();
+        LocalDate dataIntervento = intervento.getData();
+        LocalTime oraIntervento = intervento.getOra();
 
         MutableDateTime dataComplInt = new MutableDateTime();
 
-        dataComplInt.setYear(dataInt.getYear());
-        dataComplInt.setDayOfYear(dataInt.getDayOfYear());
-        dataComplInt.setMillisOfDay(oraInt.getMillisOfDay());
+        dataComplInt.setYear(dataIntervento.getYear());
+        dataComplInt.setDayOfYear(dataIntervento.getDayOfYear());
+        dataComplInt.setMillisOfDay(oraIntervento.getMillisOfDay());
 
         DateTime now = DateTime.now(DateTimeZone.getDefault());
         Duration duration = new Duration(now, dataComplInt);
-        return (!duration.isShorterThan(MIN_EDIT_DURATION))
-                && (dataComplInt.compareTo(MAX_DATE) <= 0);
+        return (!duration.isShorterThan(MIN_EDIT_DURATION)) && (dataComplInt.compareTo(MAX_DATE) <= 0);
     }
 
     public static boolean checkDaily(Intervento intervento) {

@@ -15,7 +15,7 @@ import java.util.*;
 
 public class ApplicationServicePatologia implements ApplicationService, CRUG<Patologia> {
     private DAO<Patologia> daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
-    private Checker checker = CheckerFactory.buildInstance(Patologia.class);
+    private Checker checker = CheckerFactory.getChecker(Patologia.class);
 
     public void create(Parameter parameter) throws CommonException {
         String codice = (String) parameter.getValue("codice");

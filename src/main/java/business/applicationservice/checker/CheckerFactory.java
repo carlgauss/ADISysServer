@@ -10,7 +10,7 @@ public class CheckerFactory {
 
     }
 
-    public static Checker buildInstance(Class<? extends Entity> entityClass) {
+    public static Checker getChecker(Class<? extends Entity> entityClass) {
         String entityClassName = entityClass.getSimpleName();
         String resultClassName = CHECKER_PKG_PATH;
         resultClassName += entityClassName;

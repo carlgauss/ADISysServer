@@ -22,7 +22,7 @@ public class ApplicationServiceOperazione implements ApplicationService {
         operazioneValues.add(nome);
         operazioneValues.add(patologia);
 
-        Checker operazioneChecker = CheckerFactory.buildInstance(Operazione.class);
+        Checker operazioneChecker = CheckerFactory.getChecker(Operazione.class);
         operazioneChecker.check(operazioneValues);
     }
 }

@@ -88,7 +88,7 @@ public class DAOPatologia extends HQSQLDAO<Patologia> {
     }
 
     private List<Patologia> createElencoPatologieBy(ResultSet resultSet) {
-        List<Patologia> result = new LinkedList<Patologia>();
+        List<Patologia> result = new LinkedList<>();
 
         try {
             while (resultSet.next()) {

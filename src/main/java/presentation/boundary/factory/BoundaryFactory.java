@@ -20,13 +20,6 @@ public class BoundaryFactory {
         return newBoundaryInstance(boundaryClass, parameter);
     }
 
-    private static String getSimpleClassName(String serviceName) {
-        return serviceName.substring(BOUNDARY_NAME_START_POSITION);
-    }
-
-    private static String getCanonicalClassName(String simpleClassName) {
-        return BOUNDARY_PACKAGE_PATH + simpleClassName;
-    }
 
     private static Class<?> getBoundaryClass(String serviceName) {
         String simpleClassName = getSimpleClassName(serviceName);
@@ -41,6 +34,14 @@ public class BoundaryFactory {
         }
 
         return boundaryClass;
+    }
+
+    private static String getSimpleClassName(String serviceName) {
+        return serviceName.substring(BOUNDARY_NAME_START_POSITION);
+    }
+
+    private static String getCanonicalClassName(String simpleClassName) {
+        return BOUNDARY_PACKAGE_PATH + simpleClassName;
     }
 
     private static Boundary newBoundaryInstance(Class<?> boundaryClass, Parameter parameter) {

@@ -9,9 +9,29 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 public class DAOPatologiaTest {
 
-    private static DAO<Patologia> dao;
+    private static DAO<Patologia> daoPatologia;
+    private Patologia patologia;
+
+
+    @Before
+    public void setUp() throws Exception {
+        HQSQLConnectorStub conn = new HQSQLConnectorStub();
+        patologia = new Patologia();
+        conn.deleteAll();
+        try {
+            conn.close();
+        } catch (Throwable e1) {
+            e1.printStackTrace();
+        }
+        conn = null;
+        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
+        daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
+    }
 
     private static final String[][] PATOLOGIE_STRING = new String[][]{
             {"100212", "   Verruche", "1"},
@@ -35,67 +55,337 @@ public class DAOPatologiaTest {
     }
 
     public static void createPatologieDB() {
-        dao = DAOFactory.getDAOEntity("DAOPatologia");
-
+        daoPatologia = DAOFactory.getDAOEntity("DAOPatologia");
         for (Patologia e : patologie) {
-            dao.create(e);
+            daoPatologia.create(e);
         }
 
     }
 
-    @Before
-    public void setUp() throws Exception {
-        HQSQLConnectorStub conn = new HQSQLConnectorStub();
-        conn.deleteAll();
-        try {
-            conn.close();
-        } catch (Throwable e1) {
-            e1.printStackTrace();
-        }
-        conn = null;
 
-        fillPatologie();
-
-        Mockit.setUpMock(HQSQLConnector.class, HQSQLConnectorStub.class);
-        dao = DAOFactory.getDAOEntity("DAOPatologia");
-    }
 
     @After
     public void tearDown() throws Exception {
-        dao = null;
+        daoPatologia = null;
+        patologia = null;
         System.gc();
     }
 
     @Test
     public void testUnique() {
-        String msg;
-
-        System.out.println("---create test---");
+        fillPatologie();
         for (Patologia e : patologie) {
-            dao.create(e);
-            System.out.println("patologia created");
+            daoPatologia.create(e);
         }
 
-        System.out.println("---printing using get all---");
-        List<Patologia> list = dao.getAll();
-        for (Patologia e : list) {
-            msg = e.getCodice() + " " + e.getNome() + " " + e.getGravita();
-            System.out.println(msg);
-        }
+        List<Patologia> list = daoPatologia.getAll();
 
-        System.out.println("---updating all queries (adding k to the names)---");
         for (Patologia e : list) {
             e.setNome(e.getNome() + "MOD");
             e.setGravita((e.getGravita() + 1) % 5 + 1);
-            dao.update(e);
-            System.out.println("patologia updated");
+            daoPatologia.update(e);
         }
 
-        System.out.println("---printing using read---");
         for (Patologia e : list) {
-            Patologia gotPat = dao.read(e.getCodice());
-            msg = gotPat.getCodice() + " " + gotPat.getNome() + " " + gotPat.getGravita();
-            System.out.println(msg);
+            Patologia gotPat = daoPatologia.read(e.getCodice());
         }
+    }
+
+
+    @Test
+    public void testCreatePatologia() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void testCreatePatologiaWithoutCodice() throws Exception {
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void testCreatePatologiaWithoutNome() throws Exception {
+        String codicePatologia = "654321";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+    }
+
+    @Test
+    public void testCreatePatologiaWithoutGravita() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(0));
+
+    }
+
+
+    @Test
+    public void testCreatePatologiaWithStrangeCodiceTooBig() throws Exception {
+        String codicePatologia = "654321999000999";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+    }
+
+    @Test
+    public void testCreatePatologiaWithCodiceTooSmallLessThanSixCharacters() throws Exception {
+        String codicePatologia = "1";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+    @Test
+    public void testCreatePatologiaWithCodiceZero() throws Exception {
+        String codicePatologia = "0";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+    @Test
+    public void testCreatePatologiaWithNegativeCodice() throws Exception {
+        String codicePatologia = "-654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+    }
+
+
+    @Test
+    public void testCreatePatologiaWithGravitaGreaterThanSix() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 6;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+    @Test
+    public void testCreatePatologiaWithGravitaLesserThanOne() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 0;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+    @Test
+    public void testCreatePatologiaWithNegativeGravita() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = -60;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+    }
+
+
+    @Test
+    public void testUpdateCodicePatologia() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+        //Updating
+        String newCodicePatologia = "102030";
+        tuttePatologie.get(0).setCodice(newCodicePatologia);
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(newCodicePatologia));
+
+    }
+
+    @Test
+    public void testUpdateNomePatologia() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+        //Updating
+        String newNomePatologia = "Nuovo nome";
+        tuttePatologie.get(0).setNome(newNomePatologia);
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(newNomePatologia));
+
+    }
+
+    @Test
+    public void testUpdateGravitaPatologia() throws Exception {
+        String codicePatologia = "654321";
+        String nomePatologia = "Broncopolmonite";
+        int gravitaPatologia = 4;
+
+        patologia.setCodice(codicePatologia);
+        patologia.setNome(nomePatologia);
+        patologia.setGravita(gravitaPatologia);
+
+        daoPatologia.create(patologia);
+
+        //Assertions
+        List<Patologia> tuttePatologie = daoPatologia.getAll();
+
+        assertThat(tuttePatologie.size(), equalTo(1));
+
+        assertThat(tuttePatologie.get(0).getCodice(), equalTo(codicePatologia));
+        assertThat(tuttePatologie.get(0).getNome(), equalTo(nomePatologia));
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(gravitaPatologia));
+
+        //Updating
+        int newGravitaPatologia = 1;
+        tuttePatologie.get(0).setGravita(newGravitaPatologia);
+        assertThat(tuttePatologie.get(0).getGravita(), equalTo(newGravitaPatologia));
+
     }
 }

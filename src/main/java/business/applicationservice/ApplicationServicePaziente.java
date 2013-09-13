@@ -18,7 +18,7 @@ import java.util.List;
 public class ApplicationServicePaziente implements ApplicationService, CRUG<Paziente> {
 
     private DAO<Paziente> daoPaziente = DAOFactory.getDAOEntity("DAOPaziente");
-    Checker checker = CheckerFactory.buildInstance(Paziente.class);
+    Checker checker = CheckerFactory.getChecker(Paziente.class);
 
     public void create(Parameter parameter) throws CommonException {
         Paziente paziente = populate(parameter);

@@ -51,14 +51,16 @@ public class ApplicationServicePianificazione implements ApplicationService {
 }
 
 class PianificazioneEsportazioneMap extends HashMap<String, List<Intervento>> {
+
     public void addIntervento(Infermiere infermiere, Intervento intervento) {
-        if (containsKey(infermiere.getId())) {
-            get(infermiere.getId()).add(intervento);
+        final String infermiereId = infermiere.getId();
+        if (containsKey(infermiereId)) {
+            get(infermiereId).add(intervento);
         } else {
             List<Intervento> interventoList = new LinkedList<>();
             interventoList.add(intervento);
-            put(infermiere.getId(), interventoList);
-            infermiereHashMap.put(infermiere.getId(), infermiere);
+            put(infermiereId, interventoList);
+            infermiereHashMap.put(infermiereId, infermiere);
         }
     }
 

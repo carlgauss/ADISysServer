@@ -15,7 +15,7 @@ import java.util.List;
 public class ApplicationServiceInfermiere implements ApplicationService, CRUG<Infermiere> {
 
     private DAO<Infermiere> daoInfermiere = DAOFactory.getDAOEntity("DAOInfermiere");
-    private Checker checker = CheckerFactory.buildInstance(Infermiere.class);
+    private Checker checker = CheckerFactory.getChecker(Infermiere.class);
 
     public void create(Parameter parameter) throws CommonException {
         Infermiere infermiere = populate(parameter);

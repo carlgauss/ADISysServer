@@ -22,7 +22,7 @@ import java.util.List;
 public class ApplicationServiceIntervento implements ApplicationService, CRUG<Intervento> {
 
     private DAO<Intervento> daoIntervento = DAOFactory.getDAOEntity("DAOIntervento");
-    private Checker checker = CheckerFactory.buildInstance(Intervento.class);
+    private Checker checker = CheckerFactory.getChecker(Intervento.class);
 
     public void create(Parameter parameter) throws CommonException {
         Intervento intervento = populate(parameter);
