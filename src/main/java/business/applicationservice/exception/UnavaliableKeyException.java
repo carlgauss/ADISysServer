@@ -1,4 +1,4 @@
-package utility;
+package business.applicationservice.exception;
 
 public class UnavaliableKeyException extends RuntimeException {
 

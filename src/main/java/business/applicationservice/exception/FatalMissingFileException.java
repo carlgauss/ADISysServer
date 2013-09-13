@@ -3,8 +3,8 @@ package business.applicationservice.exception;
 import javax.swing.*;
 
 public class FatalMissingFileException extends CommonException {
-    public FatalMissingFileException(String msg) {
-        super(msg);
+    public FatalMissingFileException(String message) {
+        super(message);
     }
 
     private static final int ERROR = 1;

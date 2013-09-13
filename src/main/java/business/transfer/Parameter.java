@@ -1,9 +1,12 @@
 package business.transfer;
 
-import utility.UnavaliableKeyException;
+import business.applicationservice.exception.UnavaliableKeyException;
 
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class Parameter {
 
@@ -11,6 +14,24 @@ public class Parameter {
 
     public void setValue(String key, Object value) {
         dictionary.put(key, value);
+    }
+
+    public void removeNotSerializable() {
+        Set<Map.Entry<String, Object>> entrySet = dictionary.entrySet();
+        Iterator<Map.Entry<String, Object>> iterator = entrySet.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Object> entry = iterator.next();
+            String key = entry.getKey();
+            Object object = entry.getValue();
+            if (object != null) {
+                Class<?> serializable = Serializable.class;
+                Class<?> objectClass = object.getClass();
+
+                if (!serializable.isAssignableFrom(objectClass)) {
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     public Object getValue(String key) {
