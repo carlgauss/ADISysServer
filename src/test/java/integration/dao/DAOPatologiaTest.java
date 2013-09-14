@@ -162,7 +162,7 @@ public class DAOPatologiaTest {
     }
 
 
-    @Test  (expected = SQLDataException.class)
+    @Test
     public void testCreatePatologiaWithStrangeCodiceTooBig() throws Exception {
         String codicePatologia = "654321999000999";
         String nomePatologia = "Broncopolmonite";
