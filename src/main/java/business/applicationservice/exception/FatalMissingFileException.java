@@ -1,6 +1,7 @@
 package business.applicationservice.exception;
 
 import utility.MessageDisplayer;
+import utility.dialogfx.DialogFX;
 
 import javax.swing.*;
 
@@ -13,7 +14,10 @@ public class FatalMissingFileException extends CommonException {
 
     @Override
     public void reportException() {
-        MessageDisplayer.showErrorMessage("FATAL ERROR", message);
+        DialogFX dialog = new DialogFX(DialogFX.Type.ERROR);
+        dialog.setTitleText("FATAL ERROR");
+        dialog.setMessage(message);
+        dialog.showDialog();
         System.exit(ERROR);
     }
 }
