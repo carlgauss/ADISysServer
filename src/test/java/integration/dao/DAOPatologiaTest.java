@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLDataException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -161,7 +162,7 @@ public class DAOPatologiaTest {
     }
 
 
-    @Test
+    @Test  (expected = SQLDataException.class)
     public void testCreatePatologiaWithStrangeCodiceTooBig() throws Exception {
         String codicePatologia = "654321999000999";
         String nomePatologia = "Broncopolmonite";
