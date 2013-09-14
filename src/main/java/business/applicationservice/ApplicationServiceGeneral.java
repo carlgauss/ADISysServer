@@ -29,7 +29,7 @@ public class ApplicationServiceGeneral implements ApplicationService {
         if(!isValid) {
             System.runFinalization();
 
-            String msg = "Fatal: unable to read important file:";
+            String msg = "[FATAL] unable to read important file:";
             msg += ENG_LANGUE.exists() ? BLANK : INDENT + ENG_LANGUE_STRING;
             msg += ITA_LANGUE.exists() ? BLANK : INDENT + ITA_LANGUE_STRING;
             msg += XSD_JOURNALING.exists() ? BLANK : INDENT + XSD_JOURNALING_STRING;

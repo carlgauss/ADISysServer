@@ -23,6 +23,8 @@ public class SchermataPrincipale extends Application implements Boundary {
 
     @Override
     public void start(Stage stage) throws Exception {
+        FrontControllerFactory.getFrontController().processRequest("VerificaIniziale", null);
+
         FXMLLoader fxmlLoader = new FXMLLoader();
 
         Properties properties = SimpleLabelTranslator.getLanguage();
@@ -56,7 +58,6 @@ public class SchermataPrincipale extends Application implements Boundary {
     }
 
     public static void main(String... args) {
-        FrontControllerFactory.getFrontController().processRequest("VerificaIniziale", null);
         launch(args);
     }
 }
