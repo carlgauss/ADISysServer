@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLDataException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
