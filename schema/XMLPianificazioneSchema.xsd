@@ -97,7 +97,7 @@
 
     <xs:simpleType name="Date">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([0-9])+[-]([0-9]){1,2}[-]([0-9]){1,2}"/>
+            <xs:pattern value="([0-9])+[\-]([0-9]){1,2}[\-]([0-9]){1,2}"/>
         </xs:restriction>
     </xs:simpleType>
 
