@@ -136,9 +136,11 @@ public class DAOInfermiereTest {
         infermiere.setNome(nomeInfermiere);
         infermiere.setCognome(cognomeInfermiere);
 
+        List<Infermiere> tuttiInfermieri = daoInfermiere.getAll();
+        assertThat(tuttiInfermieri.size(), equalTo(0));
         daoInfermiere.create(infermiere);
 
-        List<Infermiere> tuttiInfermieri = daoInfermiere.getAll();
+        tuttiInfermieri = daoInfermiere.getAll();
 
         //Assertions
         assertThat(tuttiInfermieri.size(), equalTo(1));

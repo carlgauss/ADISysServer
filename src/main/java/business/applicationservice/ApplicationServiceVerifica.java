@@ -48,8 +48,8 @@ public class ApplicationServiceVerifica implements ApplicationService {
     }
 
     private static final long MAX_MINUTES = 30;
-    private static final long MINUTE_IN_SECONDS = 60;
-    private static final long MAX_SECONDS = MAX_MINUTES * MINUTE_IN_SECONDS;
+    private static final long MINUTE_IN_MILLISECONDS = 60 * 1000;
+    private static final long MAX_SECONDS = MAX_MINUTES * MINUTE_IN_MILLISECONDS;
     private static final DateTime MAX_TIME = new DateTime(MAX_SECONDS);
     private static final Duration MAX_DURATION = new Duration(new DateTime(0), MAX_TIME);
 
@@ -83,7 +83,9 @@ public class ApplicationServiceVerifica implements ApplicationService {
                 }
             }
 
-            result = GREEN;
+            if (result != RED) {
+                result = GREEN;
+            }
         }
 
         return result;
