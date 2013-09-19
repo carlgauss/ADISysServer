@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.SQLDataException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -240,7 +239,7 @@ public class DAOPatologiaTest {
     public void testCreatePatologiaWithGravitaGreaterThanSix() throws Exception {
         String codicePatologia = "654321";
         String nomePatologia = "Broncopolmonite";
-        int gravitaPatologia = 6;
+        int gravitaPatologia = 7;
 
         patologia.setCodice(codicePatologia);
         patologia.setNome(nomePatologia);
